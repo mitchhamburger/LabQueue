@@ -14,6 +14,7 @@
 		F83222A31D07B7610089304E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F83222A11D07B7610089304E /* LaunchScreen.storyboard */; };
 		F83222AE1D07B7610089304E /* LabQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222AD1D07B7610089304E /* LabQueueTests.swift */; };
 		F83222B91D07B7610089304E /* LabQueueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222B81D07B7610089304E /* LabQueueUITests.swift */; };
+		F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222C61D07BF8C0089304E /* StudentPictureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		F83222B41D07B7610089304E /* LabQueueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LabQueueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83222B81D07B7610089304E /* LabQueueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabQueueUITests.swift; sourceTree = "<group>"; };
 		F83222BA1D07B7610089304E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F83222C61D07BF8C0089304E /* StudentPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentPictureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				F83222981D07B7610089304E /* AppDelegate.swift */,
 				F832229A1D07B7610089304E /* ViewController.swift */,
 				F832229C1D07B7610089304E /* Main.storyboard */,
+				F83222C61D07BF8C0089304E /* StudentPictureView.swift */,
 				F832229F1D07B7610089304E /* Assets.xcassets */,
 				F83222A11D07B7610089304E /* LaunchScreen.storyboard */,
 				F83222A41D07B7610089304E /* Info.plist */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F832229B1D07B7610089304E /* ViewController.swift in Sources */,
+				F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */,
 				F83222991D07B7610089304E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +488,7 @@
 				F83222BF1D07B7610089304E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F83222C01D07B7610089304E /* Build configuration list for PBXNativeTarget "LabQueueTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +497,7 @@
 				F83222C21D07B7610089304E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F83222C31D07B7610089304E /* Build configuration list for PBXNativeTarget "LabQueueUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +506,7 @@
 				F83222C51D07B7610089304E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
