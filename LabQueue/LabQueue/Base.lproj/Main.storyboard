@@ -47,14 +47,14 @@
                                 <rect key="frame" x="20" y="272" width="280" height="30"/>
                                 <state key="normal" title="I'm a student"/>
                                 <connections>
-                                    <segue destination="olw-Lc-YOT" kind="modal" id="MCQ-j0-Kql"/>
+                                    <segue destination="olw-Lc-YOT" kind="show" id="zgW-2u-gbU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhu-ES-ucl">
                                 <rect key="frame" x="20" y="121" width="280" height="30"/>
                                 <state key="normal" title="I'm a TA"/>
                                 <connections>
-                                    <segue destination="OeT-ny-OQ2" kind="modal" id="G7k-xf-NxA"/>
+                                    <segue destination="OeT-ny-OQ2" kind="show" id="Sdj-Qd-fk1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -66,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="-56" y="333"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="82R-zf-MT7">
             <objects>
-                <viewController id="olw-Lc-YOT" sceneMemberID="viewController">
+                <viewController id="olw-Lc-YOT" customClass="TAHomeViewController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oEW-pm-hXh"/>
                         <viewControllerLayoutGuide type="bottom" id="MdY-5P-6nh"/>
@@ -78,63 +78,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ez5-ee-hCh">
-                                <rect key="frame" x="16" y="196" width="288" height="352"/>
-                                <connections>
-                                    <segue destination="row-VY-zNJ" kind="embed" id="tP3-vi-MLU"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOE-pK-5LN">
-                                <rect key="frame" x="80" y="28" width="160" height="160"/>
-                                <connections>
-                                    <segue destination="Z6h-Xg-uYM" kind="modal" id="ZqN-2J-4ci"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D7q-Gm-PiR" customClass="StudentPictureView" customModule="LabQueue" customModuleProvider="target">
-                                <rect key="frame" x="80" y="28" width="160" height="160"/>
+                                <rect key="frame" x="80" y="60" width="160" height="160"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOE-pK-5LN">
+                                        <rect key="frame" x="49" y="48" width="63" height="63"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="63" id="J3s-S0-93d"/>
+                                            <constraint firstAttribute="height" constant="63" id="hZk-n5-B9x"/>
+                                        </constraints>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="RIy-GE-naB"/>
+                                    <constraint firstItem="GOE-pK-5LN" firstAttribute="centerX" secondItem="D7q-Gm-PiR" secondAttribute="centerX" id="gFv-L3-Dk8"/>
                                     <constraint firstAttribute="height" constant="160" id="mBQ-sQ-wzv"/>
+                                    <constraint firstItem="GOE-pK-5LN" firstAttribute="centerY" secondItem="D7q-Gm-PiR" secondAttribute="centerY" id="xj4-sn-g3D"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ez5-ee-hCh" customClass="UITableView">
+                                <rect key="frame" x="16" y="228" width="288" height="320"/>
+                            </containerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GnQ-9A-bhV">
+                                <rect key="frame" x="16" y="228" width="288" height="320"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="D7q-Gm-PiR" firstAttribute="top" secondItem="oEW-pm-hXh" secondAttribute="bottom" constant="8" id="89l-oC-3i6"/>
+                            <constraint firstItem="D7q-Gm-PiR" firstAttribute="top" secondItem="oEW-pm-hXh" secondAttribute="bottom" constant="40" id="89l-oC-3i6"/>
                             <constraint firstItem="D7q-Gm-PiR" firstAttribute="centerX" secondItem="Ez5-ee-hCh" secondAttribute="centerX" id="Dcn-pg-OsH"/>
                             <constraint firstItem="Ez5-ee-hCh" firstAttribute="top" secondItem="D7q-Gm-PiR" secondAttribute="bottom" constant="8" id="HVL-DO-5jf"/>
                             <constraint firstItem="Ez5-ee-hCh" firstAttribute="top" secondItem="D7q-Gm-PiR" secondAttribute="bottom" constant="8" id="awE-Fx-I9I"/>
+                            <constraint firstItem="MdY-5P-6nh" firstAttribute="top" secondItem="GnQ-9A-bhV" secondAttribute="bottom" constant="20" id="bfu-hz-m0w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GnQ-9A-bhV" secondAttribute="trailing" id="eNY-EJ-z9t"/>
                             <constraint firstItem="MdY-5P-6nh" firstAttribute="top" secondItem="Ez5-ee-hCh" secondAttribute="bottom" constant="20" id="l5d-UF-Xsg"/>
+                            <constraint firstItem="GnQ-9A-bhV" firstAttribute="leading" secondItem="UuN-C6-Red" secondAttribute="leadingMargin" id="oWu-zv-SSB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ez5-ee-hCh" secondAttribute="trailing" id="snL-mc-Nfc"/>
+                            <constraint firstItem="GnQ-9A-bhV" firstAttribute="top" secondItem="D7q-Gm-PiR" secondAttribute="bottom" constant="8" id="xhq-Ad-fFQ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Ez5-ee-hCh" secondAttribute="leading" id="zba-0R-zy4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nZa-Ix-uz0"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="queueTable" destination="Ez5-ee-hCh" id="edV-Y2-4Yd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DvG-4z-zaN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="379" y="677"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="fwD-sK-uMo">
-            <objects>
-                <viewController id="Z6h-Xg-uYM" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EVj-SS-wGg"/>
-                        <viewControllerLayoutGuide type="bottom" id="XgR-oS-a6D"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jxI-7m-nCD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xkp-Gj-0LY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="999" y="583"/>
+            <point key="canvasLocation" x="503" y="771"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="xvD-RQ-vag">
@@ -155,20 +149,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xMr-KM-SYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="379" y="-36"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="YLb-0b-F59">
-            <objects>
-                <viewController id="row-VY-zNJ" customClass="UITableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="edq-l0-rae">
-                        <rect key="frame" x="0.0" y="0.0" width="288" height="352"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </tableView>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yZT-1r-kTK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="509" y="1385"/>
         </scene>
     </scenes>
 </document>
