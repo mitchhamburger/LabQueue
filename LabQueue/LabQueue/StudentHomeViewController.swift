@@ -19,6 +19,7 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
+        getQueueData("http://localhost:5000/LabQueue/v1/Queue")
     }
     
     //UITableViewDataSource
@@ -35,6 +36,29 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("you tapped \(indexPath.row)")
     }
+    
+    func getQueueData(urlString: String) {
+        let url: NSURL = NSURL(string: urlString)!
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "GET"
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        let task = session.dataTaskWithRequest(request) {
+            (
+            let data, let response, let error) in
+            guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
+                print("error")
+                return
+            }
+            let dataString = NSString(data: data!, encoding:NSUTF8StringEncoding)
+            print(dataString)
+        }
+        task.resume()
+    }
+    
+    func setLabels(queueData: NSData) {
+    }
+
     @IBAction func addNamePushed(sender: UIButton) {
         let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("NewFormViewController")
         self.showViewController(vc as! UIViewController, sender: vc)
