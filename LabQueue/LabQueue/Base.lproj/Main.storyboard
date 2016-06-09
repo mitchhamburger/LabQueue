@@ -136,7 +136,7 @@
                     <navigationItem key="navigationItem" id="nZa-Ix-uz0"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="queueTable" destination="Ez5-ee-hCh" id="edV-Y2-4Yd"/>
+                        <outlet property="queueTable" destination="GnQ-9A-bhV" id="Fcn-BS-4bk"/>
                         <outlet property="titleBar" destination="nhd-As-gcB" id="Z8o-5b-Wzq"/>
                     </connections>
                 </viewController>
