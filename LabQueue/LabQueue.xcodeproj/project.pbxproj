@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F806120D1D0A68C8008D3A8D /* mitch pic.jpg */; };
 		F83222991D07B7610089304E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222981D07B7610089304E /* AppDelegate.swift */; };
 		F832229B1D07B7610089304E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F832229A1D07B7610089304E /* ViewController.swift */; };
 		F832229E1D07B7610089304E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F832229C1D07B7610089304E /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F806120D1D0A68C8008D3A8D /* mitch pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mitch pic.jpg"; sourceTree = "<group>"; };
 		F83222951D07B7610089304E /* LabQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LabQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83222981D07B7610089304E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F832229A1D07B7610089304E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				F83222981D07B7610089304E /* AppDelegate.swift */,
 				F832229A1D07B7610089304E /* ViewController.swift */,
 				F832229C1D07B7610089304E /* Main.storyboard */,
+				F806120D1D0A68C8008D3A8D /* mitch pic.jpg */,
 				F8722BF71D08A0AA00449536 /* NewFormViewController.swift */,
 				F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */,
 				F8722BF31D0886BF00449536 /* TAHomeViewController.swift */,
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F83222A31D07B7610089304E /* LaunchScreen.storyboard in Resources */,
+				F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */,
 				F83222A01D07B7610089304E /* Assets.xcassets in Resources */,
 				F832229E1D07B7610089304E /* Main.storyboard in Resources */,
 			);

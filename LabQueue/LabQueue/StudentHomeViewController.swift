@@ -19,7 +19,7 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         getQueueData("http://localhost:5000/LabQueue/v1/Queue")
-        print(students)
+        //print(students)
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
@@ -74,7 +74,7 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
                     // Something went wrong
                 }
             }
-            print(self.students)
+            //print(self.students)
             dispatch_semaphore_signal(semaphore)
         }
         task.resume()
