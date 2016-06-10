@@ -9,12 +9,8 @@
 import UIKit
 @IBDesignable
 
-class StudentPictureView: UIView {
-
+class StudentPictureView: UIImageView {
+    
     override func drawRect(rect: CGRect) {
-        let path = UIBezierPath(ovalInRect: rect)
-        UIColor.blackColor().setStroke()
-        path.stroke()
-        
     }
 }
