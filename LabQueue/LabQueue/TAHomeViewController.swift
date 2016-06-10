@@ -12,6 +12,7 @@ import UIKit
 class TAHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
+    @IBOutlet weak var studentPicture: StudentPictureView!
     @IBOutlet weak var queueTable: UITableView!
     
     @IBOutlet weak var titleBar: UINavigationBar!
@@ -20,6 +21,13 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        studentPicture.layer.cornerRadius = studentPicture.frame.size.width / 2;
+        studentPicture.clipsToBounds = true
+        studentPicture.layer.borderWidth = 2
+        studentPicture.layer.borderColor = UIColor.blackColor().CGColor
+        studentPicture.image = UIImage(named: "mitch pic.jpg")
+        
         getQueueData("http://localhost:5000/LabQueue/v1/Queue")
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.queueTable.dataSource = self

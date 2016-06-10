@@ -137,6 +137,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="queueTable" destination="GnQ-9A-bhV" id="Fcn-BS-4bk"/>
+                        <outlet property="studentPicture" destination="D7q-Gm-PiR" id="CAg-WX-n44"/>
                         <outlet property="titleBar" destination="nhd-As-gcB" id="Z8o-5b-Wzq"/>
                     </connections>
                 </viewController>
