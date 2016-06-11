@@ -30,8 +30,10 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
         return students.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.queueTable.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
-        cell.textLabel!.text = students[indexPath.row].name
+        let cell = self.queueTable.dequeueReusableCellWithIdentifier("customcell")! as! StudentQueueCustomCell
+        //cell.textLabel!.text = students[indexPath.row].name
+        cell.studentName.text = "\(indexPath.row + 1). " + students[indexPath.row].name
+        cell.studentEmail.text = students[indexPath.row].netID + "@princeton.edu"
         return cell
     }
     
@@ -65,6 +67,8 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
                     for student in (json["Queue"]! as! NSArray) {
                         
                         let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String)
+                        thisStudent.netID = student["NetID"] as! String
+                        thisStudent.requestTime = student["Request Time"] as! String
                         self.students.append(thisStudent)
                         count += 1
                     }
