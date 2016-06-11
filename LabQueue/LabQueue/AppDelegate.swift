@@ -7,6 +7,7 @@
 //
 
 import UIKit
+var allStudents: [Student] = []
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

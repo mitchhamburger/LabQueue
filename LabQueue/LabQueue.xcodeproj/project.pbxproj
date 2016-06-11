@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81539FB6C42C0410C8B53D23 /* libPods-LabQueue.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA05202FF8D7CB815D8768A /* libPods-LabQueue.a */; };
 		F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F806120D1D0A68C8008D3A8D /* mitch pic.jpg */; };
+		F82AC1F71D0BAABA00BDADD2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1F61D0BAABA00BDADD2 /* Student.swift */; };
+		F82AC1F91D0C6FD000BDADD2 /* LabTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */; };
 		F83222991D07B7610089304E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222981D07B7610089304E /* AppDelegate.swift */; };
 		F832229B1D07B7610089304E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F832229A1D07B7610089304E /* ViewController.swift */; };
 		F832229E1D07B7610089304E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F832229C1D07B7610089304E /* Main.storyboard */; };
@@ -39,7 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3AA05202FF8D7CB815D8768A /* libPods-LabQueue.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LabQueue.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		425F023088791AE249FC0FCC /* Pods-LabQueue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabQueue.release.xcconfig"; path = "Pods/Target Support Files/Pods-LabQueue/Pods-LabQueue.release.xcconfig"; sourceTree = "<group>"; };
+		9F9CE877602DDB26145E0460 /* Pods-LabQueue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabQueue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LabQueue/Pods-LabQueue.debug.xcconfig"; sourceTree = "<group>"; };
 		F806120D1D0A68C8008D3A8D /* mitch pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mitch pic.jpg"; sourceTree = "<group>"; };
+		F82AC1F61D0BAABA00BDADD2 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabTA.swift; sourceTree = "<group>"; };
 		F83222951D07B7610089304E /* LabQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LabQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83222981D07B7610089304E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F832229A1D07B7610089304E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81539FB6C42C0410C8B53D23 /* libPods-LabQueue.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +93,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043BC2ADA360AFDBD8B41BB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3AA05202FF8D7CB815D8768A /* libPods-LabQueue.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		75F909C94E96412A8374A6B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F9CE877602DDB26145E0460 /* Pods-LabQueue.debug.xcconfig */,
+				425F023088791AE249FC0FCC /* Pods-LabQueue.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F832228C1D07B7610089304E = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +117,8 @@
 				F83222AC1D07B7610089304E /* LabQueueTests */,
 				F83222B71D07B7610089304E /* LabQueueUITests */,
 				F83222961D07B7610089304E /* Products */,
+				75F909C94E96412A8374A6B6 /* Pods */,
+				043BC2ADA360AFDBD8B41BB2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,10 +136,12 @@
 			isa = PBXGroup;
 			children = (
 				F83222981D07B7610089304E /* AppDelegate.swift */,
+				F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */,
 				F832229A1D07B7610089304E /* ViewController.swift */,
 				F832229C1D07B7610089304E /* Main.storyboard */,
 				F806120D1D0A68C8008D3A8D /* mitch pic.jpg */,
 				F8722BF71D08A0AA00449536 /* NewFormViewController.swift */,
+				F82AC1F61D0BAABA00BDADD2 /* Student.swift */,
 				F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */,
 				F8722BF31D0886BF00449536 /* TAHomeViewController.swift */,
 				F83222C61D07BF8C0089304E /* StudentPictureView.swift */,
@@ -147,9 +177,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F83222BD1D07B7610089304E /* Build configuration list for PBXNativeTarget "LabQueue" */;
 			buildPhases = (
+				ACD7C3E50A11BD6446BBEF0B /* Check Pods Manifest.lock */,
 				F83222911D07B7610089304E /* Sources */,
 				F83222921D07B7610089304E /* Frameworks */,
 				F83222931D07B7610089304E /* Resources */,
+				51FAC3CC7062DEC12709DE49 /* Embed Pods Frameworks */,
+				1C9987FAA01E7A9AF78B7D9D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,6 +241,7 @@
 				TargetAttributes = {
 					F83222941D07B7610089304E = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = YK9SQ33D26;
 					};
 					F83222A81D07B7610089304E = {
 						CreatedOnToolsVersion = 7.3;
@@ -267,6 +301,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1C9987FAA01E7A9AF78B7D9D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LabQueue/Pods-LabQueue-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51FAC3CC7062DEC12709DE49 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LabQueue/Pods-LabQueue-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACD7C3E50A11BD6446BBEF0B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F83222911D07B7610089304E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -274,8 +356,10 @@
 			files = (
 				F832229B1D07B7610089304E /* ViewController.swift in Sources */,
 				F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */,
+				F82AC1F91D0C6FD000BDADD2 /* LabTA.swift in Sources */,
 				F8722BF61D089C5E00449536 /* StudentHomeViewController.swift in Sources */,
 				F8722BF41D0886BF00449536 /* TAHomeViewController.swift in Sources */,
+				F82AC1F71D0BAABA00BDADD2 /* Student.swift in Sources */,
 				F83222991D07B7610089304E /* AppDelegate.swift in Sources */,
 				F8722BF81D08A0AA00449536 /* NewFormViewController.swift in Sources */,
 			);
@@ -419,23 +503,31 @@
 		};
 		F83222BE1D07B7610089304E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F9CE877602DDB26145E0460 /* Pods-LabQueue.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LabQueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mhamburger.LabQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		F83222BF1D07B7610089304E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 425F023088791AE249FC0FCC /* Pods-LabQueue.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LabQueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mhamburger.LabQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

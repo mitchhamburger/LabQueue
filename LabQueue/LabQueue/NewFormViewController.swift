@@ -29,71 +29,59 @@ class NewFormViewController: UIViewController {
     }
     
     func addToQueue() {
-        let jsonObj = ["Name": "Dick Face",
+        let thisStudent: Student = Student(name: nameField.text!, helpMessage: problemField.text!, course: courseField.text!)
+        allStudents.append(thisStudent)
+        let jsonObj = ["Name": nameField.text!,
                        "NetID": "gc23",
-                       "Help Message":"I cant type",
-                       "Been Helped": "True",
-                       "Canceled": "False",
-                       "In Queue": "False",
-                       "Request Time": "7:25",
-                       "Helped Time": "7:30",
-                       "Attending TA": "Harry Heffernan",
-                       "Course": "COS 217"]
+                       "Help Message":problemField.text!,
+                       "Been Helped": false,
+                       "Canceled": false,
+                       "In Queue": true,
+                       "Request Time": "",
+                       "Helped Time": "",
+                       "Attending TA": "",
+                       "Course": courseField.text!]
         let url: NSURL = NSURL(string: "http://localhost:5000/LabQueue/v1/Queue")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
-        
         do {
-            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(jsonObj, options: [])
+            
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObj, options: .PrettyPrinted)
+            
+            // create post request
+            let url = NSURL(string: "http://localhost:5000/LabQueue/v1/Queue")!
+            let request = NSMutableURLRequest(URL: url)
+            request.HTTPMethod = "POST"
+            
+            // insert json data to the request
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.HTTPBody = jsonData
+            
+            let semaphore = dispatch_semaphore_create(0)
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request){ data, response, error in
+                if error != nil{
+                    print("Error -> \(error)")
+                    return
+                }
+                
+                do {
+                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
+                    
+                    print("Result -> \(result)")
+                    
+                } catch {
+                    print("Error -> \(error)")
+                }
+                dispatch_semaphore_signal(semaphore)
+            }
+            task.resume()
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            
         } catch {
             print(error)
-            request.HTTPBody = nil
         }
-        
-        
-        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            // handle error
-            guard error == nil
-                else
-            {
-                return
-            }
-            print("Response: \(response)")
-            let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("Body: \(strData)")
-            let json: NSDictionary?
-            do {
-                json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
-            } catch let dataError {
-                // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
-                print(dataError)
-                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("Error could not parse JSON: '\(jsonStr)'")
-                // return or throw?
-                return
-            }
-            
-            
-            // The JSONObjectWithData constructor didn't return an error. But, we should still
-            // check and make sure that json has a value using optional binding.
-            if let parseJSON = json {
-                // Okay, the parsedJSON is here, let's get the value for 'success' out of it
-                let success = parseJSON["success"] as? Int
-                print("Succes: \(success)")
-            }
-            else {
-                // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
-                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("Error could not parse JSON: \(jsonStr)")
-            }
-            
-        })
-        
-        task.resume()
-        
-        
     }
 }
