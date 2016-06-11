@@ -14,16 +14,15 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var queueTable: UITableView!
     var items = ["Dog", "Cat", "Cow", "Platypus"]
-    var students = [String]()
+    var students = [Student]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getQueueData("http://localhost:5000/LabQueue/v1/Queue")
-        //print(students)
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
-        //getQueueData("http://localhost:5000/LabQueue/v1/Queue")
+        allStudents = students
     }
     
     //UITableViewDataSource
@@ -32,7 +31,7 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.queueTable.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
-        cell.textLabel!.text = self.students[indexPath.row]
+        cell.textLabel!.text = students[indexPath.row].name
         return cell
     }
     
@@ -60,13 +59,13 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
                 do {
                     // Convert NSData to Dictionary where keys are of type String, and values are of any type
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
-                    
-                    //let str = json["Queue"]![0]["Name"] as! String
-                    
-                    //print((json["Queue"]! as! NSArray).count)
+
                     var count = 0
+                    
                     for student in (json["Queue"]! as! NSArray) {
-                        self.students.append(student["Name"] as! String)
+                        
+                        let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String)
+                        self.students.append(thisStudent)
                         count += 1
                     }
                     
@@ -74,7 +73,6 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
                     // Something went wrong
                 }
             }
-            //print(self.students)
             dispatch_semaphore_signal(semaphore)
         }
         task.resume()
