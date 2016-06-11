@@ -17,7 +17,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var titleBar: UINavigationBar!
     var items = ["Dog", "Cat", "Cow", "Platypus"]
-    var students = [String]()
+    var students = [Student]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
         titleBar.topItem?.title = "Your Next Student is Mitch"
+        allStudents = students
     }
     
     //UITableViewDataSource
@@ -41,7 +42,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.queueTable.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
-        cell.textLabel!.text = self.students[indexPath.row]
+        cell.textLabel!.text = self.students[indexPath.row].name
         return cell
     }
     
@@ -76,7 +77,8 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
                     //print((json["Queue"]! as! NSArray).count)
                     var count = 0
                     for student in (json["Queue"]! as! NSArray) {
-                        self.students.append(student["Name"] as! String)
+                        let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String)
+                        self.students.append(thisStudent)
                         count += 1
                     }
                     
@@ -84,7 +86,6 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
                     // Something went wrong
                 }
             }
-            print(self.students)
             dispatch_semaphore_signal(semaphore)
         }
         task.resume()
