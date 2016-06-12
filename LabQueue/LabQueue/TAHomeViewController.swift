@@ -41,8 +41,11 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         return students.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.queueTable.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
-        cell.textLabel!.text = self.students[indexPath.row].name
+        let cell = self.queueTable.dequeueReusableCellWithIdentifier("TAcustomcell")! as! TAQueueCustomCell
+        //cell.textLabel!.text = self.students[indexPath.row].name
+        cell.studentName.text = "\(indexPath.row)" + self.students[indexPath.row].name
+        cell.studentEmail.text = self.students[indexPath.row].netID + "@princeton.edu"
+        
         return cell
     }
     
@@ -78,6 +81,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
                     var count = 0
                     for student in (json["Queue"]! as! NSArray) {
                         let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String)
+                        thisStudent.netID = student["NetID"] as! String
                         self.students.append(thisStudent)
                         count += 1
                     }
