@@ -33,9 +33,9 @@ class NewFormViewController: UIViewController {
         allStudents.append(thisStudent)
         let jsonObj = ["Name": nameField.text!,
                        "NetID": "gc23",
-                       "Help Message":problemField.text!,
+                       "dicksdicksdicks":problemField.text!,
                        "Been Helped": false,
-                       "Canceled": false,
+                       "dicksdicksdciksdc": false,
                        "In Queue": true,
                        "Request Time": "",
                        "Helped Time": "",
