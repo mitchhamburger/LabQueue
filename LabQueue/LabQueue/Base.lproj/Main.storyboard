@@ -81,10 +81,6 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ez5-ee-hCh" customClass="UITableView">
                                 <rect key="frame" x="16" y="238" width="288" height="310"/>
                             </containerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GnQ-9A-bhV">
-                                <rect key="frame" x="16" y="238" width="288" height="310"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhd-As-gcB">
                                 <rect key="frame" x="-4" y="10" width="328" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,6 +110,38 @@
                                     <constraint firstItem="GOE-pK-5LN" firstAttribute="centerY" secondItem="D7q-Gm-PiR" secondAttribute="centerY" id="xj4-sn-g3D"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GnQ-9A-bhV">
+                                <rect key="frame" x="16" y="238" width="288" height="310"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TAcustomcell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TAcustomcell" id="WXQ-G5-cOF" customClass="TAQueueCustomCell" customModule="LabQueue" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="288" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WXQ-G5-cOF" id="XGI-0q-LSV">
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1di-Ps-Bdu">
+                                                    <rect key="frame" x="8" y="11" width="160" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mh20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1U-tb-oKZ">
+                                                    <rect key="frame" x="176" y="11" width="112" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="studentEmail" destination="Z1U-tb-oKZ" id="fuM-tg-fep"/>
+                                            <outlet property="studentName" destination="1di-Ps-Bdu" id="q3g-f4-hX5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

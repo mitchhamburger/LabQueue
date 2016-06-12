@@ -12,6 +12,7 @@
 		F82AC1F71D0BAABA00BDADD2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1F61D0BAABA00BDADD2 /* Student.swift */; };
 		F82AC1F91D0C6FD000BDADD2 /* LabTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */; };
 		F82AC1FF1D0CD03900BDADD2 /* StudentQueueCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */; };
+		F82AC2011D0CDA3700BDADD2 /* TAQueueCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */; };
 		F83222991D07B7610089304E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222981D07B7610089304E /* AppDelegate.swift */; };
 		F832229B1D07B7610089304E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F832229A1D07B7610089304E /* ViewController.swift */; };
 		F832229E1D07B7610089304E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F832229C1D07B7610089304E /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		F82AC1F61D0BAABA00BDADD2 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabTA.swift; sourceTree = "<group>"; };
 		F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentQueueCustomCell.swift; sourceTree = "<group>"; };
+		F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAQueueCustomCell.swift; sourceTree = "<group>"; };
 		F83222951D07B7610089304E /* LabQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LabQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83222981D07B7610089304E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F832229A1D07B7610089304E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				F832229A1D07B7610089304E /* ViewController.swift */,
 				F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */,
 				F832229C1D07B7610089304E /* Main.storyboard */,
+				F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */,
 				F806120D1D0A68C8008D3A8D /* mitch pic.jpg */,
 				F8722BF71D08A0AA00449536 /* NewFormViewController.swift */,
 				F82AC1F61D0BAABA00BDADD2 /* Student.swift */,
@@ -360,6 +363,7 @@
 				F832229B1D07B7610089304E /* ViewController.swift in Sources */,
 				F82AC1FF1D0CD03900BDADD2 /* StudentQueueCustomCell.swift in Sources */,
 				F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */,
+				F82AC2011D0CDA3700BDADD2 /* TAQueueCustomCell.swift in Sources */,
 				F82AC1F91D0C6FD000BDADD2 /* LabTA.swift in Sources */,
 				F8722BF61D089C5E00449536 /* StudentHomeViewController.swift in Sources */,
 				F8722BF41D0886BF00449536 /* TAHomeViewController.swift in Sources */,
