@@ -11,7 +11,7 @@ import UIKit
 class StudentQueueCustomCell: UITableViewCell {
     @IBOutlet weak var studentName: UILabel!
     
-    @IBOutlet weak var studentEmail: UILabel!
+    //@IBOutlet weak var studentEmail: UILabel!
         
     override func awakeFromNib() {
         super.awakeFromNib()

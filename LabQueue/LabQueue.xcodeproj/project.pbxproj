@@ -21,6 +21,8 @@
 		F83222AE1D07B7610089304E /* LabQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222AD1D07B7610089304E /* LabQueueTests.swift */; };
 		F83222B91D07B7610089304E /* LabQueueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222B81D07B7610089304E /* LabQueueUITests.swift */; };
 		F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222C61D07BF8C0089304E /* StudentPictureView.swift */; };
+		F87153581D0F1C6700F29040 /* TAStudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87153571D0F1C6700F29040 /* TAStudentInfoViewController.swift */; };
+		F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F871535B1D0F29AA00F29040 /* StudentStudentInfoViewController.swift */; };
 		F8722BF41D0886BF00449536 /* TAHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722BF31D0886BF00449536 /* TAHomeViewController.swift */; };
 		F8722BF61D089C5E00449536 /* StudentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */; };
 		F8722BF81D08A0AA00449536 /* NewFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722BF71D08A0AA00449536 /* NewFormViewController.swift */; };
@@ -66,6 +68,8 @@
 		F83222B81D07B7610089304E /* LabQueueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabQueueUITests.swift; sourceTree = "<group>"; };
 		F83222BA1D07B7610089304E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F83222C61D07BF8C0089304E /* StudentPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentPictureView.swift; sourceTree = "<group>"; };
+		F87153571D0F1C6700F29040 /* TAStudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAStudentInfoViewController.swift; sourceTree = "<group>"; };
+		F871535B1D0F29AA00F29040 /* StudentStudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentStudentInfoViewController.swift; sourceTree = "<group>"; };
 		F8722BF31D0886BF00449536 /* TAHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAHomeViewController.swift; sourceTree = "<group>"; };
 		F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHomeViewController.swift; sourceTree = "<group>"; };
 		F8722BF71D08A0AA00449536 /* NewFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFormViewController.swift; sourceTree = "<group>"; };
@@ -140,16 +144,11 @@
 			isa = PBXGroup;
 			children = (
 				F83222981D07B7610089304E /* AppDelegate.swift */,
-				F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */,
+				F871535D1D0F309C00F29040 /* TA Files */,
 				F832229A1D07B7610089304E /* ViewController.swift */,
-				F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */,
+				F871535E1D0F30C400F29040 /* Student Files */,
 				F832229C1D07B7610089304E /* Main.storyboard */,
-				F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */,
 				F806120D1D0A68C8008D3A8D /* mitch pic.jpg */,
-				F8722BF71D08A0AA00449536 /* NewFormViewController.swift */,
-				F82AC1F61D0BAABA00BDADD2 /* Student.swift */,
-				F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */,
-				F8722BF31D0886BF00449536 /* TAHomeViewController.swift */,
 				F83222C61D07BF8C0089304E /* StudentPictureView.swift */,
 				F832229F1D07B7610089304E /* Assets.xcassets */,
 				F83222A11D07B7610089304E /* LaunchScreen.storyboard */,
@@ -174,6 +173,29 @@
 				F83222BA1D07B7610089304E /* Info.plist */,
 			);
 			path = LabQueueUITests;
+			sourceTree = "<group>";
+		};
+		F871535D1D0F309C00F29040 /* TA Files */ = {
+			isa = PBXGroup;
+			children = (
+				F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */,
+				F87153571D0F1C6700F29040 /* TAStudentInfoViewController.swift */,
+				F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */,
+				F8722BF31D0886BF00449536 /* TAHomeViewController.swift */,
+			);
+			name = "TA Files";
+			sourceTree = "<group>";
+		};
+		F871535E1D0F30C400F29040 /* Student Files */ = {
+			isa = PBXGroup;
+			children = (
+				F8722BF71D08A0AA00449536 /* NewFormViewController.swift */,
+				F82AC1F61D0BAABA00BDADD2 /* Student.swift */,
+				F871535B1D0F29AA00F29040 /* StudentStudentInfoViewController.swift */,
+				F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */,
+				F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */,
+			);
+			name = "Student Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,8 +384,10 @@
 			files = (
 				F832229B1D07B7610089304E /* ViewController.swift in Sources */,
 				F82AC1FF1D0CD03900BDADD2 /* StudentQueueCustomCell.swift in Sources */,
+				F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */,
 				F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */,
 				F82AC2011D0CDA3700BDADD2 /* TAQueueCustomCell.swift in Sources */,
+				F87153581D0F1C6700F29040 /* TAStudentInfoViewController.swift in Sources */,
 				F82AC1F91D0C6FD000BDADD2 /* LabTA.swift in Sources */,
 				F8722BF61D089C5E00449536 /* StudentHomeViewController.swift in Sources */,
 				F8722BF41D0886BF00449536 /* TAHomeViewController.swift in Sources */,
