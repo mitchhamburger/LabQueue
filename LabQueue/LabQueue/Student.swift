@@ -21,6 +21,7 @@ class Student {
     var helpedTime: String
     var attendingTA: String
     var course: String
+    var placeInQueue: Int
     
     init(name: String, helpMessage: String, course: String) {
         self.name = name
@@ -33,5 +34,6 @@ class Student {
         helpedTime = ""
         attendingTA = ""
         self.course = course
+        placeInQueue = 0
     }
 }

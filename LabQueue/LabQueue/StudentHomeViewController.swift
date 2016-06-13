@@ -22,6 +22,9 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
+        self.queueTable.layer.borderWidth = 2
+        self.queueTable.layer.cornerRadius = 10
+        self.queueTable.separatorColor = UIColor.blackColor()
         allStudents = students
     }
     
@@ -33,13 +36,29 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
         let cell = self.queueTable.dequeueReusableCellWithIdentifier("customcell")! as! StudentQueueCustomCell
         //cell.textLabel!.text = students[indexPath.row].name
         cell.studentName.text = "\(indexPath.row + 1). " + students[indexPath.row].name
-        cell.studentEmail.text = students[indexPath.row].netID + "@princeton.edu"
+        //cell.studentEmail.text = students[indexPath.row].netID + "@princeton.edu"
         return cell
     }
     
     //UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("you tapped \(indexPath.row)")
+        
+        self.students[indexPath.row].placeInQueue = indexPath.row + 1
+        self.performSegueWithIdentifier("ShowStudentInfo", sender: self.students[indexPath.row])
+        
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "ShowStudentInfo") {
+            let dest = segue.destinationViewController as! StudentStudentInfoViewController
+            dest.currentStudent = sender as! Student
+            //dest.eventId = sender as! Int
+            //dest.eventId = sender as! String
+            
+        }
     }
     
     func getQueueData(urlString: String) {
