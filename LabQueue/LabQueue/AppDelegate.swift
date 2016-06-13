@@ -8,6 +8,8 @@
 
 import UIKit
 var allStudents: [Student] = []
+var activeTAs: [LabTA] = []
+var TACurrentStudent: Student = Student(name: "", helpMessage: "", course: "")
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
