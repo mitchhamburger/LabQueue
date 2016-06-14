@@ -26,10 +26,15 @@ class TAStudentInfoViewController: UIViewController {
     @IBOutlet weak var acceptButton: UIButton!
     
     var currentStudent: Student = Student(name: "", helpMessage: "", course: "")
+    var isCurrentStudent: Bool = false
     
-    //@IBOutlet weak var pageTitle: UINavigationItem!
     
     override func viewDidLoad() {
+        
+        if (isCurrentStudent) {
+            studentNumber.hidden = true
+            acceptButton.hidden = true
+        }
         studentName.text = "Student Name: " + currentStudent.name
         studentNumber.text = "Place in Queue: " + "\(currentStudent.placeInQueue)"
         studentEmail.text = "Email: " + currentStudent.netID + "@princeton.edu"
@@ -44,7 +49,6 @@ class TAStudentInfoViewController: UIViewController {
         }
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,5 +56,32 @@ class TAStudentInfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    @IBAction func acceptStudent(sender: UIButton) {
+        
+        let currentStudent: Student = allStudents[0]
+        TACurrentStudent = currentStudent
+        
+        let url: NSURL = NSURL(string: "http://localhost:5000/LabQueue/v1/Queue/" + currentStudent.netID)!
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "DELETE"
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        
+        let semaphore = dispatch_semaphore_create(0)
+        let task = session.dataTaskWithRequest(request) {
+            (
+            let data, let response, let error) in
+            guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
+                print("error")
+                return
+            }
+            dispatch_semaphore_signal(semaphore)
+        }
+        task.resume()
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        allStudents.removeFirst()
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc: UIViewController = storyboard.instantiateViewControllerWithIdentifier("TAHomeViewController")
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
 }

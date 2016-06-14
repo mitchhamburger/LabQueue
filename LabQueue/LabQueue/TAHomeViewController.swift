@@ -83,6 +83,11 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
             //dest.eventId = sender as! String
             
         }
+        else if (segue.identifier == "ShowCurrentStudent") {
+            let dest = segue.destinationViewController as! TAStudentInfoViewController
+            dest.currentStudent = TACurrentStudent
+            dest.isCurrentStudent = true
+        }
     }
     
     func getQueueData(urlString: String) {
@@ -104,10 +109,6 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
                 do {
                     // Convert NSData to Dictionary where keys are of type String, and values are of any type
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
-                    
-                    //let str = json["Queue"]![0]["Name"] as! String
-                    
-                    //print((json["Queue"]! as! NSArray).count)
                     var count = 0
                     for student in (json["Queue"]! as! NSArray) {
                         let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String)
@@ -145,34 +146,12 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
                 print("error")
                 return
             }
-            if error == nil && data != nil {
-                do {
-                    // Convert NSData to Dictionary where keys are of type String, and values are of any type
-                    /*let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
-                    
-                    //let str = json["Queue"]![0]["Name"] as! String
-                    
-                    //print((json["Queue"]! as! NSArray).count)
-                    var count = 0
-                    for student in (json["Queue"]! as! NSArray) {
-                        let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String)
-                        thisStudent.netID = student["NetID"] as! String
-                        self.students.append(thisStudent)
-                        count += 1
-                    }*/
-                    
-                } catch {
-                    // Something went wrong
-                }
-            }
             dispatch_semaphore_signal(semaphore)
         }
         task.resume()
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         students.removeFirst()
         queueTable.reloadData()
-        
-        
         
         //HERE I'M GONNA HAVE TO DO THE MARK AS HELPED POST REQUEST
     }
@@ -202,11 +181,8 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         queueTable.reloadData()
     }
     
-    
-    @IBAction func nextStudentPushed(sender: UIButton) {
-        let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("StudentViewController")
-        self.showViewController(vc as! UIViewController, sender: vc)
-
-
+    @IBAction func currenStudentPushed(sender: AnyObject) {
+        self.performSegueWithIdentifier("ShowCurrentStudent", sender: TACurrentStudent)
     }
+    
 }
