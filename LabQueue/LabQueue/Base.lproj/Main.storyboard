@@ -69,7 +69,7 @@
         <!--Home View Controller-->
         <scene sceneID="82R-zf-MT7">
             <objects>
-                <viewController id="olw-Lc-YOT" customClass="TAHomeViewController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TAHomeViewController" id="olw-Lc-YOT" customClass="TAHomeViewController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oEW-pm-hXh"/>
                         <viewControllerLayoutGuide type="bottom" id="MdY-5P-6nh"/>
@@ -98,7 +98,8 @@
                                             <constraint firstAttribute="height" constant="63" id="hZk-n5-B9x"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="1yg-g2-AOy" kind="show" identifier="ShowCurrentStudent" id="VVe-ID-8H9"/>
+                                            <action selector="currenStudentPushed:" destination="olw-Lc-YOT" eventType="touchUpInside" id="bcX-Hu-znJ"/>
+                                            <segue destination="052-8X-Reh" kind="show" identifier="ShowCurrentStudent" id="tKg-ZJ-Yzz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -243,6 +244,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4j7-gx-G9H">
                                 <rect key="frame" x="129" y="504" width="49" height="30"/>
                                 <state key="normal" title="Accept"/>
+                                <connections>
+                                    <action selector="acceptStudent:" destination="052-8X-Reh" eventType="touchUpInside" id="c7b-hR-1Tq"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74b-Ia-oaY">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -283,34 +287,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpH-iW-yNU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="993" y="711"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Uj2-UL-ycx">
-            <objects>
-                <viewController id="1yg-g2-AOy" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="de4-96-2SG"/>
-                        <viewControllerLayoutGuide type="bottom" id="R9D-Wp-YjW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="haO-Kr-TLX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qT-vp-QFH">
-                                <rect key="frame" x="102" y="73" width="30" height="30"/>
-                                <state key="normal" title="&lt;"/>
-                                <connections>
-                                    <segue destination="olw-Lc-YOT" kind="show" id="JkH-2Y-ttI"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Wo-4r-tRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="815" y="1542"/>
         </scene>
         <!--Student Home View Controller-->
         <scene sceneID="xvD-RQ-vag">
@@ -535,7 +511,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="o7i-la-jxt"/>
-        <segue reference="JkH-2Y-ttI"/>
         <segue reference="b3c-oI-q0f"/>
+        <segue reference="zgW-2u-gbU"/>
+        <segue reference="tKg-ZJ-Yzz"/>
     </inferredMetricsTieBreakers>
 </document>
