@@ -5,6 +5,8 @@
 
 target 'LabQueue' do
 
+pod 'Google/SignIn'
+
 end
 
 target 'LabQueueTests' do
