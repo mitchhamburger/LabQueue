@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F6AE616CE2263204A7FC1A70 /* Pods_LabQueue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C47893E53D3211DD9ACD9F /* Pods_LabQueue.framework */; };
 		F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F806120D1D0A68C8008D3A8D /* mitch pic.jpg */; };
+		F81E57111D11ABAD00C11123 /* CASViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E57101D11ABAD00C11123 /* CASViewController.swift */; };
 		F82AC1F71D0BAABA00BDADD2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1F61D0BAABA00BDADD2 /* Student.swift */; };
 		F82AC1F91D0C6FD000BDADD2 /* LabTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */; };
 		F82AC1FF1D0CD03900BDADD2 /* StudentQueueCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */; };
@@ -51,6 +52,7 @@
 		425F023088791AE249FC0FCC /* Pods-LabQueue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabQueue.release.xcconfig"; path = "Pods/Target Support Files/Pods-LabQueue/Pods-LabQueue.release.xcconfig"; sourceTree = "<group>"; };
 		9F9CE877602DDB26145E0460 /* Pods-LabQueue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabQueue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LabQueue/Pods-LabQueue.debug.xcconfig"; sourceTree = "<group>"; };
 		F806120D1D0A68C8008D3A8D /* mitch pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mitch pic.jpg"; sourceTree = "<group>"; };
+		F81E57101D11ABAD00C11123 /* CASViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CASViewController.swift; sourceTree = "<group>"; };
 		F82AC1F61D0BAABA00BDADD2 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabTA.swift; sourceTree = "<group>"; };
 		F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentQueueCustomCell.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				F832229A1D07B7610089304E /* ViewController.swift */,
 				F871535E1D0F30C400F29040 /* Student Files */,
 				F832229C1D07B7610089304E /* Main.storyboard */,
+				F81E57101D11ABAD00C11123 /* CASViewController.swift */,
 				F806120D1D0A68C8008D3A8D /* mitch pic.jpg */,
 				F83021A11D105D70003AF869 /* GTMOAuth2ViewTouch.xib */,
 				F83222C61D07BF8C0089304E /* StudentPictureView.swift */,
@@ -386,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F81E57111D11ABAD00C11123 /* CASViewController.swift in Sources */,
 				F832229B1D07B7610089304E /* ViewController.swift in Sources */,
 				F82AC1FF1D0CD03900BDADD2 /* StudentQueueCustomCell.swift in Sources */,
 				F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */,

@@ -29,6 +29,41 @@
             <point key="canvasLocation" x="-517" y="333"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="9sZ-Se-f5j">
+            <objects>
+                <viewController id="Yp3-Xg-hDJ" customClass="CASViewController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j6o-Uy-IDt"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZNf-Xm-ezZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nk0-AH-0Qk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYw-0z-rky">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HYw-0z-rky" firstAttribute="bottom" secondItem="ZNf-Xm-ezZ" secondAttribute="top" id="Zqn-bz-4ip"/>
+                            <constraint firstItem="HYw-0z-rky" firstAttribute="top" secondItem="Nk0-AH-0Qk" secondAttribute="top" id="fc8-bv-kP6"/>
+                            <constraint firstItem="HYw-0z-rky" firstAttribute="leading" secondItem="Nk0-AH-0Qk" secondAttribute="leading" id="gzy-7R-kHv"/>
+                            <constraint firstAttribute="trailing" secondItem="HYw-0z-rky" secondAttribute="trailing" id="wsY-vm-XZ7"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="myWebView" destination="HYw-0z-rky" id="Y4B-Au-fGU"/>
+                        <segue destination="Cqj-iJ-8P1" kind="show" identifier="UserLoggedIn" id="383-Vx-9vX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TEu-Z9-x7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-507" y="943"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="yhY-90-TRW">
             <objects>
                 <viewController id="Cqj-iJ-8P1" sceneMemberID="viewController">
@@ -507,9 +542,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Sdj-Qd-fk1"/>
-        <segue reference="m3P-9b-Jfs"/>
-        <segue reference="zgW-2u-gbU"/>
         <segue reference="tKg-ZJ-Yzz"/>
+        <segue reference="zgW-2u-gbU"/>
+        <segue reference="383-Vx-9vX"/>
+        <segue reference="Sdj-Qd-fk1"/>
     </inferredMetricsTieBreakers>
 </document>

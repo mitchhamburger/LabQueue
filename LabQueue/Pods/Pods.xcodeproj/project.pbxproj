@@ -10,25 +10,25 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
-		<key>00BE9E97846DD962B1DBB8D6ECC04D30</key>
+		<key>00ECFD47043612566998C1832538A635</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>children</key>
+			<array>
+				<string>6551F4B6FE83AE238D24FE51C920E3E3</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GTMOAuth2Authentication.h</string>
+			<string>GoogleInterchangeUtilities</string>
 			<key>path</key>
-			<string>Source/GTMOAuth2Authentication.h</string>
+			<string>GoogleInterchangeUtilities</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>01226C6F52172797E176ACC2BF5B63BE</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C0445E92341B42CAB03504AC9C684943</string>
+			<string>32C8A7106069802DE83C4844F40A39E7</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -37,33 +37,7 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>024AABA1277F6B4F87D7C334BAC0AEB0</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>GoogleAuthUtilities.framework</string>
-			<key>path</key>
-			<string>Frameworks/GoogleAuthUtilities.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0266752CA8AB6E1978D68991A85841D3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>03259956A02DA72985455E52E331E61B</key>
+		<key>02CDD7D0AAB28B529DBF25F697C04A69</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -72,24 +46,39 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLQueryGmail.m</string>
+			<string>GTLObject.m</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLQueryGmail.m</string>
+			<string>Source/Objects/GTLObject.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>035AB8A536E7A496381DA8E11FE7128B</key>
+		<key>03203C8747495EA7E605DDE859AC0401</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>B7E93A066A2A603EC09B20B96DE644AB</string>
+				<string>52F397898336D997EA86192B76B81F07</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GoogleInterchangeUtilities</string>
+			<string>GoogleAuthUtilities</string>
 			<key>path</key>
-			<string>GoogleInterchangeUtilities</string>
+			<string>GoogleAuthUtilities</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>03991D8B309DF0DDE4F16EE1C425E808</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLBatchQuery.m</string>
+			<key>path</key>
+			<string>Source/Objects/GTLBatchQuery.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -171,131 +160,18 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>0427D7E551A5B16302D61C7627E761A1</key>
+		<key>05018050D716601C3B167932D1F74D8E</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>wrapper.plug-in</string>
 			<key>name</key>
-			<string>Analytics-Module.h</string>
+			<string>GoogleSignIn.bundle</string>
 			<key>path</key>
-			<string>Headers/ModuleHeaders/Analytics-Module.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>043D1A90FD23F9FC3B76D6263E752324</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>923B95A0EB1B039DA7CF6E0C71D2D370</string>
-				<string>E912E13E68033F56B54464F256F4A1D2</string>
-				<string>E7BC3A27E6189CCFA698EF5831EDC910</string>
-				<string>531E8355370B4073B269CBAF21E98078</string>
-				<string>C28080C308C90A80B52ED327E36BFD7D</string>
-				<string>04D1E305FF4EBE3F66DEB5B901FB6E94</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/GTMOAuth2</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>04D1E305FF4EBE3F66DEB5B901FB6E94</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>04D71E042AAA73970DBE9315C95DBEC6</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>GTMSessionFetcher-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>05A35B76EE192A4833DDA56896B1F240</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>075A0E151212F8697B597EFA0927669E</string>
-				<string>1C8CCC36DD28B8D04EAF03CA3EAD9C85</string>
-				<string>05CA909F1403B712AA56E0905B61801D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GTMSessionFetcher</string>
-			<key>path</key>
-			<string>GTMSessionFetcher</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>05CA909F1403B712AA56E0905B61801D</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>D8418E2EF481786C113EBDF2D5B26188</string>
-				<string>5294ACF6AA185E3585BC778E7110CC41</string>
-				<string>7A3918AF1CFFA204EF1835E5CE9D09E3</string>
-				<string>04D71E042AAA73970DBE9315C95DBEC6</string>
-				<string>C8DFC1A3F5F166DD943F3F35E967F061</string>
-				<string>0266752CA8AB6E1978D68991A85841D3</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/GTMSessionFetcher</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>05D3D9AFB2C619DB3A44AC4748C550D0</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLUploadParameters.m</string>
-			<key>path</key>
-			<string>Source/Objects/GTLUploadParameters.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>060C2203C749F2576F6C7C35653B9F66</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>name</key>
-			<string>GTMOAuth2ViewTouch.xib</string>
-			<key>path</key>
-			<string>Source/Touch/GTMOAuth2ViewTouch.xib</string>
+			<string>Resources/GoogleSignIn.bundle</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -335,7 +211,7 @@
 		<key>072C107FA3BC0A107702777A7A68F06A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>7872BA30E9B6CAF54D2933848E211AFE</string>
+			<string>76A8BF31EE0D349BBD4BF1B1A447AE40</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -346,27 +222,49 @@
 				</array>
 			</dict>
 		</dict>
-		<key>075A0E151212F8697B597EFA0927669E</key>
+		<key>08648CC79948FA2D1C59F3173B471E67</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GTMOAuth2-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0895933AEB96BF0E7DDBD4856776AF13</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3CE8BC78D717832E3D8D78113FD8F7A4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>08B9F7B95332FAE6DC3A25448637A9DB</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>37F6FC1079AE292D259DF625D7DC177C</string>
-				<string>A38A7A0EAFB1C0CE6A60A89810E8EA7A</string>
-				<string>4E123B2A3CFC8B3D7437770D9488A685</string>
-				<string>BEC4A4B96ABB92DD7129BEEC26286966</string>
-				<string>F5447AFEDD8EB15C78967DE57AEE6657</string>
-				<string>77FF51B3E2F72A914CE94075FCA330EF</string>
-				<string>DDF19A4F0A36E88026D9AF76C1576F0E</string>
-				<string>12CC5C9C0AB603977FC6C4B1E8A73560</string>
+				<string>1CE40F41ACB1B454812C2236516404FD</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Core</string>
+			<string>GoogleUtilities</string>
+			<key>path</key>
+			<string>GoogleUtilities</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>078B999B8A4E6C688E20ECE5E6B0E8DF</key>
+		<key>096ADA8E1CBF2ED32AE0091C50171C1B</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -375,27 +273,40 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLGmailListDraftsResponse.m</string>
+			<string>GTLGmailMessage.m</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailListDraftsResponse.m</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailMessage.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>0895933AEB96BF0E7DDBD4856776AF13</key>
+		<key>0B14CA0F2FD58DE06B66157B5D8D2DA6</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C42A49EB6F3AFD08E80A6EB9EE0546E2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GoogleAppUtilities</string>
+			<key>path</key>
+			<string>GoogleAppUtilities</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0B9C4E1F665CA419B886CC71796A0F09</key>
 		<dict>
 			<key>fileRef</key>
-			<string>539DE764CA7C87E8E2B6937961BF6D5D</string>
+			<string>02CDD7D0AAB28B529DBF25F697C04A69</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
 			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
+				<key>COMPILER_FLAGS</key>
+				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>0B49E56EB3268BD1E9EF4D5A827CE662</key>
+		<key>0BB91D76506D79FE8609CBE905637C08</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -407,31 +318,6 @@
 			<string>GTLGmailListLabelsResponse.m</string>
 			<key>path</key>
 			<string>Source/Services/Gmail/Generated/GTLGmailListLabelsResponse.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0B9C4E1F665CA419B886CC71796A0F09</key>
-		<dict>
-			<key>fileRef</key>
-			<string>6C7C5F104048B75C781C6F4198B32731</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fno-objc-arc</string>
-			</dict>
-		</dict>
-		<key>0BBF983722A097A4CCB50A49D29C82E7</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>GoogleNetworkingUtilities.framework</string>
-			<key>path</key>
-			<string>Frameworks/GoogleNetworkingUtilities.framework</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -455,10 +341,23 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>0CFB5C33E620585AC809DD073233DFD5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>GTMOAuth2.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>0D57F7463834A541528D5AC6D69ACB51</key>
 		<dict>
 			<key>fileRef</key>
-			<string>21072FC9F19CECC459B87FF31BBAF0DC</string>
+			<string>5FF310E50FD7D96459B2E7D114CA2C76</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -467,10 +366,25 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
+		<key>0DB5BBA789109C5C28BBCF202DAEE5CD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLRuntimeCommon.h</string>
+			<key>path</key>
+			<string>Source/Objects/GTLRuntimeCommon.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>0EC60D782AF93CDE2EB9FB6B42A22F79</key>
 		<dict>
 			<key>fileRef</key>
-			<string>CCB16707E0436C86A32137C00C5AA4FC</string>
+			<string>0DB5BBA789109C5C28BBCF202DAEE5CD</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -488,42 +402,10 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>0FC6638FAC8C3BE5819B4740063C9E7F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BEDA2160F43CE908FAFC832841811F28</string>
-				<string>9E2C97664D4E398E64B49436F13933B1</string>
-				<string>157076B66977167E69E07738360FE43C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GoogleAPIClient</string>
-			<key>path</key>
-			<string>GoogleAPIClient</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>101236365D9BAB072788035982955666</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.plug-in</string>
-			<key>name</key>
-			<string>GoogleSignIn.bundle</string>
-			<key>path</key>
-			<string>Resources/GoogleSignIn.bundle</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>1023299BFC201F105D70F2D56B42B164</key>
 		<dict>
 			<key>fileRef</key>
-			<string>33D4045B0E16DF532ED7A1DA5801EDD8</string>
+			<string>5C8C4ABA29B33CB19165AA4B8F0C03CD</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -534,35 +416,10 @@
 				</array>
 			</dict>
 		</dict>
-		<key>10C7C7D47DCE75588E292BE3D521749B</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>757B850540B1DED3988596E6678647C6</string>
-				<string>64F70C7EF438821E9CBA76C0DAA3D551</string>
-				<string>6FF95895094A8EDE2F275739D7642BB6</string>
-				<string>0FC6638FAC8C3BE5819B4740063C9E7F</string>
-				<string>F1D42E0CF5F6D29F1E0CD3C092C22C41</string>
-				<string>4AAEDCBE01B81914840CE24E8BF95799</string>
-				<string>035AB8A536E7A496381DA8E11FE7128B</string>
-				<string>12AF4E53612E39E10A5A340FCC31315F</string>
-				<string>D2708148B0FE3CFDCD54AF6582F35F37</string>
-				<string>648051B8319A3B998875A0636D3A936A</string>
-				<string>1E60B2255B8056B2F97B0BF4F1D0E176</string>
-				<string>B0ED5611214CC69B879F22969ADE38CF</string>
-				<string>05A35B76EE192A4833DDA56896B1F240</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>11A6707596690A13FF09613F5525789D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D782AC66A56C9B6DC038633524515313</string>
+			<string>F1F35924581F0B21FDC0639D205B9A4B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -571,33 +428,18 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>12AF4E53612E39E10A5A340FCC31315F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>90C3AF3ABD8B49C219C3635C9F21F277</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GoogleNetworkingUtilities</string>
-			<key>path</key>
-			<string>GoogleNetworkingUtilities</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>12CC5C9C0AB603977FC6C4B1E8A73560</key>
+		<key>121EA502B977DDEB891854364850DB04</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTMSessionUploadFetcher.m</string>
+			<string>GTLGmailHistoryLabelRemoved.h</string>
 			<key>path</key>
-			<string>Source/GTMSessionUploadFetcher.m</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailHistoryLabelRemoved.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -616,43 +458,10 @@
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
-		<key>1546432D5FE66DC1A24C05B4E92B6E7E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>84E49746CB81C9D4220C38BF65C93F07</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>157076B66977167E69E07738360FE43C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>94CAB09BEFF528221BCB300F943C4536</string>
-				<string>85A7B5025F77EAE7461535B7199C8ABC</string>
-				<string>746B1652F19528861F4C9451FABF2DDF</string>
-				<string>5B94ACE68BA0FE43A42448ACBF7831D7</string>
-				<string>E282E02FD253E770E2EEBBAE52949CB8</string>
-				<string>C9060192B9DC30D857847A183AF8CA2B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/GoogleAPIClient</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>15CBC6FA71B0EA5CAE674F646C60AE67</key>
 		<dict>
 			<key>fileRef</key>
-			<string>3E7D360C499C50B00B01675AD322F4AA</string>
+			<string>2391129C06C743C9BEC2D95D030A5C26</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -666,7 +475,7 @@
 		<key>160C3217617E06684BDDA4763B57D4A9</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>85A7B5025F77EAE7461535B7199C8ABC</string>
+			<string>40E8A3197CA918B0A53B9D0754645BD2</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -722,7 +531,7 @@
 		<key>179C221E4540FDAFAF7E51DA0CFECFD5</key>
 		<dict>
 			<key>fileRef</key>
-			<string>593C5E76A6CC948312049F8B58771F91</string>
+			<string>9D482C0F78C3D72D58A0CE419F51D2EE</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -733,10 +542,66 @@
 				</array>
 			</dict>
 		</dict>
+		<key>17DA5169CE66C4F8702ECCEE8C5DED0B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmailMessagePart.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailMessagePart.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>17DE988BD7EC3524C9D287E06C3AB5CB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GoogleAPIClient-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>17F69C1D764804B18CFEA40559C0BDCD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmailListHistoryResponse.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailListHistoryResponse.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>180E0C050D7433328FF64C38C66CF250</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>4901B1E89534E8651208A4A4E716542C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Analytics</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>1A573D0773A009AD7E8D4B80681998BE</key>
 		<dict>
 			<key>fileRef</key>
-			<string>572460FC1602ABC07E32510D3ECC55AC</string>
+			<string>B02DFCB62E0AFEFEDDD5927F4DDC62ED</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -748,7 +613,7 @@
 		<key>1A5EB862C4F6DED8C2B9A4E49B9F43E8</key>
 		<dict>
 			<key>fileRef</key>
-			<string>535B18E2C5AB17D8BDA1180F39C9EC2B</string>
+			<string>53F3D20899B48761431949BF95A811CD</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -759,21 +624,51 @@
 				</array>
 			</dict>
 		</dict>
-		<key>1C8CCC36DD28B8D04EAF03CA3EAD9C85</key>
+		<key>1B5F421AE8FC29240E7159D11A0D9633</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>C9A969146C62F35F2CE967EF827630E5</string>
-				<string>362503849848D3533542B4FFCD334209</string>
-				<string>6BACA61C7F7EF53C1CFBFD7739451B46</string>
-				<string>36AE9C6C193B8002184C89BB9E0CDF19</string>
-				<string>D3365AEC46A16DA0342E9C48DDCA8699</string>
-				<string>4C8308EDEDD47155BF5624B1F170DE88</string>
+				<string>EC1F042BED8F015F3DB31CE139401E7D</string>
+				<string>BD69E1567E370170F8F97BF8193DD944</string>
+				<string>2787A79AA8194A83382864089BBBD0FB</string>
+				<string>FC887D5E7E66D0C3C35B0F33DD29F91A</string>
+				<string>790B067B3DEFB6E46C04DD4060CF584E</string>
+				<string>6452493F5A08E2BB174C7FBEFCCEFF12</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
 			<string>Full</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1B828E708C64EF73DE54202B6BDE9D5F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLGmailDraft.m</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailDraft.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1B8E29DD4949ADD3A15DE219209ECC9E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLBatchResult.h</string>
+			<key>path</key>
+			<string>Source/Objects/GTLBatchResult.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -784,10 +679,23 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>1CE40F41ACB1B454812C2236516404FD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>49BE4E35E2EE7256687689ADFE27CF9D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>1D3527AB203BE43426518094BBEC5BB4</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B5F80E7499CFF8042977D12C366409D4</string>
+			<string>6732C17D1C00DFD392F71F2212A63F4F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -796,40 +704,10 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>1D41BEF63747AFDABB83D67DD4B468E6</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLGmailListThreadsResponse.m</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailListThreadsResponse.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1E60B2255B8056B2F97B0BF4F1D0E176</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B399F19C0930E7B78C0F19DFFE08D22F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GoogleUtilities</string>
-			<key>path</key>
-			<string>GoogleUtilities</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>1E6413A49993395DF5B7D94733803936</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B156B26CC5E49634481031D97F29DFE7</string>
+			<string>7B2ABCB161795AAFE724A414A1223277</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -847,22 +725,24 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>1F25B3F51C2353A8F3BBECA8107E59CE</key>
+		<key>1EC9398F66B100BB7F8489C301DA8E79</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>children</key>
+			<array>
+				<string>C14F53D52EFA5D6B0F6AC182C7542138</string>
+				<string>BE0C865CB27F2A833730D2AB850B9E5B</string>
+				<string>9198D53B939D586DE934D5D39F12B588</string>
+				<string>E16F32D8002170F1D693C1E084CE2FB4</string>
+				<string>9818D63935358FAEE700E1C6FA32981B</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GTLGmailHistoryLabelAdded.h</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailHistoryLabelAdded.h</string>
+			<string>Core</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>1F3BB69207A644B9FCBC2B74AA2CF1D6</key>
+		<key>1FF3EC9CE9E102607BBD7152F2256541</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -871,9 +751,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLGmailWatchResponse.m</string>
+			<string>GTLGmailHistoryLabelRemoved.m</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailWatchResponse.m</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailHistoryLabelRemoved.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -891,7 +771,7 @@
 		<key>20A62F05D9D4682E2EF512A93FAD4BDA</key>
 		<dict>
 			<key>fileRef</key>
-			<string>2279FDBDEE54E76D26E448D511CE2672</string>
+			<string>96292D716DB2D8F50616C37212A272A0</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -900,51 +780,32 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>20F855463DF03C4EB7F2DAC3CD97888E</key>
+		<key>21927ECBBD5430F8CBCED8A86D157DAD</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>F5B5E112B655ACD0C9786844FE32E620</string>
+				<string>6FF712604BEA5B1AB1CFEFB9DBB6BD2D</string>
+				<string>B4065CCB3F73BBBF84751555FC5AE846</string>
+				<string>7B2ABCB161795AAFE724A414A1223277</string>
+				<string>5FF310E50FD7D96459B2E7D114CA2C76</string>
+				<string>DE6BBC8CB2015EA71C5F0362DD962EAA</string>
+				<string>8B925960F7957DC86D8881374F165F96</string>
+				<string>78ED6597657E48FDF6C28FBB85737B87</string>
+				<string>D0F54B1BFE5A09552A52AC243D8713D4</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>21072FC9F19CECC459B87FF31BBAF0DC</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTMOAuth2SignIn.m</string>
+			<string>GTMOAuth2</string>
 			<key>path</key>
-			<string>Source/GTMOAuth2SignIn.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>21B74EA1659BAB6137C65ECE4570375F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>060C2203C749F2576F6C7C35653B9F66</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Resources</string>
+			<string>GTMOAuth2</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>21CCC516D353AAC83FF05F87DCDD668E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>E5AF4FB4D5FC435CFC892B786AF62DAC</string>
+			<string>3697A99A85B497209F64AE73F673D054</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -955,7 +816,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>2279FDBDEE54E76D26E448D511CE2672</key>
+		<key>236130EF14E267C70356CDBF657F9A06</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -964,31 +825,31 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLJSONParser.m</string>
+			<string>GTLUtilities.m</string>
 			<key>path</key>
-			<string>Source/Utilities/GTLJSONParser.m</string>
+			<string>Source/Utilities/GTLUtilities.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>2336E48391C90FFED7D67DA139910982</key>
+		<key>2391129C06C743C9BEC2D95D030A5C26</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLGmailMessagePart.m</string>
+			<string>GTLGmailDraft.h</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailMessagePart.m</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailDraft.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>24539B5C27623D324B673709930B007B</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A0819CBE6DC622EF933749C6E541F5F5</string>
+			<string>236130EF14E267C70356CDBF657F9A06</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1010,23 +871,38 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>25D3AE7DBBAB48F1AAC0320E49A167DE</key>
+		<key>24E46CCAB44B7738D92F3E1D27F0CA68</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTMSessionFetcherLogging.h</string>
+			<key>path</key>
+			<string>Source/GTMSessionFetcherLogging.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>25293AD1ADC8B72B183D0881E0E9C48D</key>
 		<dict>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>wrapper.framework</string>
 			<key>name</key>
-			<string>GoogleInterchangeUtilities.framework</string>
+			<string>GoogleSignIn.framework</string>
 			<key>path</key>
-			<string>Frameworks/GoogleInterchangeUtilities.framework</string>
+			<string>Frameworks/GoogleSignIn.framework</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>25DFAB3588F03116AF44E0FDD3DB7605</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C6D9B6F7FC805E6121C2B19AAB20C245</string>
+			<string>38F1A35D464F05E1C0C1AAABA36549EC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1036,19 +912,6 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>27097F8CBADAB9914FAC0FE07967A0A5</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4C99562E5BC5E615D1F9D9394BC5C244</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>276F9AD3B9522135F3C2D06043BE1702</key>
 		<dict>
@@ -1064,10 +927,25 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
+		<key>2787A79AA8194A83382864089BBBD0FB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTMMIMEDocument.h</string>
+			<key>path</key>
+			<string>Source/GTMMIMEDocument.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>278A3181D5A41F5DEAC0EE374AE7D172</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C391E180A8D26BF4CB8E9B79CE3E2BCD</string>
+			<string>7210266EAC8FE0F906B8B1052CFA891B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1078,10 +956,25 @@
 				</array>
 			</dict>
 		</dict>
+		<key>2828C4ADE0DE94A57B32E577EA9534C4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLDefines.h</string>
+			<key>path</key>
+			<string>Source/GTLDefines.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>28F454F42B75D930F3AED5B666B254A1</key>
 		<dict>
 			<key>fileRef</key>
-			<string>68C3AF5389ED2B515DC9D7D50EC42C7E</string>
+			<string>1FF3EC9CE9E102607BBD7152F2256541</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1090,12 +983,53 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
+		<key>2A114A5EEF979891488453819055C659</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLErrorObject.m</string>
+			<key>path</key>
+			<string>Source/Objects/GTLErrorObject.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2A63E2C0513DF1297B4D3C8FCB7500C3</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>FirebaseInstanceID.framework</string>
+			<key>path</key>
+			<string>Frameworks/FirebaseInstanceID.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>2C81CBCEE282E4370F42F4074E766DE2</key>
 		<dict>
 			<key>fileRef</key>
-			<string>77FF51B3E2F72A914CE94075FCA330EF</string>
+			<string>9A599625EE2C717F7410263BFC045CED</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>2D21762D25D328F221F6B3FEB88B2B6C</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>GGLSignIn.framework</string>
+			<key>path</key>
+			<string>Frameworks/GGLSignIn.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
 		<dict>
@@ -1111,7 +1045,7 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>2E90306E1D260C8B75C19C32445A6E1A</key>
+		<key>2E05ADB5B38E6A5616A488DFA9FCF0BD</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1120,16 +1054,16 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLGmailHistoryLabelRemoved.h</string>
+			<string>GTLGmailLabel.h</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailHistoryLabelRemoved.h</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailLabel.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>2F630A9A1420582EE9F09C13D8F35E85</key>
 		<dict>
 			<key>fileRef</key>
-			<string>CF44D959D76948CC5400ABE310375DD2</string>
+			<string>2E05ADB5B38E6A5616A488DFA9FCF0BD</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1150,7 +1084,7 @@
 		<key>2FC0D710524E5A7381534033175B8110</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>5294ACF6AA185E3585BC778E7110CC41</string>
+			<string>8AB06172B8D98E9FBA03D0529EA39913</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -1203,18 +1137,18 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>33D4045B0E16DF532ED7A1DA5801EDD8</key>
+		<key>32C8A7106069802DE83C4844F40A39E7</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLObject.h</string>
+			<string>GTLGmailMessagePartBody.m</string>
 			<key>path</key>
-			<string>Source/Objects/GTLObject.h</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailMessagePartBody.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1231,7 +1165,7 @@
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
-		<key>362503849848D3533542B4FFCD334209</key>
+		<key>35614095CC8B40E4A5723500474F80CA</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1240,24 +1174,40 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTMGatherInputStream.m</string>
+			<string>GTMSessionUploadFetcher.m</string>
 			<key>path</key>
-			<string>Source/GTMGatherInputStream.m</string>
+			<string>Source/GTMSessionUploadFetcher.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>36AE9C6C193B8002184C89BB9E0CDF19</key>
+		<key>35ADAB8B024BB0AC3E86A049D6EE84AA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>555EDC44785B7CCBA2AABE12697AC362</string>
+				<string>B330606EC5EA562191431D9877F5E054</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>FirebaseInstanceID</string>
+			<key>path</key>
+			<string>FirebaseInstanceID</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3697A99A85B497209F64AE73F673D054</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTMMIMEDocument.m</string>
+			<string>GTLGmailHistoryMessageAdded.h</string>
 			<key>path</key>
-			<string>Source/GTMMIMEDocument.m</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailHistoryMessageAdded.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1274,21 +1224,6 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
-		<key>378E254FEFDCEC8DCF1190B005546AA1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLService.m</string>
-			<key>path</key>
-			<string>Source/Objects/GTLService.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>379C5800795BFBC680A25BCCBABABDB7</key>
 		<dict>
 			<key>fileRef</key>
@@ -1303,7 +1238,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>37F6FC1079AE292D259DF625D7DC177C</key>
+		<key>37EE0E9E6CC2A540CE9772BEABD863C8</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1312,16 +1247,29 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTMSessionFetcher.h</string>
+			<string>SignIn.h</string>
 			<key>path</key>
-			<string>Source/GTMSessionFetcher.h</string>
+			<string>Headers/SignIn.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>387D73DA695C4F3DE1D6437DE70FB3BE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>40BE3F6028B6646BBE4A1EF474ECE933</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>38D9B23B287DB0C963AD7CA7018082E5</key>
 		<dict>
 			<key>fileRef</key>
-			<string>1F3BB69207A644B9FCBC2B74AA2CF1D6</string>
+			<string>97E674E95BD9D4DFBA70CB086E121A0A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1329,6 +1277,21 @@
 				<key>COMPILER_FLAGS</key>
 				<string>-fno-objc-arc</string>
 			</dict>
+		</dict>
+		<key>38F1A35D464F05E1C0C1AAABA36549EC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmailMessagePartBody.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailMessagePartBody.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>3912EE74E86A6103D08DCE588308D8AF</key>
 		<dict>
@@ -1346,7 +1309,7 @@
 		<key>39560EC701E40594E871477C60D7496C</key>
 		<dict>
 			<key>fileRef</key>
-			<string>EF7A9D8398F826ED405DD9DD3998CFD2</string>
+			<string>821D4134DAB762B5BB12CB7E1ABB58C3</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1354,36 +1317,6 @@
 				<key>COMPILER_FLAGS</key>
 				<string>-fno-objc-arc</string>
 			</dict>
-		</dict>
-		<key>397C826109D802E29A8872A70AE36CC2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLGmailMessagePart.h</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailMessagePart.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>39D9631D64217A799DBD6C9809533530</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLGmailProfile.h</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailProfile.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>39DD9FBA2D23B035DB9AC4743682B4BC</key>
 		<dict>
@@ -1409,6 +1342,21 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
+		<key>3B24AEC5C6871EF6CFF48E8EE5870F0B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLService.h</string>
+			<key>path</key>
+			<string>Source/Objects/GTLService.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>3C5EAF4ADE341413D70A2F7112761F9B</key>
 		<dict>
 			<key>explicitFileType</key>
@@ -1427,7 +1375,7 @@
 		<key>3CE12462F608DB699EC77880EBC23581</key>
 		<dict>
 			<key>fileRef</key>
-			<string>403C676D008E8E1FE5B734254C74EE10</string>
+			<string>F941018BB91C113BEAF22F9697531760</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1436,22 +1384,7 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>3E1D446C3E8C74DEC2E099EC467AC8EE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLGmailMessage.m</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailMessage.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3E7D360C499C50B00B01675AD322F4AA</key>
+		<key>3CE8BC78D717832E3D8D78113FD8F7A4</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1460,22 +1393,39 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLGmailDraft.h</string>
+			<string>GTLGmailListLabelsResponse.h</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailDraft.h</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailListLabelsResponse.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>3E827039CEA704E11302B760D92DB3AF</key>
+		<key>3EAEB9E24A81130237A96D7C12E14707</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>101236365D9BAB072788035982955666</string>
+				<string>B8B4BD4A62D2A3B73E9AB61DAB9F308E</string>
+				<string>1B5F421AE8FC29240E7159D11A0D9633</string>
+				<string>ECAB2B350609366FB2AF2C9DC8FDD8F9</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Resources</string>
+			<string>GTMSessionFetcher</string>
+			<key>path</key>
+			<string>GTMSessionFetcher</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3EC6F4B140889D819687790B634EF784</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>GGLCore.framework</string>
+			<key>path</key>
+			<string>Frameworks/GGLCore.framework</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1541,21 +1491,6 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>3F69DE8853F255CA36C7F5217C68F046</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTMOAuth2ViewControllerTouch.h</string>
-			<key>path</key>
-			<string>Source/Touch/GTMOAuth2ViewControllerTouch.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>3F849661933AD5CE08F494CD5640B1B1</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -1569,7 +1504,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>403C676D008E8E1FE5B734254C74EE10</key>
+		<key>40A073232378E37F721F9213E73E7235</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1578,13 +1513,52 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLGmailProfile.m</string>
+			<string>GTLFramework.m</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailProfile.m</string>
+			<string>Source/Utilities/GTLFramework.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>42000CF5A38EE5AF5426834289057E72</key>
+		<key>40BE3F6028B6646BBE4A1EF474ECE933</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>FirebaseAnalytics.framework</string>
+			<key>path</key>
+			<string>Frameworks/FirebaseAnalytics.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>40E8A3197CA918B0A53B9D0754645BD2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>GoogleAPIClient.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>41A85B8F6C0E60C77C63FF1A68FF1C4C</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>GoogleInterchangeUtilities.framework</string>
+			<key>path</key>
+			<string>Frameworks/GoogleInterchangeUtilities.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>444E01BE3818013F04BF9BB1992C16DE</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1593,9 +1567,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLGmailWatchResponse.h</string>
+			<string>GTLQuery.h</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailWatchResponse.h</string>
+			<string>Source/Objects/GTLQuery.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1650,57 +1624,25 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>4566C39DCDE716F46A3DAAA9F67C54F6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0427D7E551A5B16302D61C7627E761A1</string>
-				<string>9FACDFDC1904544BA69A20C5F25AA58C</string>
-				<string>4ED1B8FA5AEA7C8BCBFFB1B60B83C650</string>
-				<string>BAE4E9F10DECE1A21AC69A9F20D81DCA</string>
-				<string>ADC49BFC983C0DC7AE7C28910957227E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Core</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>46E866510E727AFE7CFCF0ACACF2D5D0</key>
+		<key>4901B1E89534E8651208A4A4E716542C</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTMOAuth2Authentication.m</string>
+			<string>Firebase.h</string>
 			<key>path</key>
-			<string>Source/GTMOAuth2Authentication.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>493972BF0F339457E1745E7E9762C078</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLFramework.m</string>
-			<key>path</key>
-			<string>Source/Utilities/GTLFramework.m</string>
+			<string>Headers/Firebase.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>4995FB8C86A4CFEA7B3B3336470BB1F3</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C6F52C4C99051A08F8A05749085568C9</string>
+			<string>86A3D5140BC6B5E39A263C18DB12DDBD</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1711,22 +1653,75 @@
 				</array>
 			</dict>
 		</dict>
-		<key>4AAEDCBE01B81914840CE24E8BF95799</key>
+		<key>49BE4E35E2EE7256687689ADFE27CF9D</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>772E7F165B2D0710564F227F171002C4</string>
-			</array>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
 			<key>name</key>
-			<string>GoogleAuthUtilities</string>
+			<string>GoogleUtilities.framework</string>
 			<key>path</key>
-			<string>GoogleAuthUtilities</string>
+			<string>Frameworks/GoogleUtilities.framework</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>4C8308EDEDD47155BF5624B1F170DE88</key>
+		<key>4A546A8DF115063E3436A9E038EC85D5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>GoogleAPIClient.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4B5C4AF0884923F3BD48F342224BA281</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmailMessage.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailMessage.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4B6DC884036C6C7B68848CE8D87C1C58</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLErrorObject.h</string>
+			<key>path</key>
+			<string>Source/Objects/GTLErrorObject.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4CADD728480B79464E122A890A77C9B0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>444E01BE3818013F04BF9BB1992C16DE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>4D616D1AF30C4EF1972C1B07A72B45B8</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1735,13 +1730,27 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTMReadMonitorInputStream.m</string>
+			<string>GTLGmailMessagePart.m</string>
 			<key>path</key>
-			<string>Source/GTMReadMonitorInputStream.m</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailMessagePart.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>4C9585FA6BE1BDE7304DDF6DF9CAA9FF</key>
+		<key>4D9974C2FE99980AA8B1DC21193830F4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FE20C5A38C1DD74FF266B40F4B529E50</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>4DF061B8EBBF8251431C50C33944531C</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1750,64 +1759,23 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLJSONParser.h</string>
+			<string>GTLGmailHistory.h</string>
 			<key>path</key>
-			<string>Source/Utilities/GTLJSONParser.h</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailHistory.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4C99562E5BC5E615D1F9D9394BC5C244</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>FirebaseInstanceID.framework</string>
-			<key>path</key>
-			<string>Frameworks/FirebaseInstanceID.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4CADD728480B79464E122A890A77C9B0</key>
-		<dict>
-			<key>fileRef</key>
-			<string>C53076342D5BD2F046B1E49D57CB737A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>4D9974C2FE99980AA8B1DC21193830F4</key>
-		<dict>
-			<key>fileRef</key>
-			<string>D609159B5BCE6C8B46D9BF9E84281B2F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
 		</dict>
 		<key>4E0ACC33FD0BA3DCE96A0B3D2E080A7D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>4C8308EDEDD47155BF5624B1F170DE88</string>
+			<string>6452493F5A08E2BB174C7FBEFCCEFF12</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>4E11EBE969454C215A55D21E9466E559</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C8DFC1A3F5F166DD943F3F35E967F061</string>
+			<string>F62E42E379974CF6B5AF8CE209C05893</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1818,25 +1786,10 @@
 				</array>
 			</dict>
 		</dict>
-		<key>4E123B2A3CFC8B3D7437770D9488A685</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTMSessionFetcherLogging.h</string>
-			<key>path</key>
-			<string>Source/GTMSessionFetcherLogging.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>4E26AC8448EB1B653CB00E4100019389</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>85A7B5025F77EAE7461535B7199C8ABC</string>
+			<string>40E8A3197CA918B0A53B9D0754645BD2</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -1892,7 +1845,7 @@
 		<key>4E3BD6069F9800BAE966D027A394F056</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A3D29BEEA42C3400F569EF57CE92B8C8</string>
+			<string>FCE34F4CD7D8B6E89801762510B8E3DF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1900,36 +1853,6 @@
 				<key>COMPILER_FLAGS</key>
 				<string>-fno-objc-arc</string>
 			</dict>
-		</dict>
-		<key>4E400D798758A293CA5F67E63E37E537</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLGmailHistoryLabelAdded.m</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailHistoryLabelAdded.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4ED1B8FA5AEA7C8BCBFFB1B60B83C650</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>Core-Module.h</string>
-			<key>path</key>
-			<string>Headers/ModuleHeaders/Core-Module.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>4EE6B231B05763F21D31AB3BF0DEDD96</key>
 		<dict>
@@ -1941,7 +1864,7 @@
 		<key>4F9ABB3D1D78A46F0D4A8AFDB6C81C0E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>397C826109D802E29A8872A70AE36CC2</string>
+			<string>17DA5169CE66C4F8702ECCEE8C5DED0B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1968,7 +1891,7 @@
 		<key>528F6EB89F7385269686E44F90013B09</key>
 		<dict>
 			<key>fileRef</key>
-			<string>AB861712368B5FCF58852CC4428D3E7E</string>
+			<string>CF3B44C349252AF9071F86C2AE5D5562</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1977,33 +1900,35 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>5294ACF6AA185E3585BC778E7110CC41</key>
+		<key>529DEC217765810BBD92854BE9AEDA74</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTMSessionFetcher.m</string>
 			<key>path</key>
-			<string>GTMSessionFetcher.xcconfig</string>
+			<string>Source/GTMSessionFetcher.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>531E8355370B4073B269CBAF21E98078</key>
+		<key>52F397898336D997EA86192B76B81F07</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>children</key>
+			<array>
+				<string>557D766F8F978309D2C948C7955A1D9E</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>GTMOAuth2-prefix.pch</string>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>535B18E2C5AB17D8BDA1180F39C9EC2B</key>
+		<key>53F3D20899B48761431949BF95A811CD</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2015,36 +1940,6 @@
 			<string>GTLTargetNamespace.h</string>
 			<key>path</key>
 			<string>Source/Utilities/GTLTargetNamespace.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>536A36E2F5EA2E8BBE8113D8396C74CF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLErrorObject.h</string>
-			<key>path</key>
-			<string>Source/Objects/GTLErrorObject.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>539DE764CA7C87E8E2B6937961BF6D5D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLGmailListLabelsResponse.h</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailListLabelsResponse.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2061,25 +1956,81 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>560AD75957534680E294E5D53B210395</key>
+		<key>544B1D4E4318FEBA57AD7575A24FFDD1</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLBatchQuery.m</string>
+			<string>sourcecode.c.h</string>
 			<key>path</key>
-			<string>Source/Objects/GTLBatchQuery.m</string>
+			<string>GoogleAPIClient-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5489A2A91EA148DB40FAF96E5789E856</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmailProfile.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailProfile.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>555EDC44785B7CCBA2AABE12697AC362</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FIRInstanceID.h</string>
+			<key>path</key>
+			<string>Headers/Public/FIRInstanceID.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>557D766F8F978309D2C948C7955A1D9E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>GoogleAuthUtilities.framework</string>
+			<key>path</key>
+			<string>Frameworks/GoogleAuthUtilities.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>560A2168605ED8039BA30D793BF54927</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLJSONParser.h</string>
+			<key>path</key>
+			<string>Source/Utilities/GTLJSONParser.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>56430C497BEE35D21E8EFEFE271AEEC0</key>
 		<dict>
 			<key>fileRef</key>
-			<string>37F6FC1079AE292D259DF625D7DC177C</string>
+			<string>7BA7E8A6B53C371911D3E1E4CA63FD5E</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2090,7 +2041,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>572460FC1602ABC07E32510D3ECC55AC</key>
+		<key>589C9B5E2892CFE6637E68563B910A4F</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2099,31 +2050,16 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLBase64.m</string>
+			<string>GTLGmailHistoryMessageDeleted.m</string>
 			<key>path</key>
-			<string>Source/Utilities/GTLBase64.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>593C5E76A6CC948312049F8B58771F91</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLGmailHistoryMessageDeleted.h</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailHistoryMessageDeleted.h</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailHistoryMessageDeleted.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>596E8E64B61FC760C0359DB1A3F6341C</key>
 		<dict>
 			<key>fileRef</key>
-			<string>2336E48391C90FFED7D67DA139910982</string>
+			<string>4D616D1AF30C4EF1972C1B07A72B45B8</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2135,7 +2071,7 @@
 		<key>598D46CD6E65513071EE0BAC6CB70C16</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A03675E4A4CD945A75A149279B6F649B</string>
+			<string>FBB817667F11F0D7511495BA1633C492</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2144,7 +2080,7 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>5B94ACE68BA0FE43A42448ACBF7831D7</key>
+		<key>5BE50D9267E27FB1E6905606612DF8B6</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2152,8 +2088,10 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmailWatchResponse.h</string>
 			<key>path</key>
-			<string>GoogleAPIClient-prefix.pch</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailWatchResponse.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2171,47 +2109,7 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>5C34D5F82E0440380AD2F012940E9732</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>961B8C9F65478FEC11830CD4605B1181</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>5CB64958DC95948905F5C3CA0C6A8386</key>
-		<dict>
-			<key>fileRef</key>
-			<string>493972BF0F339457E1745E7E9762C078</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fno-objc-arc</string>
-			</dict>
-		</dict>
-		<key>5D626D6CDA0C16BE591A3A928A97DF6E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLGmailHistoryMessageDeleted.m</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailHistoryMessageDeleted.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>5DAD0F765824C0A036A1820302016722</key>
+		<key>5C8C4ABA29B33CB19165AA4B8F0C03CD</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2220,16 +2118,41 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>FIRInstanceID.h</string>
+			<string>GTLObject.h</string>
 			<key>path</key>
-			<string>Headers/Public/FIRInstanceID.h</string>
+			<string>Source/Objects/GTLObject.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5C94BA328E6CB7683CF04C620EE48424</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GTMSessionFetcher-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5CB64958DC95948905F5C3CA0C6A8386</key>
+		<dict>
+			<key>fileRef</key>
+			<string>40A073232378E37F721F9213E73E7235</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fno-objc-arc</string>
+			</dict>
 		</dict>
 		<key>5F4DEACABC07ED369E30F162E7DFB382</key>
 		<dict>
 			<key>fileRef</key>
-			<string>4E123B2A3CFC8B3D7437770D9488A685</string>
+			<string>24E46CCAB44B7738D92F3E1D27F0CA68</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2239,6 +2162,49 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>5FBAB2AB8F27F8173C79044CF124F00B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLGmailConstants.m</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailConstants.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5FF310E50FD7D96459B2E7D114CA2C76</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTMOAuth2SignIn.m</string>
+			<key>path</key>
+			<string>Source/GTMOAuth2SignIn.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>60FA35A04F2229095D8FD907C3225384</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GTMSessionFetcher-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>62B2C656D4411FDA589CB1F3F8ADCD9D</key>
 		<dict>
@@ -2253,31 +2219,55 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>6320103BDCA14661DD6AE1A52EC3CD7C</key>
+		<key>62B4257647465C01B4B68B085CEC3C18</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>877926BF878B0A8E867F51634E9594A7</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GoogleAPIClient-prefix.pch</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>648051B8319A3B998875A0636D3A936A</key>
+		<key>62EFA005A334F389AD2C5D71ED09B38B</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>5C34D5F82E0440380AD2F012940E9732</string>
-			</array>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
 			<key>name</key>
-			<string>GoogleSymbolUtilities</string>
+			<string>GoogleSymbolUtilities.framework</string>
 			<key>path</key>
-			<string>GoogleSymbolUtilities</string>
+			<string>Frameworks/GoogleSymbolUtilities.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>638E7137CBAF133EABF43386A28C8D16</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>GTMOAuth2.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6452493F5A08E2BB174C7FBEFCCEFF12</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTMReadMonitorInputStream.m</string>
+			<key>path</key>
+			<string>Source/GTMReadMonitorInputStream.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2292,26 +2282,38 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>64F70C7EF438821E9CBA76C0DAA3D551</key>
+		<key>6551F4B6FE83AE238D24FE51C920E3E3</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>5DAD0F765824C0A036A1820302016722</string>
-				<string>27097F8CBADAB9914FAC0FE07967A0A5</string>
+				<string>41A85B8F6C0E60C77C63FF1A68FF1C4C</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>FirebaseInstanceID</string>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>66232EE07CCB9ECA9CA68727CCB5DF7B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLGmailMessagePartHeader.m</string>
 			<key>path</key>
-			<string>FirebaseInstanceID</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailMessagePartHeader.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>662A48AC55C03DBFFA2C5D73EA956383</key>
 		<dict>
 			<key>fileRef</key>
-			<string>BB5BC77BA9E069CDFB74A8843B631108</string>
+			<string>5FBAB2AB8F27F8173C79044CF124F00B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2323,7 +2325,7 @@
 		<key>6662020EB54CEE55FC7610926639BD61</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>E912E13E68033F56B54464F256F4A1D2</string>
+			<string>0CFB5C33E620585AC809DD073233DFD5</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -2376,7 +2378,7 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>669961436092F175CBC2F836FEAB7612</key>
+		<key>6732C17D1C00DFD392F71F2212A63F4F</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2385,13 +2387,26 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTMOAuth2ViewControllerTouch.m</string>
+			<string>GTLRuntimeCommon.m</string>
 			<key>path</key>
-			<string>Source/Touch/GTMOAuth2ViewControllerTouch.m</string>
+			<string>Source/Objects/GTLRuntimeCommon.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>686F7F1E76EDAD3B38C15E6BC49B11A7</key>
+		<key>67428371C8C6BDC52D8C0EF947DF590E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62EFA005A334F389AD2C5D71ED09B38B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>67708856F9116134A19718C2858F3E12</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2400,9 +2415,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLErrorObject.m</string>
+			<string>GTLGmailListDraftsResponse.m</string>
 			<key>path</key>
-			<string>Source/Objects/GTLErrorObject.m</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailListDraftsResponse.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2422,55 +2437,10 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>68C3AF5389ED2B515DC9D7D50EC42C7E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLGmailHistoryLabelRemoved.m</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailHistoryLabelRemoved.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>68E0DAF01087D3385E5DEF579A712EFF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>SignIn.h</string>
-			<key>path</key>
-			<string>Headers/SignIn.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>69017882C37C4D695A28D6E07118B3C9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLFramework.h</string>
-			<key>path</key>
-			<string>Source/Utilities/GTLFramework.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>69266FA3D3DE2F4C5027A613785050CB</key>
 		<dict>
 			<key>fileRef</key>
-			<string>E282E02FD253E770E2EEBBAE52949CB8</string>
+			<string>544B1D4E4318FEBA57AD7575A24FFDD1</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2498,7 +2468,7 @@
 		<key>6AE25B3EFD0473768868F2B469B7AACB</key>
 		<dict>
 			<key>fileRef</key>
-			<string>686F7F1E76EDAD3B38C15E6BC49B11A7</string>
+			<string>2A114A5EEF979891488453819055C659</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2507,7 +2477,7 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>6BACA61C7F7EF53C1CFBFD7739451B46</key>
+		<key>6C900A17C9E47334C7706EDBBA32FBBF</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2516,13 +2486,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTMMIMEDocument.h</string>
+			<string>GTLQueryGmail.h</string>
 			<key>path</key>
-			<string>Source/GTMMIMEDocument.h</string>
+			<string>Source/Services/Gmail/Generated/GTLQueryGmail.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>6C7C5F104048B75C781C6F4198B32731</key>
+		<key>6D18204966F8E1611B5CB53965E2AC58</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2531,30 +2501,73 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLObject.m</string>
+			<string>GTLGmailHistoryMessageAdded.m</string>
 			<key>path</key>
-			<string>Source/Objects/GTLObject.m</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailHistoryMessageAdded.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>6D78EB6476AC9F574A3651A9272EE68B</key>
+		<key>6D656750AE295B5DBF0D4CD9A3A4111F</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>68E0DAF01087D3385E5DEF579A712EFF</string>
-				<string>20F855463DF03C4EB7F2DAC3CD97888E</string>
+				<string>A79EB1482C46A5A6C44889032686F1E2</string>
+				<string>86A3D5140BC6B5E39A263C18DB12DDBD</string>
+				<string>5FBAB2AB8F27F8173C79044CF124F00B</string>
+				<string>2391129C06C743C9BEC2D95D030A5C26</string>
+				<string>1B828E708C64EF73DE54202B6BDE9D5F</string>
+				<string>4DF061B8EBBF8251431C50C33944531C</string>
+				<string>FCE34F4CD7D8B6E89801762510B8E3DF</string>
+				<string>BEBC2EA0D26E1BA12598D5BCCF3C7AAC</string>
+				<string>E039A014BF67E421AE532F2EA2EB2C17</string>
+				<string>121EA502B977DDEB891854364850DB04</string>
+				<string>1FF3EC9CE9E102607BBD7152F2256541</string>
+				<string>3697A99A85B497209F64AE73F673D054</string>
+				<string>6D18204966F8E1611B5CB53965E2AC58</string>
+				<string>9D482C0F78C3D72D58A0CE419F51D2EE</string>
+				<string>589C9B5E2892CFE6637E68563B910A4F</string>
+				<string>2E05ADB5B38E6A5616A488DFA9FCF0BD</string>
+				<string>CF3B44C349252AF9071F86C2AE5D5562</string>
+				<string>76A8BF31EE0D349BBD4BF1B1A447AE40</string>
+				<string>67708856F9116134A19718C2858F3E12</string>
+				<string>17F69C1D764804B18CFEA40559C0BDCD</string>
+				<string>A5AF39E06FEF1C55612CB7799428D818</string>
+				<string>3CE8BC78D717832E3D8D78113FD8F7A4</string>
+				<string>0BB91D76506D79FE8609CBE905637C08</string>
+				<string>84483C4C579132C850788303C8CC4E05</string>
+				<string>821D4134DAB762B5BB12CB7E1ABB58C3</string>
+				<string>FE20C5A38C1DD74FF266B40F4B529E50</string>
+				<string>A42EBD5A23AA06A351375BBC419FEA9B</string>
+				<string>4B5C4AF0884923F3BD48F342224BA281</string>
+				<string>096ADA8E1CBF2ED32AE0091C50171C1B</string>
+				<string>17DA5169CE66C4F8702ECCEE8C5DED0B</string>
+				<string>4D616D1AF30C4EF1972C1B07A72B45B8</string>
+				<string>38F1A35D464F05E1C0C1AAABA36549EC</string>
+				<string>32C8A7106069802DE83C4844F40A39E7</string>
+				<string>A19B0596F0D61AE744EF560D4DBD1F8A</string>
+				<string>66232EE07CCB9ECA9CA68727CCB5DF7B</string>
+				<string>5489A2A91EA148DB40FAF96E5789E856</string>
+				<string>F941018BB91C113BEAF22F9697531760</string>
+				<string>9A3A9AA6246A7D753D8EB2DB778FD444</string>
+				<string>F1F35924581F0B21FDC0639D205B9A4B</string>
+				<string>5BE50D9267E27FB1E6905606612DF8B6</string>
+				<string>97E674E95BD9D4DFBA70CB086E121A0A</string>
+				<string>6C900A17C9E47334C7706EDBBA32FBBF</string>
+				<string>FC18B5D755FD5C541C5D7DF61CADADD6</string>
+				<string>EC8080C30CE9D90D13DE4A1955192C03</string>
+				<string>FBB817667F11F0D7511495BA1633C492</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>SignIn</string>
+			<string>Gmail</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>6D8C67F72865380118A08F5983429936</key>
 		<dict>
 			<key>fileRef</key>
-			<string>8B1D28544604C5C0CC18240A9A7AA3C2</string>
+			<string>CBFF38D5D7E0D34C5AA865A814DF24C6</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2568,7 +2581,7 @@
 		<key>6DBE12A544E41A1920906979F5568038</key>
 		<dict>
 			<key>fileRef</key>
-			<string>3E1D446C3E8C74DEC2E099EC467AC8EE</string>
+			<string>096ADA8E1CBF2ED32AE0091C50171C1B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2577,23 +2590,7 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>6FF95895094A8EDE2F275739D7642BB6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4566C39DCDE716F46A3DAAA9F67C54F6</string>
-				<string>6D78EB6476AC9F574A3651A9272EE68B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Google</string>
-			<key>path</key>
-			<string>Google</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>711D33A34B646656EC4AADE8D4CA8A0B</key>
+		<key>6FF712604BEA5B1AB1CFEFB9DBB6BD2D</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2602,13 +2599,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLDefines.h</string>
+			<string>GTMOAuth2Authentication.h</string>
 			<key>path</key>
-			<string>Source/GTLDefines.h</string>
+			<string>Source/GTMOAuth2Authentication.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>72C11982D867AB93DF4BEA127BD48A79</key>
+		<key>7210266EAC8FE0F906B8B1052CFA891B</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2617,22 +2614,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLGmailMessagePartHeader.h</string>
+			<string>GTLUtilities.h</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailMessagePartHeader.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>746B1652F19528861F4C9451FABF2DDF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>GoogleAPIClient-dummy.m</string>
+			<string>Source/Utilities/GTLUtilities.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2650,64 +2634,7 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>757B850540B1DED3988596E6678647C6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BDB5C59930B1D5EFC8121680AEDAB497</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>FirebaseAnalytics</string>
-			<key>path</key>
-			<string>FirebaseAnalytics</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>772E7F165B2D0710564F227F171002C4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>024AABA1277F6B4F87D7C334BAC0AEB0</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>77FF51B3E2F72A914CE94075FCA330EF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTMSessionFetcherService.m</string>
-			<key>path</key>
-			<string>Source/GTMSessionFetcherService.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>78315D234A487378A4C92B153CCBC7DA</key>
-		<dict>
-			<key>fileRef</key>
-			<string>DF7024FDD97AF068D4670F92BC665988</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>7872BA30E9B6CAF54D2933848E211AFE</key>
+		<key>76A8BF31EE0D349BBD4BF1B1A447AE40</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2722,12 +2649,54 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>78315D234A487378A4C92B153CCBC7DA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E360A8AB900465434248CA78AC8422E5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>78ED6597657E48FDF6C28FBB85737B87</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>90E6E4D75B55439F3E736D64C356901E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Resources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>78F7FBB14D6E65A72A5D739C1B596DA0</key>
 		<dict>
 			<key>fileRef</key>
-			<string>746B1652F19528861F4C9451FABF2DDF</string>
+			<string>17DE988BD7EC3524C9D287E06C3AB5CB</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>790B067B3DEFB6E46C04DD4060CF584E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTMReadMonitorInputStream.h</string>
+			<key>path</key>
+			<string>Source/GTMReadMonitorInputStream.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>79AEECCB68FCF764C0684D24B89B2755</key>
 		<dict>
@@ -2754,23 +2723,40 @@
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
-		<key>7A3918AF1CFFA204EF1835E5CE9D09E3</key>
+		<key>7B2ABCB161795AAFE724A414A1223277</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTMOAuth2SignIn.h</string>
 			<key>path</key>
-			<string>GTMSessionFetcher-dummy.m</string>
+			<string>Source/GTMOAuth2SignIn.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7BA7E8A6B53C371911D3E1E4CA63FD5E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTMSessionFetcher.h</string>
+			<key>path</key>
+			<string>Source/GTMSessionFetcher.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>7D1DC9E3B14746429C559525DD7C8FC8</key>
 		<dict>
 			<key>fileRef</key>
-			<string>1D41BEF63747AFDABB83D67DD4B468E6</string>
+			<string>A42EBD5A23AA06A351375BBC419FEA9B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2779,13 +2765,26 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
+		<key>7D213D45740F7341C7CCBBDFE7F19E18</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>7DB346D0F39D3F0E887471402A8071AB</key>
 		<dict>
 			<key>children</key>
 			<array>
 				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
 				<string>F2A875A48A4D36B979C042CC40252657</string>
-				<string>10C7C7D47DCE75588E292BE3D521749B</string>
+				<string>8BA21D66CB48C1992B515E59FE602F59</string>
 				<string>E94423BEBEAA64652EC397CADB93F7BC</string>
 				<string>A92534F831ABCDCCB335C870C6D81705</string>
 			</array>
@@ -2797,22 +2796,9 @@
 		<key>7DB4C3B59C60DFA228BC137A0841AF9E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>362503849848D3533542B4FFCD334209</string>
+			<string>BD69E1567E370170F8F97BF8193DD944</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>7ED70CC6849E6215DEAA749DF7B9940B</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>FirebaseAnalytics.framework</string>
-			<key>path</key>
-			<string>Frameworks/FirebaseAnalytics.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>7F0F5E126ECC26AAD9D61BE30DB801D8</key>
 		<dict>
@@ -2844,7 +2830,7 @@
 		<key>7F51EDA9D95815B6B402ABC8125B1FDF</key>
 		<dict>
 			<key>fileRef</key>
-			<string>E32A35A0BFBB8468F04814038EB31DDE</string>
+			<string>1B8E29DD4949ADD3A15DE219209ECC9E</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2861,6 +2847,21 @@
 			<string>3A90C281A6FA53C84353664534E78BC4</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>80A0DF3D11E056560F5F9AF95940545D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>180E0C050D7433328FF64C38C66CF250</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Firebase</string>
+			<key>path</key>
+			<string>Firebase</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>80A83C091131FEEA9EAB0AD62BE2D861</key>
 		<dict>
@@ -2880,36 +2881,40 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>84E49746CB81C9D4220C38BF65C93F07</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>GoogleSignIn.framework</string>
-			<key>path</key>
-			<string>Frameworks/GoogleSignIn.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>85A7B5025F77EAE7461535B7199C8ABC</key>
+		<key>821D4134DAB762B5BB12CB7E1ABB58C3</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLGmailListMessagesResponse.m</string>
 			<key>path</key>
-			<string>GoogleAPIClient.xcconfig</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailListMessagesResponse.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>84483C4C579132C850788303C8CC4E05</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmailListMessagesResponse.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailListMessagesResponse.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>85D02C2E762FCA04833E16B795EA40AF</key>
 		<dict>
 			<key>fileRef</key>
-			<string>E7BC3A27E6189CCFA698EF5831EDC910</string>
+			<string>CB87EB63BA016AC9A8F10E9F0CC7F5A4</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -2939,16 +2944,18 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
-		<key>877926BF878B0A8E867F51634E9594A7</key>
+		<key>86A3D5140BC6B5E39A263C18DB12DDBD</key>
 		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GoogleAppUtilities.framework</string>
+			<string>GTLGmailConstants.h</string>
 			<key>path</key>
-			<string>Frameworks/GoogleAppUtilities.framework</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailConstants.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2970,7 +2977,7 @@
 		<key>88D99DABE7699026C3DA43A69E7082F4</key>
 		<dict>
 			<key>fileRef</key>
-			<string>05D3D9AFB2C619DB3A44AC4748C550D0</string>
+			<string>B60A4E8F2BCDF5D3302369960E0A8FC2</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2978,6 +2985,21 @@
 				<key>COMPILER_FLAGS</key>
 				<string>-fno-objc-arc</string>
 			</dict>
+		</dict>
+		<key>8947BDB931AE03878F7BB8F425E60FCB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTMSessionFetcherLogging.m</string>
+			<key>path</key>
+			<string>Source/GTMSessionFetcherLogging.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>89F72D75F8B66CE263A54911BE23FB01</key>
 		<dict>
@@ -3027,18 +3049,16 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>8B1D28544604C5C0CC18240A9A7AA3C2</key>
+		<key>8AB06172B8D98E9FBA03D0529EA39913</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLBase64.h</string>
+			<string>text.xcconfig</string>
 			<key>path</key>
-			<string>Source/Utilities/GTLBase64.h</string>
+			<string>GTMSessionFetcher.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3055,10 +3075,51 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>8B925960F7957DC86D8881374F165F96</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTMOAuth2ViewControllerTouch.m</string>
+			<key>path</key>
+			<string>Source/Touch/GTMOAuth2ViewControllerTouch.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8BA21D66CB48C1992B515E59FE602F59</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>80A0DF3D11E056560F5F9AF95940545D</string>
+				<string>A0FBDAF66A6702E198EAC00F9BE003F1</string>
+				<string>35ADAB8B024BB0AC3E86A049D6EE84AA</string>
+				<string>B721A020545927BD7A0C8E684BE36F4F</string>
+				<string>CB4FA9906D63678C5C2F8E3B8F36BF60</string>
+				<string>0B14CA0F2FD58DE06B66157B5D8D2DA6</string>
+				<string>03203C8747495EA7E605DDE859AC0401</string>
+				<string>00ECFD47043612566998C1832538A635</string>
+				<string>C2516CE8B51A64CD79D20DE9B26BE2CB</string>
+				<string>B3A2A516B27707F3D7677C25B4BCC53D</string>
+				<string>CC58D6EA7852BB1CD49A8348E28B7D7B</string>
+				<string>08B9F7B95332FAE6DC3A25448637A9DB</string>
+				<string>21927ECBBD5430F8CBCED8A86D157DAD</string>
+				<string>3EAEB9E24A81130237A96D7C12E14707</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>8C3D09803B8E8F0492D91E9CFC39989D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>DD12833E3D89CA4D53AD7342ECD85E39</string>
+			<string>6D18204966F8E1611B5CB53965E2AC58</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3067,10 +3128,23 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
+		<key>8D4012B66D43D6C34AD0F606F8FEA190</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>GoogleNetworkingUtilities.framework</string>
+			<key>path</key>
+			<string>Frameworks/GoogleNetworkingUtilities.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>8D60D21C80CE09CAFF9C81EF7E659CE5</key>
 		<dict>
 			<key>fileRef</key>
-			<string>078B999B8A4E6C688E20ECE5E6B0E8DF</string>
+			<string>67708856F9116134A19718C2858F3E12</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3082,7 +3156,7 @@
 		<key>9060A2C3A72B80C3802589B0BADC9459</key>
 		<dict>
 			<key>fileRef</key>
-			<string>3F69DE8853F255CA36C7F5217C68F046</string>
+			<string>DE6BBC8CB2015EA71C5F0362DD962EAA</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3093,23 +3167,40 @@
 				</array>
 			</dict>
 		</dict>
-		<key>90C3AF3ABD8B49C219C3635C9F21F277</key>
+		<key>9089F6987040C1F54C69FAAD35496DD2</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>0BBF983722A097A4CCB50A49D29C82E7</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>Frameworks</string>
+			<string>GTLDateTime.m</string>
+			<key>path</key>
+			<string>Source/Objects/GTLDateTime.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>90E6E4D75B55439F3E736D64C356901E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>name</key>
+			<string>GTMOAuth2ViewTouch.xib</string>
+			<key>path</key>
+			<string>Source/Touch/GTMOAuth2ViewTouch.xib</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>9173D3FCF080C371AFAC31FA53586CB0</key>
 		<dict>
 			<key>fileRef</key>
-			<string>711D33A34B646656EC4AADE8D4CA8A0B</string>
+			<string>2828C4ADE0DE94A57B32E577EA9534C4</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3120,51 +3211,45 @@
 				</array>
 			</dict>
 		</dict>
-		<key>923B95A0EB1B039DA7CF6E0C71D2D370</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>GTMOAuth2.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>925CBCBBFF1E0E5D74DB1A03B06778EE</key>
+		<key>9198D53B939D586DE934D5D39F12B588</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLGmailMessagePartHeader.m</string>
+			<string>Core-Module.h</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailMessagePartHeader.m</string>
+			<string>Headers/ModuleHeaders/Core-Module.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>92AFF55CA39A6649058799FA0444255F</key>
+		<key>920D9521E71CF41F694878DDDCBB4175</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>children</key>
+			<array>
+				<string>4A546A8DF115063E3436A9E038EC85D5</string>
+				<string>40E8A3197CA918B0A53B9D0754645BD2</string>
+				<string>17DE988BD7EC3524C9D287E06C3AB5CB</string>
+				<string>62B4257647465C01B4B68B085CEC3C18</string>
+				<string>544B1D4E4318FEBA57AD7575A24FFDD1</string>
+				<string>E6E0510E3EDD212E58E126A279FB7FEE</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GTLGmailDraft.m</string>
+			<string>Support Files</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailDraft.m</string>
+			<string>../Target Support Files/GoogleAPIClient</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>932927080DE6AA2A26F4476738A26AD7</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B0AB0BD1FAF5F2E142C50BF5C57D5626</string>
+			<string>4B5C4AF0884923F3BD48F342224BA281</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3178,7 +3263,7 @@
 		<key>9375DC792B1E31124236869C96DFEFAC</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D892AB8827FB1438069749F7FACDAC26</string>
+			<string>CDB66A73E2CE70F86B8FAD276EF585B0</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3189,34 +3274,25 @@
 				</array>
 			</dict>
 		</dict>
-		<key>94CAB09BEFF528221BCB300F943C4536</key>
+		<key>96292D716DB2D8F50616C37212A272A0</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>GoogleAPIClient.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>961B8C9F65478FEC11830CD4605B1181</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GoogleSymbolUtilities.framework</string>
+			<string>GTLJSONParser.m</string>
 			<key>path</key>
-			<string>Frameworks/GoogleSymbolUtilities.framework</string>
+			<string>Source/Utilities/GTLJSONParser.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>96A5944D21E390597493F9BFA34D352D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B62EF0BB327E912529992303A8F463FB</string>
+			<string>D567FD0B63E3D0F21CB57EB0318248FF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3226,6 +3302,34 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>97E674E95BD9D4DFBA70CB086E121A0A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLGmailWatchResponse.m</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailWatchResponse.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9818D63935358FAEE700E1C6FA32981B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>3EC6F4B140889D819687790B634EF784</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>992466236CD0CAF4480ED8553747EFB8</key>
 		<dict>
@@ -3241,7 +3345,7 @@
 		<key>99531A0CA9F118FB25A058CA9F177A92</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C9A969146C62F35F2CE967EF827630E5</string>
+			<string>EC1F042BED8F015F3DB31CE139401E7D</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3268,10 +3372,40 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>9A3A9AA6246A7D753D8EB2DB778FD444</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmailThread.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailThread.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A599625EE2C717F7410263BFC045CED</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTMSessionFetcherService.m</string>
+			<key>path</key>
+			<string>Source/GTMSessionFetcherService.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>9B7C75BF845EC6AAE5E077803EC8D37F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>00BE9E97846DD962B1DBB8D6ECC04D30</string>
+			<string>6FF712604BEA5B1AB1CFEFB9DBB6BD2D</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3282,64 +3416,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>9E2C97664D4E398E64B49436F13933B1</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B3EEC2AB2A939A940B5CA15A90E7AC39</string>
-				<string>C6F52C4C99051A08F8A05749085568C9</string>
-				<string>BB5BC77BA9E069CDFB74A8843B631108</string>
-				<string>3E7D360C499C50B00B01675AD322F4AA</string>
-				<string>92AFF55CA39A6649058799FA0444255F</string>
-				<string>F2154BEB0CF96B9CEC47499B3DBD148B</string>
-				<string>A3D29BEEA42C3400F569EF57CE92B8C8</string>
-				<string>1F25B3F51C2353A8F3BBECA8107E59CE</string>
-				<string>4E400D798758A293CA5F67E63E37E537</string>
-				<string>2E90306E1D260C8B75C19C32445A6E1A</string>
-				<string>68C3AF5389ED2B515DC9D7D50EC42C7E</string>
-				<string>E5AF4FB4D5FC435CFC892B786AF62DAC</string>
-				<string>DD12833E3D89CA4D53AD7342ECD85E39</string>
-				<string>593C5E76A6CC948312049F8B58771F91</string>
-				<string>5D626D6CDA0C16BE591A3A928A97DF6E</string>
-				<string>CF44D959D76948CC5400ABE310375DD2</string>
-				<string>AB861712368B5FCF58852CC4428D3E7E</string>
-				<string>7872BA30E9B6CAF54D2933848E211AFE</string>
-				<string>078B999B8A4E6C688E20ECE5E6B0E8DF</string>
-				<string>E2A88096A44FA28E6503052B513D5EED</string>
-				<string>BF1CD3615A5B014C34533D91C55EA557</string>
-				<string>539DE764CA7C87E8E2B6937961BF6D5D</string>
-				<string>0B49E56EB3268BD1E9EF4D5A827CE662</string>
-				<string>B44391B56DBE297C215057374A6CEFFE</string>
-				<string>EF7A9D8398F826ED405DD9DD3998CFD2</string>
-				<string>D609159B5BCE6C8B46D9BF9E84281B2F</string>
-				<string>1D41BEF63747AFDABB83D67DD4B468E6</string>
-				<string>B0AB0BD1FAF5F2E142C50BF5C57D5626</string>
-				<string>3E1D446C3E8C74DEC2E099EC467AC8EE</string>
-				<string>397C826109D802E29A8872A70AE36CC2</string>
-				<string>2336E48391C90FFED7D67DA139910982</string>
-				<string>C6D9B6F7FC805E6121C2B19AAB20C245</string>
-				<string>C0445E92341B42CAB03504AC9C684943</string>
-				<string>72C11982D867AB93DF4BEA127BD48A79</string>
-				<string>925CBCBBFF1E0E5D74DB1A03B06778EE</string>
-				<string>39D9631D64217A799DBD6C9809533530</string>
-				<string>403C676D008E8E1FE5B734254C74EE10</string>
-				<string>FD98B5CA58C0BFA7AB7B023B657B89DE</string>
-				<string>D782AC66A56C9B6DC038633524515313</string>
-				<string>42000CF5A38EE5AF5426834289057E72</string>
-				<string>1F3BB69207A644B9FCBC2B74AA2CF1D6</string>
-				<string>C671146F601165CC8C175684CB99604F</string>
-				<string>03259956A02DA72985455E52E331E61B</string>
-				<string>BC4DC1585F0A41ABDE982831B8D8509E</string>
-				<string>A03675E4A4CD945A75A149279B6F649B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Gmail</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9FACDFDC1904544BA69A20C5F25AA58C</key>
+		<key>9D482C0F78C3D72D58A0CE419F51D2EE</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3348,13 +3425,28 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>Core.h</string>
+			<string>GTLGmailHistoryMessageDeleted.h</string>
 			<key>path</key>
-			<string>Headers/Core.h</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailHistoryMessageDeleted.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>A03675E4A4CD945A75A149279B6F649B</key>
+		<key>A0FBDAF66A6702E198EAC00F9BE003F1</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>387D73DA695C4F3DE1D6437DE70FB3BE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>FirebaseAnalytics</string>
+			<key>path</key>
+			<string>FirebaseAnalytics</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A14E240F616559C836D62EC9CEF25123</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3363,24 +3455,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLServiceGmail.m</string>
+			<string>GTLQuery.m</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLServiceGmail.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A0819CBE6DC622EF933749C6E541F5F5</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLUtilities.m</string>
-			<key>path</key>
-			<string>Source/Utilities/GTLUtilities.m</string>
+			<string>Source/Objects/GTLQuery.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3397,6 +3474,36 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>A19B0596F0D61AE744EF560D4DBD1F8A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmailMessagePartHeader.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailMessagePartHeader.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A2D6DD52C2C40D49EB7D782943C1833E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTMSessionUploadFetcher.h</string>
+			<key>path</key>
+			<string>Source/GTMSessionUploadFetcher.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>A324B75A6B917E2AA1195E4237BA6C44</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -3410,7 +3517,7 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>A38A7A0EAFB1C0CE6A60A89810E8EA7A</key>
+		<key>A42EBD5A23AA06A351375BBC419FEA9B</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3419,24 +3526,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTMSessionFetcher.m</string>
+			<string>GTLGmailListThreadsResponse.m</string>
 			<key>path</key>
-			<string>Source/GTMSessionFetcher.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A3D29BEEA42C3400F569EF57CE92B8C8</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLGmailHistory.m</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailHistory.m</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailListThreadsResponse.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3456,7 +3548,7 @@
 		<key>A56346AB916BA24C1DB6B4C9517BF99D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>378E254FEFDCEC8DCF1190B005546AA1</string>
+			<string>D2AE14704A175B4F0572D14E2956341F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3464,6 +3556,21 @@
 				<key>COMPILER_FLAGS</key>
 				<string>-fno-objc-arc</string>
 			</dict>
+		</dict>
+		<key>A5AF39E06FEF1C55612CB7799428D818</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLGmailListHistoryResponse.m</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailListHistoryResponse.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>A70CDAD61F90AC503C7D04CC22DA2923</key>
 		<dict>
@@ -3538,6 +3645,21 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
+		<key>A79EB1482C46A5A6C44889032686F1E2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmail.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmail.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>A92534F831ABCDCCB335C870C6D81705</key>
 		<dict>
 			<key>children</key>
@@ -3548,21 +3670,6 @@
 			<string>PBXGroup</string>
 			<key>name</key>
 			<string>Targets Support Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AA0F9CB9858E8E20FD152E35B6D0D2D4</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLBatchResult.m</string>
-			<key>path</key>
-			<string>Source/Objects/GTLBatchResult.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3582,7 +3689,7 @@
 		<key>AADEC70C6E6B5ABCBE966B4EF935F0F6</key>
 		<dict>
 			<key>fileRef</key>
-			<string>4E400D798758A293CA5F67E63E37E537</string>
+			<string>E039A014BF67E421AE532F2EA2EB2C17</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3591,18 +3698,16 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>AB861712368B5FCF58852CC4428D3E7E</key>
+		<key>AB891F8CE874AB65356740B2AABFB48B</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>wrapper.framework</string>
 			<key>name</key>
-			<string>GTLGmailLabel.m</string>
+			<string>GoogleAppUtilities.framework</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailLabel.m</string>
+			<string>Frameworks/GoogleAppUtilities.framework</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3634,16 +3739,31 @@
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
-		<key>ADC49BFC983C0DC7AE7C28910957227E</key>
+		<key>AD5615DD2E80125FE18AF9AE50BE5EAB</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>F62810171E060AB6C89CC486934A9DC9</string>
+				<string>05018050D716601C3B167932D1F74D8E</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Frameworks</string>
+			<string>Resources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B02DFCB62E0AFEFEDDD5927F4DDC62ED</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLBase64.m</string>
+			<key>path</key>
+			<string>Source/Utilities/GTLBase64.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3654,62 +3774,10 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>B0AB0BD1FAF5F2E142C50BF5C57D5626</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLGmailMessage.h</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailMessage.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B0ED5611214CC69B879F22969ADE38CF</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>00BE9E97846DD962B1DBB8D6ECC04D30</string>
-				<string>46E866510E727AFE7CFCF0ACACF2D5D0</string>
-				<string>B156B26CC5E49634481031D97F29DFE7</string>
-				<string>21072FC9F19CECC459B87FF31BBAF0DC</string>
-				<string>3F69DE8853F255CA36C7F5217C68F046</string>
-				<string>669961436092F175CBC2F836FEAB7612</string>
-				<string>21B74EA1659BAB6137C65ECE4570375F</string>
-				<string>043D1A90FD23F9FC3B76D6263E752324</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GTMOAuth2</string>
-			<key>path</key>
-			<string>GTMOAuth2</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B156B26CC5E49634481031D97F29DFE7</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTMOAuth2SignIn.h</string>
-			<key>path</key>
-			<string>Source/GTMOAuth2SignIn.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>B1F03C5309FC4124DC4CAD4D59AA8706</key>
 		<dict>
 			<key>fileRef</key>
-			<string>F5447AFEDD8EB15C78967DE57AEE6657</string>
+			<string>DB33DF6EDC8793ACD3117FB0ABCCE7BD</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3720,11 +3788,11 @@
 				</array>
 			</dict>
 		</dict>
-		<key>B399F19C0930E7B78C0F19DFFE08D22F</key>
+		<key>B330606EC5EA562191431D9877F5E054</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>D54D801B191ACA8F8F3227C697323CF2</string>
+				<string>2A63E2C0513DF1297B4D3C8FCB7500C3</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -3733,37 +3801,23 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B3EEC2AB2A939A940B5CA15A90E7AC39</key>
+		<key>B3A2A516B27707F3D7677C25B4BCC53D</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>children</key>
+			<array>
+				<string>B6A817EFC7FE9D64F6301428E3BDFA0D</string>
+				<string>AD5615DD2E80125FE18AF9AE50BE5EAB</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GTLGmail.h</string>
+			<string>GoogleSignIn</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmail.h</string>
+			<string>GoogleSignIn</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B44391B56DBE297C215057374A6CEFFE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLGmailListMessagesResponse.h</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailListMessagesResponse.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B5F80E7499CFF8042977D12C366409D4</key>
+		<key>B4065CCB3F73BBBF84751555FC5AE846</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3772,32 +3826,32 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLRuntimeCommon.m</string>
+			<string>GTMOAuth2Authentication.m</string>
 			<key>path</key>
-			<string>Source/Objects/GTLRuntimeCommon.m</string>
+			<string>Source/GTMOAuth2Authentication.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B62EF0BB327E912529992303A8F463FB</key>
+		<key>B60A4E8F2BCDF5D3302369960E0A8FC2</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLUploadParameters.h</string>
+			<string>GTLUploadParameters.m</string>
 			<key>path</key>
-			<string>Source/Objects/GTLUploadParameters.h</string>
+			<string>Source/Objects/GTLUploadParameters.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B7E93A066A2A603EC09B20B96DE644AB</key>
+		<key>B6A817EFC7FE9D64F6301428E3BDFA0D</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>25D3AE7DBBAB48F1AAC0320E49A167DE</string>
+				<string>25293AD1ADC8B72B183D0881E0E9C48D</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -3806,10 +3860,26 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>B721A020545927BD7A0C8E684BE36F4F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1EC9398F66B100BB7F8489C301DA8E79</string>
+				<string>BF4FA536709279024C60625DA11ACEE9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Google</string>
+			<key>path</key>
+			<string>Google</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>B8AC82DC16EA70FD52B23D255EA577CB</key>
 		<dict>
 			<key>fileRef</key>
-			<string>4C9585FA6BE1BDE7304DDF6DF9CAA9FF</string>
+			<string>560A2168605ED8039BA30D793BF54927</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3819,11 +3889,31 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>B8B4BD4A62D2A3B73E9AB61DAB9F308E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7BA7E8A6B53C371911D3E1E4CA63FD5E</string>
+				<string>529DEC217765810BBD92854BE9AEDA74</string>
+				<string>24E46CCAB44B7738D92F3E1D27F0CA68</string>
+				<string>8947BDB931AE03878F7BB8F425E60FCB</string>
+				<string>DB33DF6EDC8793ACD3117FB0ABCCE7BD</string>
+				<string>9A599625EE2C717F7410263BFC045CED</string>
+				<string>A2D6DD52C2C40D49EB7D782943C1833E</string>
+				<string>35614095CC8B40E4A5723500474F80CA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Core</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>B9FE3A71075848B8300890DACFEFE417</key>
 		<dict>
 			<key>fileRef</key>
-			<string>42000CF5A38EE5AF5426834289057E72</string>
+			<string>5BE50D9267E27FB1E6905606612DF8B6</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3834,17 +3924,30 @@
 				</array>
 			</dict>
 		</dict>
+		<key>BA2108FCFF0F17E58638FD152DF79AE1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>BA4314997189FDCCFC5E1972F302EB88</key>
 		<dict>
 			<key>fileRef</key>
-			<string>7A3918AF1CFFA204EF1835E5CE9D09E3</string>
+			<string>60FA35A04F2229095D8FD907C3225384</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>BA49A13F5F67D32332BB172806A363EF</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C4F20D28D09BA530884CA8268CD7F531</string>
+			<string>3B24AEC5C6871EF6CFF48E8EE5870F0B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3872,36 +3975,6 @@
 			<key>xcLanguageSpecificationIdentifier</key>
 			<string>xcode.lang.ruby</string>
 		</dict>
-		<key>BAE4E9F10DECE1A21AC69A9F20D81DCA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>SignIn-Module.h</string>
-			<key>path</key>
-			<string>Headers/ModuleHeaders/SignIn-Module.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BB5BC77BA9E069CDFB74A8843B631108</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLGmailConstants.m</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailConstants.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>BBC8ADE4B4B05B2928578827569E155B</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -3918,24 +3991,9 @@
 		<key>BC464DA77F96900A6767464205345B37</key>
 		<dict>
 			<key>fileRef</key>
-			<string>36AE9C6C193B8002184C89BB9E0CDF19</string>
+			<string>FC887D5E7E66D0C3C35B0F33DD29F91A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>BC4DC1585F0A41ABDE982831B8D8509E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLServiceGmail.h</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLServiceGmail.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>BC66EC75CFEC39BA3035AC601A222E7C</key>
 		<dict>
@@ -3951,93 +4009,69 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>BDB5C59930B1D5EFC8121680AEDAB497</key>
+		<key>BD69E1567E370170F8F97BF8193DD944</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>7ED70CC6849E6215DEAA749DF7B9940B</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>Frameworks</string>
+			<string>GTMGatherInputStream.m</string>
+			<key>path</key>
+			<string>Source/GTMGatherInputStream.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>BDD9CC018760AA4752769BAACF190ABF</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A38A7A0EAFB1C0CE6A60A89810E8EA7A</string>
+			<string>529DEC217765810BBD92854BE9AEDA74</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>BEC4A4B96ABB92DD7129BEEC26286966</key>
+		<key>BE0C865CB27F2A833730D2AB850B9E5B</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTMSessionFetcherLogging.m</string>
+			<string>Core.h</string>
 			<key>path</key>
-			<string>Source/GTMSessionFetcherLogging.m</string>
+			<string>Headers/Core.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>BEDA2160F43CE908FAFC832841811F28</key>
+		<key>BEBC2EA0D26E1BA12598D5BCCF3C7AAC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmailHistoryLabelAdded.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailHistoryLabelAdded.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BF4FA536709279024C60625DA11ACEE9</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>8B1D28544604C5C0CC18240A9A7AA3C2</string>
-				<string>572460FC1602ABC07E32510D3ECC55AC</string>
-				<string>DF7024FDD97AF068D4670F92BC665988</string>
-				<string>560AD75957534680E294E5D53B210395</string>
-				<string>E32A35A0BFBB8468F04814038EB31DDE</string>
-				<string>AA0F9CB9858E8E20FD152E35B6D0D2D4</string>
-				<string>D892AB8827FB1438069749F7FACDAC26</string>
-				<string>C2C04BE020421059BB75EDC2281C8EE3</string>
-				<string>711D33A34B646656EC4AADE8D4CA8A0B</string>
-				<string>536A36E2F5EA2E8BBE8113D8396C74CF</string>
-				<string>686F7F1E76EDAD3B38C15E6BC49B11A7</string>
-				<string>69017882C37C4D695A28D6E07118B3C9</string>
-				<string>493972BF0F339457E1745E7E9762C078</string>
-				<string>4C9585FA6BE1BDE7304DDF6DF9CAA9FF</string>
-				<string>2279FDBDEE54E76D26E448D511CE2672</string>
-				<string>33D4045B0E16DF532ED7A1DA5801EDD8</string>
-				<string>6C7C5F104048B75C781C6F4198B32731</string>
-				<string>C53076342D5BD2F046B1E49D57CB737A</string>
-				<string>E665390E49E2BFD366718A3A57637EE5</string>
-				<string>CCB16707E0436C86A32137C00C5AA4FC</string>
-				<string>B5F80E7499CFF8042977D12C366409D4</string>
-				<string>C4F20D28D09BA530884CA8268CD7F531</string>
-				<string>378E254FEFDCEC8DCF1190B005546AA1</string>
-				<string>535B18E2C5AB17D8BDA1180F39C9EC2B</string>
-				<string>B62EF0BB327E912529992303A8F463FB</string>
-				<string>05D3D9AFB2C619DB3A44AC4748C550D0</string>
-				<string>C391E180A8D26BF4CB8E9B79CE3E2BCD</string>
-				<string>A0819CBE6DC622EF933749C6E541F5F5</string>
+				<string>37EE0E9E6CC2A540CE9772BEABD863C8</string>
+				<string>FF301F56240569C58A148A9DEC015E07</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Core</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BF1CD3615A5B014C34533D91C55EA557</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLGmailListHistoryResponse.m</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailListHistoryResponse.m</string>
+			<string>SignIn</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -4048,25 +4082,25 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>C0445E92341B42CAB03504AC9C684943</key>
+		<key>C14F53D52EFA5D6B0F6AC182C7542138</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLGmailMessagePartBody.m</string>
+			<string>Analytics-Module.h</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailMessagePartBody.m</string>
+			<string>Headers/ModuleHeaders/Analytics-Module.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C1F3791AD127AE294567E862963DB649</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>5294ACF6AA185E3585BC778E7110CC41</string>
+			<string>8AB06172B8D98E9FBA03D0529EA39913</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -4119,6 +4153,21 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
+		<key>C2516CE8B51A64CD79D20DE9B26BE2CB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>D4812AD8BB88A710E7980607112F98AC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GoogleNetworkingUtilities</string>
+			<key>path</key>
+			<string>GoogleNetworkingUtilities</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>C27E757870308EDA0D3D56E775FE332E</key>
 		<dict>
 			<key>buildConfigurationList</key>
@@ -4148,75 +4197,30 @@
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
-		<key>C28080C308C90A80B52ED327E36BFD7D</key>
+		<key>C42A49EB6F3AFD08E80A6EB9EE0546E2</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>children</key>
+			<array>
+				<string>AB891F8CE874AB65356740B2AABFB48B</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>GTMOAuth2-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C2C04BE020421059BB75EDC2281C8EE3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GTLDateTime.m</string>
-			<key>path</key>
-			<string>Source/Objects/GTLDateTime.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C391E180A8D26BF4CB8E9B79CE3E2BCD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLUtilities.h</string>
-			<key>path</key>
-			<string>Source/Utilities/GTLUtilities.h</string>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C444517B7D97CB1A9AF24DB027A8A6A0</key>
 		<dict>
 			<key>fileRef</key>
-			<string>BEC4A4B96ABB92DD7129BEEC26286966</string>
+			<string>8947BDB931AE03878F7BB8F425E60FCB</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>C4F20D28D09BA530884CA8268CD7F531</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLService.h</string>
-			<key>path</key>
-			<string>Source/Objects/GTLService.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C4FAFD0615BCE7C6717B9288401004B8</key>
 		<dict>
 			<key>fileRef</key>
-			<string>6BACA61C7F7EF53C1CFBFD7739451B46</string>
+			<string>2787A79AA8194A83382864089BBBD0FB</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4238,111 +4242,10 @@
 			<key>targetProxy</key>
 			<string>A488332B8800E354CB76F5E9A46B11E8</string>
 		</dict>
-		<key>C53076342D5BD2F046B1E49D57CB737A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLQuery.h</string>
-			<key>path</key>
-			<string>Source/Objects/GTLQuery.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C671146F601165CC8C175684CB99604F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLQueryGmail.h</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLQueryGmail.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C6D9B6F7FC805E6121C2B19AAB20C245</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLGmailMessagePartBody.h</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailMessagePartBody.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C6F52C4C99051A08F8A05749085568C9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLGmailConstants.h</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailConstants.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C8DFC1A3F5F166DD943F3F35E967F061</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>GTMSessionFetcher-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C9060192B9DC30D857847A183AF8CA2B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C9A969146C62F35F2CE967EF827630E5</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTMGatherInputStream.h</string>
-			<key>path</key>
-			<string>Source/GTMGatherInputStream.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>C9FBBA56945A8AA537D75C5059BD9554</key>
 		<dict>
 			<key>fileRef</key>
-			<string>2E90306E1D260C8B75C19C32445A6E1A</string>
+			<string>121EA502B977DDEB891854364850DB04</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4353,10 +4256,40 @@
 				</array>
 			</dict>
 		</dict>
+		<key>CB4FA9906D63678C5C2F8E3B8F36BF60</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F5606E7B9A15B0523040A3FB450F31C5</string>
+				<string>6D656750AE295B5DBF0D4CD9A3A4111F</string>
+				<string>920D9521E71CF41F694878DDDCBB4175</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GoogleAPIClient</string>
+			<key>path</key>
+			<string>GoogleAPIClient</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CB87EB63BA016AC9A8F10E9F0CC7F5A4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GTMOAuth2-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>CB94765C331A50C29305B4C217323930</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C2C04BE020421059BB75EDC2281C8EE3</string>
+			<string>9089F6987040C1F54C69FAAD35496DD2</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4365,17 +4298,32 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
+		<key>CBFF38D5D7E0D34C5AA865A814DF24C6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLBase64.h</string>
+			<key>path</key>
+			<string>Source/Utilities/GTLBase64.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>CC4301A32FB3A4B8D17A1746463DF762</key>
 		<dict>
 			<key>fileRef</key>
-			<string>060C2203C749F2576F6C7C35653B9F66</string>
+			<string>90E6E4D75B55439F3E736D64C356901E</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>CC4BD6CFF2A54565E38A53480612E2CE</key>
 		<dict>
 			<key>fileRef</key>
-			<string>5D626D6CDA0C16BE591A3A928A97DF6E</string>
+			<string>589C9B5E2892CFE6637E68563B910A4F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4384,10 +4332,25 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
+		<key>CC58D6EA7852BB1CD49A8348E28B7D7B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>67428371C8C6BDC52D8C0EF947DF590E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GoogleSymbolUtilities</string>
+			<key>path</key>
+			<string>GoogleSymbolUtilities</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>CC9371A93CA08032DFC2D27066C2D30B</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>E912E13E68033F56B54464F256F4A1D2</string>
+			<string>0CFB5C33E620585AC809DD073233DFD5</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -4440,25 +4403,10 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>CCB16707E0436C86A32137C00C5AA4FC</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLRuntimeCommon.h</string>
-			<key>path</key>
-			<string>Source/Objects/GTLRuntimeCommon.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>CD27F5B4F50659D44EF6958A68668066</key>
 		<dict>
 			<key>fileRef</key>
-			<string>69017882C37C4D695A28D6E07118B3C9</string>
+			<string>EDB2B526733E7AAFB05C5143741162FF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4469,7 +4417,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>CF44D959D76948CC5400ABE310375DD2</key>
+		<key>CDB66A73E2CE70F86B8FAD276EF585B0</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -4478,16 +4426,31 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLGmailLabel.h</string>
+			<string>GTLDateTime.h</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailLabel.h</string>
+			<string>Source/Objects/GTLDateTime.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CF3B44C349252AF9071F86C2AE5D5562</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLGmailLabel.m</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailLabel.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>D08A044509736DC73F5D25F55E61DCC6</key>
 		<dict>
 			<key>fileRef</key>
-			<string>1F25B3F51C2353A8F3BBECA8107E59CE</string>
+			<string>BEBC2EA0D26E1BA12598D5BCCF3C7AAC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4498,40 +4461,59 @@
 				</array>
 			</dict>
 		</dict>
-		<key>D132CEDA56EBA1CF338EE5BEB9D8F976</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F2154BEB0CF96B9CEC47499B3DBD148B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>D2708148B0FE3CFDCD54AF6582F35F37</key>
+		<key>D0F54B1BFE5A09552A52AC243D8713D4</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>1546432D5FE66DC1A24C05B4E92B6E7E</string>
-				<string>3E827039CEA704E11302B760D92DB3AF</string>
+				<string>638E7137CBAF133EABF43386A28C8D16</string>
+				<string>0CFB5C33E620585AC809DD073233DFD5</string>
+				<string>CB87EB63BA016AC9A8F10E9F0CC7F5A4</string>
+				<string>FBB8F8C07D91EA66B40986EB80F53223</string>
+				<string>08648CC79948FA2D1C59F3173B471E67</string>
+				<string>BA2108FCFF0F17E58638FD152DF79AE1</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GoogleSignIn</string>
+			<string>Support Files</string>
 			<key>path</key>
-			<string>GoogleSignIn</string>
+			<string>../Target Support Files/GTMOAuth2</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D132CEDA56EBA1CF338EE5BEB9D8F976</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4DF061B8EBBF8251431C50C33944531C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>D2AE14704A175B4F0572D14E2956341F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLService.m</string>
+			<key>path</key>
+			<string>Source/Objects/GTLService.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>D2C1EA150F0877F68556F4F247B93416</key>
 		<dict>
 			<key>fileRef</key>
-			<string>E665390E49E2BFD366718A3A57637EE5</string>
+			<string>A14E240F616559C836D62EC9CEF25123</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4543,7 +4525,7 @@
 		<key>D306CF29D9415CE7CC65BB37C24B5A27</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C671146F601165CC8C175684CB99604F</string>
+			<string>6C900A17C9E47334C7706EDBBA32FBBF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4554,25 +4536,10 @@
 				</array>
 			</dict>
 		</dict>
-		<key>D3365AEC46A16DA0342E9C48DDCA8699</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTMReadMonitorInputStream.h</string>
-			<key>path</key>
-			<string>Source/GTMReadMonitorInputStream.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>D412F7499434976C158482C54B045A2A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D3365AEC46A16DA0342E9C48DDCA8699</string>
+			<string>790B067B3DEFB6E46C04DD4060CF584E</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4652,6 +4619,19 @@
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
+		<key>D4812AD8BB88A710E7980607112F98AC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8D4012B66D43D6C34AD0F606F8FEA190</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>D4BE0DEE18EB8612836F64CDDBB83C3E</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -4665,32 +4645,7 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>D54D801B191ACA8F8F3227C697323CF2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>GoogleUtilities.framework</string>
-			<key>path</key>
-			<string>Frameworks/GoogleUtilities.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D5B6C7804AF22832E7D826EEA800418F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>925CBCBBFF1E0E5D74DB1A03B06778EE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fno-objc-arc</string>
-			</dict>
-		</dict>
-		<key>D609159B5BCE6C8B46D9BF9E84281B2F</key>
+		<key>D567FD0B63E3D0F21CB57EB0318248FF</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -4699,16 +4654,28 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLGmailListThreadsResponse.h</string>
+			<string>GTLUploadParameters.h</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailListThreadsResponse.h</string>
+			<string>Source/Objects/GTLUploadParameters.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D5B6C7804AF22832E7D826EEA800418F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>66232EE07CCB9ECA9CA68727CCB5DF7B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fno-objc-arc</string>
+			</dict>
 		</dict>
 		<key>D6844429094116AEA95AD319351ABA7D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>72C11982D867AB93DF4BEA127BD48A79</string>
+			<string>A19B0596F0D61AE744EF560D4DBD1F8A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4718,21 +4685,6 @@
 					<string>Public</string>
 				</array>
 			</dict>
-		</dict>
-		<key>D782AC66A56C9B6DC038633524515313</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLGmailThread.m</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailThread.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>D79C8CD51CF533E881B183CFB81BD432</key>
 		<dict>
@@ -4754,45 +4706,7 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>D8418E2EF481786C113EBDF2D5B26188</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>GTMSessionFetcher.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D892AB8827FB1438069749F7FACDAC26</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLDateTime.h</string>
-			<key>path</key>
-			<string>Source/Objects/GTLDateTime.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DB9A279DEFB6BB623575B6427E15CE45</key>
-		<dict>
-			<key>fileRef</key>
-			<string>03259956A02DA72985455E52E331E61B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fno-objc-arc</string>
-			</dict>
-		</dict>
-		<key>DD12833E3D89CA4D53AD7342ECD85E39</key>
+		<key>D823ADA9C9BAFCD1EB61E117A3462D04</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -4801,13 +4715,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLGmailHistoryMessageAdded.m</string>
+			<string>GTLBatchResult.m</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailHistoryMessageAdded.m</string>
+			<string>Source/Objects/GTLBatchResult.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>DDF19A4F0A36E88026D9AF76C1576F0E</key>
+		<key>DB33DF6EDC8793ACD3117FB0ABCCE7BD</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -4816,16 +4730,28 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTMSessionUploadFetcher.h</string>
+			<string>GTMSessionFetcherService.h</string>
 			<key>path</key>
-			<string>Source/GTMSessionUploadFetcher.h</string>
+			<string>Source/GTMSessionFetcherService.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DB9A279DEFB6BB623575B6427E15CE45</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FC18B5D755FD5C541C5D7DF61CADADD6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fno-objc-arc</string>
+			</dict>
 		</dict>
 		<key>DE68B85EE505591292AF7C5BE584AB92</key>
 		<dict>
 			<key>fileRef</key>
-			<string>FD98B5CA58C0BFA7AB7B023B657B89DE</string>
+			<string>9A3A9AA6246A7D753D8EB2DB778FD444</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4836,21 +4762,7 @@
 				</array>
 			</dict>
 		</dict>
-		<key>DE839E2659BCB44DFF77036F3EBA51A7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>39D9631D64217A799DBD6C9809533530</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>DF7024FDD97AF068D4670F92BC665988</key>
+		<key>DE6BBC8CB2015EA71C5F0362DD962EAA</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -4859,11 +4771,25 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLBatchQuery.h</string>
+			<string>GTMOAuth2ViewControllerTouch.h</string>
 			<key>path</key>
-			<string>Source/Objects/GTLBatchQuery.h</string>
+			<string>Source/Touch/GTMOAuth2ViewControllerTouch.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DE839E2659BCB44DFF77036F3EBA51A7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5489A2A91EA148DB40FAF96E5789E856</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
 		<key>DF7E8098D31D01D8DB80992EAD7A307E</key>
 		<dict>
@@ -4889,20 +4815,22 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>E282E02FD253E770E2EEBBAE52949CB8</key>
+		<key>E039A014BF67E421AE532F2EA2EB2C17</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLGmailHistoryLabelAdded.m</string>
 			<key>path</key>
-			<string>GoogleAPIClient-umbrella.h</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailHistoryLabelAdded.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>E2A88096A44FA28E6503052B513D5EED</key>
+		<key>E16F32D8002170F1D693C1E084CE2FB4</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -4911,13 +4839,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLGmailListHistoryResponse.h</string>
+			<string>SignIn-Module.h</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailListHistoryResponse.h</string>
+			<string>Headers/ModuleHeaders/SignIn-Module.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>E32A35A0BFBB8468F04814038EB31DDE</key>
+		<key>E360A8AB900465434248CA78AC8422E5</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -4926,16 +4854,16 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GTLBatchResult.h</string>
+			<string>GTLBatchQuery.h</string>
 			<key>path</key>
-			<string>Source/Objects/GTLBatchResult.h</string>
+			<string>Source/Objects/GTLBatchQuery.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>E43D00019157C99C018AFE2CB775E98D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>46E866510E727AFE7CFCF0ACACF2D5D0</string>
+			<string>B4065CCB3F73BBBF84751555FC5AE846</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4947,7 +4875,7 @@
 		<key>E43E3A34BF2F3420218231A80CEE4570</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B3EEC2AB2A939A940B5CA15A90E7AC39</string>
+			<string>A79EB1482C46A5A6C44889032686F1E2</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -4958,53 +4886,23 @@
 				</array>
 			</dict>
 		</dict>
-		<key>E5AF4FB4D5FC435CFC892B786AF62DAC</key>
+		<key>E6E0510E3EDD212E58E126A279FB7FEE</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTLGmailHistoryMessageAdded.h</string>
+			<string>text.plist.xml</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailHistoryMessageAdded.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E665390E49E2BFD366718A3A57637EE5</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLQuery.m</string>
-			<key>path</key>
-			<string>Source/Objects/GTLQuery.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E7BC3A27E6189CCFA698EF5831EDC910</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>GTMOAuth2-dummy.m</string>
+			<string>Info.plist</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>E8BD55836A2DF88AC954C41D0702EDF6</key>
 		<dict>
 			<key>fileRef</key>
-			<string>669961436092F175CBC2F836FEAB7612</string>
+			<string>8B925960F7957DC86D8881374F165F96</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -5012,19 +4910,6 @@
 				<key>COMPILER_FLAGS</key>
 				<string>-fno-objc-arc</string>
 			</dict>
-		</dict>
-		<key>E912E13E68033F56B54464F256F4A1D2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>GTMOAuth2.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>E94423BEBEAA64652EC397CADB93F7BC</key>
 		<dict>
@@ -5042,10 +4927,21 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>E9E3A81D29CACD20DB7C07E475C3677A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>GTMSessionFetcher.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>EA0A8394C3AFEB28CE5C27AFBEDE01A3</key>
 		<dict>
 			<key>fileRef</key>
-			<string>DDF19A4F0A36E88026D9AF76C1576F0E</string>
+			<string>A2D6DD52C2C40D49EB7D782943C1833E</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -5056,10 +4952,75 @@
 				</array>
 			</dict>
 		</dict>
+		<key>EC1F042BED8F015F3DB31CE139401E7D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTMGatherInputStream.h</string>
+			<key>path</key>
+			<string>Source/GTMGatherInputStream.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EC8080C30CE9D90D13DE4A1955192C03</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLServiceGmail.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLServiceGmail.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ECAB2B350609366FB2AF2C9DC8FDD8F9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E9E3A81D29CACD20DB7C07E475C3677A</string>
+				<string>8AB06172B8D98E9FBA03D0529EA39913</string>
+				<string>60FA35A04F2229095D8FD907C3225384</string>
+				<string>5C94BA328E6CB7683CF04C620EE48424</string>
+				<string>F62E42E379974CF6B5AF8CE209C05893</string>
+				<string>7D213D45740F7341C7CCBBDFE7F19E18</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/GTMSessionFetcher</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EDB2B526733E7AAFB05C5143741162FF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLFramework.h</string>
+			<key>path</key>
+			<string>Source/Utilities/GTLFramework.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>EE381458D73F26BECC239CB4518F6B3F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>560AD75957534680E294E5D53B210395</string>
+			<string>03991D8B309DF0DDE4F16EE1C425E808</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -5071,7 +5032,7 @@
 		<key>EE8428F0F25BA289122AEC9D54B701B0</key>
 		<dict>
 			<key>fileRef</key>
-			<string>BC4DC1585F0A41ABDE982831B8D8509E</string>
+			<string>EC8080C30CE9D90D13DE4A1955192C03</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -5085,7 +5046,7 @@
 		<key>EF1849236A749225AD2148707C70F643</key>
 		<dict>
 			<key>fileRef</key>
-			<string>0B49E56EB3268BD1E9EF4D5A827CE662</string>
+			<string>0BB91D76506D79FE8609CBE905637C08</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -5107,25 +5068,10 @@
 			<key>remoteInfo</key>
 			<string>GTMOAuth2</string>
 		</dict>
-		<key>EF7A9D8398F826ED405DD9DD3998CFD2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTLGmailListMessagesResponse.m</string>
-			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailListMessagesResponse.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>F18A94BD67BD80B70877B2975EF50E88</key>
 		<dict>
 			<key>fileRef</key>
-			<string>AA0F9CB9858E8E20FD152E35B6D0D2D4</string>
+			<string>D823ADA9C9BAFCD1EB61E117A3462D04</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -5134,33 +5080,18 @@
 				<string>-fno-objc-arc</string>
 			</dict>
 		</dict>
-		<key>F1D42E0CF5F6D29F1E0CD3C092C22C41</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>6320103BDCA14661DD6AE1A52EC3CD7C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GoogleAppUtilities</string>
-			<key>path</key>
-			<string>GoogleAppUtilities</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2154BEB0CF96B9CEC47499B3DBD148B</key>
+		<key>F1F35924581F0B21FDC0639D205B9A4B</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLGmailHistory.h</string>
+			<string>GTLGmailThread.m</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailHistory.h</string>
+			<string>Source/Services/Gmail/Generated/GTLGmailThread.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -5181,7 +5112,7 @@
 		<key>F3D151F3F09A411E73A72E7502A88EA0</key>
 		<dict>
 			<key>fileRef</key>
-			<string>BF1CD3615A5B014C34533D91C55EA557</string>
+			<string>A5AF39E06FEF1C55612CB7799428D818</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -5205,7 +5136,47 @@
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
-		<key>F5447AFEDD8EB15C78967DE57AEE6657</key>
+		<key>F5606E7B9A15B0523040A3FB450F31C5</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CBFF38D5D7E0D34C5AA865A814DF24C6</string>
+				<string>B02DFCB62E0AFEFEDDD5927F4DDC62ED</string>
+				<string>E360A8AB900465434248CA78AC8422E5</string>
+				<string>03991D8B309DF0DDE4F16EE1C425E808</string>
+				<string>1B8E29DD4949ADD3A15DE219209ECC9E</string>
+				<string>D823ADA9C9BAFCD1EB61E117A3462D04</string>
+				<string>CDB66A73E2CE70F86B8FAD276EF585B0</string>
+				<string>9089F6987040C1F54C69FAAD35496DD2</string>
+				<string>2828C4ADE0DE94A57B32E577EA9534C4</string>
+				<string>4B6DC884036C6C7B68848CE8D87C1C58</string>
+				<string>2A114A5EEF979891488453819055C659</string>
+				<string>EDB2B526733E7AAFB05C5143741162FF</string>
+				<string>40A073232378E37F721F9213E73E7235</string>
+				<string>560A2168605ED8039BA30D793BF54927</string>
+				<string>96292D716DB2D8F50616C37212A272A0</string>
+				<string>5C8C4ABA29B33CB19165AA4B8F0C03CD</string>
+				<string>02CDD7D0AAB28B529DBF25F697C04A69</string>
+				<string>444E01BE3818013F04BF9BB1992C16DE</string>
+				<string>A14E240F616559C836D62EC9CEF25123</string>
+				<string>0DB5BBA789109C5C28BBCF202DAEE5CD</string>
+				<string>6732C17D1C00DFD392F71F2212A63F4F</string>
+				<string>3B24AEC5C6871EF6CFF48E8EE5870F0B</string>
+				<string>D2AE14704A175B4F0572D14E2956341F</string>
+				<string>53F3D20899B48761431949BF95A811CD</string>
+				<string>D567FD0B63E3D0F21CB57EB0318248FF</string>
+				<string>B60A4E8F2BCDF5D3302369960E0A8FC2</string>
+				<string>7210266EAC8FE0F906B8B1052CFA891B</string>
+				<string>236130EF14E267C70356CDBF657F9A06</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Core</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F62E42E379974CF6B5AF8CE209C05893</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -5213,43 +5184,15 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTMSessionFetcherService.h</string>
 			<key>path</key>
-			<string>Source/GTMSessionFetcherService.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F5B5E112B655ACD0C9786844FE32E620</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>GGLSignIn.framework</string>
-			<key>path</key>
-			<string>Frameworks/GGLSignIn.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62810171E060AB6C89CC486934A9DC9</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>GGLCore.framework</string>
-			<key>path</key>
-			<string>Frameworks/GGLCore.framework</string>
+			<string>GTMSessionFetcher-umbrella.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>F7026B98880F4D3312ED042244A6F62E</key>
 		<dict>
 			<key>fileRef</key>
-			<string>92AFF55CA39A6649058799FA0444255F</string>
+			<string>1B828E708C64EF73DE54202B6BDE9D5F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -5261,7 +5204,7 @@
 		<key>F7BC68EF92AC11AB7F934861F0380DB7</key>
 		<dict>
 			<key>fileRef</key>
-			<string>536A36E2F5EA2E8BBE8113D8396C74CF</string>
+			<string>4B6DC884036C6C7B68848CE8D87C1C58</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -5272,10 +5215,25 @@
 				</array>
 			</dict>
 		</dict>
+		<key>F941018BB91C113BEAF22F9697531760</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLGmailProfile.m</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailProfile.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>FA1549DB0262E6FC098A9D8B3A0EFCFE</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B44391B56DBE297C215057374A6CEFFE</string>
+			<string>84483C4C579132C850788303C8CC4E05</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -5357,9 +5315,52 @@
 		<key>FB842FAC736613FF06C0B56187079BB3</key>
 		<dict>
 			<key>fileRef</key>
-			<string>12CC5C9C0AB603977FC6C4B1E8A73560</string>
+			<string>35614095CC8B40E4A5723500474F80CA</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>FBB817667F11F0D7511495BA1633C492</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLServiceGmail.m</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLServiceGmail.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FBB8F8C07D91EA66B40986EB80F53223</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GTMOAuth2-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FC18B5D755FD5C541C5D7DF61CADADD6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLQueryGmail.m</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLQueryGmail.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>FC63B626A4438F4550D12D3FEC8A5D84</key>
 		<dict>
@@ -5375,25 +5376,40 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>FD98B5CA58C0BFA7AB7B023B657B89DE</key>
+		<key>FC887D5E7E66D0C3C35B0F33DD29F91A</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>GTLGmailThread.h</string>
+			<string>GTMMIMEDocument.m</string>
 			<key>path</key>
-			<string>Source/Services/Gmail/Generated/GTLGmailThread.h</string>
+			<string>Source/GTMMIMEDocument.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FCE34F4CD7D8B6E89801762510B8E3DF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTLGmailHistory.m</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailHistory.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>FDF680D83AD5F31FEE82D8C6FD230BF6</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C28080C308C90A80B52ED327E36BFD7D</string>
+			<string>08648CC79948FA2D1C59F3173B471E67</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -5404,10 +5420,38 @@
 				</array>
 			</dict>
 		</dict>
+		<key>FE20C5A38C1DD74FF266B40F4B529E50</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTLGmailListThreadsResponse.h</string>
+			<key>path</key>
+			<string>Source/Services/Gmail/Generated/GTLGmailListThreadsResponse.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FF301F56240569C58A148A9DEC015E07</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2D21762D25D328F221F6B3FEB88B2B6C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>FFE61D8E3242F5EA602B63B1E86FE7E5</key>
 		<dict>
 			<key>fileRef</key>
-			<string>E2A88096A44FA28E6503052B513D5EED</string>
+			<string>17F69C1D764804B18CFEA40559C0BDCD</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>

@@ -1,4 +1,10 @@
 PODS:
+  - Firebase (3.2.1):
+    - Firebase/Core (= 3.2.1)
+  - Firebase/Analytics (3.2.1):
+    - FirebaseAnalytics (= 3.2.0)
+  - Firebase/Core (3.2.1):
+    - Firebase/Analytics (= 3.2.1)
   - FirebaseAnalytics (3.2.0):
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
@@ -41,11 +47,13 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.4)
 
 DEPENDENCIES:
+  - Firebase (>= 2.5.1)
   - Google/SignIn
   - GoogleAPIClient/Gmail (~> 1.0.2)
   - GTMOAuth2 (~> 1.1.0)
 
 SPEC CHECKSUMS:
+  Firebase: 6c80ac28d59d06bfd9152a7b6ea17625ca93183d
   FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
   FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
