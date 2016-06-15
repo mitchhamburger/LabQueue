@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		81539FB6C42C0410C8B53D23 /* libPods-LabQueue.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA05202FF8D7CB815D8768A /* libPods-LabQueue.a */; };
+		F6AE616CE2263204A7FC1A70 /* Pods_LabQueue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C47893E53D3211DD9ACD9F /* Pods_LabQueue.framework */; };
 		F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F806120D1D0A68C8008D3A8D /* mitch pic.jpg */; };
 		F82AC1F71D0BAABA00BDADD2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1F61D0BAABA00BDADD2 /* Student.swift */; };
 		F82AC1F91D0C6FD000BDADD2 /* LabTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */; };
 		F82AC1FF1D0CD03900BDADD2 /* StudentQueueCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */; };
 		F82AC2011D0CDA3700BDADD2 /* TAQueueCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */; };
+		F83021A21D105D70003AF869 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83021A11D105D70003AF869 /* GTMOAuth2ViewTouch.xib */; };
 		F83222991D07B7610089304E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222981D07B7610089304E /* AppDelegate.swift */; };
 		F832229B1D07B7610089304E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F832229A1D07B7610089304E /* ViewController.swift */; };
 		F832229E1D07B7610089304E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F832229C1D07B7610089304E /* Main.storyboard */; };
@@ -46,7 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3AA05202FF8D7CB815D8768A /* libPods-LabQueue.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LabQueue.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00C47893E53D3211DD9ACD9F /* Pods_LabQueue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LabQueue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		425F023088791AE249FC0FCC /* Pods-LabQueue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabQueue.release.xcconfig"; path = "Pods/Target Support Files/Pods-LabQueue/Pods-LabQueue.release.xcconfig"; sourceTree = "<group>"; };
 		9F9CE877602DDB26145E0460 /* Pods-LabQueue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabQueue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LabQueue/Pods-LabQueue.debug.xcconfig"; sourceTree = "<group>"; };
 		F806120D1D0A68C8008D3A8D /* mitch pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mitch pic.jpg"; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabTA.swift; sourceTree = "<group>"; };
 		F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentQueueCustomCell.swift; sourceTree = "<group>"; };
 		F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAQueueCustomCell.swift; sourceTree = "<group>"; };
+		F83021A11D105D70003AF869 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = ../Pods/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
 		F83222951D07B7610089304E /* LabQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LabQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83222981D07B7610089304E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F832229A1D07B7610089304E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81539FB6C42C0410C8B53D23 /* libPods-LabQueue.a in Frameworks */,
+				F6AE616CE2263204A7FC1A70 /* Pods_LabQueue.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +106,7 @@
 		043BC2ADA360AFDBD8B41BB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3AA05202FF8D7CB815D8768A /* libPods-LabQueue.a */,
+				00C47893E53D3211DD9ACD9F /* Pods_LabQueue.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -149,6 +151,7 @@
 				F871535E1D0F30C400F29040 /* Student Files */,
 				F832229C1D07B7610089304E /* Main.storyboard */,
 				F806120D1D0A68C8008D3A8D /* mitch pic.jpg */,
+				F83021A11D105D70003AF869 /* GTMOAuth2ViewTouch.xib */,
 				F83222C61D07BF8C0089304E /* StudentPictureView.swift */,
 				F832229F1D07B7610089304E /* Assets.xcassets */,
 				F83222A11D07B7610089304E /* LaunchScreen.storyboard */,
@@ -306,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F83021A21D105D70003AF869 /* GTMOAuth2ViewTouch.xib in Resources */,
 				F83222A31D07B7610089304E /* LaunchScreen.storyboard in Resources */,
 				F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */,
 				F83222A01D07B7610089304E /* Assets.xcassets in Resources */,
