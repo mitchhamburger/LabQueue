@@ -17,15 +17,12 @@
                     <view key="view" contentMode="scaleToFill" id="KOI-PB-xxO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L2w-mi-0LV">
-                                <rect key="frame" x="40" y="220" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="Cqj-iJ-8P1" kind="show" identifier="UserLoggedIn" id="m3P-9b-Jfs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -510,8 +507,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="o7i-la-jxt"/>
-        <segue reference="b3c-oI-q0f"/>
+        <segue reference="Sdj-Qd-fk1"/>
+        <segue reference="m3P-9b-Jfs"/>
         <segue reference="zgW-2u-gbU"/>
         <segue reference="tKg-ZJ-Yzz"/>
     </inferredMetricsTieBreakers>
