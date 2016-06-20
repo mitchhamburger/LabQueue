@@ -376,6 +376,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="OeT-ny-OQ2" id="dXk-mp-HQg"/>
+                                    <outlet property="delegate" destination="OeT-ny-OQ2" id="PoB-Ee-1Ny"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -544,7 +548,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="tKg-ZJ-Yzz"/>
         <segue reference="zgW-2u-gbU"/>
-        <segue reference="383-Vx-9vX"/>
+        <segue reference="b3c-oI-q0f"/>
         <segue reference="Sdj-Qd-fk1"/>
     </inferredMetricsTieBreakers>
 </document>
