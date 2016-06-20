@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="Student" syncable="YES">
+        <attribute name="attendingta" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="beenhelped" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="canceled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="course" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateAdded" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="helpedtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="helpmessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inqueue" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="netid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="requesttime" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Student" positionX="-45" positionY="0" width="128" height="208"/>
+    </elements>
+</model>
