@@ -278,7 +278,15 @@
 				TargetAttributes = {
 					F83222941D07B7610089304E = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = YK9SQ33D26;
+						DevelopmentTeam = 9SHFMBH7Z9;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					F83222A81D07B7610089304E = {
 						CreatedOnToolsVersion = 7.3;
@@ -554,7 +562,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LabQueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mhamburger.LabQueue;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mhamburger.LabQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -569,7 +577,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LabQueue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mhamburger.LabQueue;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mhamburger.LabQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

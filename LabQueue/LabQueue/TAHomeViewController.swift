@@ -252,7 +252,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         let url: NSURL = NSURL(string: "http://localhost:5000/LabQueue/v1/Queue/" + currentStudent.netID + "/Delete")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "DELETE"
+        request.HTTPMethod = "GET"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
         let semaphore = dispatch_semaphore_create(0)
