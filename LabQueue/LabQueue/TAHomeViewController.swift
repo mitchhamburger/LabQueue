@@ -39,11 +39,16 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         self.queueTable.layer.cornerRadius = 10
         self.queueTable.separatorColor = UIColor.blackColor()
         allStudents = students
-        if (TACurrentStudent.name == "") {
-            titleBar.topItem?.title = "Welcome to Lab TAs!"
+        
+        let prefs = NSUserDefaults.standardUserDefaults()
+        
+        if let studentData = prefs.objectForKey("TACurrentStudent") {
+            let student = NSKeyedUnarchiver.unarchiveObjectWithData(studentData as! NSData) as! Student
+            titleBar.topItem?.title = "Your Current Student is " + student.name
+            TACurrentStudent = student
         }
         else {
-            titleBar.topItem?.title = "Your Current Student is " + TACurrentStudent.name
+            titleBar.topItem?.title = "Welcome to Lab TAs!"
         }
         
     }
@@ -230,8 +235,18 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func acceptStudent(sender: UIButton) {
         
         let currentStudent: Student = students[0]
+        
+        //WILL PUT NSUSER TA NAME HERE
+        let jsonObj = ["Helped Time": "",
+                       "Attending TA": ""]
         TACurrentStudent = currentStudent
+        let prefs = NSUserDefaults.standardUserDefaults()
+        let encodedData = NSKeyedArchiver.archivedDataWithRootObject(currentStudent)
+        prefs.setObject(encodedData, forKey: "TACurrentStudent")
+        //prefs.setValue(currentStudent, forKey: "TACurrentStudent")
+        
         titleBar.topItem?.title = "Your Current Student is " + TACurrentStudent.name
+        
         
         //HTTP REQUEST
         let url: NSURL = NSURL(string: "http://localhost:5000/LabQueue/v1/Queue/" + currentStudent.netID + "/Delete")!
@@ -257,8 +272,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
         queueTable.reloadData()
         //END HTTP REQUEST
-        
-        
+
         
         /*
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
