@@ -36,50 +36,54 @@ class CASViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func verify(netid: String) -> String {
+        let url: NSURL = NSURL(string: "http://localhost:5000/LabQueue/v1/TAs/\(netid)/Verify")!
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "GET"
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        var studentType: String = ""
+        let semaphore = dispatch_semaphore_create(0)
+        let task = session.dataTaskWithRequest(request) {
+            (
+            let data, let response, let error) in
+            guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
+                print("error")
+                return
+            }
+            if error == nil && data != nil {
+                do {
+                    studentType = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
+                    
+                } catch {
+                    // Something went wrong
+                }
+            }
+            dispatch_semaphore_signal(semaphore)
+        }
+        task.resume()
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        
+        return studentType
+    }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         //if (request.URLString == "https://awojak.mycpanel2.princeton.edu/333/index1.php") {
         if request.URL?.absoluteString.rangeOfString("https://awojak.mycpanel2.princeton.edu/333/index1.php") != nil {
             
-            
             let startIndex = request.URL?.absoluteString.startIndex.advancedBy(57)
             let netId = request.URL?.absoluteString.substringFromIndex(startIndex!)
             globalNetId = netId!
+            if (verify(netId!) == "Student") {
+                self.performSegueWithIdentifier("StudentLoggedIn", sender: netId)
+                return false
+            }
+            else if (verify(netId!) == "TA") {
+                self.performSegueWithIdentifier("TALoggedIn", sender: netId)
+                return false
+            }
             print(globalNetId)
-            
-            /*
-            var urlString = "https://blistering-torch-3510.firebaseio.com/notifs/" + globalNetId
-            var ref = Firebase(url:urlString)
-            
- 
-            
-            ref.observeEventType(.ChildAdded, withBlock: {snapshot in
-                
-                //for child in snapshot.children {
-                
-                let first = String(snapshot.value["first"] as! String)
-                let last = String(snapshot.value["last"] as! String)
-                let user = String(snapshot.value["user"] as! String)
-                let type = String(snapshot.value["type"] as! String)
-                
-                var action = "buy"
-                if (type.containsString("buy")) {action = "sell you"}
-                
-                UIApplication.sharedApplication().applicationIconBadgeNumber += 1
-                let notification: UILocalNotification = UILocalNotification()
-                notification.category = "FIRST_CATEGORY"
-                //notification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
-                
-                
-                notification.alertBody = "\(last) \(first) (\(user)) wants to \(action) a ticket!"
-                UIApplication.sharedApplication().presentLocalNotificationNow(notification)
-                //UIApplication.sharedApplication().applicationIconBadgeNumber = 0
-                ref.removeValue()
-                //}
-            })*/
-            
-            self.performSegueWithIdentifier("UserLoggedIn", sender: netId)
-            return false
+          
         }
         return true
     }

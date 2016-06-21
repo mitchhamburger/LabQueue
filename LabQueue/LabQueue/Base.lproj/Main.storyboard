@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cqj-iJ-8P1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Yp3-Xg-hDJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -56,7 +56,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="myWebView" destination="HYw-0z-rky" id="Y4B-Au-fGU"/>
-                        <segue destination="Cqj-iJ-8P1" kind="show" identifier="UserLoggedIn" id="383-Vx-9vX"/>
+                        <segue destination="OeT-ny-OQ2" kind="show" identifier="StudentLoggedIn" id="4wj-9w-vbI"/>
+                        <segue destination="olw-Lc-YOT" kind="show" identifier="TALoggedIn" id="gpx-nz-QZB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEu-Z9-x7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -546,9 +547,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tKg-ZJ-Yzz"/>
-        <segue reference="zgW-2u-gbU"/>
+        <segue reference="gpx-nz-QZB"/>
+        <segue reference="4wj-9w-vbI"/>
         <segue reference="b3c-oI-q0f"/>
-        <segue reference="Sdj-Qd-fk1"/>
+        <segue reference="tKg-ZJ-Yzz"/>
     </inferredMetricsTieBreakers>
 </document>

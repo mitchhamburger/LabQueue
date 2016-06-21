@@ -9,7 +9,7 @@
 import UIKit
 @IBDesignable
 
-class Student {
+class Student: NSObject, NSCoding {
     
     var name: String
     var netID: String
@@ -36,4 +36,18 @@ class Student {
         self.course = course
         placeInQueue = 0
     }
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        let name = aDecoder.decodeObjectForKey("name") as! String
+        let helpMessage = aDecoder.decodeObjectForKey("helpMessage") as! String
+        let course = aDecoder.decodeObjectForKey("course") as! String
+        self.init(name: name, helpMessage: helpMessage, course: course)
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(name, forKey: "name")
+        aCoder.encodeObject(helpMessage, forKey: "helpMessage")
+        aCoder.encodeObject(course, forKey: "course")
+    }
+    
 }
