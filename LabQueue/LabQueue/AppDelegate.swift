@@ -11,6 +11,7 @@ import CoreData
 var allStudents: [Student] = []
 var activeTAs: [LabTA] = []
 var TACurrentStudent: Student = Student(name: "", helpMessage: "", course: "")
+var StudentCurrentTA: LabTA = LabTA()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
