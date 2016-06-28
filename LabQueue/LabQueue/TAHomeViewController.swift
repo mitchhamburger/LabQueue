@@ -9,15 +9,19 @@
 
 import UIKit
 import CoreData
-@IBDesignable
 
-class TAHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+
+/// Home View Controller for TA's. Displays TA's current student, a picture of that student, and the current student queue.
+///
+/// Attributes:
+/// * students: List of students to populate queue
+/// * managedObjectContext: NSManagedObjectContext for NSData
+@IBDesignable class TAHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var studentPicture: StudentPictureView!
     @IBOutlet weak var queueTable: UITableView!
     
     @IBOutlet weak var titleBar: UINavigationBar!
-    var items = ["Dog", "Cat", "Cow", "Platypus"]
     var students = [Student]()
     
     var managedObjectContext: NSManagedObjectContext!
@@ -31,7 +35,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         studentPicture.layer.borderWidth = 2
         studentPicture.layer.borderColor = UIColor.blackColor().CGColor
         studentPicture.image = UIImage(named: "mitch pic.jpg")
-        getQueueData("https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue")
+        getQueueData("\(hostName)/LabQueue/v1/Queue")
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.queueTable.dataSource = self
@@ -54,15 +58,17 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    /// Handler for addStudentToQueue Notification
     func silentAdd() {
         students.removeAll()
-        getQueueData("https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue")
+        getQueueData("\(hostName)/LabQueue/v1/Queue")
         self.queueTable.insertRowsAtIndexPaths([
             NSIndexPath(forRow: self.students.count - 1, inSection: 0)
             ], withRowAnimation: UITableViewRowAnimation.Right)
         self.queueTable.reloadData()
     }
     
+    /// Handler for removeStudentFromQueue Notification
     func silentRemove() {
         students.removeFirst()
         queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
@@ -75,12 +81,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.queueTable.dequeueReusableCellWithIdentifier("TAcustomcell")! as! TAQueueCustomCell
-        
-        //cell.textLabel!.text = self.students[indexPath.row].name
-        
-        
         cell.studentName.text = "\(indexPath.row + 1). " + self.students[indexPath.row].name
-        //cell.studentEmail.text = self.students[indexPath.row].netID + "@princeton.edu"
         if (indexPath.row == 0) {
             cell.acceptButton.hidden = false
             cell.rejectButton.hidden = false
@@ -118,7 +119,13 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    /// Populates students array from database using GET
+    /// Request through the API
+    /// 
+    /// Paramters:
+    /// * urlString: url of API call
     func getQueueData(urlString: String) {
+        
         /*HTTP REQUEST VERSION OF GETQUEUEDATA*/
         let url: NSURL = NSURL(string: urlString)!
         let session = NSURLSession.sharedSession()
@@ -214,6 +221,8 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         }*/
     }
 
+    /// Helper function for if I use Core Data, creates
+    /// a couple of entries for students
     func createDummyData() {
         //CREATE DUMMY DATA
         
@@ -246,6 +255,8 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    /// Handles when a TA accepts a student. Queries the API
+    /// and and removes the student from the visible queue
     @IBAction func acceptStudent(sender: UIButton) {
         
         let currentStudent: Student = students[0]
@@ -263,7 +274,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         titleBar.topItem?.title = "Your Current Student is " + TACurrentStudent.name
         
         //HTTP REQUEST
-        let url: NSURL = NSURL(string: "https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue/" + currentStudent.netID + "/Helped")!
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v1/Queue/" + currentStudent.netID + "/Helped")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         
@@ -357,11 +368,12 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         //HERE I'M GONNA HAVE TO DO THE MARK AS HELPED POST REQUEST
     }
     
-    
+    /// Handles when a TA rejects a student. Queries the API
+    /// and and removes the student from the visible queue
     @IBAction func cancelStudent(sender: UIButton) {
         
         //HTTP REQUEST
-        let url: NSURL = NSURL(string: "https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue/" + students[0].netID + "/Canceled")!
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v1/Queue/" + students[0].netID + "/Canceled")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
@@ -444,6 +456,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    /// Handles when a TA pushes the picutre of his/her current student.
     @IBAction func currenStudentPushed(sender: AnyObject) {
         self.performSegueWithIdentifier("ShowCurrentStudent", sender: TACurrentStudent)
     }

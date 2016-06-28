@@ -8,6 +8,14 @@
 
 import UIKit
 
+/// Custom Cell Class for queue in TA interface.
+///
+/// Attributes:
+/// * studentName: name of student
+/// * acceptButton: green checkmark to appear if student
+/// is first in line
+/// * rejectButton: red X to appear if student is first
+/// in line
 class TAQueueCustomCell: UITableViewCell {
     
     //@IBOutlet weak var studentEmail: UILabel!

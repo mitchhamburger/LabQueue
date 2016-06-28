@@ -6,10 +6,20 @@
 //  Copyright © 2016 Mitch Hamburger. All rights reserved.
 //
 
-import UIKit
-@IBDesignable
 
-class TAStudentInfoViewController: UIViewController {
+import UIKit
+
+///  View Controller to display info about inidivudal
+///  students that is available to LAb TA's.
+///
+///  Information available:
+///
+///  1. place in queue
+///  2. student name
+///  3. student email
+///  4. course that student is in
+///  5. help message
+@IBDesignable class TAStudentInfoViewController: UIViewController {
     
     @IBOutlet weak var pageTitle: UINavigationItem!
     
@@ -56,6 +66,8 @@ class TAStudentInfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //WILL DELETE ON V2, SINCE WE NOW HAVE ALERT CONTROLLER
     @IBAction func acceptStudent(sender: UIButton) {
         
         let currentStudent: Student = allStudents[0]
