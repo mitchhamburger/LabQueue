@@ -20,7 +20,6 @@ class CASViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         myWebView.delegate = self
         myWebView.scalesPageToFit = true
         
@@ -37,7 +36,7 @@ class CASViewController: UIViewController, UIWebViewDelegate {
     }
     
     func verify(netid: String) -> String {
-        let url: NSURL = NSURL(string: "http://localhost:5000/LabQueue/v1/TAs/\(netid)/Verify")!
+        let url: NSURL = NSURL(string: "https://tempwebservice-mh20.c9users.io/LabQueue/v1/TAs/\(netid)/Verify")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
@@ -52,12 +51,7 @@ class CASViewController: UIViewController, UIWebViewDelegate {
                 return
             }
             if error == nil && data != nil {
-                do {
-                    studentType = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
-                    
-                } catch {
-                    // Something went wrong
-                }
+                studentType = NSString(data: data!, encoding: NSUTF8StringEncoding) as! String
             }
             dispatch_semaphore_signal(semaphore)
         }
@@ -74,6 +68,7 @@ class CASViewController: UIViewController, UIWebViewDelegate {
             let startIndex = request.URL?.absoluteString.startIndex.advancedBy(57)
             let netId = request.URL?.absoluteString.substringFromIndex(startIndex!)
             globalNetId = netId!
+            registerForPushNotifications(UIApplication.sharedApplication())
             if (verify(netId!) == "Student") {
                 self.performSegueWithIdentifier("StudentLoggedIn", sender: netId)
                 return false
@@ -88,4 +83,10 @@ class CASViewController: UIViewController, UIWebViewDelegate {
         return true
     }
     
+    func registerForPushNotifications(application: UIApplication) {
+        let notificationSettings = UIUserNotificationSettings(
+            forTypes: [.Badge, .Sound, .Alert], categories: nil)
+        application.registerUserNotificationSettings(notificationSettings)
+        //registerToken(userDeviceToken, netid: globalNetId)
+    }
 }

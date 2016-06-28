@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        registerForPushNotifications(application)
+        //registerForPushNotifications(application)
         return true
     }
 
@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.xxxx.ProjectName" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as! NSURL
+        return urls[urls.count-1] 
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -138,6 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         userDeviceToken = tokenString
+        registerToken(userDeviceToken, netid: globalNetId)
         print("Device Token:", userDeviceToken)
     }
     
@@ -148,12 +149,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         let aps = userInfo["aps"] as! [String: AnyObject]
         completionHandler(.NoData)
-        // if it's a silent notification
-        if (aps["content-available"] as? NSString)?.integerValue == 1 {
-            print("got here")
+        
+        print(userInfo["type"]!)
+        if userInfo["type"]! as! String == "SilentEnqueue" {
+            NSNotificationCenter.defaultCenter().postNotificationName(addStudentToQueue, object: self)
             completionHandler(.NoData)
+        }
+        else if userInfo["type"]! as! String == "SilentDequeue" {
+            NSNotificationCenter.defaultCenter().postNotificationName(removeStudentFromQueue, object: self)
+            completionHandler(.NewData)
         }
     }
     
+    func registerToken(token: String, netid: String) {
+        let jsonObj = ["Device Token": token]
+        let url: NSURL = NSURL(string: "https://tempwebservice-mh20.c9users.io/LabQueue/v1/Tokens/\(netid)/RegisterDeviceToken")!
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        
+        do {
+            
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObj, options: .PrettyPrinted)
+            
+            // create post request
+            let request = NSMutableURLRequest(URL: url)
+            request.HTTPMethod = "POST"
+            
+            // insert json data to the request
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.HTTPBody = jsonData
+            
+            let semaphore = dispatch_semaphore_create(0)
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request){ data, response, error in
+                if error != nil{
+                    print("Error -> \(error)")
+                    return
+                }
+                dispatch_semaphore_signal(semaphore)
+            }
+            task.resume()
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            
+        } catch {
+            print(error)
+        }
+    }
+
 }
 

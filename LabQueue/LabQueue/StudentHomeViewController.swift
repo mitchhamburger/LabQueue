@@ -19,7 +19,9 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getQueueData("http://localhost:5000/LabQueue/v1/Queue")
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StudentHomeViewController.silentRemove), name: removeStudentFromQueue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StudentHomeViewController.silentAdd), name: addStudentToQueue, object: nil)
+        getQueueData("https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue")
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
@@ -27,6 +29,21 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
         self.queueTable.layer.cornerRadius = 10
         self.queueTable.separatorColor = UIColor.blackColor()
         allStudents = students
+    }
+    
+    func silentAdd() {
+        students.removeAll()
+        getQueueData("https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue")
+        self.queueTable.insertRowsAtIndexPaths([
+            NSIndexPath(forRow: self.students.count - 1, inSection: 0)
+            ], withRowAnimation: UITableViewRowAnimation.Right)
+        self.queueTable.reloadData()
+    }
+    
+    func silentRemove() {
+        students.removeFirst()
+        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+        queueTable.reloadData()
     }
     
     //UITableViewDataSource
@@ -171,6 +188,7 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
                         self.queueTable.insertRowsAtIndexPaths([
                             NSIndexPath(forRow: self.students.count-1, inSection: 0)
                             ], withRowAnimation: UITableViewRowAnimation.Right)
+                        self.queueTable.reloadData()
                         self.queueTable.endUpdates()
                     }
                 }
@@ -207,7 +225,7 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
     func addToQueue(nameField: String, problemField: String, courseField: String) {
         let thisStudent: Student = Student(name: nameField, helpMessage: problemField, course: courseField)
         let jsonObj = ["Name": nameField,
-                       "NetID": "gc23",
+                       "NetID": globalNetId,
                        "Help Message":problemField,
                        "Been Helped": false,
                        "Canceled": false,
@@ -216,7 +234,7 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
                        "Helped Time": "",
                        "Attending TA": "",
                        "Course": courseField]
-        let url: NSURL = NSURL(string: "http://localhost:5000/LabQueue/v1/Queue")!
+        let url: NSURL = NSURL(string: "https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
@@ -227,7 +245,7 @@ class StudentHomeViewController: UIViewController, UITableViewDataSource, UITabl
             let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObj, options: .PrettyPrinted)
             
             // create post request
-            let url = NSURL(string: "http://localhost:5000/LabQueue/v1/Queue")!
+            let url = NSURL(string: "https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue")!
             let request = NSMutableURLRequest(URL: url)
             request.HTTPMethod = "POST"
             

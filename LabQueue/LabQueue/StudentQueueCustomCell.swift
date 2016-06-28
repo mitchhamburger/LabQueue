@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// Custom Cell Class for queue in student interface.
+///
+/// Keeps each student's name as UILabel
 class StudentQueueCustomCell: UITableViewCell {
     @IBOutlet weak var studentName: UILabel!
     
