@@ -89,39 +89,37 @@ import CoreData
     func getQueueData(urlString: String) {
         /*HTTP REQUEST VERSION OF GETQUEUEDATA*/
         let url: NSURL = NSURL(string: urlString)!
-         let session = NSURLSession.sharedSession()
-         let request = NSMutableURLRequest(URL: url)
-         request.HTTPMethod = "GET"
-         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "GET"
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
          
-         let semaphore = dispatch_semaphore_create(0)
-         let task = session.dataTaskWithRequest(request) {
-         (
-         let data, let response, let error) in
-         guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
-         print("error")
-         return
-         }
-         if error == nil && data != nil {
-         do {
-         // Convert NSData to Dictionary where keys are of type String, and values are of any type
-         let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
-         var count = 0
-         for student in (json["Queue"]! as! NSArray) {
-         let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String)
-         thisStudent.netID = student["NetID"] as! String
-         self.students.append(thisStudent)
-         count += 1
-         }
-         
-         } catch {
+        let semaphore = dispatch_semaphore_create(0)
+        let task = session.dataTaskWithRequest(request) {
+            (let data, let response, let error) in
+            guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
+                print("error")
+                return
+            }
+            if error == nil && data != nil {
+                do {
+                    // Convert NSData to Dictionary where keys are of type String, and values are of any type
+                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
+                    var count = 0
+                    for student in (json["Queue"]! as! NSArray) {
+                        let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String)
+                        thisStudent.netID = student["NetID"] as! String
+                        self.students.append(thisStudent)
+                        count += 1
+                    }
+                } catch {
          // Something went wrong
-         }
-         }
-         dispatch_semaphore_signal(semaphore)
-         }
-         task.resume()
-         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+                }
+            }
+            dispatch_semaphore_signal(semaphore)
+        }
+        task.resume()
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         
         
         
@@ -204,10 +202,8 @@ import CoreData
                         self.queueTable.endUpdates()
                     }
                 }
-                
             }
-            }
-        ))
+            }))
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
         
