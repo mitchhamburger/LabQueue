@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         let query = GTLQueryGmail.queryForUsersLabelsList()
         service.executeQuery(query,
                              delegate: self,
-                             didFinishSelector: "displayResultWithTicket:finishedWithObject:error:"
+                             didFinishSelector: #selector(ViewController.displayResultWithTicket(_:finishedWithObject:error:))
         )
     }
     
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
             return
         }
         
-        var labelString = ""
+        //var labelString = ""
         self.performSegueWithIdentifier("UserLoggedIn", sender: nil)
         
         
@@ -108,7 +108,7 @@ class ViewController: UIViewController {
             clientSecret: nil,
             keychainItemName: kKeychainItemName,
             delegate: self,
-            finishedSelector: "viewController:finishedWithAuth:error:"
+            finishedSelector: #selector(ViewController.viewController(_:finishedWithAuth:error:))
         )
     }
     
