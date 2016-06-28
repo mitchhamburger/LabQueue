@@ -4,6 +4,7 @@ import time
 from apns import APNs, Frame, Payload
 import sys
 import logging
+import os
 app = Flask(__name__)
 
 LabTAs = [
@@ -54,7 +55,7 @@ Students = [
 		'Help Message': u"Chunks",
 		'Been Helped': True,
 		'Canceled': False,
-		'In Queue': False,
+		'In Queue': True,
 		'Request Time': u"10:00",
 		'Helped Time': u"10:30",
 		'Attending TA': u"Mitchell Hamburger",
@@ -78,7 +79,7 @@ Students = [
 		'Help Message': u"I don't know how to code",
 		'Been Helped': False,
 		'Canceled': True,
-		'In Queue': False,
+		'In Queue': True,
 		'Request Time': u"8:30",
 		'Helped Time': u"",
 		'Attending TA': u"",
@@ -102,7 +103,7 @@ Students = [
 		'Help Message': u"I need help",
 		'Been Helped': True,
 		'Canceled': False,
-		'In Queue': False,
+		'In Queue': True,
 		'Request Time': u"7:25",
 		'Helped Time': u" 8:30",
 		'Attending TA': u"Mitch Hamburger",
@@ -138,7 +139,7 @@ Students = [
 		'Help Message': u"I'm not in any of these classes",
 		'Been Helped': False,
 		'Canceled': True,
-		'In Queue': False,
+		'In Queue': True,
 		'Request Time': u"5:00",
 		'Helped Time': u"",
 		'Attending TA': u"",
@@ -162,7 +163,7 @@ Students = [
 		'Help Message': u"I can't type",
 		'Been Helped': True,
 		'Canceled': False,
-		'In Queue': False,
+		'In Queue': True,
 		'Request Time': u"7:25",
 		'Helped Time': u"7:30",
 		'Attending TA': u"Harry Heffernan",
@@ -202,7 +203,7 @@ Queue = [
 		'Help Message': u"Chunks",
 		'Been Helped': True,
 		'Canceled': False,
-		'In Queue': False,
+		'In Queue': True,
 		'Request Time': u"10:00",
 		'Helped Time': u"10:30",
 		'Attending TA': u"Mitchell Hamburger",
@@ -226,7 +227,7 @@ Queue = [
 		'Help Message': u"I don't know how to code",
 		'Been Helped': False,
 		'Canceled': True,
-		'In Queue': False,
+		'In Queue': True,
 		'Request Time': u"8:30",
 		'Helped Time': u"",
 		'Attending TA': u"",
@@ -250,7 +251,7 @@ Queue = [
 		'Help Message': u"I need help",
 		'Been Helped': True,
 		'Canceled': False,
-		'In Queue': False,
+		'In Queue': True,
 		'Request Time': u"7:25",
 		'Helped Time': u" 8:30",
 		'Attending TA': u"Mitch Hamburger",
@@ -286,7 +287,7 @@ Queue = [
 		'Help Message': u"I'm not in any of these classes",
 		'Been Helped': False,
 		'Canceled': True,
-		'In Queue': False,
+		'In Queue': True,
 		'Request Time': u"5:00",
 		'Helped Time': u"",
 		'Attending TA': u"",
@@ -310,7 +311,7 @@ Queue = [
 		'Help Message': u"I can't type",
 		'Been Helped': True,
 		'Canceled': False,
-		'In Queue': False,
+		'In Queue': True,
 		'Request Time': u"7:25",
 		'Helped Time': u"7:30",
 		'Attending TA': u"Harry Heffernan",
@@ -380,7 +381,7 @@ def getTokenFromID(netid):
 	else:
 		return entry[0]['Device Tokens'][len(entry[0]['Device Tokens']) - 1]['Token']
 
-def notifyUser(netid):
+def notifyUser(netid, type):
 	userToken = getTokenFromID(netid)
 	if userToken == "":
 		return "invalid netid"
@@ -388,7 +389,12 @@ def notifyUser(netid):
 		CERT_FILE = 'LabQueuePush.pem'
 		USE_SANDBOX=True
 		apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
-		payload = Payload(alert="Poop!", sound="default")                                      
+
+
+		if type == "SilentEnqueue":
+			payload = Payload(content_available=1, custom={"type": "SilentEnqueue"})
+		elif type == "SilentDequeue":
+			payload = Payload(content_available=1, custom={"type": "SilentDequeue"})                                 
 		identifier = 1
 		expiry = time.time() + 3600
 		priority = 10
@@ -397,12 +403,31 @@ def notifyUser(netid):
 		apns.gateway_server.send_notification_multiple(frame)
 		return "notification success"
 
-
+def notifyMatch(studentID, TAID, TAName):
+	userToken = getTokenFromID(studentID)
+	if userToken == "":
+		return "invalid netid"
+	else:
+		CERT_FILE = 'LabQueuePush.pem'
+		USE_SANDBOX=True
+		apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True) 
+		payload = Payload(alert=TAName+" is coming to help you", sound="default")                                      
+		identifier = 1
+		expiry = time.time() + 3600
+		priority = 10
+		frame = Frame()
+		frame.add_item(userToken, payload, identifier, expiry, priority)
+		apns.gateway_server.send_notification_multiple(frame)
+		return "notification success"
 
 @app.route('/LabQueue/v1/Queue', methods = ['GET', 'POST'])
 def fullQueueOps():
 	if request.method == 'GET':
-		return jsonify({'Queue': Queue})
+		activeQueue = []
+		for entry in Queue:
+			if entry['In Queue'] == True:
+				activeQueue.append(entry)
+		return jsonify({'Queue': activeQueue})
 	else:
 		if not request.json:
 			abort(400)
@@ -413,12 +438,13 @@ def fullQueueOps():
 			'Been Helped': False,
 			'Canceled': False,
 			'In Queue': True,
-			'Request Time': request.json['Request Time'],
+			'Request Time': u"",
 			'Helped Time': u"",
 			'Attending TA': u"",
 			'Course': request.json['Course']
 		}
 		Queue.append(newEntry)
+		silentUpdate("SilentEnqueue", request.json['NetID'])
 		return jsonify({'Queue': Queue}), 201
 
 @app.route('/LabQueue/v1/Queue/<netid>/Delete', methods = ['GET'])
@@ -428,6 +454,7 @@ def singleUserOps(netid):
 		if len(entry) == 0:
 			abort(404)
 		Queue.remove(entry[0])
+		silentUpdate("SilentDequeue", "")
 		return jsonify({'Queue': Queue})
 
 @app.route('/LabQueue/v1/Queue/<netid>/Helped', methods = ['POST'])
@@ -437,9 +464,11 @@ def markAsHelped(netid):
 		abort(404)
 	entry[0]['Been Helped'] = True
 	entry[0]['In Queue'] = False
-	entry[0]['Helped Time'] = request.json['Helped Time']
+	entry[0]['Helped Time'] = ""
 	entry[0]['Attending TA'] = request.json['Attending TA']
 	Queue.remove(entry[0])
+	silentUpdate("SilentDequeue", "")
+	notifyMatch(netid, request.json['NetID'], request.json['Attending TA'])
 	return jsonify({'entry': entry[0]})
 
 @app.route('/LabQueue/v1/TAs/<netid>/Verify', methods = ['GET'])
@@ -450,6 +479,14 @@ def verify(netid):
 	else:
 		return "TA"
 
+def silentUpdate(type, netid):
+	for entry in Queue:
+		if entry['In Queue'] == True and entry['NetID'] != netid:
+			notifyUser(entry['NetID'], type)
+	for entry in LabTAs:
+		if entry['NetID'] != netid:
+			notifyUser(entry['NetID'], type)
+
 @app.route('/LabQueue/v1/Queue/<netid>/Canceled', methods = ['GET'])
 def markAsCanceled(netid):
 	entry = [entry for entry in Queue if entry['NetID'] == netid]
@@ -458,11 +495,12 @@ def markAsCanceled(netid):
 	entry[0]['In Queue'] = False
 	entry[0]['Canceled'] = True
 	Queue.remove(entry[0])
-	return jsonify({'entry': entry[0]})
+	silentUpdate("SilentDequeue", "")
+	return "hello"
 
 @app.route('/LabQueue/v1/TAs/<netid>/MarkActive', methods = ['GET'])
 def markAsActive(netid):
-	ta = [ta for ta in LabTAs if ta['NetID'] == email]
+	ta = [ta for ta in LabTAs if ta['NetID'] == netid]
 	if len(ta) == 0:
 		abort(404)
 	ta[0]['Is Active'] = True
@@ -470,7 +508,7 @@ def markAsActive(netid):
 
 @app.route('/LabQueue/v1/TAs/<netid>/MarkInactive', methods = ['GET'])
 def markAsInactive(netid):
-	ta = [ta for ta in LabTAs if ta['NetID'] == email]
+	ta = [ta for ta in LabTAs if ta['NetID'] == netid]
 	if len(ta) == 0:
 		abort(404)
 	ta[0]['Is Active'] = False
@@ -479,7 +517,7 @@ def markAsInactive(netid):
 @app.route('/LabQueue/v1/TAs/<netid>/Delete', methods = ["GET"])
 def deleteTA(netid):
 	if request.method == 'DELETE':
-		entry = [entry for entry in LabTAs if entry['NetID'] == email]
+		entry = [entry for entry in LabTAs if entry['NetID'] == netid]
 		if len(entry) == 0:
 			abort(404)
 		LabTAs.remove(entry[0])
@@ -500,27 +538,7 @@ def allTAOps():
 		LabTAs.append(newTA)
 		return jsonify({'TAs': LabTAs})
 
-def sendNotification(netid):
-	CERT_FILE = 'LabQueuePush.pem'
-	USE_SANDBOX=True
-	ZACH = '4b1a5b8a8f5dc1b414ff0db55a8fe49c385a163268beb0cce9de69352b9c009b'
-
-	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
-
-	# Send a notification                                                                                                               
-	token_hex = '3af63949a84b3fad2410a5b12df07ff3127fb6b9c86e9ab8fd455f1eb3533414'
-	payload = Payload(alert="Poop!", sound="default", badge=1)
-	#apns.gateway_server.send_notification(token_hex, payload)                                                                          
-
-	identifier = 1
-	expiry = time.time() + 3600
-	priority = 10
-	frame = Frame()
-	frame.add_item(token_hex, payload, identifier, expiry, priority)
-	apns.gateway_server.send_notification_multiple(frame)
-
 if __name__ == '__main__':
-	notifyUser('mh20')
 	app.run(debug = True)
 
 

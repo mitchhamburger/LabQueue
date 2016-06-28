@@ -13,7 +13,6 @@ import CoreData
 
 class TAHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
-    
     @IBOutlet weak var studentPicture: StudentPictureView!
     @IBOutlet weak var queueTable: UITableView!
     
@@ -25,12 +24,14 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentRemove), name: removeStudentFromQueue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentAdd), name: addStudentToQueue, object: nil)
         studentPicture.layer.cornerRadius = studentPicture.frame.size.width / 2;
         studentPicture.clipsToBounds = true
         studentPicture.layer.borderWidth = 2
         studentPicture.layer.borderColor = UIColor.blackColor().CGColor
         studentPicture.image = UIImage(named: "mitch pic.jpg")
-        getQueueData("http://localhost:5000/LabQueue/v1/Queue")
+        getQueueData("https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue")
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.queueTable.dataSource = self
@@ -53,7 +54,20 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+    func silentAdd() {
+        students.removeAll()
+        getQueueData("https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue")
+        self.queueTable.insertRowsAtIndexPaths([
+            NSIndexPath(forRow: self.students.count - 1, inSection: 0)
+            ], withRowAnimation: UITableViewRowAnimation.Right)
+        self.queueTable.reloadData()
+    }
     
+    func silentRemove() {
+        students.removeFirst()
+        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+        queueTable.reloadData()
+    }
     
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -238,7 +252,8 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         
         //WILL PUT NSUSER TA NAME HERE
         let jsonObj = ["Helped Time": "",
-                       "Attending TA": ""]
+                       "Attending TA": globalNetId,
+                       "NetID": globalNetId]
         TACurrentStudent = currentStudent
         let prefs = NSUserDefaults.standardUserDefaults()
         let encodedData = NSKeyedArchiver.archivedDataWithRootObject(currentStudent)
@@ -247,13 +262,22 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         
         titleBar.topItem?.title = "Your Current Student is " + TACurrentStudent.name
         
-        
         //HTTP REQUEST
-        let url: NSURL = NSURL(string: "http://localhost:5000/LabQueue/v1/Queue/" + currentStudent.netID + "/Delete")!
+        let url: NSURL = NSURL(string: "https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue/" + currentStudent.netID + "/Helped")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "GET"
+        
+        request.HTTPMethod = "POST"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        
+        do {
+            
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObj, options: .PrettyPrinted)
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.HTTPBody = jsonData
+        } catch {
+            print("error")
+        }
         
         let semaphore = dispatch_semaphore_create(0)
         let task = session.dataTaskWithRequest(request) {
@@ -272,6 +296,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
         queueTable.reloadData()
         //END HTTP REQUEST
+        
 
         
         /*
@@ -336,7 +361,7 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func cancelStudent(sender: UIButton) {
         
         //HTTP REQUEST
-        let url: NSURL = NSURL(string: "http://localhost:5000/LabQueue/v1/Queue/" + students[0].netID + "/Canceled")!
+        let url: NSURL = NSURL(string: "https://tempwebservice-mh20.c9users.io/LabQueue/v1/Queue/" + students[0].netID + "/Canceled")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
@@ -355,9 +380,10 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         task.resume()
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         //END HTTP REQUEST
-
         students.removeFirst()
+        queueTable.beginUpdates()
         queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+        queueTable.endUpdates()
         queueTable.reloadData()
         
         /*
@@ -422,4 +448,18 @@ class TAHomeViewController: UIViewController, UITableViewDataSource, UITableView
         self.performSegueWithIdentifier("ShowCurrentStudent", sender: TACurrentStudent)
     }
     
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        let aps = userInfo["aps"] as! [String: AnyObject]
+        students.removeFirst()
+        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+        queueTable.reloadData()
+        completionHandler(.NewData)
+        // 1
+        if (aps["content-available"] as? NSString)?.integerValue == 1 {
+            
+            }
+        else  {
+            completionHandler(.NoData)
+        }
+    }
 }
