@@ -5,11 +5,25 @@
 //  Created by Mitch Hamburger on 6/10/16.
 //  Copyright © 2016 Mitch Hamburger. All rights reserved.
 //
+//  Student data type
 
 import UIKit
-@IBDesignable
 
-class Student: NSObject, NSCoding {
+/// Student data type
+///
+/// Attributes:
+/// * name: name of student
+/// * netID: netid of student
+/// * helpMessage: student's help message
+/// * beenHelped: has the student been helped?
+/// * canceled: was the request canceled?
+/// * inQueue: is the stuednt in the queue?
+/// * requestTime: time that the request was made
+/// * helpedTime: time that the student was helped
+/// * attendingTA: TA that helped the student
+/// * course: course that the student is in
+/// * placeInQueue: place in line
+@IBDesignable class Student: NSObject, NSCoding {
     
     var name: String
     var netID: String

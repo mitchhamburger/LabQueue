@@ -35,8 +35,15 @@ class CASViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    /// Check whether a NetID belongs to a student or a TA through the API
+    ///
+    /// args:
+    /// * netid: NetID of student
+    ///
+    /// returns "Student" for student and "LabTA" for TA
     func verify(netid: String) -> String {
-        let url: NSURL = NSURL(string: "https://tempwebservice-mh20.c9users.io/LabQueue/v1/TAs/\(netid)/Verify")!
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v1/TAs/\(netid)/Verify")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
