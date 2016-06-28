@@ -10,6 +10,7 @@ import GoogleAPIClient
 import GTMOAuth2
 import UIKit
 
+/// Google authentication
 class ViewController: UIViewController {
     
     private let kKeychainItemName = "Gmail API"

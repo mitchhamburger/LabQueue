@@ -8,6 +8,16 @@
 
 import UIKit
 
+
+///  View Controller to display info about inidivudal
+///  students that is available to other students.
+///
+///  Information available:
+///
+///  1. place in queue
+///  2. student name
+///  3. student email
+///  4. course that student is in
 class StudentStudentInfoViewController: UIViewController {
     var currentStudent: Student = Student(name: "", helpMessage: "", course: "")
     

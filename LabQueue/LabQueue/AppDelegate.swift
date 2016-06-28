@@ -117,6 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    /// Prompt user to register for push notifications
     func registerForPushNotifications(application: UIApplication) {
         let notificationSettings = UIUserNotificationSettings(
             forTypes: [.Badge, .Sound, .Alert], categories: nil)
@@ -161,6 +162,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    /// Register user's device token using HTTP POST
+    /// 
+    /// Parameters:
+    /// * token: device token for current user
+    /// * netid: netid of current user
     func registerToken(token: String, netid: String) {
         let jsonObj = ["Device Token": token]
         let url: NSURL = NSURL(string: "https://tempwebservice-mh20.c9users.io/LabQueue/v1/Tokens/\(netid)/RegisterDeviceToken")!
