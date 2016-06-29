@@ -30,7 +30,6 @@ import CoreData
         self.queueTable.layer.borderWidth = 2
         self.queueTable.layer.cornerRadius = 10
         self.queueTable.separatorColor = UIColor.blackColor()
-        allStudents = students
     }
     
     /// Handler for addStudentToQueue Notification
@@ -182,9 +181,6 @@ import CoreData
     /// himself to the Queue. Configures and displays alert
     /// view controller.
     @IBAction func addNamePushed(sender: UIButton) {
-        let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("NewFormViewController")
-        //self.showViewController(vc as! UIViewController, sender: vc)
-        
         
         let alertController = UIAlertController(title: "Add yourself to the Queue", message: "Submit your info", preferredStyle: .Alert)
         
@@ -276,7 +272,6 @@ import CoreData
                 
                 do {
                     let result = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject]
-                    allStudents.append(thisStudent)
                     self.students.append(thisStudent)
                     //print("Result -> \(result)")
                 } catch {
