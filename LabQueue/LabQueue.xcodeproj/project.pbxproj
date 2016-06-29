@@ -28,7 +28,6 @@
 		F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F871535B1D0F29AA00F29040 /* StudentStudentInfoViewController.swift */; };
 		F8722BF41D0886BF00449536 /* TAHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722BF31D0886BF00449536 /* TAHomeViewController.swift */; };
 		F8722BF61D089C5E00449536 /* StudentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */; };
-		F8722BF81D08A0AA00449536 /* NewFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722BF71D08A0AA00449536 /* NewFormViewController.swift */; };
 		F895FC631D217AA30031F47D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895FC621D217AA30031F47D /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +78,6 @@
 		F871535B1D0F29AA00F29040 /* StudentStudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentStudentInfoViewController.swift; sourceTree = "<group>"; };
 		F8722BF31D0886BF00449536 /* TAHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAHomeViewController.swift; sourceTree = "<group>"; };
 		F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHomeViewController.swift; sourceTree = "<group>"; };
-		F8722BF71D08A0AA00449536 /* NewFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFormViewController.swift; sourceTree = "<group>"; };
 		F895FC621D217AA30031F47D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,7 +199,6 @@
 		F871535E1D0F30C400F29040 /* Student Files */ = {
 			isa = PBXGroup;
 			children = (
-				F8722BF71D08A0AA00449536 /* NewFormViewController.swift */,
 				F82AC1F61D0BAABA00BDADD2 /* Student.swift */,
 				F871535B1D0F29AA00F29040 /* StudentStudentInfoViewController.swift */,
 				F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */,
@@ -417,7 +414,6 @@
 				F8722BF41D0886BF00449536 /* TAHomeViewController.swift in Sources */,
 				F82AC1F71D0BAABA00BDADD2 /* Student.swift in Sources */,
 				F83222991D07B7610089304E /* AppDelegate.swift in Sources */,
-				F8722BF81D08A0AA00449536 /* NewFormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

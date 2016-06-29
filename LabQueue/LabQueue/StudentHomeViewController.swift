@@ -107,7 +107,7 @@ import CoreData
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
                     var count = 0
                     for student in (json["Queue"]! as! NSArray) {
-                        let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String)
+                        let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String, netid: student["NetID"] as! String)
                         thisStudent.netID = student["NetID"] as! String
                         self.students.append(thisStudent)
                         count += 1
@@ -237,7 +237,7 @@ import CoreData
     /// * problemField: help message of the student
     /// * courseField: course of the student
     func addToQueue(nameField: String, problemField: String, courseField: String) {
-        let thisStudent: Student = Student(name: nameField, helpMessage: problemField, course: courseField)
+        let thisStudent: Student = Student(name: nameField, helpMessage: problemField, course: courseField, netid: globalNetId)
         let jsonObj = ["Name": nameField,
                        "NetID": globalNetId,
                        "Help Message":problemField,

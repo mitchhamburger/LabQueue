@@ -35,7 +35,7 @@ import UIKit
     
     @IBOutlet weak var acceptButton: UIButton!
     
-    var currentStudent: Student = Student(name: "", helpMessage: "", course: "")
+    var currentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "")
     var isCurrentStudent: Bool = false
     
     
@@ -67,7 +67,6 @@ import UIKit
     }
     
     
-    //WILL DELETE ON V2, SINCE WE NOW HAVE ALERT CONTROLLER
     @IBAction func acceptStudent(sender: UIButton) {
         
         let currentStudent: Student = allStudents[0]
