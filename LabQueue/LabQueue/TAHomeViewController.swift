@@ -23,6 +23,7 @@ import CoreData
     
     @IBOutlet weak var titleBar: UINavigationBar!
     var students = [Student]()
+    var currentQueue = [Student]()
     
     var managedObjectContext: NSManagedObjectContext!
     
@@ -219,6 +220,39 @@ import CoreData
             print("here")
             print(fetchError)
         }*/
+    }
+    
+    /// Populates currentQueue from core data
+    func populateTable() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        
+        // Initialize and configure Fetch Request
+        let fetchRequest = NSFetchRequest()
+        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.entity = studentEntity
+         
+        do {
+            let result = try managedContext!.executeFetchRequest(fetchRequest)
+         
+            for student in result {
+                let studentobj = student as! NSManagedObject
+         
+                let name = studentobj.valueForKey("name")
+                let netID = studentobj.valueForKey("netid")
+                let helpMessage = studentobj.valueForKey("helpmessage")
+                let course = studentobj.valueForKey("course")
+                let thisStudent: Student = Student(name: name as! String, helpMessage: helpMessage as! String, course: course as! String, netid: netID as! String)
+                currentQueue.append(thisStudent)
+            }
+        } catch {
+            let fetchError = error as NSError
+            print("Error fetching from core data")
+            print(fetchError)
+        }
     }
 
     /// Helper function for if I use Core Data, creates
