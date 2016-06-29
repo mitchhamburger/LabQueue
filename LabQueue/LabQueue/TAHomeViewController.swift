@@ -55,7 +55,7 @@ import CoreData
         else {
             titleBar.topItem?.title = "Welcome to Lab TAs!"
         }
-        
+        syncQueue()
     }
     
     /// Handler for addStudentToQueue Notification
@@ -147,7 +147,7 @@ import CoreData
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
                     var count = 0
                     for student in (json["Queue"]! as! NSArray) {
-                        let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String)
+                        let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String, netid: student["NetID"] as! String)
                         thisStudent.netID = student["NetID"] as! String
                         self.students.append(thisStudent)
                         count += 1
@@ -229,13 +229,13 @@ import CoreData
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
-        let student1: Student = Student(name: "Mitch Hamburger", helpMessage: "I don't know how to code", course: "COS 126")
+        let student1: Student = Student(name: "Mitch Hamburger", helpMessage: "I don't know how to code", course: "COS 126", netid: "")
         student1.netID = "mh20"
          
-        let student2: Student = Student(name: "Jason Hamburger", helpMessage: "I don't go to this school", course: "Arizona")
+        let student2: Student = Student(name: "Jason Hamburger", helpMessage: "I don't go to this school", course: "Arizona", netid: "")
         student2.netID = "jh45"
          
-        let student3: Student = Student(name: "Rachel Hamburger", helpMessage: "What?", course: "COS 226")
+        let student3: Student = Student(name: "Rachel Hamburger", helpMessage: "What?", course: "COS 226", netid: "")
         student3.netID = "goldraerae"
          
         let dummyData = [student1, student2, student3]

@@ -8,20 +8,15 @@
         <relationship name="currentStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="helpingTA" inverseEntity="Student" syncable="YES"/>
     </entity>
     <entity name="Student" syncable="YES">
-        <attribute name="attendingta" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="beenhelped" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="canceled" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="course" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="helpedtime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="helpmessage" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="inqueue" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="netid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="requesttime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="helpingTA" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LabTA" inverseName="currentStudent" inverseEntity="LabTA" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Student" positionX="-63" positionY="-18" width="128" height="210"/>
         <element name="LabTA" positionX="-54" positionY="-9" width="128" height="120"/>
+        <element name="Student" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

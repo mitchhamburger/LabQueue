@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 var allStudents: [Student] = []
 var activeTAs: [LabTA] = []
-var TACurrentStudent: Student = Student(name: "", helpMessage: "", course: "")
+var TACurrentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "")
 var StudentCurrentTA: LabTA = LabTA()
 var userDeviceToken: String = ""
 

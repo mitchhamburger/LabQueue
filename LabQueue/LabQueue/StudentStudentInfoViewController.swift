@@ -19,7 +19,7 @@ import UIKit
 ///  3. student email
 ///  4. course that student is in
 class StudentStudentInfoViewController: UIViewController {
-    var currentStudent: Student = Student(name: "", helpMessage: "", course: "")
+    var currentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "")
     
     @IBOutlet weak var studentNumber: UILabel!
     
