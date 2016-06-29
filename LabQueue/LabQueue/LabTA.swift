@@ -12,23 +12,20 @@ import UIKit
 /// LabTA data type
 ///
 /// Attributes:
-/// * firstName: first name of Lab TA
-/// * lastName: last name of Lab TA
-/// * email: email address of Lab TA
+/// * name: first name of Lab TA
+/// * netID: netid of Lab TA
 /// * classYear: class year of Lab TA
 /// * isActive: whether or not the Lab TA is currently active
 @IBDesignable class LabTA {
     
-    var firstName: String?
-    var lastName: String?
-    var email: String?
+    var name: String?
+    var netID: String?
     var classYear: Int?
     var isActive: Bool?
     
     init() {
-        firstName = nil
-        lastName = nil
-        email = nil
+        name = nil
+        netID = nil
         classYear = nil
         isActive = nil
     }
