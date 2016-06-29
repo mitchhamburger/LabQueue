@@ -16,7 +16,7 @@ let hostName = "https://tempwebservice-mh20.c9users.io"
 
 func syncQueue() {
     
-    /*first delete everything from core data*/
+    /*1. first delete everything from core data*/
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedContext = appDelegate.managedObjectContext
@@ -46,8 +46,9 @@ func syncQueue() {
         print("error saving")
     }
     
+    
+    /* 2. Then save database queue to an array of students*/
     var activeQueue = [Student]()
-    /*Then save database queue to an array of students*/
     let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v1/Queue")!
     let session = NSURLSession.sharedSession()
     let request = NSMutableURLRequest(URL: url)
@@ -78,7 +79,7 @@ func syncQueue() {
     
     
     
-    /*Load activeQueue into core data*/
+    /*3. Finally load activeQueue into core data*/
     
     for tempStudent in activeQueue {
         print(tempStudent.netID)
