@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-var allStudents: [Student] = []
 var activeTAs: [LabTA] = []
 var TACurrentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "")
 var StudentCurrentTA: LabTA = LabTA()
@@ -22,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         //registerForPushNotifications(application)
+        syncQueue()
         return true
     }
 
