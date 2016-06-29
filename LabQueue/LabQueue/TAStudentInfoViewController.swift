@@ -69,10 +69,9 @@ import UIKit
     
     @IBAction func acceptStudent(sender: UIButton) {
         
-        let currentStudent: Student = allStudents[0]
         TACurrentStudent = currentStudent
         
-        let url: NSURL = NSURL(string: "http://localhost:5000/LabQueue/v1/Queue/" + currentStudent.netID)!
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v1/Queue/" + currentStudent.netID)!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "DELETE"
@@ -90,7 +89,6 @@ import UIKit
         }
         task.resume()
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-        allStudents.removeFirst()
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc: UIViewController = storyboard.instantiateViewControllerWithIdentifier("TAHomeViewController")
         self.presentViewController(vc, animated: true, completion: nil)
