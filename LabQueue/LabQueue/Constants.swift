@@ -78,7 +78,6 @@ func syncQueue() {
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
     
     
-    
     /*3. Finally load activeQueue into core data*/
     for tempStudent in activeQueue {
         let inputStudentObj = NSManagedObject(entity: studentEntity!, insertIntoManagedObjectContext: managedContext)

@@ -17,55 +17,164 @@ import CoreData
 @IBDesignable class StudentHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var queueTable: UITableView!
-    var currentQueue = [Student]()
+    //var currentQueue = [Student]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StudentHomeViewController.silentRemove), name: removeStudentFromQueue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StudentHomeViewController.silentAdd), name: addStudentToQueue, object: nil)
+        syncQueue()
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
         self.queueTable.layer.borderWidth = 2
         self.queueTable.layer.cornerRadius = 10
         self.queueTable.separatorColor = UIColor.blackColor()
-        populateTable()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: removeStudentFromQueue, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: addStudentToQueue, object: nil)
     }
     
     /// Handler for addStudentToQueue Notification
-    func silentAdd() {
-        populateTable()
+    func silentAdd(notification: NSNotification) {
+        print("student")
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentName = notification.userInfo!["studentinfo"]!["Name"] as! String
+        let studentCourse = notification.userInfo!["studentinfo"]!["Course"] as! String
+        let studentMessage = notification.userInfo!["studentinfo"]!["Help Message"] as! String
+        let studentID = notification.userInfo!["studentinfo"]!["NetID"] as! String
+        let thisStudent = Student(name: studentName, helpMessage: studentMessage, course: studentCourse, netid: studentID)
+        
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        let inputStudentObj = NSManagedObject(entity: studentEntity!, insertIntoManagedObjectContext: managedContext)
+        inputStudentObj.setValue(thisStudent.name, forKey: "name")
+        inputStudentObj.setValue(thisStudent.helpMessage, forKey: "helpmessage")
+        inputStudentObj.setValue(thisStudent.course, forKey: "course")
+        inputStudentObj.setValue(thisStudent.netID, forKey: "netid")
+        do {
+            try managedContext!.save()
+        } catch {
+            print("error witth \(thisStudent.netID)")
+        }
+        
+        queueTable.beginUpdates()
         self.queueTable.insertRowsAtIndexPaths([
-            NSIndexPath(forRow: self.currentQueue.count - 1, inSection: 0)
+            NSIndexPath(forRow: queueTable.numberOfRowsInSection(0), inSection: 0)
             ], withRowAnimation: UITableViewRowAnimation.Right)
-        self.queueTable.reloadData()
+        queueTable.endUpdates()
     }
     
     /// Handler for removeStudentFromQueue Notification
-    func silentRemove() {
-        currentQueue.removeFirst()
-        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+    func silentRemove(notification: NSNotification) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        
+        let fetchRequest = NSFetchRequest()
+        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.entity = studentEntity
+        
+        var hit: Int = 0
+        var count: Int = 0
+        
+        do {
+            let result = try managedContext!.executeFetchRequest(fetchRequest)
+            for request in result {
+                let requestObj = request as! NSManagedObject
+                if requestObj.valueForKey("netid") as! String == notification.userInfo!["id"] as! String {
+                    hit = count
+                    let thisStudent = requestObj
+                    managedContext?.deleteObject(thisStudent)
+                }
+                count += 1
+            }
+        } catch {
+            print("error fetching")
+        }
+        do {
+            try managedContext?.save()
+        } catch {
+            print("error deleting \(notification.userInfo!["id"])")
+        }
+        
+        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: hit, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
         queueTable.reloadData()
     }
     
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentQueue.count
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = studentEntity
+        var count: Int = 0
+        do {
+            let result = try managedContext!.executeFetchRequest(fetchRequest)
+            count = result.count
+        } catch {
+            count = 0
+        }
+        return count
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = studentEntity
+        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.entity = studentEntity
+        
         let cell = self.queueTable.dequeueReusableCellWithIdentifier("customcell")! as! StudentQueueCustomCell
-        cell.studentName.text = "\(indexPath.row + 1). " + currentQueue[indexPath.row].name
+        var result: [NSManagedObject] = [NSManagedObject]()
+        do {
+            result = try managedContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        } catch {
+            
+        }
+        cell.studentName.text = "\(indexPath.row + 1). \(result[indexPath.row].valueForKey("name") as! String)"
+        cell.studentID = result[indexPath.row].valueForKey("netid") as! String
         return cell
     }
     
     //UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = studentEntity
+        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.entity = studentEntity
+        
+        var result: [NSManagedObject] = [NSManagedObject]()
+        do {
+            result = try managedContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        } catch {
+            print("error")
+        }
+        let studentobj = result[indexPath.row]
+        let name = studentobj.valueForKey("name")
+        let netID = studentobj.valueForKey("netid")
+        let helpMessage = studentobj.valueForKey("helpmessage")
+        let course = studentobj.valueForKey("course")
+        let thisStudent: Student = Student(name: name as! String, helpMessage: helpMessage as! String, course: course as! String, netid: netID as! String)
+        thisStudent.placeInQueue = indexPath.row + 1
         print("you tapped \(indexPath.row)")
         
-        self.currentQueue[indexPath.row].placeInQueue = indexPath.row + 1
-        self.performSegueWithIdentifier("ShowStudentInfo", sender: self.currentQueue[indexPath.row])
-        
-        
+        self.performSegueWithIdentifier("ShowStudentInfo", sender: thisStudent)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -80,7 +189,7 @@ import CoreData
     }
     
     /// Populates currentQueue from core data
-    func populateTable() {
+    /*func populateTable() {
         currentQueue.removeAll()
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -111,7 +220,7 @@ import CoreData
             print("Error fetching from core data")
             print(fetchError)
         }
-    }
+    }*/
     
     
     /// Handler for when a student pushes the button to add
@@ -161,7 +270,24 @@ import CoreData
     /// * problemField: help message of the student
     /// * courseField: course of the student
     func addToQueue(name: String, helpMessage: String, course: String, netid: String) {
-        let thisStudent: Student = Student(name: name, helpMessage: helpMessage, course: course, netid: netid)
+        //let thisStudent: Student = Student(name: name, helpMessage: helpMessage, course: course, netid: netid)
+        
+        /*Add the entry to Core Data*/
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        
+        let inputStudentObj = NSManagedObject(entity: studentEntity!, insertIntoManagedObjectContext: managedContext)
+        inputStudentObj.setValue(name, forKey: "name")
+        inputStudentObj.setValue(helpMessage, forKey: "helpmessage")
+        inputStudentObj.setValue(course, forKey: "course")
+        inputStudentObj.setValue(netid, forKey: "netid")
+        
+        do {
+            try managedContext?.save()
+        } catch {
+            print("error saving \(netid) into core data")
+        }
         
         /*BEGIN HTTP REQUEST*/
         let jsonObj = ["Name": name,
@@ -192,27 +318,8 @@ import CoreData
         /*END HTTP REQUEST*/
         
         /*update currentQueue and UI*/
-        self.queueTable.beginUpdates()
-        currentQueue.append(thisStudent)
-        self.queueTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.currentQueue.count-1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Right)
+        self.queueTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.queueTable.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: UITableViewRowAnimation.Right)
         self.queueTable.reloadData()
-        self.queueTable.endUpdates()
         
-        /*Add the entry to Core Data*/
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
-        
-        let inputStudentObj = NSManagedObject(entity: studentEntity!, insertIntoManagedObjectContext: managedContext)
-        inputStudentObj.setValue(name, forKey: "name")
-        inputStudentObj.setValue(helpMessage, forKey: "helpmessage")
-        inputStudentObj.setValue(course, forKey: "course")
-        inputStudentObj.setValue(netid, forKey: "netid")
-        
-        do {
-            try managedContext?.save()
-        } catch {
-            print("error saving \(netid) into core data")
-        }
     }
 }

@@ -22,7 +22,7 @@ import CoreData
     @IBOutlet weak var queueTable: UITableView!
     
     @IBOutlet weak var titleBar: UINavigationBar!
-    var currentQueue = [Student]()
+    //let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,8 @@ import CoreData
         studentPicture.layer.borderWidth = 2
         studentPicture.layer.borderColor = UIColor.blackColor().CGColor
         studentPicture.image = UIImage(named: "mitch pic.jpg")
-        populateTable()
+        syncQueue()
+        //populateTable()
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.queueTable.dataSource = self
@@ -55,35 +56,118 @@ import CoreData
         //syncQueue()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: removeStudentFromQueue, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: addStudentToQueue, object: nil)
+    }
     /// Handler for addStudentToQueue Notification
-    func silentAdd() {
-        syncQueue()
-        populateTable()
+    func silentAdd(notification: NSNotification) {
+        print("ta")
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentName = notification.userInfo!["studentinfo"]!["Name"] as! String
+        let studentCourse = notification.userInfo!["studentinfo"]!["Course"] as! String
+        let studentMessage = notification.userInfo!["studentinfo"]!["Help Message"] as! String
+        let studentID = notification.userInfo!["studentinfo"]!["NetID"] as! String
+        let thisStudent = Student(name: studentName, helpMessage: studentMessage, course: studentCourse, netid: studentID)
+        
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        let inputStudentObj = NSManagedObject(entity: studentEntity!, insertIntoManagedObjectContext: managedContext)
+        inputStudentObj.setValue(thisStudent.name, forKey: "name")
+        inputStudentObj.setValue(thisStudent.helpMessage, forKey: "helpmessage")
+        inputStudentObj.setValue(thisStudent.course, forKey: "course")
+        inputStudentObj.setValue(thisStudent.netID, forKey: "netid")
+        do {
+            try managedContext!.save()
+        } catch {
+            print("error witth \(thisStudent.netID)")
+        }
+        
         queueTable.beginUpdates()
         self.queueTable.insertRowsAtIndexPaths([
-            NSIndexPath(forRow: self.currentQueue.count - 1, inSection: 0)
+            NSIndexPath(forRow: queueTable.numberOfRowsInSection(0), inSection: 0)
             ], withRowAnimation: UITableViewRowAnimation.Right)
         queueTable.endUpdates()
-        self.queueTable.reloadData()
     }
     
     /// Handler for removeStudentFromQueue Notification
-    func silentRemove() {
-        syncQueue()
-        queueTable.beginUpdates()
-        currentQueue.removeFirst()
-        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
-        queueTable.endUpdates()
+    func silentRemove(notification: NSNotification) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        
+        let fetchRequest = NSFetchRequest()
+        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.entity = studentEntity
+        
+        var hit: Int = 0
+        var count: Int = 0
+        
+        do {
+            let result = try managedContext!.executeFetchRequest(fetchRequest)
+            for request in result {
+                let requestObj = request as! NSManagedObject
+                if requestObj.valueForKey("netid") as! String == notification.userInfo!["id"] as! String {
+                    hit = count
+                    let thisStudent = requestObj
+                    managedContext?.deleteObject(thisStudent)
+                }
+                count += 1
+            }
+        } catch {
+            print("error fetching")
+        }
+        do {
+            try managedContext?.save()
+        } catch {
+            print("error deleting \(notification.userInfo!["id"])")
+        }
+        
+        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: hit, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
         queueTable.reloadData()
     }
     
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentQueue.count
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = studentEntity
+        var count: Int = 0
+        do {
+            let result = try managedContext!.executeFetchRequest(fetchRequest)
+            count = result.count
+        } catch {
+            count = 0
+        }
+        return count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = studentEntity
+        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.entity = studentEntity
+        
         let cell = self.queueTable.dequeueReusableCellWithIdentifier("TAcustomcell")! as! TAQueueCustomCell
-        cell.studentName.text = "\(indexPath.row + 1). " + self.currentQueue[indexPath.row].name
+        var result: [NSManagedObject] = [NSManagedObject]()
+        do {
+            result = try managedContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        } catch {
+            
+        }
+        cell.studentName.text = "\(indexPath.row + 1). \(result[indexPath.row].valueForKey("name") as! String)"
+        cell.studentID = result[indexPath.row].valueForKey("netid") as! String
+        //let cell = self.queueTable.dequeueReusableCellWithIdentifier("TAcustomcell")! as! TAQueueCustomCell
+        //cell.studentName.text = "\(indexPath.row + 1). " + self.currentQueue[indexPath.row].name
         if (indexPath.row == 0) {
             cell.acceptButton.hidden = false
             cell.rejectButton.hidden = false
@@ -98,10 +182,33 @@ import CoreData
     
     //UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = studentEntity
+        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.entity = studentEntity
+        
+        var result: [NSManagedObject] = [NSManagedObject]()
+        do {
+            result = try managedContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        } catch {
+            print("error")
+        }
+        let studentobj = result[indexPath.row]
+        let name = studentobj.valueForKey("name")
+        let netID = studentobj.valueForKey("netid")
+        let helpMessage = studentobj.valueForKey("helpmessage")
+        let course = studentobj.valueForKey("course")
+        let thisStudent: Student = Student(name: name as! String, helpMessage: helpMessage as! String, course: course as! String, netid: netID as! String)
+        thisStudent.placeInQueue = indexPath.row + 1
         print("you tapped \(indexPath.row)")
         
-        self.currentQueue[indexPath.row].placeInQueue = indexPath.row + 1
-        self.performSegueWithIdentifier("ToSpecificStudent", sender: self.currentQueue[indexPath.row])
+        //self.currentQueue[indexPath.row].placeInQueue = indexPath.row + 1
+        self.performSegueWithIdentifier("ToSpecificStudent", sender: thisStudent)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -119,7 +226,7 @@ import CoreData
     }
     
     /// Populates currentQueue from core data
-    func populateTable() {
+    /*func populateTable() {
         currentQueue.removeAll()
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -134,10 +241,8 @@ import CoreData
          
         do {
             let result = try managedContext!.executeFetchRequest(fetchRequest)
-         
             for student in result {
                 let studentobj = student as! NSManagedObject
-         
                 let name = studentobj.valueForKey("name")
                 let netID = studentobj.valueForKey("netid")
                 let helpMessage = studentobj.valueForKey("helpmessage")
@@ -150,13 +255,43 @@ import CoreData
             print("Error fetching from core data")
             print(fetchError)
         }
-    }
+    }*/
 
     /// Handles when a TA accepts a student. Queries the API
     /// and and removes the student from the visible queue
     @IBAction func acceptStudent(sender: UIButton) {
         
-        let currentStudent: Student = currentQueue[0]
+        /*Remove the entry from Core Data*/
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest()
+        
+        // Configure Fetch Request
+        fetchRequest.entity = studentEntity
+        let cell = queueTable.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TAQueueCustomCell
+        let id = cell.studentID
+        let predicate = NSPredicate(format: "%K == %@", "netid", id)
+        fetchRequest.predicate = predicate
+        let currentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "")
+        
+        do {
+            let result = try managedContext!.executeFetchRequest(fetchRequest)
+            let studentObj = result[0] as! NSManagedObject
+            currentStudent.name = studentObj.valueForKey("name") as! String
+            currentStudent.course = studentObj.valueForKey("course") as! String
+            currentStudent.helpMessage = studentObj.valueForKey("helpmessage") as! String
+            currentStudent.netID = studentObj.valueForKey("netid") as! String
+            managedContext?.deleteObject(result[0] as! NSManagedObject)
+        } catch {
+            print("error fetching \(currentStudent.netID)")
+        }
+        do {
+            try managedContext?.save()
+        } catch {
+            print("error saving context after deleting \(currentStudent.netID)")
+        }
         
         //WILL PUT NSUSER TA NAME HERE
         TACurrentStudent = currentStudent
@@ -166,13 +301,6 @@ import CoreData
         //prefs.setValue(currentStudent, forKey: "TACurrentStudent")
         
         titleBar.topItem?.title = "Your Current Student is " + currentStudent.name
-        
-        /*update currentQueue and UI*/
-        queueTable.beginUpdates()
-        currentQueue.removeFirst()
-        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
-        queueTable.endUpdates()
-        queueTable.reloadData()
         
         /*BEGIN HTTP REQUEST*/
         let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.netID)/Helped")!
@@ -191,6 +319,15 @@ import CoreData
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         /*END HTTP REQUEST*/
         
+        /*update currentQueue and UI*/
+        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+        queueTable.reloadData()
+    }
+    
+    /// Handles when a TA rejects a student. Queries the API
+    /// and and removes the student from the visible queue
+    @IBAction func cancelStudent(sender: UIButton) {
+        
         /*Remove the entry from Core Data*/
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -200,11 +337,19 @@ import CoreData
         
         // Configure Fetch Request
         fetchRequest.entity = studentEntity
-        let predicate = NSPredicate(format: "%K == %@", "netid", currentStudent.netID)
+        let cell = queueTable.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TAQueueCustomCell
+        let id = cell.studentID
+        let predicate = NSPredicate(format: "%K == %@", "netid", id)
         fetchRequest.predicate = predicate
+        let currentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "")
         
         do {
             let result = try managedContext!.executeFetchRequest(fetchRequest)
+            let studentObj = result[0] as! NSManagedObject
+            currentStudent.name = studentObj.valueForKey("name") as! String
+            currentStudent.course = studentObj.valueForKey("course") as! String
+            currentStudent.helpMessage = studentObj.valueForKey("helpmessage") as! String
+            currentStudent.netID = studentObj.valueForKey("netid") as! String
             managedContext?.deleteObject(result[0] as! NSManagedObject)
         } catch {
             print("error fetching \(currentStudent.netID)")
@@ -214,20 +359,6 @@ import CoreData
         } catch {
             print("error saving context after deleting \(currentStudent.netID)")
         }
-    }
-    
-    /// Handles when a TA rejects a student. Queries the API
-    /// and and removes the student from the visible queue
-    @IBAction func cancelStudent(sender: UIButton) {
-        
-        let currentStudent: Student = currentQueue[0]
-        
-        /*update currentQueue and UI*/
-        queueTable.beginUpdates()
-        currentQueue.removeFirst()
-        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
-        queueTable.endUpdates()
-        queueTable.reloadData()
         
         //HTTP REQUEST
         let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.netID)/Canceled")!
@@ -245,29 +376,9 @@ import CoreData
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         //END HTTP REQUEST
         
-        /*Remove the entry from Core Data*/
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
-        
-        // Initialize and configure Fetch Request
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = studentEntity
-        let predicate = NSPredicate(format: "%K == %@", "netid", currentStudent.netID)
-        fetchRequest.predicate = predicate
-        
-        do {
-            let result = try managedContext!.executeFetchRequest(fetchRequest)
-            managedContext?.deleteObject(result[0] as! NSManagedObject)
-        } catch {
-            print("error fetching \(currentStudent.netID)")
-        }
-        do {
-            try managedContext?.save()
-        } catch {
-            print("error saving context after deleting \(currentStudent.netID)")
-        }
-        
+        /*update currentQueue and UI*/
+        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+        queueTable.reloadData()
     }
     
     /// Handles when a TA pushes the picture of his/her current student.
