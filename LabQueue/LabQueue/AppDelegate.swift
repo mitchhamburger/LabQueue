@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         //registerForPushNotifications(application)
-        syncQueue()
         return true
     }
 
@@ -156,8 +155,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName(addStudentToQueue, object: self)
             completionHandler(.NoData)
         }
-        else if userInfo["type"]! as! String == "SilentDequeue" {
-            NSNotificationCenter.defaultCenter().postNotificationName(removeStudentFromQueue, object: self)
+        else if userInfo["type"]! as! String == "SilentRemove" {
+            NSNotificationCenter.defaultCenter().postNotificationName(removeStudentFromQueue, object: userInfo["id"] as! String)
             completionHandler(.NewData)
         }
     }
@@ -169,7 +168,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// * netid: netid of current user
     func registerToken(token: String, netid: String) {
         let jsonObj = ["Device Token": token]
-        let url: NSURL = NSURL(string: "https://tempwebservice-mh20.c9users.io/LabQueue/v1/Tokens/\(netid)/RegisterDeviceToken")!
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(netid)/Tokens/RegisterDeviceToken")!
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData

@@ -49,7 +49,7 @@ func syncQueue() {
     
     /* 2. Then save database queue to an array of students*/
     var activeQueue = [Student]()
-    let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v1/Queue")!
+    let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests")!
     let session = NSURLSession.sharedSession()
     let request = NSMutableURLRequest(URL: url)
     request.HTTPMethod = "GET"
@@ -80,9 +80,7 @@ func syncQueue() {
     
     
     /*3. Finally load activeQueue into core data*/
-    
     for tempStudent in activeQueue {
-        print(tempStudent.netID)
         let inputStudentObj = NSManagedObject(entity: studentEntity!, insertIntoManagedObjectContext: managedContext)
         inputStudentObj.setValue(tempStudent.name, forKey: "name")
         inputStudentObj.setValue(tempStudent.helpMessage, forKey: "helpmessage")
@@ -94,19 +92,4 @@ func syncQueue() {
             print("error witth \(tempStudent.netID)")
         }
     }
-    
-    
-    /*
-    print("-----------------------------------------")
-    do {
-        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
-        let sortDescriptors = [sectionSortDescriptor]
-        fetchRequest.sortDescriptors = sortDescriptors
-        let result = try managedContext?.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-        for item in result {
-            print(item.valueForKey("netid") as! String)
-        }
-    } catch {
-        print("errordfivhdifv")
-    }*/
 }
