@@ -43,7 +43,7 @@ class CASViewController: UIViewController, UIWebViewDelegate {
     ///
     /// returns "Student" for student and "LabTA" for TA
     func verify(netid: String) -> String {
-        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v1/TAs/\(netid)/Verify")!
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(netid)/Verify")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
@@ -76,6 +76,7 @@ class CASViewController: UIViewController, UIWebViewDelegate {
             let netId = request.URL?.absoluteString.substringFromIndex(startIndex!)
             globalNetId = netId!
             registerForPushNotifications(UIApplication.sharedApplication())
+            syncQueue()
             if (verify(netId!) == "Student") {
                 self.performSegueWithIdentifier("StudentLoggedIn", sender: netId)
                 return false

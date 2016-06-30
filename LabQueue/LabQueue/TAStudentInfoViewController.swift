@@ -8,6 +8,7 @@
 
 
 import UIKit
+import CoreData
 
 ///  View Controller to display info about inidivudal
 ///  students that is available to LAb TA's.
@@ -71,26 +72,56 @@ import UIKit
         
         TACurrentStudent = currentStudent
         
-        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v1/Queue/" + currentStudent.netID)!
+        //WILL PUT NSUSER TA NAME HERE
+        TACurrentStudent = currentStudent
+        let prefs = NSUserDefaults.standardUserDefaults()
+        let encodedData = NSKeyedArchiver.archivedDataWithRootObject(currentStudent)
+        prefs.setObject(encodedData, forKey: "TACurrentStudent")
+        
+        /*BEGIN HTTP REQUEST*/
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.netID)/Helped")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "DELETE"
+        
+        request.HTTPMethod = "GET"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
         let semaphore = dispatch_semaphore_create(0)
         let task = session.dataTaskWithRequest(request) {
-            (
-            let data, let response, let error) in
-            guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
-                print("error")
-                return
-            }
+            (let data, let response, let error) in
             dispatch_semaphore_signal(semaphore)
         }
         task.resume()
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        /*END HTTP REQUEST*/
+        
+        /*Remove the entry from Core Data*/
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        // Initialize Fetch Request
+        let fetchRequest = NSFetchRequest()
+        
+        // Configure Fetch Request
+        fetchRequest.entity = studentEntity
+        let predicate = NSPredicate(format: "%K == %@", "netid", currentStudent.netID)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let result = try managedContext!.executeFetchRequest(fetchRequest)
+            managedContext?.deleteObject(result[0] as! NSManagedObject)
+        } catch {
+            print("error fetching \(currentStudent.netID)")
+        }
+        do {
+            try managedContext?.save()
+        } catch {
+            print("error saving context after deleting \(currentStudent.netID)")
+        }
+        
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc: UIViewController = storyboard.instantiateViewControllerWithIdentifier("TAHomeViewController")
         self.presentViewController(vc, animated: true, completion: nil)
+        
     }
 }

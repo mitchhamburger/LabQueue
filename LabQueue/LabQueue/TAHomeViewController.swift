@@ -57,17 +57,23 @@ import CoreData
     
     /// Handler for addStudentToQueue Notification
     func silentAdd() {
+        syncQueue()
         populateTable()
+        queueTable.beginUpdates()
         self.queueTable.insertRowsAtIndexPaths([
             NSIndexPath(forRow: self.currentQueue.count - 1, inSection: 0)
             ], withRowAnimation: UITableViewRowAnimation.Right)
+        queueTable.endUpdates()
         self.queueTable.reloadData()
     }
     
     /// Handler for removeStudentFromQueue Notification
     func silentRemove() {
+        syncQueue()
+        queueTable.beginUpdates()
         currentQueue.removeFirst()
         queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+        queueTable.endUpdates()
         queueTable.reloadData()
     }
     
@@ -114,6 +120,7 @@ import CoreData
     
     /// Populates currentQueue from core data
     func populateTable() {
+        currentQueue.removeAll()
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
@@ -152,8 +159,6 @@ import CoreData
         let currentStudent: Student = currentQueue[0]
         
         //WILL PUT NSUSER TA NAME HERE
-        let jsonObj = ["Attending TA": globalNetId,
-                       "NetID": globalNetId]
         TACurrentStudent = currentStudent
         let prefs = NSUserDefaults.standardUserDefaults()
         let encodedData = NSKeyedArchiver.archivedDataWithRootObject(currentStudent)
@@ -162,21 +167,20 @@ import CoreData
         
         titleBar.topItem?.title = "Your Current Student is " + currentStudent.name
         
+        /*update currentQueue and UI*/
+        queueTable.beginUpdates()
+        currentQueue.removeFirst()
+        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+        queueTable.endUpdates()
+        queueTable.reloadData()
+        
         /*BEGIN HTTP REQUEST*/
-        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v1/Queue/" + currentStudent.netID + "/Helped")!
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.netID)/Helped")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         
-        request.HTTPMethod = "POST"
+        request.HTTPMethod = "GET"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        
-        do {
-            let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObj, options: .PrettyPrinted)
-            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            request.HTTPBody = jsonData
-        } catch {
-            print("error")
-        }
         
         let semaphore = dispatch_semaphore_create(0)
         let task = session.dataTaskWithRequest(request) {
@@ -186,11 +190,6 @@ import CoreData
         task.resume()
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         /*END HTTP REQUEST*/
-        
-        /*update currentQueue and UI*/
-        currentQueue.removeFirst()
-        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
-        queueTable.reloadData()
         
         /*Remove the entry from Core Data*/
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -223,8 +222,15 @@ import CoreData
         
         let currentStudent: Student = currentQueue[0]
         
+        /*update currentQueue and UI*/
+        queueTable.beginUpdates()
+        currentQueue.removeFirst()
+        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+        queueTable.endUpdates()
+        queueTable.reloadData()
+        
         //HTTP REQUEST
-        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v1/Queue/" + currentStudent.netID + "/Canceled")!
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.netID)/Canceled")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
@@ -238,11 +244,6 @@ import CoreData
         task.resume()
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         //END HTTP REQUEST
-        
-        /*update currentQueue and UI*/
-        currentQueue.removeFirst()
-        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
-        queueTable.reloadData()
         
         /*Remove the entry from Core Data*/
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
