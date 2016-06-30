@@ -242,7 +242,14 @@ def fullQueueOps(senderID):
 			'Course': request.json['Course']
 		}
 		HelpRequests.append(newEntry)
-		notifyActiveUsers(senderID, SILENTENQUEUE, "")
+
+		info = {
+			'Name': request.json['Name'], 
+			'NetID': senderID,
+			'Help Message': request.json['Help Message'],
+			'Course': request.json['Course']
+			}
+		notifyActiveUsers(senderID, SILENTENQUEUE, "", info)
 		return jsonify({'Queue': HelpRequests}), 201
 
 @app.route('/LabQueue/v2/<senderID>/Requests/<requestID>/Helped', methods = ['GET'])
@@ -255,7 +262,7 @@ def markAsHelped(senderID, requestID):
 		entry[0]['Helped Time'] = datetime.datetime.now()
 		entry[0]['In Queue'] = False
 		entry[0]['Attending TA'] = senderID
-		notifyActiveUsers(senderID, SILENTREMOVE, requestID)
+		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [])
 		return jsonify({requestID: entry}), 201
 
 @app.route('/LabQueue/v2/<senderID>/Requests/<requestID>/Canceled', methods = ['GET'])
@@ -266,18 +273,18 @@ def markAsCanceled(senderID, requestID):
 	else:
 		entry[0]['Canceled'] = True
 		entry[0]['In Queue'] = False
-		notifyActiveUsers(senderID, SILENTREMOVE, requestID)
+		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [])
 		return jsonify({requestID: entry}), 201
 
-def notifyActiveUsers(senderID, notificationType, removeID):
+def notifyActiveUsers(senderID, notificationType, removeID, enqueueStudentInfo):
 	for entry in HelpRequests:
 		if entry['In Queue'] == True:
-			notifyUser(senderID, entry['NetID'], notificationType, removeID)
+			notifyUser(senderID, entry['NetID'], notificationType, removeID, enqueueStudentInfo)
 	for entry in LabTAs:
 		if entry['Is Active'] == True:
-			notifyUser(senderID, entry['NetID'], notificationType, removeID)
+			notifyUser(senderID, entry['NetID'], notificationType, removeID, enqueueStudentInfo)
 
-def notifyUser(senderID, recieverID, notificationType, removeID):
+def notifyUser(senderID, recieverID, notificationType, removeID, enqueueStudentInfo):
 	if senderID == recieverID:
 		return "sender is reciever"
 	userToken = getTokenFromID(recieverID)
@@ -285,7 +292,7 @@ def notifyUser(senderID, recieverID, notificationType, removeID):
 	USE_SANDBOX = True
 	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
 	if notificationType == 'SilentEnqueue':
-		payload = Payload(content_available = 1, custom = {'type': 'SilentEnqueue'})
+		payload = Payload(content_available = 1, custom = {'type': 'SilentEnqueue', 'studentinfo': enqueueStudentInfo})
 	elif notificationType == 'SilentRemove':
 		payload = Payload(content_available = 1, custom = {'type': 'SilentRemove', 'id': removeID})
 	elif notificationType == 'NotifyMatch':
