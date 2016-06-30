@@ -152,11 +152,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print(userInfo["type"]!)
         if userInfo["type"]! as! String == "SilentEnqueue" {
-            NSNotificationCenter.defaultCenter().postNotificationName(addStudentToQueue, object: self)
-            completionHandler(.NoData)
+            NSNotificationCenter.defaultCenter().postNotificationName(addStudentToQueue, object: self, userInfo: ["studentinfo": userInfo["studentinfo"]!])
         }
         else if userInfo["type"]! as! String == "SilentRemove" {
-            NSNotificationCenter.defaultCenter().postNotificationName(removeStudentFromQueue, object: userInfo["id"] as! String)
+            NSNotificationCenter.defaultCenter().postNotificationName(removeStudentFromQueue, object: self, userInfo: ["id": userInfo["id"] as! String])
             completionHandler(.NewData)
         }
     }
