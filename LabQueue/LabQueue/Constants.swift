@@ -14,6 +14,62 @@ let removeStudentFromQueue = "com.mitchhamburger.removeStudentFromQueue"
 let addStudentToQueue = "com.mitchhamburger.addStudentToQueue"
 let hostName = "https://tempwebservice-mh20.c9users.io"
 
+func getSyncToken() -> String {
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let managedContext = appDelegate.managedObjectContext
+    let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+    
+    let fetchRequest = NSFetchRequest()
+    let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
+    let sortDescriptors = [sectionSortDescriptor]
+    fetchRequest.entity = studentEntity
+    fetchRequest.sortDescriptors = sortDescriptors
+    
+    var hashString: String = ""
+    var count: Int = 0
+    do {
+        let result = try managedContext?.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        
+        for entry in result {
+            count += 1
+            hashString += entry.valueForKey("netid") as! String
+        }
+    } catch {
+        print("error fetching")
+    }
+    hashString += ",\(count)"
+    return hashString
+}
+
+func verifySync() {
+    let currentToken = getSyncToken()
+    
+    /*BEGIN HTTP REQUEST*/
+    let jsonObj = ["Sync Token": currentToken]
+    let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Sync")!
+    let session = NSURLSession.sharedSession()
+    let request = NSMutableURLRequest(URL: url)
+    request.HTTPMethod = "POST"
+    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+    
+    do {
+        let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObj, options: .PrettyPrinted)
+        // insert json data to the request
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.HTTPBody = jsonData
+    } catch {
+        print("error converting input to json")
+    }
+    let semaphore = dispatch_semaphore_create(0)
+    let task = session.dataTaskWithRequest(request) {
+        (let data, let response, let error) in
+        dispatch_semaphore_signal(semaphore)
+    }
+    task.resume()
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+    /*END HTTP REQUEST*/
+}
+
 func syncQueue() {
     
     /*1. first delete everything from core data*/
