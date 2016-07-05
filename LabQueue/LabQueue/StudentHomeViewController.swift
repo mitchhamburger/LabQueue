@@ -235,6 +235,16 @@ import CoreData
             let name = alertController.textFields![0] 
             let problem = alertController.textFields![1]
             let course = alertController.textFields![2]
+            if self.checkName(name.text!) == false {
+                return
+            }
+            if self.checkDuplicate(globalNetId) == false {
+                return
+            }
+            if self.checkTA(globalNetId) == false {
+                return
+            }
+            
             self.addToQueue(name.text!, helpMessage: problem.text!, course: course.text!, netid: globalNetId)
             }))
         
@@ -261,6 +271,81 @@ import CoreData
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func checkName(name: String) -> Bool {
+        if name == "" {
+            let invalidController = UIAlertController(title: "Please fill in your name", message: "", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil)
+            invalidController.addAction(okAction)
+            self.presentViewController(invalidController, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
+    
+    func checkDuplicate(netid: String) -> Bool {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = studentEntity
+        
+        do {
+            let result = try managedContext?.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+            for entry in result {
+                if entry.valueForKey("netid") as! String == netid {
+                    let invalidController = UIAlertController(title: "You are already on the Queue", message: "", preferredStyle: .Alert)
+                    let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil)
+                    invalidController.addAction(okAction)
+                    self.presentViewController(invalidController, animated: true, completion: nil)
+                    return false
+                }
+            }
+            
+        } catch {
+            print("error fetching for checkDuplicate()")
+        }
+        return true
+    }
+    
+    func checkTA(netid: String) -> Bool {
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/TAs/ActiveTAs")!
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "GET"
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        
+        let semaphore = dispatch_semaphore_create(0)
+        var flag: Bool = true
+        let task = session.dataTaskWithRequest(request) {
+            (
+            let data, let response, let error) in
+            if error == nil && data != nil {
+                do {
+                    // Convert NSData to Dictionary where keys are of type String, and values are of any type
+                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
+                    for entry in (json["TAs"]! as! NSArray) {
+                        if entry["NetID"] as! String == netid {
+                            let invalidController = UIAlertController(title: "You are an active TA", message: "", preferredStyle: .Alert)
+                            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil)
+                            invalidController.addAction(okAction)
+                            self.presentViewController(invalidController, animated: true, completion: nil)
+                            flag = false
+                        }
+                    }
+                } catch {
+                    "error with json serialization"
+                }
+            }
+            dispatch_semaphore_signal(semaphore)
+        }
+        task.resume()
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        
+        return flag
     }
     
     /// Create a Student object and add it to the Queue through the API.

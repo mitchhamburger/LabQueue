@@ -6,10 +6,14 @@ from apns import APNs, Frame, Payload
 import sys
 import logging
 import os
+import zlib
+
 app = Flask(__name__)
 
 SILENTENQUEUE = 'SilentEnqueue'
 SILENTREMOVE = 'SilentRemove'
+NOTIFYTEN = 'NotifyTen'
+NOTIFYFIVE = 'NotifyFive'
 NOTIFYMATCH = 'NotifyMatch'
 
 LabTAs = [
@@ -17,13 +21,6 @@ LabTAs = [
 		'First Name': u"Mitchell",
 		'Last Name': u"Hamburger",
 		'NetID': u"mh20",
-		'Class Year': 2018,
-		'Is Active': True
-	},
-	{
-		'First Name': u"Harry",
-		'Last Name': u"Heffernan",
-		'NetID': u"hmlh",
 		'Class Year': 2018,
 		'Is Active': True
 	},
@@ -262,6 +259,15 @@ def markAsHelped(senderID, requestID):
 		entry[0]['Helped Time'] = datetime.datetime.now()
 		entry[0]['In Queue'] = False
 		entry[0]['Attending TA'] = senderID
+		activeQueue = []
+		for entry in HelpRequests:
+			if entry['In Queue'] == True:
+				activeQueue.append(entry)
+		notifyUser(senderID, requestID, NOTIFYMATCH, "", [])
+		if len(activeQueue) > 9:
+			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [])
+		if len(activeQueue) > 4:
+			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [])
 		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [])
 		return jsonify({requestID: entry}), 201
 
@@ -273,8 +279,33 @@ def markAsCanceled(senderID, requestID):
 	else:
 		entry[0]['Canceled'] = True
 		entry[0]['In Queue'] = False
+		activeQueue = []
+		for entry in HelpRequests:
+			if entry['In Queue'] == True:
+				activeQueue.append(entry)
+		if len(activeQueue) > 9:
+			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [])
+		if len(activeQueue) > 4:
+			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [])
 		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [])
 		return jsonify({requestID: entry}), 201
+
+@app.route('/LabQueue/v2/<senderID>/TAs/ActiveTAs', methods = ['GET'])
+def getActiveTAs(senderID):
+	activeTAs = []
+	for entry in LabTAs:
+		if entry['Is Active'] == True:
+			activeTAs.append(entry)
+	return jsonify({'TAs': activeTAs}), 201
+
+@app.route('/LabQueue/v2/<senderID>/Sync', methods = ['POST'])
+def verifySync(senderID):
+	currentToken = getSyncToken()
+	userToken = request.json['Sync Token']
+	if userToken == currentToken:
+		return True
+	else:
+		return False
 
 def notifyActiveUsers(senderID, notificationType, removeID, enqueueStudentInfo):
 	for entry in HelpRequests:
@@ -291,12 +322,17 @@ def notifyUser(senderID, recieverID, notificationType, removeID, enqueueStudentI
 	CERT_FILE = 'LabQueuePush.pem'
 	USE_SANDBOX = True
 	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
-	if notificationType == 'SilentEnqueue':
+	if notificationType == SILENTENQUEUE:
 		payload = Payload(content_available = 1, custom = {'type': 'SilentEnqueue', 'studentinfo': enqueueStudentInfo})
-	elif notificationType == 'SilentRemove':
+	elif notificationType == SILENTREMOVE:
 		payload = Payload(content_available = 1, custom = {'type': 'SilentRemove', 'id': removeID})
-	elif notificationType == 'NotifyMatch':
-		payload = Payload(alert=TAName+" is coming to help you", sound="default")
+	elif notificationType == NOTIFYMATCH:
+		entry = [entry for entry in LabTAs if entry['NetID'] == senderID and entry['Is Active'] == True]
+		payload = Payload(alert=entry[0]['First Name'] + " " + entry[0]['Last Name'] +" is coming to help you", sound="default", custom = {'id': senderID})
+	elif notificationType == NOTIFYTEN:
+		payload = Payload(alert="There are 10 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYTEN, 'id': senderID})
+	elif notificationType == NOTIFYFIVE:
+		payload = Payload(alert="There are 5 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYFIVE, 'id': senderID})
 	identifier = 1
 	expiry = time.time() + 3600
 	priority = 10
@@ -312,7 +348,19 @@ def getTokenFromID(netid):
 	else:
 		return entry[0]['Device Tokens'][len(entry[0]['Device Tokens']) - 1]
 
+def getSyncToken():
+	hashString = ""
+	count = 0
+	for entry in HelpRequests:
+		if entry['In Queue'] == True:
+			hashString += entry['NetID']
+			count += 1
+	hashString += ','
+	hashString += str(count)
+	return hashString
+
 if __name__ == '__main__':
+	#print(zlib.adler32("Wikipedia"))
 	app.run(debug = True)
 
 

@@ -21,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         //registerForPushNotifications(application)
+        
+        //print(Int(Adler32.crc(string: "mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12")))
+        print(getSyncToken())
+        
+        
         return true
     }
 
@@ -146,17 +151,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Failed to register:", error)
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        let aps = userInfo["aps"] as! [String: AnyObject]
-        completionHandler(.NoData)
-        
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {        
         print(userInfo["type"]!)
         if userInfo["type"]! as! String == "SilentEnqueue" {
             NSNotificationCenter.defaultCenter().postNotificationName(addStudentToQueue, object: self, userInfo: ["studentinfo": userInfo["studentinfo"]!])
+            completionHandler(.NoData)
         }
         else if userInfo["type"]! as! String == "SilentRemove" {
             NSNotificationCenter.defaultCenter().postNotificationName(removeStudentFromQueue, object: self, userInfo: ["id": userInfo["id"] as! String])
-            completionHandler(.NewData)
+            completionHandler(.NoData)
+        }
+        else if userInfo["type"]! as! String == "NotifyTen" {
+            completionHandler(.NoData)
+        }
+        else if userInfo["type"]! as! String == "NotifyFive" {
+            completionHandler(.NoData)
+        }
+        else {
+            completionHandler(.NoData)
         }
     }
     
