@@ -34,7 +34,6 @@ import CoreData
         studentPicture.layer.borderColor = UIColor.blackColor().CGColor
         studentPicture.image = UIImage(named: "mitch pic.jpg")
         syncQueue()
-        //populateTable()
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.queueTable.dataSource = self
@@ -53,7 +52,6 @@ import CoreData
         else {
             titleBar.topItem?.title = "Welcome to Lab TAs!"
         }
-        //syncQueue()
     }
     
     override func viewDidDisappear(animated: Bool) {

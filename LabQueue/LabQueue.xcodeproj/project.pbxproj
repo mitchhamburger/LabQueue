@@ -28,6 +28,7 @@
 		F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F871535B1D0F29AA00F29040 /* StudentStudentInfoViewController.swift */; };
 		F8722BF41D0886BF00449536 /* TAHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722BF31D0886BF00449536 /* TAHomeViewController.swift */; };
 		F8722BF61D089C5E00449536 /* StudentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */; };
+		F87AC22B1D25F5D50010CF59 /* adler32.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AC22A1D25F5D50010CF59 /* adler32.swift */; };
 		F895FC631D217AA30031F47D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895FC621D217AA30031F47D /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		F871535B1D0F29AA00F29040 /* StudentStudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentStudentInfoViewController.swift; sourceTree = "<group>"; };
 		F8722BF31D0886BF00449536 /* TAHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAHomeViewController.swift; sourceTree = "<group>"; };
 		F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHomeViewController.swift; sourceTree = "<group>"; };
+		F87AC22A1D25F5D50010CF59 /* adler32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adler32.swift; sourceTree = "<group>"; };
 		F895FC621D217AA30031F47D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				F83222981D07B7610089304E /* AppDelegate.swift */,
+				F87AC22A1D25F5D50010CF59 /* adler32.swift */,
 				F895FC621D217AA30031F47D /* Constants.swift */,
 				F871535D1D0F309C00F29040 /* TA Files */,
 				F832229A1D07B7610089304E /* ViewController.swift */,
@@ -402,6 +405,7 @@
 			files = (
 				F81E57111D11ABAD00C11123 /* CASViewController.swift in Sources */,
 				F895FC631D217AA30031F47D /* Constants.swift in Sources */,
+				F87AC22B1D25F5D50010CF59 /* adler32.swift in Sources */,
 				F832229B1D07B7610089304E /* ViewController.swift in Sources */,
 				F82AC1FF1D0CD03900BDADD2 /* StudentQueueCustomCell.swift in Sources */,
 				F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */,
