@@ -12,8 +12,6 @@ app = Flask(__name__)
 
 SILENTENQUEUE = 'SilentEnqueue'
 SILENTREMOVE = 'SilentRemove'
-NOTIFYTEN = 'NotifyTen'
-NOTIFYFIVE = 'NotifyFive'
 NOTIFYMATCH = 'NotifyMatch'
 
 LabTAs = [
@@ -259,15 +257,7 @@ def markAsHelped(senderID, requestID):
 		entry[0]['Helped Time'] = datetime.datetime.now()
 		entry[0]['In Queue'] = False
 		entry[0]['Attending TA'] = senderID
-		activeQueue = []
-		for entry in HelpRequests:
-			if entry['In Queue'] == True:
-				activeQueue.append(entry)
 		notifyUser(senderID, requestID, NOTIFYMATCH, "", [])
-		if len(activeQueue) > 9:
-			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [])
-		if len(activeQueue) > 4:
-			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [])
 		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [])
 		return jsonify({requestID: entry}), 201
 
@@ -279,14 +269,6 @@ def markAsCanceled(senderID, requestID):
 	else:
 		entry[0]['Canceled'] = True
 		entry[0]['In Queue'] = False
-		activeQueue = []
-		for entry in HelpRequests:
-			if entry['In Queue'] == True:
-				activeQueue.append(entry)
-		if len(activeQueue) > 9:
-			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [])
-		if len(activeQueue) > 4:
-			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [])
 		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [])
 		return jsonify({requestID: entry}), 201
 
@@ -297,15 +279,6 @@ def getActiveTAs(senderID):
 		if entry['Is Active'] == True:
 			activeTAs.append(entry)
 	return jsonify({'TAs': activeTAs}), 201
-
-@app.route('/LabQueue/v2/<senderID>/Sync', methods = ['POST'])
-def verifySync(senderID):
-	currentToken = getSyncToken()
-	userToken = request.json['Sync Token']
-	if userToken == currentToken:
-		return jsonify({"Response": "In Sync"}), 201
-	else:
-		return jsonify({"Response": "Out of Sync"}), 201
 
 def notifyActiveUsers(senderID, notificationType, removeID, enqueueStudentInfo):
 	for entry in HelpRequests:
@@ -326,21 +299,15 @@ def notifyUser(senderID, recieverID, notificationType, removeID, enqueueStudentI
 		payload = Payload(content_available = 1, custom = {'type': 'SilentEnqueue', 'studentinfo': enqueueStudentInfo})
 	elif notificationType == SILENTREMOVE:
 		payload = Payload(content_available = 1, custom = {'type': 'SilentRemove', 'id': removeID})
-	elif notificationType == NOTIFYMATCH:
+	elif notificationType == 'NotifyMatch':
 		entry = [entry for entry in LabTAs if entry['NetID'] == senderID and entry['Is Active'] == True]
 		payload = Payload(alert=entry[0]['First Name'] + " " + entry[0]['Last Name'] +" is coming to help you", sound="default", custom = {'id': senderID})
-	elif notificationType == NOTIFYTEN:
-		payload = Payload(alert="There are 10 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYTEN, 'id': senderID})
-	elif notificationType == NOTIFYFIVE:
-		payload = Payload(alert="There are 5 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYFIVE, 'id': senderID})
-	#identifier = 1
-	#expiry = time.time() + 3600
-	#priority = 10
-	#frame = Frame()
-	#frame.add_item(userToken, payload, identifier, expiry, priority)
-	#apns.gateway_server.send_notification_multiple(frame)
-
-	apns.gateway_server.send_notification(userToken, payload)
+	identifier = 1
+	expiry = time.time() + 3600
+	priority = 10
+	frame = Frame()
+	frame.add_item(userToken, payload, identifier, expiry, priority)
+	apns.gateway_server.send_notification_multiple(frame)
 	return 'notification success'
 
 def getTokenFromID(netid):
@@ -350,19 +317,9 @@ def getTokenFromID(netid):
 	else:
 		return entry[0]['Device Tokens'][len(entry[0]['Device Tokens']) - 1]
 
-def getSyncToken():
-	hashString = ""
-	count = 0
-	for entry in HelpRequests:
-		if entry['In Queue'] == True:
-			hashString += entry['NetID']
-			count += 1
-	hashString += ','
-	hashString += str(count)
-	return hashString
-
 if __name__ == '__main__':
-	print(zlib.adler32("mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12"))
+	print(zlib.adler32("uh fovyshfdfvou dfvdf ivuydsg fviuyd gfiuvsygdfivuyagdfi vyadgf ivyadgf va dgfviyag dfivuy gadifuvy gaidfygv aidfg vuiyadfg v"))
+
 	app.run(debug = True)
 
 

@@ -259,6 +259,35 @@ import CoreData
     /// and and removes the student from the visible queue
     @IBAction func acceptStudent(sender: UIButton) {
         
+        let alertController = UIAlertController(title: "Are you sure you want to accept this Help Request?", message: "", preferredStyle: .Alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: ({
+            (_) in
+            self.acceptConfirmed()
+        }))
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func acceptConfirmed() {
+        let test = checkSync()
+        
+        if test == false {
+            let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
+                (_) in
+                syncQueue()
+            }))
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            return
+        }
+        
         /*Remove the entry from Core Data*/
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -308,13 +337,13 @@ import CoreData
         request.HTTPMethod = "GET"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
-        let semaphore = dispatch_semaphore_create(0)
+        //let semaphore = dispatch_semaphore_create(0)
         let task = session.dataTaskWithRequest(request) {
             (let data, let response, let error) in
-            dispatch_semaphore_signal(semaphore)
+            //dispatch_semaphore_signal(semaphore)
         }
         task.resume()
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        //dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         /*END HTTP REQUEST*/
         
         /*update currentQueue and UI*/
@@ -325,6 +354,73 @@ import CoreData
     /// Handles when a TA rejects a student. Queries the API
     /// and and removes the student from the visible queue
     @IBAction func cancelStudent(sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "Are you sure you want to reject this Help Request?", message: "", preferredStyle: .Alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: ({
+            (_) in
+            self.cancelConfirmed()
+        }))
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    func checkSync() -> Bool {
+        /*Check Sync*/
+        let token = getSyncToken()
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Sync")!
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        let jsonObj = ["Sync Token": token]
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        
+        do {
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObj, options: .PrettyPrinted)
+            // insert json data to the request
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            request.HTTPBody = jsonData
+        } catch {
+            print("error converting input to json")
+        }
+        
+        let semaphore = dispatch_semaphore_create(0)
+        var test: Bool = true
+        let task = session.dataTaskWithRequest(request) {
+            (let data, let response, let error) in
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
+                if json["Response"] as! String == "Out of Sync" {
+                    test = false
+                }
+            } catch {
+                print("error converting to json")
+            }
+            dispatch_semaphore_signal(semaphore)
+        }
+        task.resume()
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        return test
+    }
+    
+    func cancelConfirmed() {
+        let test = checkSync()
+        
+        if test == false {
+            let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
+                (_) in
+                syncQueue()
+                }))
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            return
+        }
         
         /*Remove the entry from Core Data*/
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -359,19 +455,17 @@ import CoreData
         }
         
         //HTTP REQUEST
-        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.netID)/Canceled")!
+        let url = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.netID)/Canceled")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        //request.allHTTPHeaderFields = ["SyncToken": "iuhdfivuhdfiuvh"]
         
-        let semaphore = dispatch_semaphore_create(0)
         let task = session.dataTaskWithRequest(request) {
             (let data, let response, let error) in
-            dispatch_semaphore_signal(semaphore)
         }
         task.resume()
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         //END HTTP REQUEST
         
         /*update currentQueue and UI*/
