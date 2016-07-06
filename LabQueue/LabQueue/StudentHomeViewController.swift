@@ -393,13 +393,10 @@ import CoreData
         } catch {
             print("error converting input to json")
         }
-        let semaphore = dispatch_semaphore_create(0)
         let task = session.dataTaskWithRequest(request) {
             (let data, let response, let error) in
-            dispatch_semaphore_signal(semaphore)
         }
         task.resume()
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         /*END HTTP REQUEST*/
         
         /*update currentQueue and UI*/

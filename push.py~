@@ -10,8 +10,8 @@ ZACH = '4b1a5b8a8f5dc1b414ff0db55a8fe49c385a163268beb0cce9de69352b9c009b'
 apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
 
 # Send a notification
-token_hex = 'b89a20fbe76dad27098291505af35ed1a13645a12f795ebad592eb227360b65d'
-payload = Payload(alert="Poop!", sound="default", badge=1)
+token_hex = '7b45ee4d83ac7855ea1996ac6f6b9f82871f23c83ebafb0ce7607a0c4fbe5031'
+payload = Payload(alert="Hi Dean", sound="default", badge=1)
 #apns.gateway_server.send_notification(token_hex, payload)
 #apns.gateway_server.send_notification('4b1a5b8a8f5dc1b414ff0db55a8fe49c385a163268beb0cce9de69352b9c009b', payload)
 
