@@ -10,20 +10,20 @@ ZACH = '4b1a5b8a8f5dc1b414ff0db55a8fe49c385a163268beb0cce9de69352b9c009b'
 apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
 
 # Send a notification
-token_hex = '7b45ee4d83ac7855ea1996ac6f6b9f82871f23c83ebafb0ce7607a0c4fbe5031'
+token_hex = '8b9dbba9ce2e36c6c4a842e69bd7a0248e734dca5fb39ee65ebcfc2129520130'
 payload = Payload(alert="Hi Dean", sound="default", badge=1)
-#apns.gateway_server.send_notification(token_hex, payload)
+apns.gateway_server.send_notification(token_hex, payload)
 #apns.gateway_server.send_notification('4b1a5b8a8f5dc1b414ff0db55a8fe49c385a163268beb0cce9de69352b9c009b', payload)
 
-identifier = 1
-expiry = time.time() + 3600
-priority = 10
-frame = Frame()
-frame.add_item(token_hex, payload, identifier, expiry, priority)
-apns.gateway_server.send_notification_multiple(frame)
-frame = Frame()
-frame.add_item(ZACH, payload, identifier, expiry, priority)
-apns.gateway_server.send_notification_multiple(frame)
+#identifier = 1
+#expiry = time.time() + 3600
+#priority = 10
+#frame = Frame()
+#frame.add_item(token_hex, payload, identifier, expiry, priority)
+#apns.gateway_server.send_notification_multiple(frame)
+#frame = Frame()
+#frame.add_item(ZACH, payload, identifier, expiry, priority)
+#apns.gateway_server.send_notification_multiple(frame)
 
 # Send multiple notifications in a single transmission
 #frame = Frame()

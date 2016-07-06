@@ -303,9 +303,9 @@ def verifySync(senderID):
 	currentToken = getSyncToken()
 	userToken = request.json['Sync Token']
 	if userToken == currentToken:
-		return True
+		return jsonify({"Response": "In Sync"}), 201
 	else:
-		return False
+		return jsonify({"Response": "Out of Sync"}), 201
 
 def notifyActiveUsers(senderID, notificationType, removeID, enqueueStudentInfo):
 	for entry in HelpRequests:
@@ -333,12 +333,14 @@ def notifyUser(senderID, recieverID, notificationType, removeID, enqueueStudentI
 		payload = Payload(alert="There are 10 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYTEN, 'id': senderID})
 	elif notificationType == NOTIFYFIVE:
 		payload = Payload(alert="There are 5 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYFIVE, 'id': senderID})
-	identifier = 1
-	expiry = time.time() + 3600
-	priority = 10
-	frame = Frame()
-	frame.add_item(userToken, payload, identifier, expiry, priority)
-	apns.gateway_server.send_notification_multiple(frame)
+	#identifier = 1
+	#expiry = time.time() + 3600
+	#priority = 10
+	#frame = Frame()
+	#frame.add_item(userToken, payload, identifier, expiry, priority)
+	#apns.gateway_server.send_notification_multiple(frame)
+
+	apns.gateway_server.send_notification(userToken, payload)
 	return 'notification success'
 
 def getTokenFromID(netid):
@@ -360,7 +362,7 @@ def getSyncToken():
 	return hashString
 
 if __name__ == '__main__':
-	#print(zlib.adler32("Wikipedia"))
+	print(zlib.adler32("mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12"))
 	app.run(debug = True)
 
 
