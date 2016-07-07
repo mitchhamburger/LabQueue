@@ -41,15 +41,15 @@ func getSyncToken() -> String {
     return hashString
 }
 
-func verifySync() {
-    let currentToken = getSyncToken()
-    
-    /*BEGIN HTTP REQUEST*/
-    let jsonObj = ["Sync Token": currentToken]
+func checkSync() -> Bool {
+    /*Check Sync*/
+    let token = getSyncToken()
     let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Sync")!
     let session = NSURLSession.sharedSession()
     let request = NSMutableURLRequest(URL: url)
     request.HTTPMethod = "POST"
+    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+    let jsonObj = ["Sync Token": token]
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
     
     do {
@@ -60,14 +60,24 @@ func verifySync() {
     } catch {
         print("error converting input to json")
     }
+    
     let semaphore = dispatch_semaphore_create(0)
+    var test: Bool = true
     let task = session.dataTaskWithRequest(request) {
         (let data, let response, let error) in
+        do {
+            let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
+            if json["Response"] as! String == "Out of Sync" {
+                test = false
+            }
+        } catch {
+            print("error converting to json")
+        }
         dispatch_semaphore_signal(semaphore)
     }
     task.resume()
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-    /*END HTTP REQUEST*/
+    return test
 }
 
 func syncQueue() {
