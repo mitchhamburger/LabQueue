@@ -59,9 +59,31 @@ import CoreData
         NSNotificationCenter.defaultCenter().removeObserver(self, name: removeStudentFromQueue, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: addStudentToQueue, object: nil)
     }
+    
+    func checkSilentSync(notification: NSNotification) -> Bool {
+        let token = getSyncToken()
+        var test: Bool = true
+        
+        if token != notification.userInfo!["Sync Token"]! as! String {
+            test = false
+            let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
+                (_) in
+                syncQueue()
+                self.queueTable.reloadData()
+            }))
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        return test
+    }
+    
     /// Handler for addStudentToQueue Notification
     func silentAdd(notification: NSNotification) {
-        print("ta")
+        if checkSilentSync(notification) == false {
+            return
+        }
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentName = notification.userInfo!["studentinfo"]!["Name"] as! String
@@ -91,6 +113,10 @@ import CoreData
     
     /// Handler for removeStudentFromQueue Notification
     func silentRemove(notification: NSNotification) {
+        if checkSilentSync(notification) == false {
+            return
+        }
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
@@ -442,7 +468,7 @@ import CoreData
         } catch {
             print("error saving context after deleting \(currentStudent.netID)")
         }
-        
+
         //HTTP REQUEST
         let url = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.netID)/Canceled")!
         let session = NSURLSession.sharedSession()
