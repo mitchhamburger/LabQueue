@@ -38,9 +38,31 @@ import CoreData
         NSNotificationCenter.defaultCenter().removeObserver(self, name: addStudentToQueue, object: nil)
     }
     
+    func checkSilentSync(notification: NSNotification) -> Bool {
+        let token = getSyncToken()
+        var test: Bool = true
+        
+        if token != notification.userInfo!["Sync Token"]! as! String {
+            test = false
+            let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
+                (_) in
+                syncQueue()
+                self.queueTable.reloadData()
+            }))
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        return test
+    }
+    
     /// Handler for addStudentToQueue Notification
     func silentAdd(notification: NSNotification) {
-        print("student")
+        if checkSilentSync(notification) == false {
+            return
+        }
+
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentName = notification.userInfo!["studentinfo"]!["Name"] as! String
@@ -70,6 +92,10 @@ import CoreData
     
     /// Handler for removeStudentFromQueue Notification
     func silentRemove(notification: NSNotification) {
+        if checkSilentSync(notification) == false {
+            return
+        }
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
@@ -312,12 +338,14 @@ import CoreData
     }
     
     func checkTA(netid: String) -> Bool {
+        print("checkTA1")
         let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/TAs/ActiveTAs")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
+        print("checkTA2")
         let semaphore = dispatch_semaphore_create(0)
         var flag: Bool = true
         let task = session.dataTaskWithRequest(request) {
@@ -344,7 +372,7 @@ import CoreData
         }
         task.resume()
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-        
+        print("checkTA success")
         return flag
     }
     

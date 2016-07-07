@@ -51,7 +51,6 @@ func checkSync() -> Bool {
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
     let jsonObj = ["Sync Token": token]
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-    
     do {
         let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObj, options: .PrettyPrinted)
         // insert json data to the request
@@ -65,13 +64,15 @@ func checkSync() -> Bool {
     var test: Bool = true
     let task = session.dataTaskWithRequest(request) {
         (let data, let response, let error) in
-        do {
-            let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
-            if json["Response"] as! String == "Out of Sync" {
-                test = false
+        if data != nil {
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
+                if json["Response"] as! String == "Out of Sync" {
+                    test = false
+                }
+            } catch {
+                print("error converting to json")
             }
-        } catch {
-            print("error converting to json")
         }
         dispatch_semaphore_signal(semaphore)
     }

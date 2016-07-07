@@ -238,6 +238,7 @@ def fullQueueOps(senderID):
 			'Attending TA': u"",
 			'Course': request.json['Course']
 		}
+		syncToken = getSyncToken()
 		HelpRequests.append(newEntry)
 
 		info = {
@@ -246,7 +247,7 @@ def fullQueueOps(senderID):
 			'Help Message': request.json['Help Message'],
 			'Course': request.json['Course']
 			}
-		notifyActiveUsers(senderID, SILENTENQUEUE, "", info)
+		notifyActiveUsers(senderID, SILENTENQUEUE, "", info, syncToken)
 		return jsonify({'Queue': HelpRequests}), 201
 
 @app.route('/LabQueue/v2/<senderID>/Requests/<requestID>/Helped', methods = ['GET'])
@@ -255,6 +256,7 @@ def markAsHelped(senderID, requestID):
 	if len(entry) == 0:
 		abort(404)
 	else:
+		syncToken = getSyncToken()
 		entry[0]['Been Helped'] = True
 		entry[0]['Helped Time'] = datetime.datetime.now()
 		entry[0]['In Queue'] = False
@@ -263,12 +265,12 @@ def markAsHelped(senderID, requestID):
 		for entry in HelpRequests:
 			if entry['In Queue'] == True:
 				activeQueue.append(entry)
-		notifyUser(senderID, requestID, NOTIFYMATCH, "", [])
+		notifyUser(senderID, requestID, NOTIFYMATCH, "", [], syncToken)
 		if len(activeQueue) > 9:
-			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [])
+			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [], syncToken)
 		if len(activeQueue) > 4:
-			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [])
-		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [])
+			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [], syncToken)
+		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
 		return jsonify({requestID: entry}), 201
 
 @app.route('/LabQueue/v2/<senderID>/Requests/<requestID>/Canceled', methods = ['GET'])
@@ -277,6 +279,7 @@ def markAsCanceled(senderID, requestID):
 	if len(entry) == 0:
 		abort(404)
 	else:
+		syncToken = getSyncToken()
 		entry[0]['Canceled'] = True
 		entry[0]['In Queue'] = False
 		activeQueue = []
@@ -284,10 +287,10 @@ def markAsCanceled(senderID, requestID):
 			if entry['In Queue'] == True:
 				activeQueue.append(entry)
 		if len(activeQueue) > 9:
-			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [])
+			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [], syncToken)
 		if len(activeQueue) > 4:
-			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [])
-		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [])
+			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [], syncToken)
+		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
 		return jsonify({requestID: entry}), 201
 
 @app.route('/LabQueue/v2/<senderID>/TAs/ActiveTAs', methods = ['GET'])
@@ -307,15 +310,15 @@ def verifySync(senderID):
 	else:
 		return jsonify({"Response": "Out of Sync"}), 201
 
-def notifyActiveUsers(senderID, notificationType, removeID, enqueueStudentInfo):
+def notifyActiveUsers(senderID, notificationType, removeID, enqueueStudentInfo, syncToken):
 	for entry in HelpRequests:
 		if entry['In Queue'] == True:
-			notifyUser(senderID, entry['NetID'], notificationType, removeID, enqueueStudentInfo)
+			notifyUser(senderID, entry['NetID'], notificationType, removeID, enqueueStudentInfo, syncToken)
 	for entry in LabTAs:
 		if entry['Is Active'] == True:
-			notifyUser(senderID, entry['NetID'], notificationType, removeID, enqueueStudentInfo)
+			notifyUser(senderID, entry['NetID'], notificationType, removeID, enqueueStudentInfo, syncToken)
 
-def notifyUser(senderID, recieverID, notificationType, removeID, enqueueStudentInfo):
+def notifyUser(senderID, recieverID, notificationType, removeID, enqueueStudentInfo, syncToken):
 	if senderID == recieverID:
 		return "sender is reciever"
 	userToken = getTokenFromID(recieverID)
@@ -323,16 +326,18 @@ def notifyUser(senderID, recieverID, notificationType, removeID, enqueueStudentI
 	USE_SANDBOX = True
 	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
 	if notificationType == SILENTENQUEUE:
-		payload = Payload(content_available = 1, custom = {'type': 'SilentEnqueue', 'studentinfo': enqueueStudentInfo})
+		payload = Payload(content_available = 1, custom = {'type': 'SilentEnqueue', 'studentinfo': enqueueStudentInfo, 'Sync Token': syncToken})
 	elif notificationType == SILENTREMOVE:
-		payload = Payload(content_available = 1, custom = {'type': 'SilentRemove', 'id': removeID})
+		payload = Payload(content_available = 1, custom = {'type': 'SilentRemove', 'id': removeID, 'Sync Token': syncToken})
 	elif notificationType == NOTIFYMATCH:
 		entry = [entry for entry in LabTAs if entry['NetID'] == senderID and entry['Is Active'] == True]
-		payload = Payload(alert=entry[0]['First Name'] + " " + entry[0]['Last Name'] +" is coming to help you", sound="default", custom = {'id': senderID})
+		if len(entry) == 0:
+			return
+		payload = Payload(alert=entry[0]['First Name'] + " " + entry[0]['Last Name'] +" is coming to help you", sound="default", custom = {'id': senderID, 'Sync Token': syncToken})
 	elif notificationType == NOTIFYTEN:
-		payload = Payload(alert="There are 10 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYTEN, 'id': senderID})
+		payload = Payload(alert="There are 10 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYTEN, 'id': senderID, 'Sync Token': syncToken})
 	elif notificationType == NOTIFYFIVE:
-		payload = Payload(alert="There are 5 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYFIVE, 'id': senderID})
+		payload = Payload(alert="There are 5 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYFIVE, 'id': senderID, 'Sync Token': syncToken})
 	#identifier = 1
 	#expiry = time.time() + 3600
 	#priority = 10
