@@ -355,6 +355,20 @@ import CoreData
     /// * problemField: help message of the student
     /// * courseField: course of the student
     func addToQueue(name: String, helpMessage: String, course: String, netid: String) {
+        let test = checkSync()
+        
+        if test == false {
+            let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
+                (_) in
+                //syncQueue()
+            }))
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        
         //let thisStudent: Student = Student(name: name, helpMessage: helpMessage, course: course, netid: netid)
         
         /*Add the entry to Core Data*/

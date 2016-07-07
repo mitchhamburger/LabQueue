@@ -209,7 +209,32 @@ import CoreData
         self.performSegueWithIdentifier("ToSpecificStudent", sender: thisStudent)
     }
 
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let reject = UITableViewRowAction(style: .Normal, title: "Reject") { action, index in
+            print("more button tapped")
+        }
+        reject.backgroundColor = UIColor.redColor()
+        
+        let accept = UITableViewRowAction(style: .Normal, title: "Accept") { action, index in
+            print("favorite button tapped")
+        }
+        accept.backgroundColor = UIColor.greenColor()
+        
+        let details = UITableViewRowAction(style: .Normal, title: "Details") { action, index in
+            print("share button tapped")
+        }
+        details.backgroundColor = UIColor.lightGrayColor()
+        return [reject, accept, details]
+    }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // the cells you would like the actions to appear needs to be editable
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // you need to implement this method too or you can't swipe to display the actions
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -370,44 +395,6 @@ import CoreData
         alertController.addAction(cancelAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    func checkSync() -> Bool {
-        /*Check Sync*/
-        let token = getSyncToken()
-        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Sync")!
-        let session = NSURLSession.sharedSession()
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        let jsonObj = ["Sync Token": token]
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        
-        do {
-            let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonObj, options: .PrettyPrinted)
-            // insert json data to the request
-            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            request.HTTPBody = jsonData
-        } catch {
-            print("error converting input to json")
-        }
-        
-        let semaphore = dispatch_semaphore_create(0)
-        var test: Bool = true
-        let task = session.dataTaskWithRequest(request) {
-            (let data, let response, let error) in
-            do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
-                if json["Response"] as! String == "Out of Sync" {
-                    test = false
-                }
-            } catch {
-                print("error converting to json")
-            }
-            dispatch_semaphore_signal(semaphore)
-        }
-        task.resume()
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-        return test
     }
     
     func cancelConfirmed() {
