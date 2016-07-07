@@ -209,6 +209,8 @@ import CoreData
         self.performSegueWithIdentifier("ToSpecificStudent", sender: thisStudent)
     }
 
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if (segue.identifier == "ToSpecificStudent") {
