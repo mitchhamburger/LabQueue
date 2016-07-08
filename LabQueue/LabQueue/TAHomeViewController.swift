@@ -192,14 +192,6 @@ import CoreData
         cell.studentID = result[indexPath.row].valueForKey("netid") as! String
         //let cell = self.queueTable.dequeueReusableCellWithIdentifier("TAcustomcell")! as! TAQueueCustomCell
         //cell.studentName.text = "\(indexPath.row + 1). " + self.currentQueue[indexPath.row].name
-        if (indexPath.row == 0) {
-            cell.acceptButton.hidden = false
-            cell.rejectButton.hidden = false
-        }
-        else {
-            cell.acceptButton.hidden = true
-            cell.rejectButton.hidden = true
-        }
         
         return cell
     }
@@ -237,17 +229,17 @@ import CoreData
 
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let reject = UITableViewRowAction(style: .Normal, title: "Reject") { action, index in
-            print("more button tapped")
+            self.cancelConfirmed(indexPath)
         }
         reject.backgroundColor = UIColor.redColor()
         
         let accept = UITableViewRowAction(style: .Normal, title: "Accept") { action, index in
-            print("favorite button tapped")
+            self.acceptConfirmed(indexPath)
         }
         accept.backgroundColor = UIColor.greenColor()
         
         let details = UITableViewRowAction(style: .Normal, title: "Details") { action, index in
-            print("share button tapped")
+            self.tableView(self.queueTable, didSelectRowAtIndexPath: indexPath)
         }
         details.backgroundColor = UIColor.lightGrayColor()
         return [reject, accept, details]
@@ -276,58 +268,7 @@ import CoreData
         }
     }
     
-    /// Populates currentQueue from core data
-    /*func populateTable() {
-        currentQueue.removeAll()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
-        
-        // Initialize and configure Fetch Request
-        let fetchRequest = NSFetchRequest()
-        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
-        let sortDescriptors = [sectionSortDescriptor]
-        fetchRequest.sortDescriptors = sortDescriptors
-        fetchRequest.entity = studentEntity
-         
-        do {
-            let result = try managedContext!.executeFetchRequest(fetchRequest)
-            for student in result {
-                let studentobj = student as! NSManagedObject
-                let name = studentobj.valueForKey("name")
-                let netID = studentobj.valueForKey("netid")
-                let helpMessage = studentobj.valueForKey("helpmessage")
-                let course = studentobj.valueForKey("course")
-                let thisStudent: Student = Student(name: name as! String, helpMessage: helpMessage as! String, course: course as! String, netid: netID as! String)
-                currentQueue.append(thisStudent)
-            }
-        } catch {
-            let fetchError = error as NSError
-            print("Error fetching from core data")
-            print(fetchError)
-        }
-    }*/
-
-    /// Handles when a TA accepts a student. Queries the API
-    /// and and removes the student from the visible queue
-    @IBAction func acceptStudent(sender: UIButton) {
-        
-        let alertController = UIAlertController(title: "Are you sure you want to accept this Help Request?", message: "", preferredStyle: .Alert)
-        
-        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: ({
-            (_) in
-            self.acceptConfirmed()
-        }))
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-        
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    func acceptConfirmed() {
+    func acceptConfirmed(index: NSIndexPath) {
         let test = checkSync()
         
         if test == false {
@@ -335,6 +276,7 @@ import CoreData
             let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
                 (_) in
                 syncQueue()
+                self.queueTable.reloadData()
             }))
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
@@ -350,7 +292,7 @@ import CoreData
         
         // Configure Fetch Request
         fetchRequest.entity = studentEntity
-        let cell = queueTable.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TAQueueCustomCell
+        let cell = queueTable.cellForRowAtIndexPath(NSIndexPath(forRow: index.row, inSection: 0)) as! TAQueueCustomCell
         let id = cell.studentID
         let predicate = NSPredicate(format: "%K == %@", "netid", id)
         fetchRequest.predicate = predicate
@@ -400,30 +342,11 @@ import CoreData
         /*END HTTP REQUEST*/
         
         /*update currentQueue and UI*/
-        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+        queueTable.deleteRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Automatic)
         queueTable.reloadData()
     }
     
-    /// Handles when a TA rejects a student. Queries the API
-    /// and and removes the student from the visible queue
-    @IBAction func cancelStudent(sender: UIButton) {
-        
-        let alertController = UIAlertController(title: "Are you sure you want to reject this Help Request?", message: "", preferredStyle: .Alert)
-        
-        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: ({
-            (_) in
-            self.cancelConfirmed()
-        }))
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-        
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    func cancelConfirmed() {
+    func cancelConfirmed(index: NSIndexPath) {
         let test = checkSync()
         
         if test == false {
@@ -431,6 +354,7 @@ import CoreData
             let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
                 (_) in
                 syncQueue()
+                self.queueTable.reloadData()
                 }))
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
@@ -446,7 +370,7 @@ import CoreData
         
         // Configure Fetch Request
         fetchRequest.entity = studentEntity
-        let cell = queueTable.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! TAQueueCustomCell
+        let cell = queueTable.cellForRowAtIndexPath(NSIndexPath(forRow: index.row, inSection: 0)) as! TAQueueCustomCell
         let id = cell.studentID
         let predicate = NSPredicate(format: "%K == %@", "netid", id)
         fetchRequest.predicate = predicate
@@ -484,7 +408,7 @@ import CoreData
         //END HTTP REQUEST
         
         /*update currentQueue and UI*/
-        queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+        queueTable.deleteRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Automatic)
         queueTable.reloadData()
     }
     
