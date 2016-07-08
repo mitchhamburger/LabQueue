@@ -344,7 +344,6 @@ def notifyUser(senderID, recieverID, notificationType, removeID, enqueueStudentI
 	#frame = Frame()
 	#frame.add_item(userToken, payload, identifier, expiry, priority)
 	#apns.gateway_server.send_notification_multiple(frame)
-
 	apns.gateway_server.send_notification(userToken, payload)
 	return 'notification success'
 
