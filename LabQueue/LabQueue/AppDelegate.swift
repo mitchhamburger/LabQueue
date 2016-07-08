@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print(Adler32.crc(string: "mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12"))
         //print(getSyncToken())
+        //UINavigationBar.appearance().barTintColor = UIColor(netHex:0x4183D7)
         
         return true
     }
