@@ -20,8 +20,6 @@ class TAQueueCustomCell: UITableViewCell {
     
     //@IBOutlet weak var studentEmail: UILabel!
     @IBOutlet weak var studentName: UILabel!
-    @IBOutlet weak var acceptButton: UIButton!
-    @IBOutlet weak var rejectButton: UIButton!
     var studentID: String = ""
     override func awakeFromNib() {
         super.awakeFromNib()

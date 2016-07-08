@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LabQueue/StudentHomeViewController.swift"
-            timestampString = "489604724.854173"
+            timestampString = "489625588.978897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "addNamePushed(_:)"
             landmarkType = "5">
          </BreakpointContent>

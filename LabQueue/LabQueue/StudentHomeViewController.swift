@@ -18,7 +18,8 @@ import CoreData
     
     @IBOutlet weak var queueTable: UITableView!
     //var currentQueue = [Student]()
-    
+    var navBar:UINavigationBar=UINavigationBar()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StudentHomeViewController.silentRemove), name: removeStudentFromQueue, object: nil)
