@@ -81,7 +81,7 @@ func checkSync() -> Bool {
     return test
 }
 
-func syncQueue() -> Int{
+func syncQueue() {
     
     /*1. first delete everything from core data*/
     
@@ -146,9 +146,7 @@ func syncQueue() -> Int{
     
     
     /*3. Finally load activeQueue into core data*/
-    var count = 0
     for tempStudent in activeQueue {
-        count += 1
         let inputStudentObj = NSManagedObject(entity: studentEntity!, insertIntoManagedObjectContext: managedContext)
         inputStudentObj.setValue(tempStudent.name, forKey: "name")
         inputStudentObj.setValue(tempStudent.helpMessage, forKey: "helpmessage")
@@ -160,5 +158,4 @@ func syncQueue() -> Int{
             print("error witth \(tempStudent.netID)")
         }
     }
-    return count
 }

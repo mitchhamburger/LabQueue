@@ -11,12 +11,11 @@
         <attribute name="helpmessage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="netid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="requestid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="helpingTA" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LabTA" inverseName="currentStudent" inverseEntity="LabTA" syncable="YES"/>
     </entity>
     <elements>
         <element name="LabTA" positionX="-54" positionY="-9" width="128" height="105"/>
-        <element name="Student" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Student" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

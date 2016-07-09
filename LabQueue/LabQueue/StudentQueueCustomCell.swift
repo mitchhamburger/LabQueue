@@ -12,7 +12,6 @@ import UIKit
 ///
 /// Keeps each student's name as UILabel
 class StudentQueueCustomCell: UITableViewCell {
-    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var studentName: UILabel!
     var studentID: String = ""
     override func awakeFromNib() {

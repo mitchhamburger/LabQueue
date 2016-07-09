@@ -1,4 +1,0 @@
-import requests
-
-with requests.Session() as c:
-    url = ''

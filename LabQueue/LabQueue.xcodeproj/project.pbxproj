@@ -32,9 +32,6 @@
 		F8722BF61D089C5E00449536 /* StudentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */; };
 		F87AC22B1D25F5D50010CF59 /* adler32.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AC22A1D25F5D50010CF59 /* adler32.swift */; };
 		F895FC631D217AA30031F47D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895FC621D217AA30031F47D /* Constants.swift */; };
-		F89E174A1D30AC6500659548 /* TempTACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E17491D30AC6500659548 /* TempTACell.swift */; };
-		F89E174C1D30AD8F00659548 /* TempTAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E174B1D30AD8F00659548 /* TempTAController.swift */; };
-		F89E174E1D31361800659548 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E174D1D31361800659548 /* TopAlignedLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,9 +85,6 @@
 		F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHomeViewController.swift; sourceTree = "<group>"; };
 		F87AC22A1D25F5D50010CF59 /* adler32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adler32.swift; sourceTree = "<group>"; };
 		F895FC621D217AA30031F47D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		F89E17491D30AC6500659548 /* TempTACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempTACell.swift; sourceTree = "<group>"; };
-		F89E174B1D30AD8F00659548 /* TempTAController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempTAController.swift; sourceTree = "<group>"; };
-		F89E174D1D31361800659548 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,8 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				F8000DA31D302163002FF5E4 /* TempStudentQueueCell.swift */,
-				F89E17491D30AC6500659548 /* TempTACell.swift */,
-				F89E174B1D30AD8F00659548 /* TempTAController.swift */,
 				F8000DA01D301309002FF5E4 /* TempStudentController.swift */,
 			);
 			name = "Temporary Design Files";
@@ -180,7 +172,6 @@
 				F871535E1D0F30C400F29040 /* Student Files */,
 				F832229C1D07B7610089304E /* Main.storyboard */,
 				F81E57101D11ABAD00C11123 /* CASViewController.swift */,
-				F89E174D1D31361800659548 /* TopAlignedLabel.swift */,
 				F806120D1D0A68C8008D3A8D /* mitch pic.jpg */,
 				F8000DA21D30212B002FF5E4 /* Temporary Design Files */,
 				F83021A11D105D70003AF869 /* GTMOAuth2ViewTouch.xib */,
@@ -428,8 +419,6 @@
 			files = (
 				F8000DA41D302163002FF5E4 /* TempStudentQueueCell.swift in Sources */,
 				F81E57111D11ABAD00C11123 /* CASViewController.swift in Sources */,
-				F89E174A1D30AC6500659548 /* TempTACell.swift in Sources */,
-				F89E174C1D30AD8F00659548 /* TempTAController.swift in Sources */,
 				F895FC631D217AA30031F47D /* Constants.swift in Sources */,
 				F87AC22B1D25F5D50010CF59 /* adler32.swift in Sources */,
 				F832229B1D07B7610089304E /* ViewController.swift in Sources */,
@@ -437,7 +426,6 @@
 				F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */,
 				F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */,
 				F8000DA11D301309002FF5E4 /* TempStudentController.swift in Sources */,
-				F89E174E1D31361800659548 /* TopAlignedLabel.swift in Sources */,
 				F85B3E8E1D15CCF40031A1E3 /* LabQueue.xcdatamodeld in Sources */,
 				F82AC2011D0CDA3700BDADD2 /* TAQueueCustomCell.swift in Sources */,
 				F87153581D0F1C6700F29040 /* TAStudentInfoViewController.swift in Sources */,
