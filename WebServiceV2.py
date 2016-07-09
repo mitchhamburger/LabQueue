@@ -35,9 +35,10 @@ LabTAs = [
 
 HelpRequests = [
 	{
+		'RequestID': 0,
 		'Name': u"Matt McKinlay",
 		'NetID': u"mckinlay",
-		'Help Message': u"I don't know how to code",
+		'Help Message': u"Pellentesque commodo fermentum viverra. Donec suscipit posuere accumsan. Mauris mollis hendrerit tristique.",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -47,9 +48,10 @@ HelpRequests = [
 		'Course': u"COS 126"
 	},
 	{
+		'RequestID': 1,
 		'Name': u"Sam Button",
 		'NetID': u"sbutton",
-		'Help Message': u"Chunks",
+		'Help Message': u"I have a hard time alloc and calloc and malloc and the rest of memory etc etc Lorem Ipsum",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -59,9 +61,10 @@ HelpRequests = [
 		'Course': u"COS 217"
 	},
 	{
+		'RequestID': 2,
 		'Name': u"Rohan Patlolla",
 		'NetID': u"rohanp",
-		'Help Message': u"nbody",
+		'Help Message': u"Vestibulum malesuada aliquet eros, nec ultricies tortor vehicula vel. Vivamus vel lacus ac turpis feugiat dignissim no",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -71,9 +74,10 @@ HelpRequests = [
 		'Course': u"COS 126"
 	},
 	{
+		'RequestID': 3,
 		'Name': u"Austin Addison",
 		'NetID': u"aaddison",
-		'Help Message': u"I don't know how to code",
+		'Help Message': u"I'm working on seam carver and i cant get the seams to get carved, i think I need to learn how to seam carve",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -83,9 +87,10 @@ HelpRequests = [
 		'Course': u"COS 226"
 	},
 	{
+		'RequestID': 4,
 		'Name': u"Maia Ezratty",
 		'NetID': u"mezratty",
-		'Help Message': u"iudhfivudhfiv",
+		'Help Message': u"oaiudfhovaudfhvoaudhfvoadufhvoauhv uv aodf uivhdi fvhi dfhvi dhviud v",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -95,9 +100,10 @@ HelpRequests = [
 		'Course': u"COS 109"
 	},
 	{
+		'RequestID': 5,
 		'Name': u"Jason Hamburger",
 		'NetID': u"jh45",
-		'Help Message': u"I need help",
+		'Help Message': u"I'm hiking in arizona and i dont go to this school but I still would like extra help with cos 109",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -107,9 +113,10 @@ HelpRequests = [
 		'Course': u"COS 109"
 	},
 	{
+		'RequestID': 6,
 		'Name': u"Alexa Wojak",
 		'NetID': u"awojak",
-		'Help Message': u"oidfvfvfvfv",
+		'Help Message': u"afdviuah iuh iuh u u uh",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -119,6 +126,7 @@ HelpRequests = [
 		'Course': u"COS 226"
 	},
 	{
+		'RequestID': 7,
 		'Name': u"Zach Bedrosian",
 		'NetID': u"zbedrosian",
 		'Help Message': u"I don't need help with anything",
@@ -131,6 +139,7 @@ HelpRequests = [
 		'Course': u"COS 217"
 	},
 	{
+		'RequestID': 8,
 		'Name': u"Alex Manoloff",
 		'NetID': u"amanoloff",
 		'Help Message': u"I'm not in any of these classes",
@@ -143,6 +152,7 @@ HelpRequests = [
 		'Course': u"COS 217"
 	},
 	{
+		'RequestID': 9,
 		'Name': u"Will Robinson",
 		'NetID': u"laxerwill85",
 		'Help Message': u"I need answers",
@@ -155,6 +165,7 @@ HelpRequests = [
 		'Course': u"COS 217"
 	},
 	{
+		'RequestID': 10,
 		'Name': u"Gregor Clegane",
 		'NetID': u"gc23",
 		'Help Message': u"I can't type",
@@ -167,6 +178,7 @@ HelpRequests = [
 		'Course': u"COS 217"
 	},
 	{
+		'RequestID': 11,
 		'Name': u"Colin Hay",
 		'NetID': u"chay",
 		'Help Message': u"I don't understand percolation",
@@ -367,7 +379,6 @@ def getSyncToken():
 
 if __name__ == '__main__':
 	#print(zlib.adler32("mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12"))
-	print(HelpRequests[3])
 	app.run(debug = True)
 
 
