@@ -16,6 +16,7 @@ import CoreData
 /// * currentQueue: List of students to populate queue
 @IBDesignable class StudentHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var queueTable: UITableView!
     //var currentQueue = [Student]()
     var navBar:UINavigationBar=UINavigationBar()
@@ -28,9 +29,12 @@ import CoreData
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
-        self.queueTable.layer.borderWidth = 2
-        self.queueTable.layer.cornerRadius = 10
-        self.queueTable.separatorColor = UIColor.blackColor()
+        self.queueTable.rowHeight = 50
+        toolBar.backgroundColor = UIColor(netHex:0x4183D7)
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        //self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        self.navigationController?.navigationBar.barTintColor = UIColor(netHex:0x4183D7)
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -63,7 +67,6 @@ import CoreData
             return
         }
 
-        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentName = notification.userInfo!["studentinfo"]!["Name"] as! String
@@ -169,8 +172,28 @@ import CoreData
         } catch {
             
         }
-        cell.studentName.text = "\(indexPath.row + 1). \(result[indexPath.row].valueForKey("name") as! String)"
+        
+        let normalText = result[indexPath.row].valueForKey("name") as! String
+        
+        let boldText  = "     \(indexPath.row+1). "
+        
+        let attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
+        let boldString = NSMutableAttributedString(string:boldText, attributes:attrs)
+        
+        let attributedString = NSMutableAttributedString(attributedString: boldString)
+        
+        let normalString = NSMutableAttributedString(string: normalText)
+        attributedString.appendAttributedString(normalString)
+        cell.studentName.attributedText = attributedString
         cell.studentID = result[indexPath.row].valueForKey("netid") as! String
+        
+
+        if cell.studentID != globalNetId {
+            cell.editButton.hidden = true
+        }
+        if cell.studentID == globalNetId {
+            cell.editButton.hidden = false
+        }
         return cell
     }
     
@@ -254,12 +277,11 @@ import CoreData
     /// himself to the Queue. Configures and displays alert
     /// view controller.
     @IBAction func addNamePushed(sender: UIButton) {
-        
         let alertController = UIAlertController(title: "Add yourself to the Queue", message: "Submit your info", preferredStyle: .Alert)
         
         let confirmAction = UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default, handler: ({
             (_) in
-            let name = alertController.textFields![0] 
+            let name = alertController.textFields![0]
             let problem = alertController.textFields![1]
             let course = alertController.textFields![2]
             if self.checkName(name.text!) == false {
@@ -273,7 +295,7 @@ import CoreData
             }
             
             self.addToQueue(name.text!, helpMessage: problem.text!, course: course.text!, netid: globalNetId)
-            }))
+        }))
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
         
@@ -299,7 +321,6 @@ import CoreData
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-    
     
     func checkName(name: String) -> Bool {
         if name == "" {

@@ -23,6 +23,7 @@ class TempStudentController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         queueTable.delegate = self
         queueTable.dataSource = self
+        self.queueTable.rowHeight = 50
         toolBar.backgroundColor = UIColor(netHex:0x4183D7)
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController!.navigationBar.titleTextAttributes = titleDict as! [String : AnyObject]
@@ -31,14 +32,26 @@ class TempStudentController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 15
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("selected")
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.queueTable.dequeueReusableCellWithIdentifier("tempcustomcell")! as! TempStudentQueueCell
-        cell.name.text = "\(indexPath.row). Mitch Hamburger"
+        //cell.name.text = "    \(indexPath.row). Mitch Hamburger"
+        let normalText = "Mitch Hamburger"
+        
+        let boldText  = "     \(indexPath.row+1). "
+        
+        let attrs = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
+        let boldString = NSMutableAttributedString(string:boldText, attributes:attrs)
+        
+        let attributedString = NSMutableAttributedString(attributedString: boldString)
+
+        let normalString = NSMutableAttributedString(string: normalText)
+        attributedString.appendAttributedString(normalString)
+        cell.name.attributedText = attributedString
         return cell
     }
 }

@@ -18,27 +18,34 @@ import CoreData
 /// * managedObjectContext: NSManagedObjectContext for NSData
 @IBDesignable class TAHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
-    @IBOutlet weak var studentPicture: StudentPictureView!
+    
+
+    @IBOutlet weak var toolBarLabel: UILabel!
+    @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var queueTable: UITableView!
     
-    @IBOutlet weak var titleBar: UINavigationBar!
     //let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentRemove), name: removeStudentFromQueue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentAdd), name: addStudentToQueue, object: nil)
-        studentPicture.layer.cornerRadius = studentPicture.frame.size.width / 2;
+        /*studentPicture.layer.cornerRadius = studentPicture.frame.size.width / 2;
         studentPicture.clipsToBounds = true
         studentPicture.layer.borderWidth = 2
         studentPicture.layer.borderColor = UIColor.blackColor().CGColor
-        studentPicture.image = UIImage(named: "mitch pic.jpg")
-        syncQueue()
+        studentPicture.image = UIImage(named: "mitch pic.jpg")*/
+        let count = syncQueue()
+        toolBarLabel.text = "\(count) Students in Queue"
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
-        self.queueTable.layer.borderWidth = 2
+        
+        toolBar.backgroundColor = UIColor(netHex:0x4183D7)
+        self.navigationController?.navigationBar.barTintColor = UIColor(netHex:0x4183D7)
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        /*self.queueTable.layer.borderWidth = 2
         self.queueTable.layer.cornerRadius = 10
         self.queueTable.separatorColor = UIColor.blackColor()
         
@@ -51,7 +58,7 @@ import CoreData
         }
         else {
             titleBar.topItem?.title = "Welcome to Lab TAs!"
-        }
+        }*/
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -181,7 +188,7 @@ import CoreData
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.entity = studentEntity
         
-        let cell = self.queueTable.dequeueReusableCellWithIdentifier("TAcustomcell")! as! TAQueueCustomCell
+        let cell = self.queueTable.dequeueReusableCellWithIdentifier("customcell")! as! TAQueueCustomCell
         var result: [NSManagedObject] = [NSManagedObject]()
         do {
             result = try managedContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
@@ -190,6 +197,9 @@ import CoreData
         }
         cell.studentName.text = "\(indexPath.row + 1). \(result[indexPath.row].valueForKey("name") as! String)"
         cell.studentID = result[indexPath.row].valueForKey("netid") as! String
+        cell.studentCourse.text = result[indexPath.row].valueForKey("course") as? String
+        cell.studentHelpMessage.text = result[indexPath.row].valueForKey("helpmessage") as? String
+        cell.studentHelpMessage.lineBreakMode = .ByTruncatingTail
         //let cell = self.queueTable.dequeueReusableCellWithIdentifier("TAcustomcell")! as! TAQueueCustomCell
         //cell.studentName.text = "\(indexPath.row + 1). " + self.currentQueue[indexPath.row].name
         
@@ -322,7 +332,7 @@ import CoreData
         prefs.setObject(encodedData, forKey: "TACurrentStudent")
         //prefs.setValue(currentStudent, forKey: "TACurrentStudent")
         
-        titleBar.topItem?.title = "Your Current Student is " + currentStudent.name
+        //titleBar.topItem?.title = "Your Current Student is " + currentStudent.name
         
         /*BEGIN HTTP REQUEST*/
         let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.netID)/Helped")!
@@ -410,10 +420,5 @@ import CoreData
         /*update currentQueue and UI*/
         queueTable.deleteRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Automatic)
         queueTable.reloadData()
-    }
-    
-    /// Handles when a TA pushes the picture of his/her current student.
-    @IBAction func currenStudentPushed(sender: AnyObject) {
-        self.performSegueWithIdentifier("ShowCurrentStudent", sender: TACurrentStudent)
     }
 }
