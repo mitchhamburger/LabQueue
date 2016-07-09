@@ -318,10 +318,10 @@ def notifyActiveUsers(senderID, notificationType, removeID, enqueueStudentInfo, 
 		if entry['Is Active'] == True:
 			notifyUser(senderID, entry['NetID'], notificationType, removeID, enqueueStudentInfo, syncToken)
 
-def notifyUser(senderID, recieverID, notificationType, removeID, enqueueStudentInfo, syncToken):
-	if senderID == recieverID:
-		return "sender is reciever"
-	userToken = getTokenFromID(recieverID)
+def notifyUser(senderID, receiverID, notificationType, removeID, enqueueStudentInfo, syncToken):
+	if senderID == receiverID:
+		return "sender is receiver"
+	userToken = getTokenFromID(receiverID)
 	CERT_FILE = 'LabQueuePush.pem'
 	USE_SANDBOX = True
 	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
@@ -366,7 +366,8 @@ def getSyncToken():
 	return hashString
 
 if __name__ == '__main__':
-	print(zlib.adler32("mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12"))
+	#print(zlib.adler32("mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12"))
+	print(HelpRequests[3])
 	app.run(debug = True)
 
 
