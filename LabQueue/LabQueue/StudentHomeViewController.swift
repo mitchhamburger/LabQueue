@@ -9,13 +9,13 @@
 
 import UIKit
 import CoreData
-
 /// Home View Controller for students. Displays Queue and allows students to add themselves to the Queue
 ///
 /// Attributes:
 /// * currentQueue: List of students to populate queue
 @IBDesignable class StudentHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var acceptButton: LumenButton!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var queueTable: UITableView!
     //var currentQueue = [Student]()
