@@ -26,6 +26,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //print(getSyncToken())
         //UINavigationBar.appearance().barTintColor = UIColor(netHex:0x4183D7)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+        
+        
+        let prefs = NSUserDefaults.standardUserDefaults()
+         
+        if let studentData = prefs.stringForKey("UserNetID") {
+            globalNetId = studentData
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            var vc: UINavigationController = UINavigationController()
+            if (verify(globalNetId) == "TA") {
+                vc = storyboard.instantiateViewControllerWithIdentifier("TANav") as! UINavigationController
+            }
+            else {
+                vc = storyboard.instantiateViewControllerWithIdentifier("StudentNav") as! UINavigationController
+            }
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+        }
+        
         return true
     }
     func applicationWillResignActive(application: UIApplication) {

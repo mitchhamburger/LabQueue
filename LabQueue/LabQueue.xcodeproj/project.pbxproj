@@ -26,7 +26,6 @@
 		F83222B91D07B7610089304E /* LabQueueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222B81D07B7610089304E /* LabQueueUITests.swift */; };
 		F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83222C61D07BF8C0089304E /* StudentPictureView.swift */; };
 		F85B3E8E1D15CCF40031A1E3 /* LabQueue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F85B3E8C1D15CCF40031A1E3 /* LabQueue.xcdatamodeld */; };
-		F86C606B1D32D3D500178CC6 /* initial_data-2016-1.json in Resources */ = {isa = PBXBuildFile; fileRef = F86C606A1D32D3D500178CC6 /* initial_data-2016-1.json */; };
 		F86C606D1D32EB5D00178CC6 /* LumenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86C606C1D32EB5D00178CC6 /* LumenButton.swift */; };
 		F87153581D0F1C6700F29040 /* TAStudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87153571D0F1C6700F29040 /* TAStudentInfoViewController.swift */; };
 		F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F871535B1D0F29AA00F29040 /* StudentStudentInfoViewController.swift */; };
@@ -84,7 +83,6 @@
 		F83222BA1D07B7610089304E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F83222C61D07BF8C0089304E /* StudentPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentPictureView.swift; sourceTree = "<group>"; };
 		F85B3E8D1D15CCF40031A1E3 /* LabQueue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LabQueue.xcdatamodel; sourceTree = "<group>"; };
-		F86C606A1D32D3D500178CC6 /* initial_data-2016-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "initial_data-2016-1.json"; sourceTree = SOURCE_ROOT; };
 		F86C606C1D32EB5D00178CC6 /* LumenButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LumenButton.swift; sourceTree = "<group>"; };
 		F87153571D0F1C6700F29040 /* TAStudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAStudentInfoViewController.swift; sourceTree = "<group>"; };
 		F871535B1D0F29AA00F29040 /* StudentStudentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentStudentInfoViewController.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 			children = (
 				F83222981D07B7610089304E /* AppDelegate.swift */,
 				F87AC22A1D25F5D50010CF59 /* adler32.swift */,
-				F86C606A1D32D3D500178CC6 /* initial_data-2016-1.json */,
 				F895FC621D217AA30031F47D /* Constants.swift */,
 				F871535D1D0F309C00F29040 /* TA Files */,
 				F832229A1D07B7610089304E /* ViewController.swift */,
@@ -356,7 +353,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F83021A21D105D70003AF869 /* GTMOAuth2ViewTouch.xib in Resources */,
-				F86C606B1D32D3D500178CC6 /* initial_data-2016-1.json in Resources */,
 				F83222A31D07B7610089304E /* LaunchScreen.storyboard in Resources */,
 				F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */,
 				F83222A01D07B7610089304E /* Assets.xcassets in Resources */,

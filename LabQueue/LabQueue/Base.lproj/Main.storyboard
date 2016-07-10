@@ -67,7 +67,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Ojj-Aw-izQ">
             <objects>
-                <navigationController id="jg7-Zc-KSw" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StudentNav" id="jg7-Zc-KSw" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CTX-73-Q0u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -84,7 +84,7 @@
         <!--Navigation Controller-->
         <scene sceneID="25d-8e-9gQ">
             <objects>
-                <navigationController id="dGo-JL-msW" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TANav" id="dGo-JL-msW" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x8X-LN-avv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
