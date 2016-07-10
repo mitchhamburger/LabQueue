@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 var activeTAs: [LabTA] = []
-var TACurrentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "")
+var TACurrentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "", requestID: 0)
 var StudentCurrentTA: LabTA = LabTA()
 var userDeviceToken: String = ""
 
@@ -157,7 +157,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler(.NoData)
         }
         else if userInfo["type"]! as! String == "SilentRemove" {
-            NSNotificationCenter.defaultCenter().postNotificationName(removeStudentFromQueue, object: self, userInfo: ["id": userInfo["id"] as! String, "Sync Token": userInfo["Sync Token"] as! String])
+            print(userInfo["id"])
+            NSNotificationCenter.defaultCenter().postNotificationName(removeStudentFromQueue, object: self, userInfo: ["id": userInfo["id"] as! Int, "Sync Token": userInfo["Sync Token"] as! String])
             completionHandler(.NoData)
         }
         else if userInfo["type"]! as! String == "NotifyTen" {

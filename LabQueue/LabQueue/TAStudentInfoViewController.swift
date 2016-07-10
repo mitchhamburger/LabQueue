@@ -34,7 +34,7 @@ import CoreData
     
     @IBOutlet weak var studentPic: UIImageView!
     
-    var currentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "")
+    var currentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "", requestID: 0)
     var isCurrentStudent: Bool = false
     
     

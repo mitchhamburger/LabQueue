@@ -71,7 +71,8 @@ import CoreData
         let studentCourse = notification.userInfo!["studentinfo"]!["Course"] as! String
         let studentMessage = notification.userInfo!["studentinfo"]!["Help Message"] as! String
         let studentID = notification.userInfo!["studentinfo"]!["NetID"] as! String
-        let thisStudent = Student(name: studentName, helpMessage: studentMessage, course: studentCourse, netid: studentID)
+        let requestID = notification.userInfo!["studentinfo"]!["RequestID"] as! Int
+        let thisStudent = Student(name: studentName, helpMessage: studentMessage, course: studentCourse, netid: studentID, requestID: requestID)
         
         let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
         let inputStudentObj = NSManagedObject(entity: studentEntity!, insertIntoManagedObjectContext: managedContext)
@@ -79,6 +80,7 @@ import CoreData
         inputStudentObj.setValue(thisStudent.helpMessage, forKey: "helpmessage")
         inputStudentObj.setValue(thisStudent.course, forKey: "course")
         inputStudentObj.setValue(thisStudent.netID, forKey: "netid")
+        inputStudentObj.setValue(thisStudent.requestID, forKey: "requestid")
         do {
             try managedContext!.save()
         } catch {
@@ -115,7 +117,7 @@ import CoreData
             let result = try managedContext!.executeFetchRequest(fetchRequest)
             for request in result {
                 let requestObj = request as! NSManagedObject
-                if requestObj.valueForKey("netid") as! String == notification.userInfo!["id"] as! String {
+                if requestObj.valueForKey("requestid") as! Int == notification.userInfo!["id"] as! Int {
                     hit = count
                     let thisStudent = requestObj
                     managedContext?.deleteObject(thisStudent)
@@ -218,7 +220,8 @@ import CoreData
         let netID = studentobj.valueForKey("netid")
         let helpMessage = studentobj.valueForKey("helpmessage")
         let course = studentobj.valueForKey("course")
-        let thisStudent: Student = Student(name: name as! String, helpMessage: helpMessage as! String, course: course as! String, netid: netID as! String)
+        let requestID = studentobj.valueForKey("requestid")
+        let thisStudent: Student = Student(name: name as! String, helpMessage: helpMessage as! String, course: course as! String, netid: netID as! String, requestID: requestID as! Int)
         thisStudent.placeInQueue = indexPath.row + 1
         print("you tapped \(indexPath.row)")
         
@@ -235,41 +238,6 @@ import CoreData
             
         }
     }
-    
-    /// Populates currentQueue from core data
-    /*func populateTable() {
-        currentQueue.removeAll()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
-        
-        // Initialize and configure Fetch Request
-        let fetchRequest = NSFetchRequest()
-        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
-        let sortDescriptors = [sectionSortDescriptor]
-        fetchRequest.sortDescriptors = sortDescriptors
-        fetchRequest.entity = studentEntity
-        
-        do {
-            let result = try managedContext!.executeFetchRequest(fetchRequest)
-            
-            for student in result {
-                let studentobj = student as! NSManagedObject
-                
-                let name = studentobj.valueForKey("name")
-                let netID = studentobj.valueForKey("netid")
-                let helpMessage = studentobj.valueForKey("helpmessage")
-                let course = studentobj.valueForKey("course")
-                let thisStudent: Student = Student(name: name as! String, helpMessage: helpMessage as! String, course: course as! String, netid: netID as! String)
-                currentQueue.append(thisStudent)
-            }
-        } catch {
-            let fetchError = error as NSError
-            print("Error fetching from core data")
-            print(fetchError)
-        }
-    }*/
-    
     
     /// Handler for when a student pushes the button to add
     /// himself to the Queue. Configures and displays alert
@@ -358,14 +326,12 @@ import CoreData
     }
     
     func checkTA(netid: String) -> Bool {
-        print("checkTA1")
         let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/TAs/ActiveTAs")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
-        print("checkTA2")
         let semaphore = dispatch_semaphore_create(0)
         var flag: Bool = true
         let task = session.dataTaskWithRequest(request) {
@@ -392,7 +358,6 @@ import CoreData
         }
         task.resume()
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-        print("checkTA success")
         return flag
     }
     
@@ -415,26 +380,9 @@ import CoreData
             self.presentViewController(alertController, animated: true, completion: nil)
             return
         }
-        
+        var index = 0
         
         //let thisStudent: Student = Student(name: name, helpMessage: helpMessage, course: course, netid: netid)
-        
-        /*Add the entry to Core Data*/
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
-        
-        let inputStudentObj = NSManagedObject(entity: studentEntity!, insertIntoManagedObjectContext: managedContext)
-        inputStudentObj.setValue(name, forKey: "name")
-        inputStudentObj.setValue(helpMessage, forKey: "helpmessage")
-        inputStudentObj.setValue(course, forKey: "course")
-        inputStudentObj.setValue(netid, forKey: "netid")
-        
-        do {
-            try managedContext?.save()
-        } catch {
-            print("error saving \(netid) into core data")
-        }
         
         /*BEGIN HTTP REQUEST*/
         let jsonObj = ["Name": name,
@@ -457,9 +405,34 @@ import CoreData
         }
         let task = session.dataTaskWithRequest(request) {
             (let data, let response, let error) in
+            do {
+            let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
+                print(json)
+                index = json["RequestID"] as! Int
+                print(index)
+            } catch {
+                print("failed getting json response")
+            }
         }
         task.resume()
         /*END HTTP REQUEST*/
+        
+        /*Add the entry to Core Data*/
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
+        
+        let inputStudentObj = NSManagedObject(entity: studentEntity!, insertIntoManagedObjectContext: managedContext)
+        inputStudentObj.setValue(name, forKey: "name")
+        inputStudentObj.setValue(helpMessage, forKey: "helpmessage")
+        inputStudentObj.setValue(course, forKey: "course")
+        inputStudentObj.setValue(netid, forKey: "netid")
+        inputStudentObj.setValue(index, forKey: "requestid")
+        do {
+            try managedContext?.save()
+        } catch {
+            print("error saving \(netid) into core data")
+        }
         
         /*update currentQueue and UI*/
         self.queueTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.queueTable.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: UITableViewRowAnimation.Right)

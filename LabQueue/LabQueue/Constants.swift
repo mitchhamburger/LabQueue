@@ -131,7 +131,7 @@ func syncQueue() -> Int{
                 // Convert NSData to Dictionary where keys are of type String, and values are of any type
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
                 for student in (json["Queue"]! as! NSArray) {
-                    let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String, netid: student["NetID"] as! String)
+                    let thisStudent: Student = Student(name: student["Name"] as! String, helpMessage: student["Help Message"] as! String, course: student["Course"] as! String, netid: student["NetID"] as! String, requestID: student["RequestID"] as! Int)
                     activeQueue.append(thisStudent)
                 }
                 
@@ -154,6 +154,7 @@ func syncQueue() -> Int{
         inputStudentObj.setValue(tempStudent.helpMessage, forKey: "helpmessage")
         inputStudentObj.setValue(tempStudent.course, forKey: "course")
         inputStudentObj.setValue(tempStudent.netID, forKey: "netid")
+        inputStudentObj.setValue(tempStudent.requestID, forKey: "requestid")
         do {
             try managedContext!.save()
         } catch {

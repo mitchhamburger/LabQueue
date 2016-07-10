@@ -30,26 +30,30 @@ import UIKit
     var helpMessage: String
     var course: String
     var placeInQueue: Int
+    var requestID: Int
     
-    init(name: String, helpMessage: String, course: String, netid: String) {
+    init(name: String, helpMessage: String, course: String, netid: String, requestID: Int) {
         self.name = name
         netID = netid
         self.helpMessage = helpMessage
         self.course = course
         placeInQueue = 0
+        self.requestID = requestID
     }
     
     required convenience init(coder aDecoder: NSCoder) {
         let name = aDecoder.decodeObjectForKey("name") as! String
         let helpMessage = aDecoder.decodeObjectForKey("helpMessage") as! String
         let course = aDecoder.decodeObjectForKey("course") as! String
-        self.init(name: name, helpMessage: helpMessage, course: course, netid: "")
+        let requestID = aDecoder.decodeObjectForKey("requestid") as! Int
+        self.init(name: name, helpMessage: helpMessage, course: course, netid: "", requestID: requestID)
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(name, forKey: "name")
         aCoder.encodeObject(helpMessage, forKey: "helpMessage")
         aCoder.encodeObject(course, forKey: "course")
+        aCoder.encodeObject(requestID, forKey: "requestid")
     }
     
 }

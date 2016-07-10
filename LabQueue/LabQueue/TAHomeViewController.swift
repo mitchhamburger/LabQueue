@@ -40,10 +40,7 @@ import CoreData
         toolBar.backgroundColor = UIColor(netHex:0x4183D7)
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex:0x4183D7)
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        /*self.queueTable.layer.borderWidth = 2
-        self.queueTable.layer.cornerRadius = 10
-        self.queueTable.separatorColor = UIColor.blackColor()
-        
+        /*
         let prefs = NSUserDefaults.standardUserDefaults()
         
         if let studentData = prefs.objectForKey("TACurrentStudent") {
@@ -92,7 +89,8 @@ import CoreData
         let studentCourse = notification.userInfo!["studentinfo"]!["Course"] as! String
         let studentMessage = notification.userInfo!["studentinfo"]!["Help Message"] as! String
         let studentID = notification.userInfo!["studentinfo"]!["NetID"] as! String
-        let thisStudent = Student(name: studentName, helpMessage: studentMessage, course: studentCourse, netid: studentID)
+        let requestID = notification.userInfo!["studentinfo"]!["RequestID"] as! Int
+        let thisStudent = Student(name: studentName, helpMessage: studentMessage, course: studentCourse, netid: studentID, requestID: requestID)
         
         let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
         let inputStudentObj = NSManagedObject(entity: studentEntity!, insertIntoManagedObjectContext: managedContext)
@@ -100,6 +98,7 @@ import CoreData
         inputStudentObj.setValue(thisStudent.helpMessage, forKey: "helpmessage")
         inputStudentObj.setValue(thisStudent.course, forKey: "course")
         inputStudentObj.setValue(thisStudent.netID, forKey: "netid")
+        inputStudentObj.setValue(thisStudent.requestID, forKey: "requestid")
         do {
             try managedContext!.save()
         } catch {
@@ -135,7 +134,7 @@ import CoreData
             let result = try managedContext!.executeFetchRequest(fetchRequest)
             for request in result {
                 let requestObj = request as! NSManagedObject
-                if requestObj.valueForKey("netid") as! String == notification.userInfo!["id"] as! String {
+                if requestObj.valueForKey("requestid") as! Int == notification.userInfo!["id"] as! Int {
                     hit = count
                     let thisStudent = requestObj
                     managedContext?.deleteObject(thisStudent)
@@ -223,7 +222,8 @@ import CoreData
         let netID = studentobj.valueForKey("netid")
         let helpMessage = studentobj.valueForKey("helpmessage")
         let course = studentobj.valueForKey("course")
-        let thisStudent: Student = Student(name: name as! String, helpMessage: helpMessage as! String, course: course as! String, netid: netID as! String)
+        let requestID = studentobj.valueForKey("requestid")
+        let thisStudent: Student = Student(name: name as! String, helpMessage: helpMessage as! String, course: course as! String, netid: netID as! String, requestID: requestID as! Int)
         thisStudent.placeInQueue = indexPath.row + 1
         print("you tapped \(indexPath.row)")
         
@@ -301,7 +301,7 @@ import CoreData
         let id = cell.studentID
         let predicate = NSPredicate(format: "%K == %@", "netid", id)
         fetchRequest.predicate = predicate
-        let currentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "")
+        let currentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "", requestID: 0)
         
         do {
             let result = try managedContext!.executeFetchRequest(fetchRequest)
@@ -310,6 +310,7 @@ import CoreData
             currentStudent.course = studentObj.valueForKey("course") as! String
             currentStudent.helpMessage = studentObj.valueForKey("helpmessage") as! String
             currentStudent.netID = studentObj.valueForKey("netid") as! String
+            currentStudent.requestID = studentObj.valueForKey("requestid") as! Int
             managedContext?.deleteObject(result[0] as! NSManagedObject)
         } catch {
             print("error fetching \(currentStudent.netID)")
@@ -330,7 +331,7 @@ import CoreData
         //titleBar.topItem?.title = "Your Current Student is " + currentStudent.name
         
         /*BEGIN HTTP REQUEST*/
-        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.netID)/Helped")!
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Helped")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         
@@ -379,7 +380,7 @@ import CoreData
         let id = cell.studentID
         let predicate = NSPredicate(format: "%K == %@", "netid", id)
         fetchRequest.predicate = predicate
-        let currentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "")
+        let currentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "", requestID: 0)
         
         do {
             let result = try managedContext!.executeFetchRequest(fetchRequest)
@@ -388,6 +389,7 @@ import CoreData
             currentStudent.course = studentObj.valueForKey("course") as! String
             currentStudent.helpMessage = studentObj.valueForKey("helpmessage") as! String
             currentStudent.netID = studentObj.valueForKey("netid") as! String
+            currentStudent.requestID = studentObj.valueForKey("requestid") as! Int
             managedContext?.deleteObject(result[0] as! NSManagedObject)
         } catch {
             print("error fetching \(currentStudent.netID)")
@@ -399,7 +401,7 @@ import CoreData
         }
 
         //HTTP REQUEST
-        let url = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.netID)/Canceled")!
+        let url = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Canceled")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"

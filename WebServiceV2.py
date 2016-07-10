@@ -35,9 +35,10 @@ LabTAs = [
 
 HelpRequests = [
 	{
+		'RequestID': 0,
 		'Name': u"Matt McKinlay",
 		'NetID': u"mckinlay",
-		'Help Message': u"I don't know how to code",
+		'Help Message': u"I have to eat maple syrup but I dont have a spoon or pancakes or anything else that you eat syrup with",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -47,9 +48,10 @@ HelpRequests = [
 		'Course': u"COS 126"
 	},
 	{
+		'RequestID': 1,
 		'Name': u"Sam Button",
 		'NetID': u"sbutton",
-		'Help Message': u"Chunks",
+		'Help Message': u"I just dont get any of it I wrestle so my head dont work so good with concussions and all of that etc loreum episoum",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -59,9 +61,10 @@ HelpRequests = [
 		'Course': u"COS 217"
 	},
 	{
+		'RequestID': 2,
 		'Name': u"Rohan Patlolla",
 		'NetID': u"rohanp",
-		'Help Message': u"nbody",
+		'Help Message': u"I have never taken a cos course so I want help with cos 126 with the nbody and recursion is too much",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -71,9 +74,10 @@ HelpRequests = [
 		'Course': u"COS 126"
 	},
 	{
+		'RequestID': 3,
 		'Name': u"Austin Addison",
 		'NetID': u"aaddison",
-		'Help Message': u"I don't know how to code",
+		'Help Message': u"im austin and i like to dance at the cap and gown club because its good fun to dance at the club",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -83,9 +87,10 @@ HelpRequests = [
 		'Course': u"COS 226"
 	},
 	{
+		'RequestID': 4,
 		'Name': u"Maia Ezratty",
 		'NetID': u"mezratty",
-		'Help Message': u"iudhfivudhfiv",
+		'Help Message': u"iudhfivudhfiv adfiuvh iidufhv id uf vhudfhv idh uvh fuvh fiuvh difuvh difuvh ... df9vuhdf ivuhd fv",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -95,9 +100,10 @@ HelpRequests = [
 		'Course': u"COS 109"
 	},
 	{
+		'RequestID': 5,
 		'Name': u"Jason Hamburger",
 		'NetID': u"jh45",
-		'Help Message': u"I need help",
+		'Help Message': u"Im in arizona so i dont know how to take cos 109 but i can start a fire with my feet i think",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -107,6 +113,7 @@ HelpRequests = [
 		'Course': u"COS 109"
 	},
 	{
+		'RequestID': 6,
 		'Name': u"Alexa Wojak",
 		'NetID': u"awojak",
 		'Help Message': u"oidfvfvfvfv",
@@ -119,6 +126,7 @@ HelpRequests = [
 		'Course': u"COS 226"
 	},
 	{
+		'RequestID': 7,
 		'Name': u"Zach Bedrosian",
 		'NetID': u"zbedrosian",
 		'Help Message': u"I don't need help with anything",
@@ -131,8 +139,9 @@ HelpRequests = [
 		'Course': u"COS 217"
 	},
 	{
+		'RequestID': 8,
 		'Name': u"Alex Manoloff",
-		'NetID': u"amanoloff",
+		'NetID': u"acm4",
 		'Help Message': u"I'm not in any of these classes",
 		'Been Helped': False,
 		'Canceled': False,
@@ -143,6 +152,7 @@ HelpRequests = [
 		'Course': u"COS 217"
 	},
 	{
+		'RequestID': 9,
 		'Name': u"Will Robinson",
 		'NetID': u"laxerwill85",
 		'Help Message': u"I need answers",
@@ -155,6 +165,7 @@ HelpRequests = [
 		'Course': u"COS 217"
 	},
 	{
+		'RequestID': 10,
 		'Name': u"Gregor Clegane",
 		'NetID': u"gc23",
 		'Help Message': u"I can't type",
@@ -167,6 +178,7 @@ HelpRequests = [
 		'Course': u"COS 217"
 	},
 	{
+		'RequestID': 11,
 		'Name': u"Colin Hay",
 		'NetID': u"chay",
 		'Help Message': u"I don't understand percolation",
@@ -226,7 +238,9 @@ def fullQueueOps(senderID):
 	else:
 		if not request.json:
 			abort(400)
+		index = len(HelpRequests)
 		newEntry = {
+			'RequestID': index,
 			'Name': request.json['Name'],
 			'NetID': senderID,
 			'Help Message': request.json['Help Message'],
@@ -240,48 +254,48 @@ def fullQueueOps(senderID):
 		}
 		syncToken = getSyncToken()
 		HelpRequests.append(newEntry)
-
 		info = {
 			'Name': request.json['Name'], 
 			'NetID': senderID,
 			'Help Message': request.json['Help Message'],
-			'Course': request.json['Course']
+			'Course': request.json['Course'],
+			'RequestID': index
 			}
 		notifyActiveUsers(senderID, SILENTENQUEUE, "", info, syncToken)
-		return jsonify({'Queue': HelpRequests}), 201
+		return jsonify({'RequestID': index}), 201
 
 @app.route('/LabQueue/v2/<senderID>/Requests/<requestID>/Helped', methods = ['GET'])
 def markAsHelped(senderID, requestID):
-	entry = [entry for entry in HelpRequests if entry['NetID'] == requestID and entry['In Queue'] == True]
+	bigentry = [entry for entry in HelpRequests if entry['RequestID'] == int(requestID)]
 	if len(entry) == 0:
 		abort(404)
 	else:
 		syncToken = getSyncToken()
-		entry[0]['Been Helped'] = True
-		entry[0]['Helped Time'] = datetime.datetime.now()
-		entry[0]['In Queue'] = False
-		entry[0]['Attending TA'] = senderID
+		bigentry[0]['Been Helped'] = True
+		bigentry[0]['Helped Time'] = datetime.datetime.now()
+		bigentry[0]['In Queue'] = False
+		bigentry[0]['Attending TA'] = senderID
 		activeQueue = []
 		for entry in HelpRequests:
 			if entry['In Queue'] == True:
 				activeQueue.append(entry)
-		notifyUser(senderID, requestID, NOTIFYMATCH, "", [], syncToken)
+		notifyUser(senderID, entry['NetID'], NOTIFYMATCH, "", [], syncToken)
 		if len(activeQueue) > 9:
 			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [], syncToken)
 		if len(activeQueue) > 4:
 			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [], syncToken)
 		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
-		return jsonify({requestID: entry}), 201
+		return jsonify({bigentry[0]['NetID']: bigentry}), 201
 
 @app.route('/LabQueue/v2/<senderID>/Requests/<requestID>/Canceled', methods = ['GET'])
 def markAsCanceled(senderID, requestID):
-	entry = [entry for entry in HelpRequests if entry['NetID'] == requestID and entry['In Queue'] == True]
+	bigentry = [entry for entry in HelpRequests if entry['RequestID'] == int(requestID)]
 	if len(entry) == 0:
 		abort(404)
 	else:
 		syncToken = getSyncToken()
-		entry[0]['Canceled'] = True
-		entry[0]['In Queue'] = False
+		bigentry[0]['Canceled'] = True
+		bigentry[0]['In Queue'] = False
 		activeQueue = []
 		for entry in HelpRequests:
 			if entry['In Queue'] == True:
@@ -291,7 +305,7 @@ def markAsCanceled(senderID, requestID):
 		if len(activeQueue) > 4:
 			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [], syncToken)
 		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
-		return jsonify({requestID: entry}), 201
+		return jsonify({bigentry[0]['NetID']: bigentry}), 201
 
 @app.route('/LabQueue/v2/<senderID>/TAs/ActiveTAs', methods = ['GET'])
 def getActiveTAs(senderID):
@@ -328,7 +342,7 @@ def notifyUser(senderID, recieverID, notificationType, removeID, enqueueStudentI
 	if notificationType == SILENTENQUEUE:
 		payload = Payload(content_available = 1, custom = {'type': 'SilentEnqueue', 'studentinfo': enqueueStudentInfo, 'Sync Token': syncToken})
 	elif notificationType == SILENTREMOVE:
-		payload = Payload(content_available = 1, custom = {'type': 'SilentRemove', 'id': removeID, 'Sync Token': syncToken})
+		payload = Payload(content_available = 1, custom = {'type': 'SilentRemove', 'id': int(removeID), 'Sync Token': syncToken})
 	elif notificationType == NOTIFYMATCH:
 		entry = [entry for entry in LabTAs if entry['NetID'] == senderID and entry['Is Active'] == True]
 		if len(entry) == 0:
