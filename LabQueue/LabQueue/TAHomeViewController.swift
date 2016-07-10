@@ -30,11 +30,6 @@ import CoreData
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentRemove), name: removeStudentFromQueue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentAdd), name: addStudentToQueue, object: nil)
-        /*studentPicture.layer.cornerRadius = studentPicture.frame.size.width / 2;
-        studentPicture.clipsToBounds = true
-        studentPicture.layer.borderWidth = 2
-        studentPicture.layer.borderColor = UIColor.blackColor().CGColor
-        studentPicture.image = UIImage(named: "mitch pic.jpg")*/
         let count = syncQueue()
         toolBarLabel.text = "\(count) Students in Queue"
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -123,7 +118,6 @@ import CoreData
         if checkSilentSync(notification) == false {
             return
         }
-        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
@@ -247,12 +241,13 @@ import CoreData
             self.acceptConfirmed(indexPath)
         }
         accept.backgroundColor = UIColor.greenColor()
+        accept.backgroundColor = UIColor(netHex: 0x006400)
         
         let details = UITableViewRowAction(style: .Normal, title: "Details") { action, index in
             self.tableView(self.queueTable, didSelectRowAtIndexPath: indexPath)
         }
         details.backgroundColor = UIColor.lightGrayColor()
-        return [reject, accept, details]
+        return [accept, reject, details]
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -420,5 +415,8 @@ import CoreData
         /*update currentQueue and UI*/
         queueTable.deleteRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Automatic)
         queueTable.reloadData()
+    }
+    @IBAction func backButtonPressed(sender: UIButton) {
+        self.performSegueWithIdentifier("back", sender: sender)
     }
 }

@@ -31,8 +31,6 @@ import CoreData
         self.queueTable.delegate = self
         self.queueTable.rowHeight = 50
         toolBar.backgroundColor = UIColor(netHex:0x4183D7)
-        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        //self.navigationController?.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex:0x4183D7)
         UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
@@ -467,5 +465,8 @@ import CoreData
         self.queueTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.queueTable.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: UITableViewRowAnimation.Right)
         self.queueTable.reloadData()
         
+    }
+    @IBAction func backPressed(sender: UIButton) {
+        self.performSegueWithIdentifier("back", sender: sender)
     }
 }
