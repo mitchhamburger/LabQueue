@@ -261,7 +261,8 @@ def fullQueueOps(senderID):
 			'Course': request.json['Course'],
 			'RequestID': index
 			}
-		notifyActiveUsers(senderID, SILENTENQUEUE, "", info, syncToken)
+		#notifyActiveUsers(senderID, SILENTENQUEUE, "", info, syncToken)
+		handleSilentEnqueue(senderID, info, syncToken)
 		return jsonify({'RequestID': index}), 201
 
 @app.route('/LabQueue/v2/<senderID>/Requests/<requestID>/Helped', methods = ['GET'])
@@ -284,7 +285,8 @@ def markAsHelped(senderID, requestID):
 			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [], syncToken)
 		if len(activeQueue) > 4:
 			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [], syncToken)
-		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
+		#notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
+		handleSilentRemove(senderID, requestID, syncToken)
 		return jsonify({bigentry[0]['NetID']: bigentry}), 201
 
 @app.route('/LabQueue/v2/<senderID>/Requests/<requestID>/Canceled', methods = ['GET'])
@@ -304,7 +306,9 @@ def markAsCanceled(senderID, requestID):
 			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [], syncToken)
 		if len(activeQueue) > 4:
 			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [], syncToken)
-		notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
+		#notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
+		handleSilentRemove(senderID, requestID, syncToken)
+		#options[handleSilentRemove]("","","")
 		return jsonify({bigentry[0]['NetID']: bigentry}), 201
 
 @app.route('/LabQueue/v2/<senderID>/TAs/ActiveTAs', methods = ['GET'])
@@ -332,10 +336,56 @@ def notifyActiveUsers(senderID, notificationType, removeID, enqueueStudentInfo, 
 		if entry['Is Active'] == True:
 			notifyUser(senderID, entry['NetID'], notificationType, removeID, enqueueStudentInfo, syncToken)
 
-def notifyUser(senderID, recieverID, notificationType, removeID, enqueueStudentInfo, syncToken):
-	if senderID == recieverID:
-		return "sender is reciever"
-	userToken = getTokenFromID(recieverID)
+def handleSilentRemove(senderID, removeID, syncToken):
+	activeUsers = getAllActiveUsers()
+	CERT_FILE = 'LabQueuePush.pem'
+	USE_SANDBOX = True
+	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
+	payload = Payload(content_available = 1, custom = {'type': 'SilentRemove', 'id': int(removeID), 'Sync Token': syncToken})
+	for entry in activeUsers:
+		if entry['NetID'] == senderID:
+			return 'sender is receiever'
+		userToken = getTokenFromID(entry['NetID'])
+		apns.gateway_server.send_notification(userToken, payload)
+	return 'Notification success'
+
+
+def handleSilentEnqueue(senderID, enqueueStudentInfo, syncToken):
+	activeUsers = getAllActiveUsers()
+	CERT_FILE = 'LabQueuePush.pem'
+	USE_SANDBOX = True
+	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
+	payload = Payload(content_available = 1, custom = {'type': 'SilentEnqueue', 'studentinfo': enqueueStudentInfo, 'Sync Token': syncToken})
+	for entry in activeUsers:
+		if entry['NetID'] == senderID:
+			return 'sender is receiever'
+		userToken = getTokenFromID(entry['NetID'])
+		apns.gateway_server.send_notification(userToken, payload)
+	return 'notification success'
+
+def getAllActiveUsers():
+	activeUsers = []
+	for entry in HelpRequests:
+		if entry['In Queue'] == True:
+			activeUsers.append(entry)
+	for entry in LabTAs:
+		if entry['Is Active'] == True:
+			activeUsers.append(entry)
+	return activeUsers
+
+def handleNotifyMatch(senderID, receiverID, syncToken):
+	print "hello"
+
+options = {
+	SILENTREMOVE: handleSilentRemove,
+	SILENTENQUEUE: handleSilentEnqueue,
+	NOTIFYMATCH: handleNotifyMatch
+}
+
+def notifyUser(senderID, receiverID, notificationType, removeID, enqueueStudentInfo, syncToken):
+	if senderID == receiverID:
+		return "sender is receiver"
+	userToken = getTokenFromID(receiverID)
 	CERT_FILE = 'LabQueuePush.pem'
 	USE_SANDBOX = True
 	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
@@ -380,7 +430,7 @@ def getSyncToken():
 	return hashString
 
 if __name__ == '__main__':
-	print(zlib.adler32("mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12"))
+	#print(zlib.adler32("mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12"))
 	app.run(debug = True)
 
 

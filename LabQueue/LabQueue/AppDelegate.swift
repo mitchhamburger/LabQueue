@@ -27,8 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UINavigationBar.appearance().barTintColor = UIColor(netHex:0x4183D7)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
-        
-        
         let prefs = NSUserDefaults.standardUserDefaults()
          
         if let studentData = prefs.stringForKey("UserNetID") {
@@ -37,9 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             var vc: UINavigationController = UINavigationController()
             if (verify(globalNetId) == "TA") {
+                registerForPushNotifications(UIApplication.sharedApplication())
                 vc = storyboard.instantiateViewControllerWithIdentifier("TANav") as! UINavigationController
             }
             else {
+                registerForPushNotifications(UIApplication.sharedApplication())
                 vc = storyboard.instantiateViewControllerWithIdentifier("StudentNav") as! UINavigationController
             }
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

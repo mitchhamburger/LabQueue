@@ -58,13 +58,13 @@ class CASViewController: UIViewController, UIWebViewDelegate {
         }
         return true
     }
-    
-    func registerForPushNotifications(application: UIApplication) {
-        let notificationSettings = UIUserNotificationSettings(
-            forTypes: [.Badge, .Sound, .Alert], categories: nil)
-        application.registerUserNotificationSettings(notificationSettings)
-        //registerToken(userDeviceToken, netid: globalNetId)
-    }
+}
+
+func registerForPushNotifications(application: UIApplication) {
+    let notificationSettings = UIUserNotificationSettings(
+        forTypes: [.Badge, .Sound, .Alert], categories: nil)
+    application.registerUserNotificationSettings(notificationSettings)
+    //registerToken(userDeviceToken, netid: globalNetId)
 }
 
 /// Check whether a NetID belongs to a student or a TA through the API
