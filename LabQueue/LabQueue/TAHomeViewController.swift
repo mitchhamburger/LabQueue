@@ -269,7 +269,6 @@ import CoreData
         else if (segue.identifier == "ShowCurrentStudent") {
             let dest = segue.destinationViewController as! TAStudentInfoViewController
             dest.currentStudent = TACurrentStudent
-            dest.isCurrentStudent = true
         }
     }
     

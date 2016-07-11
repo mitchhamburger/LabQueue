@@ -36,6 +36,7 @@
 		F89E174A1D30AC6500659548 /* TempTACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E17491D30AC6500659548 /* TempTACell.swift */; };
 		F89E174C1D30AD8F00659548 /* TempTAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E174B1D30AD8F00659548 /* TempTAController.swift */; };
 		F89E174E1D31361800659548 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E174D1D31361800659548 /* TopAlignedLabel.swift */; };
+		F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		F89E17491D30AC6500659548 /* TempTACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempTACell.swift; sourceTree = "<group>"; };
 		F89E174B1D30AD8F00659548 /* TempTAController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempTAController.swift; sourceTree = "<group>"; };
 		F89E174D1D31361800659548 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
+		F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAStudentInfoSingleLineCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 				F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */,
 				F87153571D0F1C6700F29040 /* TAStudentInfoViewController.swift */,
 				F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */,
+				F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */,
 				F8722BF31D0886BF00449536 /* TAHomeViewController.swift */,
 				F85B3E8C1D15CCF40031A1E3 /* LabQueue.xcdatamodeld */,
 			);
@@ -445,6 +448,7 @@
 				F82AC2011D0CDA3700BDADD2 /* TAQueueCustomCell.swift in Sources */,
 				F87153581D0F1C6700F29040 /* TAStudentInfoViewController.swift in Sources */,
 				F82AC1F91D0C6FD000BDADD2 /* LabTA.swift in Sources */,
+				F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */,
 				F8722BF61D089C5E00449536 /* StudentHomeViewController.swift in Sources */,
 				F8722BF41D0886BF00449536 /* TAHomeViewController.swift in Sources */,
 				F86C606D1D32EB5D00178CC6 /* LumenButton.swift in Sources */,
