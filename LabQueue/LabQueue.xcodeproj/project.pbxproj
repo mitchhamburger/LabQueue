@@ -37,6 +37,7 @@
 		F89E174C1D30AD8F00659548 /* TempTAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E174B1D30AD8F00659548 /* TempTAController.swift */; };
 		F89E174E1D31361800659548 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E174D1D31361800659548 /* TopAlignedLabel.swift */; };
 		F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */; };
+		F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		F89E174B1D30AD8F00659548 /* TempTAController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempTAController.swift; sourceTree = "<group>"; };
 		F89E174D1D31361800659548 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
 		F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAStudentInfoSingleLineCell.swift; sourceTree = "<group>"; };
+		F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAHelpSessionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				F87153571D0F1C6700F29040 /* TAStudentInfoViewController.swift */,
 				F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */,
 				F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */,
+				F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */,
 				F8722BF31D0886BF00449536 /* TAHomeViewController.swift */,
 				F85B3E8C1D15CCF40031A1E3 /* LabQueue.xcdatamodeld */,
 			);
@@ -436,6 +439,7 @@
 				F81E57111D11ABAD00C11123 /* CASViewController.swift in Sources */,
 				F89E174A1D30AC6500659548 /* TempTACell.swift in Sources */,
 				F89E174C1D30AD8F00659548 /* TempTAController.swift in Sources */,
+				F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */,
 				F895FC631D217AA30031F47D /* Constants.swift in Sources */,
 				F87AC22B1D25F5D50010CF59 /* adler32.swift in Sources */,
 				F832229B1D07B7610089304E /* ViewController.swift in Sources */,

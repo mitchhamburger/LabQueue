@@ -33,6 +33,19 @@ import CoreData
         toolBar.backgroundColor = UIColor(netHex:0x4183D7)
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex:0x4183D7)
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        self.queueTable.tableFooterView = UIView()
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        queueTable.addSubview(refreshControl)
+    }
+    
+    func refresh(refreshControl: UIRefreshControl) {
+        // Do your job, when done:
+        syncQueue()
+        self.queueTable.reloadData()
+        refreshControl.endRefreshing()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -48,10 +61,10 @@ import CoreData
         if token != notification.userInfo!["Sync Token"]! as! String {
             test = false
             let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: ({
                 (_) in
-                syncQueue()
-                self.queueTable.reloadData()
+                //syncQueue()
+                //self.queueTable.reloadData()
             }))
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
@@ -112,7 +125,6 @@ import CoreData
         
         var hit: Int = 0
         var count: Int = 0
-        
         do {
             let result = try managedContext!.executeFetchRequest(fetchRequest)
             for request in result {
@@ -372,9 +384,10 @@ import CoreData
         
         if test == false {
             let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: ({
                 (_) in
                 //syncQueue()
+                //self.queueTable.reloadData()
             }))
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
@@ -403,6 +416,7 @@ import CoreData
         } catch {
             print("error converting input to json")
         }
+        let semaphore = dispatch_semaphore_create(0)
         let task = session.dataTaskWithRequest(request) {
             (let data, let response, let error) in
             do {
@@ -413,8 +427,10 @@ import CoreData
             } catch {
                 print("failed getting json response")
             }
+            dispatch_semaphore_signal(semaphore)
         }
         task.resume()
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         /*END HTTP REQUEST*/
         
         /*Add the entry to Core Data*/

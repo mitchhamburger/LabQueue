@@ -17,40 +17,42 @@ import CoreData
 /// * students: List of students to populate queue
 /// * managedObjectContext: NSManagedObjectContext for NSData
 @IBDesignable class TAHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
-    
-    
 
     @IBOutlet weak var toolBarLabel: UILabel!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var queueTable: UITableView!
     
     //let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var requestCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentRemove), name: removeStudentFromQueue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentAdd), name: addStudentToQueue, object: nil)
-        let count = syncQueue()
-        toolBarLabel.text = "\(count) Students in Queue"
+        requestCount = syncQueue()
+        toolBarLabel.text = "\(requestCount) Students in Queue"
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
         
+        self.queueTable.tableFooterView = UIView()
+
         toolBar.backgroundColor = UIColor(netHex:0x4183D7)
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex:0x4183D7)
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        /*
-        let prefs = NSUserDefaults.standardUserDefaults()
-        
-        if let studentData = prefs.objectForKey("TACurrentStudent") {
-            let student = NSKeyedUnarchiver.unarchiveObjectWithData(studentData as! NSData) as! Student
-            titleBar.topItem?.title = "Your Current Student is " + student.name
-            TACurrentStudent = student
-        }
-        else {
-            titleBar.topItem?.title = "Welcome to Lab TAs!"
-        }*/
+       
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        queueTable.addSubview(refreshControl)
+    }
+    
+    func refresh(refreshControl: UIRefreshControl) {
+        // Do your job, when done:
+        requestCount = syncQueue()
+        toolBarLabel.text = "\(requestCount) Students in Queue"
+        self.queueTable.reloadData()
+        refreshControl.endRefreshing()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -66,10 +68,10 @@ import CoreData
         if token != notification.userInfo!["Sync Token"]! as! String {
             test = false
             let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: ({
                 (_) in
-                syncQueue()
-                self.queueTable.reloadData()
+                //syncQueue()
+                //self.queueTable.reloadData()
             }))
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
@@ -110,6 +112,9 @@ import CoreData
             NSIndexPath(forRow: queueTable.numberOfRowsInSection(0), inSection: 0)
             ], withRowAnimation: UITableViewRowAnimation.Right)
         queueTable.endUpdates()
+        
+        requestCount += 1
+        toolBarLabel.text = "\(requestCount) Students in Queue"
     }
     
     /// Handler for removeStudentFromQueue Notification
@@ -122,7 +127,8 @@ import CoreData
         let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
         
         let fetchRequest = NSFetchRequest()
-        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true)
+        let sectionSortDescriptor = NSSortDescriptor(key: "timestamp",
+                                                     ascending: true)
         let sortDescriptors = [sectionSortDescriptor]
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.entity = studentEntity
@@ -152,6 +158,9 @@ import CoreData
         
         queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: hit, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
         queueTable.reloadData()
+        
+        requestCount -= 1
+        toolBarLabel.text = "\(requestCount) Students in Queue"
     }
     
     //UITableViewDataSource
@@ -270,6 +279,11 @@ import CoreData
             let dest = segue.destinationViewController as! TAStudentInfoViewController
             dest.currentStudent = TACurrentStudent
         }
+        
+        else if (segue.identifier == "ToHelpSession") {
+            let dest = segue.destinationViewController as! TAHelpSessionViewController
+            dest.currentStudent = sender as! Student
+        }
     }
     
     func acceptConfirmed(index: NSIndexPath) {
@@ -277,10 +291,10 @@ import CoreData
         
         if test == false {
             let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: ({
                 (_) in
-                syncQueue()
-                self.queueTable.reloadData()
+                //syncQueue()
+                //self.queueTable.reloadData()
             }))
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
@@ -349,6 +363,9 @@ import CoreData
         /*update currentQueue and UI*/
         queueTable.deleteRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Automatic)
         queueTable.reloadData()
+        requestCount -= 1
+        toolBarLabel.text = "\(requestCount) Students in Queue"
+        self.performSegueWithIdentifier("ToHelpSession", sender: currentStudent)
     }
     
     func cancelConfirmed(index: NSIndexPath) {
@@ -356,10 +373,10 @@ import CoreData
         
         if test == false {
             let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "Refresh", style: UIAlertActionStyle.Cancel, handler: ({
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: ({
                 (_) in
-                syncQueue()
-                self.queueTable.reloadData()
+                //syncQueue()
+                //self.queueTable.reloadData()
                 }))
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
@@ -416,6 +433,8 @@ import CoreData
         /*update currentQueue and UI*/
         queueTable.deleteRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Automatic)
         queueTable.reloadData()
+        requestCount -= 1
+        toolBarLabel.text = "\(requestCount) Students in Queue"
     }
     @IBAction func backButtonPressed(sender: UIButton) {
         self.performSegueWithIdentifier("back", sender: sender)

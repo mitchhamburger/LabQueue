@@ -271,6 +271,7 @@ def markAsHelped(senderID, requestID):
 	if len(entry) == 0:
 		abort(404)
 	else:
+		alreadyCanceled = bigentry[0]['In Queue']
 		syncToken = getSyncToken()
 		bigentry[0]['Been Helped'] = True
 		bigentry[0]['Helped Time'] = datetime.datetime.now()
@@ -280,13 +281,14 @@ def markAsHelped(senderID, requestID):
 		for entry in HelpRequests:
 			if entry['In Queue'] == True:
 				activeQueue.append(entry)
-		notifyUser(senderID, entry['NetID'], NOTIFYMATCH, "", [], syncToken)
+		notifyUser(senderID, bigentry[0]['NetID'], NOTIFYMATCH, "", [], syncToken)
 		if len(activeQueue) > 9:
 			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [], syncToken)
 		if len(activeQueue) > 4:
 			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [], syncToken)
 		#notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
-		handleSilentRemove(senderID, requestID, syncToken)
+		if alreadyCanceled == True:
+			handleSilentRemove(senderID, requestID, syncToken)
 		return jsonify({bigentry[0]['NetID']: bigentry}), 201
 
 @app.route('/LabQueue/v2/<senderID>/Requests/<requestID>/Canceled', methods = ['GET'])
@@ -295,6 +297,7 @@ def markAsCanceled(senderID, requestID):
 	if len(entry) == 0:
 		abort(404)
 	else:
+		alreadyCanceled = bigentry[0]['In Queue']
 		syncToken = getSyncToken()
 		bigentry[0]['Canceled'] = True
 		bigentry[0]['In Queue'] = False
@@ -307,7 +310,8 @@ def markAsCanceled(senderID, requestID):
 		if len(activeQueue) > 4:
 			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [], syncToken)
 		#notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
-		handleSilentRemove(senderID, requestID, syncToken)
+		if alreadyCanceled == True:
+			handleSilentRemove(senderID, requestID, syncToken)
 		#options[handleSilentRemove]("","","")
 		return jsonify({bigentry[0]['NetID']: bigentry}), 201
 
@@ -344,7 +348,7 @@ def handleSilentRemove(senderID, removeID, syncToken):
 	payload = Payload(content_available = 1, custom = {'type': 'SilentRemove', 'id': int(removeID), 'Sync Token': syncToken})
 	for entry in activeUsers:
 		if entry['NetID'] == senderID:
-			return 'sender is receiever'
+			return 'sender is receiver'
 		userToken = getTokenFromID(entry['NetID'])
 		apns.gateway_server.send_notification(userToken, payload)
 	return 'Notification success'
@@ -358,7 +362,7 @@ def handleSilentEnqueue(senderID, enqueueStudentInfo, syncToken):
 	payload = Payload(content_available = 1, custom = {'type': 'SilentEnqueue', 'studentinfo': enqueueStudentInfo, 'Sync Token': syncToken})
 	for entry in activeUsers:
 		if entry['NetID'] == senderID:
-			return 'sender is receiever'
+			return 'sender is receiver'
 		userToken = getTokenFromID(entry['NetID'])
 		apns.gateway_server.send_notification(userToken, payload)
 	return 'notification success'

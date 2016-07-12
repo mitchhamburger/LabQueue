@@ -5,7 +5,7 @@ import logging
 
 CERT_FILE = 'LabQueuePush.pem'
 USE_SANDBOX=True
-ZACH = '4b1a5b8a8f5dc1b414ff0db55a8fe49c385a163268beb0cce9de69352b9c009b'
+ZACH = '8bfd14cd46cd431d66e879df6039c9a67536df1167bdb1799db8884ea146c078'
 
 apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
 
