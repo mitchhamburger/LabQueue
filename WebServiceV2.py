@@ -347,10 +347,9 @@ def handleSilentRemove(senderID, removeID, syncToken):
 	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
 	payload = Payload(content_available = 1, custom = {'type': 'SilentRemove', 'id': int(removeID), 'Sync Token': syncToken})
 	for entry in activeUsers:
-		if entry['NetID'] == senderID:
-			return 'sender is receiver'
-		userToken = getTokenFromID(entry['NetID'])
-		apns.gateway_server.send_notification(userToken, payload)
+		if entry['NetID'] != senderID:
+			userToken = getTokenFromID(entry['NetID'])
+			apns.gateway_server.send_notification(userToken, payload)
 	return 'Notification success'
 
 
@@ -361,10 +360,9 @@ def handleSilentEnqueue(senderID, enqueueStudentInfo, syncToken):
 	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
 	payload = Payload(content_available = 1, custom = {'type': 'SilentEnqueue', 'studentinfo': enqueueStudentInfo, 'Sync Token': syncToken})
 	for entry in activeUsers:
-		if entry['NetID'] == senderID:
-			return 'sender is receiver'
-		userToken = getTokenFromID(entry['NetID'])
-		apns.gateway_server.send_notification(userToken, payload)
+		if entry['NetID'] != senderID:
+			userToken = getTokenFromID(entry['NetID'])
+			apns.gateway_server.send_notification(userToken, payload)
 	return 'notification success'
 
 def getAllActiveUsers():

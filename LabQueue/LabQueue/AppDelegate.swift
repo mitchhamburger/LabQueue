@@ -173,10 +173,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         if userInfo["type"]! as! String == "SilentEnqueue" {
+            print("Silent Enqueue")
             NSNotificationCenter.defaultCenter().postNotificationName(addStudentToQueue, object: self, userInfo: ["studentinfo": userInfo["studentinfo"]!, "Sync Token": userInfo["Sync Token"] as! String])
             completionHandler(.NoData)
         }
         else if userInfo["type"]! as! String == "SilentRemove" {
+            print("Silent Remove")
             NSNotificationCenter.defaultCenter().postNotificationName(removeStudentFromQueue, object: self, userInfo: ["id": userInfo["id"] as! Int, "Sync Token": userInfo["Sync Token"] as! String])
             completionHandler(.NoData)
         }
