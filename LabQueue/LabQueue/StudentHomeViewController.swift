@@ -18,7 +18,6 @@ import CoreData
     @IBOutlet weak var acceptButton: LumenButton!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var queueTable: UITableView!
-    //var currentQueue = [Student]()
     var navBar:UINavigationBar=UINavigationBar()
 
     override func viewDidLoad() {
@@ -259,12 +258,8 @@ import CoreData
         
         let confirmAction = UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default, handler: ({
             (_) in
-            let name = alertController.textFields![0]
-            let problem = alertController.textFields![1]
-            let course = alertController.textFields![2]
-            if self.checkName(name.text!) == false {
-                return
-            }
+            let problem = alertController.textFields![0]
+            let course = alertController.textFields![1]
             if self.checkDuplicate(globalNetId) == false {
                 return
             }
@@ -272,16 +267,16 @@ import CoreData
                 return
             }
             
-            self.addToQueue(name.text!, helpMessage: problem.text!, course: course.text!, netid: globalNetId)
+            self.addToQueue(problem.text!, course: course.text!, netid: globalNetId)
         }))
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
         
-        alertController.addTextFieldWithConfigurationHandler({
+       /* alertController.addTextFieldWithConfigurationHandler({
             (textField) in
             textField.placeholder = "Name"
             
-        })
+        })*/
         
         alertController.addTextFieldWithConfigurationHandler({
             (textField) in
@@ -300,7 +295,7 @@ import CoreData
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func checkName(name: String) -> Bool {
+    /*func checkName(name: String) -> Bool {
         if name == "" {
             let invalidController = UIAlertController(title: "Please fill in your name", message: "", preferredStyle: .Alert)
             let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil)
@@ -309,7 +304,7 @@ import CoreData
             return false
         }
         return true
-    }
+    }*/
     
     func checkDuplicate(netid: String) -> Bool {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -379,7 +374,7 @@ import CoreData
     /// * nameField: name of the student
     /// * problemField: help message of the student
     /// * courseField: course of the student
-    func addToQueue(name: String, helpMessage: String, course: String, netid: String) {
+    func addToQueue(helpMessage: String, course: String, netid: String) {
         let test = checkSync()
         
         if test == false {
@@ -393,6 +388,12 @@ import CoreData
             self.presentViewController(alertController, animated: true, completion: nil)
             return
         }
+        
+        var name = getName(netid)
+        if name == "" {
+            name = netid
+        }
+        
         var index = 0
         
         //let thisStudent: Student = Student(name: name, helpMessage: helpMessage, course: course, netid: netid)
@@ -455,6 +456,39 @@ import CoreData
         self.queueTable.reloadData()
         
     }
+    
+    func getName(netid: String) -> String {
+        var name: String = ""
+        let path = NSBundle.mainBundle().pathForResource("initial_data-2016-1", ofType: "json")
+        let jsonData = NSData(contentsOfFile: path!)
+        do {
+            let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+            for item in jsonResult {
+                if item["fields"]!!["net_id"] as! String == netid {
+                    name = item["fields"]!!["full_name"] as! String
+                }
+            }
+        } catch {
+            print("f")
+        }
+        
+        /*let url: NSURL = NSURL(string: "http://www.princeton.edu\(studentPic)")!
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "GET"
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+            
+        let task = session.dataTaskWithRequest(request) {
+            (
+            let data, let response, let error) in
+            if error == nil && data != nil {
+                self.studentPic.image = UIImage(data: data!)
+            }
+        }
+        task.resume()*/
+        return name
+    }
+    
     @IBAction func backPressed(sender: UIButton) {
         self.performSegueWithIdentifier("back", sender: sender)
     }

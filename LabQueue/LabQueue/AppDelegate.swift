@@ -22,19 +22,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //registerForPushNotifications(application)
         
-        print(Adler32.crc(string: "mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12"))
+        //print(Adler32.crc(string: "mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12"))
         //print(getSyncToken())
-        //UINavigationBar.appearance().barTintColor = UIColor(netHex:0x4183D7)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        
         let prefs = NSUserDefaults.standardUserDefaults()
-         
+        
         if let studentData = prefs.stringForKey("UserNetID") {
             globalNetId = studentData
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            var vc: UINavigationController = UINavigationController()
-            if (verify(globalNetId) == "TA") {
+            var vc: UIViewController = UIViewController()
+            
+            // Check if launched from notification
+            // 1
+            if let notification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [String: AnyObject] {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("StudentNav") as! StudentNavigationController
+                //vc.ta.netID = userInfo["id"] as? String
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                self.window?.rootViewController = vc
+                self.window?.makeKeyAndVisible()
+                vc.performSegueWithIdentifier("StudentHelpSession", sender: notification["id"] as! String)
+                //prefs.setObject(notification["id"] as! String, forKey: "MostRecentTA")
+                //let aps = notification["aps"] as! [String: AnyObject]
+                //print(aps)
+                // 3
+            }
+            else if (verify(globalNetId) == "TA") {
                 registerForPushNotifications(UIApplication.sharedApplication())
                 vc = storyboard.instantiateViewControllerWithIdentifier("TANav") as! UINavigationController
             }
@@ -64,6 +79,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
+        
+        /*let prefs = NSUserDefaults.standardUserDefaults()
+        if let _ = prefs.objectForKey("HasOutstandingNotification") {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("StudentNav") as! StudentNavigationController
+            //vc.ta.netID = userInfo["id"] as? String
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+            vc.performSegueWithIdentifier("StudentHelpSession", sender: prefs.objectForKey("MostRecentTA") as! String)
+            prefs.removeObjectForKey("HasOutstandingNotification")
+        }*/
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     
@@ -175,6 +202,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userInfo["type"]! as! String == "SilentEnqueue" {
             print("Silent Enqueue")
             NSNotificationCenter.defaultCenter().postNotificationName(addStudentToQueue, object: self, userInfo: ["studentinfo": userInfo["studentinfo"]!, "Sync Token": userInfo["Sync Token"] as! String])
+            completionHandler(.NoData)
+        }
+        else if userInfo["type"]! as! String == "NotifyMatch" {
+            print("GOT HERE")
+            let prefs = NSUserDefaults.standardUserDefaults()
+            prefs.setObject(userInfo["id"] as! String, forKey: "MostRecentTA")
+            
+            //NSNotificationCenter.defaultCenter().postNotificationName(match, object: self, userInfo: ["id": userInfo["id"]! as! String])
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("StudentNav") as! StudentNavigationController
+            //vc.ta.netID = userInfo["id"] as? String
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+            vc.performSegueWithIdentifier("StudentHelpSession", sender: userInfo["id"] as! String)
             completionHandler(.NoData)
         }
         else if userInfo["type"]! as! String == "SilentRemove" {

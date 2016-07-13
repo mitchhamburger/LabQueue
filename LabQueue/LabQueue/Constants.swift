@@ -12,6 +12,7 @@ import CoreData
 
 let removeStudentFromQueue = "com.mitchhamburger.removeStudentFromQueue"
 let addStudentToQueue = "com.mitchhamburger.addStudentToQueue"
+let match = "com.mitchhamburger.match"
 let hostName = "https://tempwebservice-mh20.c9users.io"
 
 func getSyncToken() -> String {

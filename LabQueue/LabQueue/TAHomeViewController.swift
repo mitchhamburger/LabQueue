@@ -29,6 +29,7 @@ import CoreData
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentRemove), name: removeStudentFromQueue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentAdd), name: addStudentToQueue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentRemove), name: match, object: nil)
         requestCount = syncQueue()
         toolBarLabel.text = "\(requestCount) Students in Queue"
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -45,6 +46,13 @@ import CoreData
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
         queueTable.addSubview(refreshControl)
+        
+        let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolBar.frame.height, width: self.view.frame.width, height: 5))
+        toolBarBorder.layer.backgroundColor = UIColor(netHex: 0x3B7CD1).CGColor
+        toolBarBorder.layer.cornerRadius = 2
+        self.view.addSubview(toolBarBorder)
+        
+        
     }
     
     func refresh(refreshControl: UIRefreshControl) {
@@ -77,6 +85,14 @@ import CoreData
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         return test
+    }
+    
+    
+    func matchNotificationReceived(notification: NSNotification) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("studenthelpsessionviewcontroller") as! StudentHelpSessionViewController
+        vc.ta.netID = notification.userInfo!["hello"] as? String
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     /// Handler for addStudentToQueue Notification

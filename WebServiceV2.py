@@ -399,7 +399,7 @@ def notifyUser(senderID, receiverID, notificationType, removeID, enqueueStudentI
 		entry = [entry for entry in LabTAs if entry['NetID'] == senderID and entry['Is Active'] == True]
 		if len(entry) == 0:
 			return
-		payload = Payload(alert=entry[0]['First Name'] + " " + entry[0]['Last Name'] +" is coming to help you", sound="default", custom = {'id': senderID, 'Sync Token': syncToken})
+		payload = Payload(content_available = 1, alert=entry[0]['First Name'] + " " + entry[0]['Last Name'] +" is coming to help you", sound="default", custom = {'type': NOTIFYMATCH, 'id': senderID, 'Sync Token': syncToken})
 	elif notificationType == NOTIFYTEN:
 		payload = Payload(alert="There are 10 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYTEN, 'id': senderID, 'Sync Token': syncToken})
 	elif notificationType == NOTIFYFIVE:
