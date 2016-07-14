@@ -28,7 +28,7 @@
         <!--View Controller-->
         <scene sceneID="9sZ-Se-f5j">
             <objects>
-                <viewController id="Yp3-Xg-hDJ" customClass="CASViewController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="casviewcontroller" id="Yp3-Xg-hDJ" customClass="CASViewController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j6o-Uy-IDt"/>
                         <viewControllerLayoutGuide type="bottom" id="ZNf-Xm-ezZ"/>
@@ -54,53 +54,18 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="myWebView" destination="HYw-0z-rky" id="Y4B-Au-fGU"/>
-                        <segue destination="jg7-Zc-KSw" kind="show" identifier="StudentLoggedIn" id="uvy-qf-w1N"/>
-                        <segue destination="dGo-JL-msW" kind="show" identifier="TALoggedIn" id="Zbj-Vy-qNN"/>
+                        <segue destination="uMG-2k-yoa" kind="show" identifier="TALoggedIn" id="IJg-SW-F5q"/>
+                        <segue destination="sJe-ET-3eT" kind="show" identifier="StudentLoggedIn" id="P8w-KJ-ll7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEu-Z9-x7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="625" y="333"/>
-        </scene>
-        <!--Student Navigation Controller-->
-        <scene sceneID="Ojj-Aw-izQ">
-            <objects>
-                <navigationController storyboardIdentifier="StudentNav" id="jg7-Zc-KSw" customClass="StudentNavigationController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CTX-73-Q0u">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="sJe-ET-3eT" kind="relationship" relationship="rootViewController" id="MVC-GO-rph"/>
-                        <segue destination="tRo-tY-osF" kind="show" identifier="StudentHelpSession" id="Ssw-l5-TTX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0ju-jc-mpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1105" y="49"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="25d-8e-9gQ">
-            <objects>
-                <navigationController storyboardIdentifier="TANav" id="dGo-JL-msW" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x8X-LN-avv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="uMG-2k-yoa" kind="relationship" relationship="rootViewController" id="Ud9-9L-4AC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2a4-MZ-pNO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1105" y="737"/>
+            <point key="canvasLocation" x="733" y="333"/>
         </scene>
         <!--Lab TA's Queue-->
         <scene sceneID="KZR-Xg-KZD">
             <objects>
-                <viewController id="sJe-ET-3eT" customClass="StudentHomeViewController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="studenthomeviewcontroller" id="sJe-ET-3eT" customClass="StudentHomeViewController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z4x-gD-SOr"/>
                         <viewControllerLayoutGuide type="bottom" id="0OE-mD-h3q"/>
@@ -258,6 +223,7 @@
                         <outlet property="queueTable" destination="KKI-kh-UbV" id="ywk-HB-izW"/>
                         <outlet property="toolBar" destination="xxE-0c-cWf" id="a60-gB-opU"/>
                         <segue destination="bHP-wy-KuD" kind="show" identifier="ShowStudentInfo" id="vaC-6Z-db5"/>
+                        <segue destination="tRo-tY-osF" kind="show" identifier="StudentHelpSession" id="1XM-9T-k0A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8eg-n7-vqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -417,7 +383,7 @@
         <!--Lab TA's Queue-->
         <scene sceneID="pNU-yc-U1z">
             <objects>
-                <viewController id="uMG-2k-yoa" customClass="TAHomeViewController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tahomeviewcontroller" id="uMG-2k-yoa" customClass="TAHomeViewController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ztA-cP-ZZo"/>
                         <viewControllerLayoutGuide type="bottom" id="ndw-PD-QHq"/>
@@ -1091,7 +1057,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tsc-sO-Kji" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1571" y="-545"/>
+            <point key="canvasLocation" x="1983" y="-581"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1mc-rj-iI8">

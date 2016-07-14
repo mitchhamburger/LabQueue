@@ -36,30 +36,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Check if launched from notification
             // 1
             if let notification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [String: AnyObject] {
-                
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewControllerWithIdentifier("StudentNav") as! StudentNavigationController
-                //vc.ta.netID = userInfo["id"] as? String
-                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-                self.window?.rootViewController = vc
-                self.window?.makeKeyAndVisible()
-                vc.performSegueWithIdentifier("StudentHelpSession", sender: notification["id"] as! String)
-                //prefs.setObject(notification["id"] as! String, forKey: "MostRecentTA")
-                //let aps = notification["aps"] as! [String: AnyObject]
-                //print(aps)
-                // 3
+                /*vc = storyboard.instantiateViewControllerWithIdentifier("studenthomeviewcontroller") as! StudentHomeViewController
+                let nav = self.window?.rootViewController as! UINavigationController
+                nav.pushViewController(vc, animated: false)
+                vc.performSegueWithIdentifier("StudentHelpSession", sender: notification["id"] as! String)*/
             }
             else if (verify(globalNetId) == "TA") {
                 registerForPushNotifications(UIApplication.sharedApplication())
-                vc = storyboard.instantiateViewControllerWithIdentifier("TANav") as! UINavigationController
+                vc = storyboard.instantiateViewControllerWithIdentifier("tahomeviewcontroller") as! TAHomeViewController
+                let nav = self.window?.rootViewController as! UINavigationController
+                nav.pushViewController(vc, animated: true)
             }
             else {
                 registerForPushNotifications(UIApplication.sharedApplication())
-                vc = storyboard.instantiateViewControllerWithIdentifier("StudentNav") as! UINavigationController
+                vc = storyboard.instantiateViewControllerWithIdentifier("studenthomeviewcontroller") as! StudentHomeViewController
+                let nav = self.window?.rootViewController as! UINavigationController
+                nav.pushViewController(vc, animated: true)
             }
-            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            self.window?.rootViewController = vc
-            self.window?.makeKeyAndVisible()
+            //self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            //self.window?.rootViewController = vc
+            //self.window?.makeKeyAndVisible()
         }
         
         return true
@@ -205,18 +201,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler(.NoData)
         }
         else if userInfo["type"]! as! String == "NotifyMatch" {
-            print("GOT HERE")
             let prefs = NSUserDefaults.standardUserDefaults()
             prefs.setObject(userInfo["id"] as! String, forKey: "MostRecentTA")
             
             //NSNotificationCenter.defaultCenter().postNotificationName(match, object: self, userInfo: ["id": userInfo["id"]! as! String])
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("StudentNav") as! StudentNavigationController
-            //vc.ta.netID = userInfo["id"] as? String
-            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            self.window?.rootViewController = vc
-            self.window?.makeKeyAndVisible()
+            let vc = storyboard.instantiateViewControllerWithIdentifier("studenthomeviewcontroller") as! StudentHomeViewController
+            let nav = self.window?.rootViewController as! UINavigationController
+            nav.pushViewController(vc, animated: false)
             vc.performSegueWithIdentifier("StudentHelpSession", sender: userInfo["id"] as! String)
             completionHandler(.NoData)
         }

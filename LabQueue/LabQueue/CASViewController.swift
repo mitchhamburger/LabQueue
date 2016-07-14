@@ -19,9 +19,12 @@ class CASViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         myWebView.delegate = self
         myWebView.scalesPageToFit = true
+        
+        myWebView.reload()
         
         //1. Load web site into my web view
         
@@ -30,10 +33,18 @@ class CASViewController: UIViewController, UIWebViewDelegate {
         myWebView.loadRequest(myURLRequest)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         //if (request.URLString == "https://awojak.mycpanel2.princeton.edu/333/index1.php") {

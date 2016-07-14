@@ -453,7 +453,10 @@ import CoreData
         toolBarLabel.text = "\(requestCount) Students in Queue"
     }
     @IBAction func logoutPressed(sender: UIButton) {
-    
-
+        let prefs = NSUserDefaults.standardUserDefaults()
+        prefs.removeObjectForKey("UserNetID")
+        //print(self.navigationController?.viewControllers)
+        self.navigationController?.popToRootViewControllerAnimated(true)
+        print(self.navigationController?.viewControllers)
     }
 }
