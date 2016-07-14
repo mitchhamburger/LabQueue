@@ -488,8 +488,8 @@ import CoreData
         task.resume()*/
         return name
     }
-    
-    @IBAction func backPressed(sender: UIButton) {
-        self.performSegueWithIdentifier("back", sender: sender)
+    @IBAction func logoutPressed(sender: UIButton) {
+        
     }
+    
 }

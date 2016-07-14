@@ -44,14 +44,13 @@ class CASViewController: UIViewController, UIWebViewDelegate {
             globalNetId = netId!
             prefs.setValue(netId!, forKey: "UserNetID")
             registerForPushNotifications(UIApplication.sharedApplication())
-            syncQueue()
             if (verify(netId!) == "Student") {
                 self.performSegueWithIdentifier("StudentLoggedIn", sender: netId)
-                return false
+                return true
             }
             else if (verify(netId!) == "TA") {
                 self.performSegueWithIdentifier("TALoggedIn", sender: netId)
-                return false
+                return true
             }
             print(globalNetId)
           

@@ -452,7 +452,8 @@ import CoreData
         requestCount -= 1
         toolBarLabel.text = "\(requestCount) Students in Queue"
     }
-    @IBAction func backButtonPressed(sender: UIButton) {
-        self.performSegueWithIdentifier("back", sender: sender)
+    @IBAction func logoutPressed(sender: UIButton) {
+    
+
     }
 }
