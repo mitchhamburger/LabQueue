@@ -132,11 +132,11 @@ import CoreData
         }
         task.resume()
         //END HTTP REQUEST
-        self.performSegueWithIdentifier("RequestResolved", sender: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func resolvedPushed(sender: UIButton) {
-        self.performSegueWithIdentifier("RequestResolved", sender: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

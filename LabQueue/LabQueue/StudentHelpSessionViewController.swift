@@ -125,5 +125,8 @@ import CoreData
         
         return taInfo
     }
+    @IBAction func resolvedPushed(sender: UIButton) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 }
 

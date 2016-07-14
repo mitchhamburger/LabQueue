@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Yp3-Xg-hDJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -20,9 +20,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <segue destination="Cqj-iJ-8P1" kind="show" identifier="UserLoggedIn" id="m3P-9b-Jfs"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -62,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEu-Z9-x7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-625" y="949"/>
+            <point key="canvasLocation" x="-187" y="333"/>
         </scene>
         <!--Student Navigation Controller-->
         <scene sceneID="Ojj-Aw-izQ">
@@ -240,74 +237,18 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Lab TA's Queue" id="Ebl-c7-vcG">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="CqA-WI-0hQ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="o8a-eM-sP6">
-                                <rect key="frame" x="16" y="7" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Back">
-                                            <attributes>
-                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="17" name="Helvetica"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <connections>
-                                    <action selector="backPressed:" destination="sJe-ET-3eT" eventType="touchUpInside" id="rln-Tg-SGz"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Lab TA's Queue" id="Ebl-c7-vcG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="acceptButton" destination="crz-wW-rJ3" id="bXk-mn-BbD"/>
                         <outlet property="queueTable" destination="KKI-kh-UbV" id="ywk-HB-izW"/>
                         <outlet property="toolBar" destination="xxE-0c-cWf" id="a60-gB-opU"/>
-                        <segue destination="Cqj-iJ-8P1" kind="show" identifier="back" id="CyN-eX-wsw"/>
                         <segue destination="bHP-wy-KuD" kind="show" identifier="ShowStudentInfo" id="vaC-6Z-db5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8eg-n7-vqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="753" y="33"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="yhY-90-TRW">
-            <objects>
-                <viewController id="Cqj-iJ-8P1" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rZL-fa-xmJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="mIa-6n-v9f"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uyv-dg-MDA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8h2-vp-FcB">
-                                <rect key="frame" x="20" y="272" width="280" height="30"/>
-                                <state key="normal" title="I'm a TA"/>
-                                <connections>
-                                    <segue destination="dGo-JL-msW" kind="show" id="7W2-WF-uXP"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhu-ES-ucl">
-                                <rect key="frame" x="20" y="121" width="280" height="30"/>
-                                <state key="normal" title="I'm a Student"/>
-                                <connections>
-                                    <segue destination="jg7-Zc-KSw" kind="show" id="m34-9t-PGl"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CwW-37-UhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-84" y="745"/>
+            <point key="canvasLocation" x="741" y="197"/>
         </scene>
         <!--Student Info View Controller-->
         <scene sceneID="i8I-R4-dNx">
@@ -321,7 +262,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rth-Nq-mlX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rth-Nq-mlX">
                                 <rect key="frame" x="-4" y="218" width="312" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -382,7 +323,7 @@
                                 </constraints>
                                 <items/>
                             </toolbar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VqB-uf-Aed">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VqB-uf-Aed">
                                 <rect key="frame" x="85" y="50" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="78V-V6-b90"/>
@@ -395,7 +336,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7Q-8T-O8C">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7Q-8T-O8C">
                                 <rect key="frame" x="80" y="45" width="160" height="160"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -478,7 +419,7 @@
                                 </constraints>
                                 <items/>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z4x-Sa-VHN">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z4x-Sa-VHN">
                                 <rect key="frame" x="-12" y="20" width="324" height="488"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -532,7 +473,6 @@
                                             <outlet property="studentCourse" destination="IOd-7h-xPV" id="nSl-XV-bwT"/>
                                             <outlet property="studentHelpMessage" destination="OkT-h3-Y6y" id="vWO-QU-S1x"/>
                                             <outlet property="studentName" destination="E3r-kR-gL6" id="bLn-ef-TBC"/>
-                                            <segue destination="Cqj-iJ-8P1" kind="show" identifier="back" id="Tra-IC-R1o"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -572,28 +512,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Lab TA's Queue" id="hKX-2O-svx">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="FkB-ii-XbA">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="I7L-ol-HYv">
-                                <rect key="frame" x="16" y="7" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Back">
-                                            <attributes>
-                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="17" name="Helvetica"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonPressed:" destination="uMG-2k-yoa" eventType="touchUpInside" id="Iot-md-dfa"/>
-                                    <action selector="backPressed:" destination="sJe-ET-3eT" eventType="touchUpInside" id="DJe-uc-QsM"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Lab TA's Queue" id="hKX-2O-svx"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="queueTable" destination="Z4x-Sa-VHN" id="nji-v9-c3d"/>
@@ -619,7 +538,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="62y-Tm-lze">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="62y-Tm-lze">
                                 <rect key="frame" x="-4" y="218" width="312" height="290"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -673,7 +592,7 @@
                                     </mask>
                                 </variation>
                             </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LKv-kv-1x0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LKv-kv-1x0">
                                 <rect key="frame" x="85" y="50" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Bw1-eS-QFp"/>
@@ -686,7 +605,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DtR-SK-3mh">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DtR-SK-3mh">
                                 <rect key="frame" x="80" y="45" width="160" height="160"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -811,7 +730,6 @@
                         <outlet property="studentInfoTable" destination="62y-Tm-lze" id="q20-e3-vOr"/>
                         <outlet property="studentPic" destination="LKv-kv-1x0" id="24k-Pa-57I"/>
                         <outlet property="toolBar" destination="BTg-oW-S9X" id="t5W-LW-5td"/>
-                        <segue destination="uMG-2k-yoa" kind="show" identifier="RequestResolved" id="eoj-eQ-P8Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4EF-ZQ-8p7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1064,7 +982,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
-                                                <segue destination="sJe-ET-3eT" kind="show" id="Gh5-mL-etJ"/>
+                                                <action selector="resolvedPushed:" destination="tRo-tY-osF" eventType="touchUpInside" id="3DD-m5-F6v"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
@@ -1149,11 +1067,4 @@
             <point key="canvasLocation" x="869" y="-603"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Gh5-mL-etJ"/>
-        <segue reference="m34-9t-PGl"/>
-        <segue reference="CyN-eX-wsw"/>
-        <segue reference="7W2-WF-uXP"/>
-        <segue reference="eoj-eQ-P8Z"/>
-    </inferredMetricsTieBreakers>
 </document>
