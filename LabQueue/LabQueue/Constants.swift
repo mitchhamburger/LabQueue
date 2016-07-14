@@ -9,6 +9,7 @@
 //
 import UIKit
 import CoreData
+import Alamofire
 
 let removeStudentFromQueue = "com.mitchhamburger.removeStudentFromQueue"
 let addStudentToQueue = "com.mitchhamburger.addStudentToQueue"
@@ -79,6 +80,7 @@ func checkSync() -> Bool {
     }
     task.resume()
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+    
     return test
 }
 

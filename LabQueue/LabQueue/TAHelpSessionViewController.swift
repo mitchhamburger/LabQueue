@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 ///  View Controller to display info about inidivudal
 ///  students that is available to LAb TA's.
@@ -33,7 +34,7 @@ import CoreData
         self.studentInfoTable.dataSource = self
         self.studentInfoTable.delegate = self
         self.navigationItem.setHidesBackButton(true, animated: false)
-        request()
+        request(currentStudent.netID)
         studentPic.layer.cornerRadius = studentPic.frame.size.width / 2
         studentPic.clipsToBounds = true
         studentPic.layer.borderWidth = 0.1
@@ -87,20 +88,7 @@ import CoreData
         return TAStudentInfoSingleLineCell()
     }
     
-    func request() {
-        var studentPic = ""
-        let path = NSBundle.mainBundle().pathForResource("initial_data-2016-1", ofType: "json")
-        let jsonData = NSData(contentsOfFile: path!)
-        do {
-            let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-            for item in jsonResult {
-                if item["fields"]!!["net_id"] as! String == currentStudent.netID {
-                    studentPic = item["fields"]!!["photo_link"] as! String
-                }
-            }
-        } catch {
-            print("f")
-        }
+    func request(netid: String) {
         
         let url: NSURL = NSURL(string: "http://www.princeton.edu\(studentPic)")!
         let session = NSURLSession.sharedSession()
@@ -120,17 +108,7 @@ import CoreData
     
     @IBAction func canceledPushed(sender: UIButton) {
         //HTTP REQUEST
-        let url = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Canceled")!
-        let session = NSURLSession.sharedSession()
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "GET"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        //request.allHTTPHeaderFields = ["SyncToken": "iuhdfivuhdfiuvh"]
-        
-        let task = session.dataTaskWithRequest(request) {
-            (let data, let response, let error) in
-        }
-        task.resume()
+        Alamofire.request(.GET, "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Canceled")
         //END HTTP REQUEST
         self.navigationController?.popViewControllerAnimated(true)
     }

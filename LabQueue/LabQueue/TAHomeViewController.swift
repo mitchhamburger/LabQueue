@@ -356,25 +356,7 @@ import Alamofire
         let encodedData = NSKeyedArchiver.archivedDataWithRootObject(currentStudent)
         prefs.setObject(encodedData, forKey: "TACurrentStudent")
         //prefs.setValue(currentStudent, forKey: "TACurrentStudent")
-        
-        //titleBar.topItem?.title = "Your Current Student is " + currentStudent.name
-        
-        /*BEGIN HTTP REQUEST*/
-        /*let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Helped")!
-        let session = NSURLSession.sharedSession()
-        let request = NSMutableURLRequest(URL: url)
-        
-        request.HTTPMethod = "GET"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        
-        //let semaphore = dispatch_semaphore_create(0)
-        let task = session.dataTaskWithRequest(request) {
-            (let data, let response, let error) in
-            //dispatch_semaphore_signal(semaphore)
-        }
-        task.resume()*/
-        //dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-        
+                
         Alamofire.request(.GET, "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Helped")
         /*END HTTP REQUEST*/
         
@@ -435,17 +417,6 @@ import Alamofire
         }
 
         //HTTP REQUEST
-        /*let url = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Canceled")!
-        let session = NSURLSession.sharedSession()
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "GET"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        //request.allHTTPHeaderFields = ["SyncToken": "iuhdfivuhdfiuvh"]
-        
-        let task = session.dataTaskWithRequest(request) {
-            (let data, let response, let error) in
-        }
-        task.resume()*/
         
         Alamofire.request(.GET, "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Canceled")
         
