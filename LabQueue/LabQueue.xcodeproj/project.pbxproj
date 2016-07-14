@@ -40,6 +40,7 @@
 		F8DF3D271D35BF560070311C /* StudentHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF3D261D35BF560070311C /* StudentHelpSessionViewController.swift */; };
 		F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */; };
 		F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */; };
+		F8F1BB691D3833C60082F6FB /* initial_data-2016-1.json in Resources */ = {isa = PBXBuildFile; fileRef = F8F1BB681D3833C60082F6FB /* initial_data-2016-1.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		F8DF3D261D35BF560070311C /* StudentHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHelpSessionViewController.swift; sourceTree = "<group>"; };
 		F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAStudentInfoSingleLineCell.swift; sourceTree = "<group>"; };
 		F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAHelpSessionViewController.swift; sourceTree = "<group>"; };
+		F8F1BB681D3833C60082F6FB /* initial_data-2016-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "initial_data-2016-1.json"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			children = (
 				F83222981D07B7610089304E /* AppDelegate.swift */,
 				F87AC22A1D25F5D50010CF59 /* adler32.swift */,
+				F8F1BB681D3833C60082F6FB /* initial_data-2016-1.json */,
 				F895FC621D217AA30031F47D /* Constants.swift */,
 				F871535D1D0F309C00F29040 /* TA Files */,
 				F832229A1D07B7610089304E /* ViewController.swift */,
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F83021A21D105D70003AF869 /* GTMOAuth2ViewTouch.xib in Resources */,
+				F8F1BB691D3833C60082F6FB /* initial_data-2016-1.json in Resources */,
 				F83222A31D07B7610089304E /* LaunchScreen.storyboard in Resources */,
 				F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */,
 				F83222A01D07B7610089304E /* Assets.xcassets in Resources */,

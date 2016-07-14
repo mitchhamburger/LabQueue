@@ -9,7 +9,7 @@
 
 import UIKit
 import CoreData
-
+import Alamofire
 
 /// Home View Controller for TA's. Displays TA's current student, a picture of that student, and the current student queue.
 ///
@@ -360,7 +360,7 @@ import CoreData
         //titleBar.topItem?.title = "Your Current Student is " + currentStudent.name
         
         /*BEGIN HTTP REQUEST*/
-        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Helped")!
+        /*let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Helped")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         
@@ -372,8 +372,10 @@ import CoreData
             (let data, let response, let error) in
             //dispatch_semaphore_signal(semaphore)
         }
-        task.resume()
+        task.resume()*/
         //dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        
+        Alamofire.request(.GET, "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Helped")
         /*END HTTP REQUEST*/
         
         /*update currentQueue and UI*/
@@ -433,7 +435,7 @@ import CoreData
         }
 
         //HTTP REQUEST
-        let url = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Canceled")!
+        /*let url = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Canceled")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
@@ -443,7 +445,10 @@ import CoreData
         let task = session.dataTaskWithRequest(request) {
             (let data, let response, let error) in
         }
-        task.resume()
+        task.resume()*/
+        
+        Alamofire.request(.GET, "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Canceled")
+        
         //END HTTP REQUEST
         
         /*update currentQueue and UI*/

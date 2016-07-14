@@ -84,11 +84,15 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-LabQueue/Alamofire.framework"
+  install_framework "Pods-LabQueue/AlamofireImage.framework"
   install_framework "Pods-LabQueue/GTMOAuth2.framework"
   install_framework "Pods-LabQueue/GTMSessionFetcher.framework"
   install_framework "Pods-LabQueue/GoogleAPIClient.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-LabQueue/Alamofire.framework"
+  install_framework "Pods-LabQueue/AlamofireImage.framework"
   install_framework "Pods-LabQueue/GTMOAuth2.framework"
   install_framework "Pods-LabQueue/GTMSessionFetcher.framework"
   install_framework "Pods-LabQueue/GoogleAPIClient.framework"

@@ -9,6 +9,8 @@ pod 'Google/SignIn'
 pod 'GoogleAPIClient/Gmail', '~> 1.0.2'
 pod 'GTMOAuth2', '~> 1.1.0'
 pod 'Firebase', '>= 2.5.1'
+pod 'Alamofire', '~> 3.4'
+pod 'AlamofireImage', '~> 2.0'
 
 end
 
