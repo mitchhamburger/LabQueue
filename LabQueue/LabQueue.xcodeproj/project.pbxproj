@@ -41,6 +41,7 @@
 		F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */; };
 		F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */; };
 		F8F1BB741D3869560082F6FB /* CustomIOS7AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F1BB731D3869560082F6FB /* CustomIOS7AlertView.swift */; };
+		F8F1BB761D3B36260082F6FB /* CourseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F1BB751D3B36260082F6FB /* CourseLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAHelpSessionViewController.swift; sourceTree = "<group>"; };
 		F8F1BB6A1D3845970082F6FB /* LabQueue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LabQueue-Bridging-Header.h"; sourceTree = "<group>"; };
 		F8F1BB731D3869560082F6FB /* CustomIOS7AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomIOS7AlertView.swift; path = "../../../Downloads/iOS-Custom-AlertView-Swift-master/CustomIOS7AlertView/CustomIOS7AlertView/CustomIOS7AlertView.swift"; sourceTree = "<group>"; };
+		F8F1BB751D3B36260082F6FB /* CourseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 				F871535E1D0F30C400F29040 /* Student Files */,
 				F832229C1D07B7610089304E /* Main.storyboard */,
 				F86C606C1D32EB5D00178CC6 /* LumenButton.swift */,
+				F8F1BB751D3B36260082F6FB /* CourseLabel.swift */,
 				F81E57101D11ABAD00C11123 /* CASViewController.swift */,
 				F89E174D1D31361800659548 /* TopAlignedLabel.swift */,
 				F806120D1D0A68C8008D3A8D /* mitch pic.jpg */,
@@ -459,6 +462,7 @@
 				F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */,
 				F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */,
 				F8000DA11D301309002FF5E4 /* TempStudentController.swift in Sources */,
+				F8F1BB761D3B36260082F6FB /* CourseLabel.swift in Sources */,
 				F89E174E1D31361800659548 /* TopAlignedLabel.swift in Sources */,
 				F85B3E8E1D15CCF40031A1E3 /* LabQueue.xcdatamodeld in Sources */,
 				F82AC2011D0CDA3700BDADD2 /* TAQueueCustomCell.swift in Sources */,

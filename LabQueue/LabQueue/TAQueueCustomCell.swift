@@ -19,16 +19,19 @@ import UIKit
 class TAQueueCustomCell: UITableViewCell {
     
     @IBOutlet weak var studentHelpMessage: TopAlignedLabel!
-    @IBOutlet weak var studentCourse: UILabel!
+    @IBOutlet weak var studentCourse: CourseLabel!
     @IBOutlet weak var studentName: UILabel!
     //@IBOutlet weak var studentEmail: UILabel!
     var studentID: String = ""
     override func awakeFromNib() {
+        studentCourse.layer.cornerRadius = 10
+        studentCourse.backgroundColor = UIColor.lightGrayColor()
+        studentCourse.clipsToBounds = true
+        
         super.awakeFromNib()
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
     }
 }

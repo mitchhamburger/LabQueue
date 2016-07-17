@@ -228,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8eg-n7-vqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1553" y="197"/>
+            <point key="canvasLocation" x="1411" y="-281"/>
         </scene>
         <!--Student Info View Controller-->
         <scene sceneID="i8I-R4-dNx">
@@ -378,7 +378,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpH-iW-yNU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1991" y="729"/>
+            <point key="canvasLocation" x="2011" y="657"/>
         </scene>
         <!--Lab TA's Queue-->
         <scene sceneID="pNU-yc-U1z">
@@ -399,8 +399,8 @@
                                 </constraints>
                                 <items/>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z4x-Sa-VHN">
-                                <rect key="frame" x="-12" y="20" width="324" height="488"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z4x-Sa-VHN">
+                                <rect key="frame" x="-12" y="64" width="324" height="444"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customcell" rowHeight="125" id="7LO-Sl-ckb" customClass="TAQueueCustomCell" customModule="LabQueue" customModuleProvider="target">
@@ -423,14 +423,17 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cos 126" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOd-7h-xPV">
-                                                    <rect key="frame" x="27" y="30" width="297" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cos 126" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOd-7h-xPV" customClass="CourseLabel" customModule="LabQueue" customModuleProvider="target">
+                                                    <rect key="frame" x="27" y="30" width="57" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="57" id="Pyu-3j-keu"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkT-h3-Y6y" customClass="TopAlignedLabel" customModule="LabQueue" customModuleProvider="target">
-                                                    <rect key="frame" x="27" y="48.5" width="297" height="68"/>
+                                                    <rect key="frame" x="27" y="46" width="297" height="70"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -442,12 +445,17 @@
                                                 <constraint firstItem="E3r-kR-gL6" firstAttribute="leading" secondItem="F91-7Q-rd7" secondAttribute="leadingMargin" constant="19" id="EDs-ZB-t90"/>
                                                 <constraint firstItem="IOd-7h-xPV" firstAttribute="top" secondItem="E3r-kR-gL6" secondAttribute="bottom" id="KAi-2e-thE"/>
                                                 <constraint firstItem="E3r-kR-gL6" firstAttribute="top" secondItem="F91-7Q-rd7" secondAttribute="topMargin" constant="-4" id="NIA-st-GQo"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="IOd-7h-xPV" secondAttribute="trailing" constant="-8" id="UVS-O6-eKm"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="IOd-7h-xPV" secondAttribute="trailing" constant="226" id="UVS-O6-eKm"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="E3r-kR-gL6" secondAttribute="trailing" constant="-8" id="mvm-gV-d7j"/>
                                                 <constraint firstItem="IOd-7h-xPV" firstAttribute="leading" secondItem="F91-7Q-rd7" secondAttribute="leadingMargin" constant="19" id="pC7-GR-AoA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="OkT-h3-Y6y" secondAttribute="trailing" constant="-8" id="rcP-5k-cVS"/>
                                                 <constraint firstItem="OkT-h3-Y6y" firstAttribute="bottom" secondItem="F91-7Q-rd7" secondAttribute="bottomMargin" id="yLp-MA-he1"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="UVS-O6-eKm"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="studentCourse" destination="IOd-7h-xPV" id="nSl-XV-bwT"/>
@@ -517,7 +525,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wgp-VG-2gA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1553" y="845"/>
+            <point key="canvasLocation" x="1449" y="961"/>
         </scene>
         <!--Help Session View Controller-->
         <scene sceneID="cXN-ny-vzC">
@@ -727,7 +735,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4EF-ZQ-8p7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957" y="1353"/>
+            <point key="canvasLocation" x="2011" y="1335"/>
         </scene>
         <!--Student Student Info View Controller-->
         <scene sceneID="KND-VT-Wnh">
