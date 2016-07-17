@@ -199,7 +199,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = storyboard.instantiateViewControllerWithIdentifier("studenthomeviewcontroller") as! StudentHomeViewController
             let nav = self.window?.rootViewController as! UINavigationController
             nav.pushViewController(vc, animated: false)
-            vc.performSegueWithIdentifier("StudentHelpSession", sender: userInfo["id"] as! String)
+            let ta = LabTA()
+            ta.netID = userInfo["id"] as? String
+            let info = getTAInfo(ta.netID!)
+            ta.name = info["Name"] as? String
+            ta.classYear = info["Class Year"] as? Int
+            vc.performSegueWithIdentifier("StudentHelpSession", sender: ta)
             completionHandler(.NoData)
         }
         else if userInfo["type"]! as! String == "SilentRemove" {
@@ -217,7 +222,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler(.NoData)
         }
     }
-    
+    func getTAInfo(netid: String) -> [String: AnyObject]{
+        var taInfo: [String: AnyObject] = [:]
+        
+        let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/api/v1/undergraduates/\(netid)")!
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url)
+        let username = "mh20"
+        let secret_key = "0a73a950af8ccaa340038643d5d09a25"
+        let temp = NSUUID().UUIDString
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC")
+        let timestring = dateFormatter.stringFromDate(NSDate())
+        let nonce = temp.stringByReplacingOccurrencesOfString("-", withString: "")
+        let digest = sha256(nonce + timestring + secret_key)
+        
+        let headers: [String:String] = [
+            "Authorization": "WSSE profile=\"UsernameToken\"",
+            "X-WSSE": "UsernameToken Username=\"\(username)\", PasswordDigest=\"\(digest!)\", Nonce=\"\(nonce)\", Created=\"\(timestring)\""
+        ]
+        request.allHTTPHeaderFields = headers
+        request.HTTPMethod = "GET"
+        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        
+        let semaphore = dispatch_semaphore_create(0)
+        let task = session.dataTaskWithRequest(request) {
+            (
+            let data, let response, let error) in
+            if error == nil && data != nil {
+                do {
+                    let jsonObj = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! [String: AnyObject]
+                    taInfo = ["Class Year": jsonObj["class_year"] as! Int, "Name": jsonObj["full_name"] as! String]
+                } catch {
+                    
+                }
+            }
+            dispatch_semaphore_signal(semaphore)
+        }
+        task.resume()
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        return taInfo
+    }
+
     /// Register user's device token using HTTP POST
     ///
     /// Parameters:

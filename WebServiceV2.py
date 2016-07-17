@@ -16,6 +16,14 @@ NOTIFYTEN = 'NotifyTen'
 NOTIFYFIVE = 'NotifyFive'
 NOTIFYMATCH = 'NotifyMatch'
 
+options = {
+	SILENTREMOVE: handleSilentRemove,
+	SILENTENQUEUE: handleSilentEnqueue,
+	NOTIFYMATCH: handleNotifyMatch,
+	NOTIFYFIVE: handleNotifyFive,
+	NOTIFYTEN: handleNotifyTen
+}
+
 LabTAs = [
 	{
 		'First Name': u"Mitchell",
@@ -88,9 +96,9 @@ HelpRequests = [
 	},
 	{
 		'RequestID': 4,
-		'Name': u"Maia Ezratty",
-		'NetID': u"mezratty",
-		'Help Message': u"iudhfivudhfiv adfiuvh iidufhv id uf vhudfhv idh uvh fuvh fiuvh difuvh difuvh ... df9vuhdf ivuhd fv",
+		'Name': u"Michael East",
+		'NetID': u"mteast",
+		'Help Message': u"i ate stump and now I'm sick as a dog",
 		'Been Helped': False,
 		'Canceled': False,
 		'In Queue': True,
@@ -115,7 +123,7 @@ HelpRequests = [
 	{
 		'RequestID': 6,
 		'Name': u"Alexa Wojak",
-		'NetID': u"awojak",
+		'NetID': u"jlumbroso",
 		'Help Message': u"oidfvfvfvfv",
 		'Been Helped': False,
 		'Canceled': False,
@@ -230,10 +238,7 @@ def registerDeviceToken(senderID):
 @app.route('/LabQueue/v2/<senderID>/Requests', methods = ['GET', 'POST'])
 def fullQueueOps(senderID):
 	if request.method == 'GET':
-		activeQueue = []
-		for entry in HelpRequests:
-			if entry['In Queue'] == True:
-				activeQueue.append(entry)
+		activeQueue = getActiveQueue()
 		return jsonify({'Queue': activeQueue})
 	else:
 		if not request.json:
@@ -261,7 +266,6 @@ def fullQueueOps(senderID):
 			'Course': request.json['Course'],
 			'RequestID': index
 			}
-		#notifyActiveUsers(senderID, SILENTENQUEUE, "", info, syncToken)
 		handleSilentEnqueue(senderID, info, syncToken)
 		return jsonify({'RequestID': index}), 201
 
@@ -281,12 +285,9 @@ def markAsHelped(senderID, requestID):
 		for entry in HelpRequests:
 			if entry['In Queue'] == True:
 				activeQueue.append(entry)
-		notifyUser(senderID, bigentry[0]['NetID'], NOTIFYMATCH, "", [], syncToken)
-		if len(activeQueue) > 9:
-			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [], syncToken)
-		if len(activeQueue) > 4:
-			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [], syncToken)
-		#notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
+		handleNotifyMatch(senderID, bigentry[0]['NetID'], syncToken)
+		handleNotifyFive(senderID, syncToken)
+		handleNotifyTen(senderID, syncToken)
 		if alreadyCanceled == True:
 			handleSilentRemove(senderID, requestID, syncToken)
 		return jsonify({bigentry[0]['NetID']: bigentry}), 201
@@ -301,18 +302,11 @@ def markAsCanceled(senderID, requestID):
 		syncToken = getSyncToken()
 		bigentry[0]['Canceled'] = True
 		bigentry[0]['In Queue'] = False
-		activeQueue = []
-		for entry in HelpRequests:
-			if entry['In Queue'] == True:
-				activeQueue.append(entry)
-		if len(activeQueue) > 9:
-			notifyUser(senderID, activeQueue[9]['NetID'], NOTIFYTEN, "", [], syncToken)
-		if len(activeQueue) > 4:
-			notifyUser(senderID, activeQueue[4]['NetID'], NOTIFYFIVE, "", [], syncToken)
-		#notifyActiveUsers(senderID, SILENTREMOVE, requestID, [], syncToken)
+		activeQueue = getActiveQueue()
+		handleNotifyFive(senderID, syncToken)
+		handleNotifyTen(senderID, syncToken)
 		if alreadyCanceled == True:
 			handleSilentRemove(senderID, requestID, syncToken)
-		#options[handleSilentRemove]("","","")
 		return jsonify({bigentry[0]['NetID']: bigentry}), 201
 
 @app.route('/LabQueue/v2/<senderID>/TAs/ActiveTAs', methods = ['GET'])
@@ -332,14 +326,6 @@ def verifySync(senderID):
 	else:
 		return jsonify({"Response": "Out of Sync"}), 201
 
-def notifyActiveUsers(senderID, notificationType, removeID, enqueueStudentInfo, syncToken):
-	for entry in HelpRequests:
-		if entry['In Queue'] == True:
-			notifyUser(senderID, entry['NetID'], notificationType, removeID, enqueueStudentInfo, syncToken)
-	for entry in LabTAs:
-		if entry['Is Active'] == True:
-			notifyUser(senderID, entry['NetID'], notificationType, removeID, enqueueStudentInfo, syncToken)
-
 def handleSilentRemove(senderID, removeID, syncToken):
 	activeUsers = getAllActiveUsers()
 	CERT_FILE = 'LabQueuePush.pem'
@@ -351,7 +337,6 @@ def handleSilentRemove(senderID, removeID, syncToken):
 			userToken = getTokenFromID(entry['NetID'])
 			apns.gateway_server.send_notification(userToken, payload)
 	return 'Notification success'
-
 
 def handleSilentEnqueue(senderID, enqueueStudentInfo, syncToken):
 	activeUsers = getAllActiveUsers()
@@ -365,6 +350,47 @@ def handleSilentEnqueue(senderID, enqueueStudentInfo, syncToken):
 			apns.gateway_server.send_notification(userToken, payload)
 	return 'notification success'
 
+def handleNotifyMatch(senderID, receiverID, syncToken):
+	receiverToken = getTokenFromID(receiverID)
+	entry = [entry for entry in LabTAs if entry['NetID'] == senderID and entry['Is Active'] == True]
+	message = entry[0]['First Name'] + " " + entry[0]['Last Name'] + " is coming to help you"
+	CERT_FILE = 'LabQueuePush.pem'
+	USE_SANDBOX = True
+	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
+	payload = Payload(content_available = 1, alert=message, sound="default", custom = {'type': NOTIFYMATCH, 'id': senderID, 'Sync Token': syncToken})
+	apns.gateway_server.send_notification(receiverToken, payload)
+
+def handleNotifyFive(senderID, syncToken):
+	activeQueue = getActiveQueue()
+	if len(activeQueue) <= 4:
+		return
+	receiverToken = getTokenFromID(activeQueue[4]['NetID'])
+	message = "There are 5 students ahead of you in the queue."
+	CERT_FILE = 'LabQueuePush.pem'
+	USE_SANDBOX = True
+	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
+	payload = Payload(alert=message, sound="default", custom = {'type': NOTIFYFIVE, 'id': senderID, 'Sync Token': syncToken})
+	apns.gateway_server.send_notification(receiverToken, payload)
+
+def handleNotifyTen(senderID, syncToken):
+	activeQueue = getActiveQueue()
+	if len(activeQueue) <= 9:
+		return
+	receiverToken = getTokenFromID(activeQueue[9]['NetID'])
+	message = "There are 10 students ahead of you in the queue."
+	CERT_FILE = 'LabQueuePush.pem'
+	USE_SANDBOX = True
+	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
+	payload = Payload(alert=message, sound="default", custom = {'type': NOTIFYTEN, 'id': senderID, 'Sync Token': syncToken})
+	apns.gateway_server.send_notification(receiverToken, payload)
+
+def getActiveQueue():
+	activeQueue = []
+	for entry in HelpRequests:
+		if entry['In Queue'] == True:
+			activeQueue.append(entry)
+	return activeQueue
+
 def getAllActiveUsers():
 	activeUsers = []
 	for entry in HelpRequests:
@@ -374,44 +400,6 @@ def getAllActiveUsers():
 		if entry['Is Active'] == True:
 			activeUsers.append(entry)
 	return activeUsers
-
-def handleNotifyMatch(senderID, receiverID, syncToken):
-	print "hello"
-
-options = {
-	SILENTREMOVE: handleSilentRemove,
-	SILENTENQUEUE: handleSilentEnqueue,
-	NOTIFYMATCH: handleNotifyMatch
-}
-
-def notifyUser(senderID, receiverID, notificationType, removeID, enqueueStudentInfo, syncToken):
-	if senderID == receiverID:
-		return "sender is receiver"
-	userToken = getTokenFromID(receiverID)
-	CERT_FILE = 'LabQueuePush.pem'
-	USE_SANDBOX = True
-	apns = APNs(use_sandbox=USE_SANDBOX, cert_file=CERT_FILE, enhanced=True)
-	if notificationType == SILENTENQUEUE:
-		payload = Payload(content_available = 1, custom = {'type': 'SilentEnqueue', 'studentinfo': enqueueStudentInfo, 'Sync Token': syncToken})
-	elif notificationType == SILENTREMOVE:
-		payload = Payload(content_available = 1, custom = {'type': 'SilentRemove', 'id': int(removeID), 'Sync Token': syncToken})
-	elif notificationType == NOTIFYMATCH:
-		entry = [entry for entry in LabTAs if entry['NetID'] == senderID and entry['Is Active'] == True]
-		if len(entry) == 0:
-			return
-		payload = Payload(content_available = 1, alert=entry[0]['First Name'] + " " + entry[0]['Last Name'] +" is coming to help you", sound="default", custom = {'type': NOTIFYMATCH, 'id': senderID, 'Sync Token': syncToken})
-	elif notificationType == NOTIFYTEN:
-		payload = Payload(alert="There are 10 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYTEN, 'id': senderID, 'Sync Token': syncToken})
-	elif notificationType == NOTIFYFIVE:
-		payload = Payload(alert="There are 5 students ahead of you in the queue.", sound="default", custom = {'type': NOTIFYFIVE, 'id': senderID, 'Sync Token': syncToken})
-	#identifier = 1
-	#expiry = time.time() + 3600
-	#priority = 10
-	#frame = Frame()
-	#frame.add_item(userToken, payload, identifier, expiry, priority)
-	#apns.gateway_server.send_notification_multiple(frame)
-	apns.gateway_server.send_notification(userToken, payload)
-	return 'notification success'
 
 def getTokenFromID(netid):
 	entry = [entry for entry in Tokens if entry['NetID'] == netid]

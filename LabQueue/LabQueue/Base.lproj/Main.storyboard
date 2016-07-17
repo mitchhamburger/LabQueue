@@ -77,11 +77,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTQ-2a-bNO">
                                 <rect key="frame" x="16" y="72" width="288" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✆ &lt; 5 minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-Z2-GiU">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~5 minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yf8-Z2-GiU">
                                         <rect key="frame" x="8" y="14" width="272" height="21"/>
                                         <color key="tintColor" red="0.01135598751714384" green="1" blue="0.00010458701123017278" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                        <color key="textColor" red="0.011355987519999999" green="1" blue="0.0001045870112" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.1529411765" green="0.68235294120000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -153,14 +153,14 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="XAI-yO-rx4"/>
                                     <barButtonItem style="plain" id="azT-pc-uh2">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="crz-wW-rJ3" customClass="LumenButton" customModule="LabQueue" customModuleProvider="target">
-                                            <rect key="frame" x="98" y="8.5" width="140" height="43"/>
+                                            <rect key="frame" x="83" y="8.5" width="170" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="ADD TO QUEUE">
                                                 <attributedString key="attributedTitle">
                                                     <fragment content="ADD NAME TO QUEUE">
                                                         <attributes>
                                                             <color key="NSColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <font key="NSFont" size="10" name="Helvetica-Bold"/>
+                                                            <font key="NSFont" size="13" name="Helvetica-Bold"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>

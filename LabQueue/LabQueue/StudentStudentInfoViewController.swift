@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import AlamofireImage
+import Alamofire
 
 ///  View Controller to display info about inidivudal
 ///  students that is available to other students.
@@ -31,7 +32,7 @@ import UIKit
         self.studentInfoTable.dataSource = self
         self.studentInfoTable.delegate = self
         
-        request()
+        getStudentPic(currentStudent.netID)
         studentPic.layer.cornerRadius = studentPic.frame.size.width / 2
         studentPic.clipsToBounds = true
         studentPic.layer.borderWidth = 0.1
@@ -45,9 +46,14 @@ import UIKit
         picBorder.layer.borderWidth = 1
         picBorder.layer.borderColor = UIColor(netHex: 0xe1e1e1).CGColor
         toolBar.backgroundColor = UIColor(netHex:0x4183D7)
-        self.navigationController?.title = "More info about \(currentStudent.name)"
+        //self.navigationController?.title = "More info about \(currentStudent.name)"
         self.title = "More info about \(currentStudent.name)"
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolBar.frame.height, width: self.view.frame.width, height: 5))
+        toolBarBorder.layer.backgroundColor = UIColor(netHex: 0x3B7CD1).CGColor
+        toolBarBorder.layer.cornerRadius = 2
+        self.view.addSubview(toolBarBorder)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,35 +86,29 @@ import UIKit
         return TAStudentInfoSingleLineCell()
     }
     
-    func request() {
-        var studentPic = ""
-        let path = NSBundle.mainBundle().pathForResource("initial_data-2016-1", ofType: "json")
-        let jsonData = NSData(contentsOfFile: path!)
-        do {
-            let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-            for item in jsonResult {
-                if item["fields"]!!["net_id"] as! String == currentStudent.netID {
-                    studentPic = item["fields"]!!["photo_link"] as! String
-                }
-            }
-        } catch {
-            print("f")
-        }
+    func getStudentPic(netid: String) {
         
-        let url: NSURL = NSURL(string: "http://www.princeton.edu\(studentPic)")!
-        let session = NSURLSession.sharedSession()
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "GET"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/images/\(netid)")!
         
-        let task = session.dataTaskWithRequest(request) {
-            (
-            let data, let response, let error) in
-            if error == nil && data != nil {
-                self.studentPic.image = UIImage(data: data!)
-            }
+        let username = "mh20"
+        let secret_key = "0a73a950af8ccaa340038643d5d09a25"
+        let temp = NSUUID().UUIDString
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC")
+        let timestring = dateFormatter.stringFromDate(NSDate())
+        let nonce = temp.stringByReplacingOccurrencesOfString("-", withString: "")
+        let digest = sha256(nonce + timestring + secret_key)
+        
+        let headers: [String:String] = [
+            "Authorization": "WSSE profile=\"UsernameToken\"",
+            "X-WSSE": "UsernameToken Username=\"\(username)\", PasswordDigest=\"\(digest!)\", Nonce=\"\(nonce)\", Created=\"\(timestring)\""
+        ]
+        
+        Alamofire.request(.GET, url, parameters: nil, encoding: ParameterEncoding.URL, headers: headers).responseImage { (result) -> Void in
+            self.studentPic.image = result.result.value
         }
-        task.resume()
     }
     
     override func didReceiveMemoryWarning() {

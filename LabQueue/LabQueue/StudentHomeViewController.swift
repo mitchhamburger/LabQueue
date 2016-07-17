@@ -38,6 +38,11 @@ import CoreData
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
         queueTable.addSubview(refreshControl)
+        
+        let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolBar.frame.height, width: self.view.frame.width, height: 5))
+        toolBarBorder.layer.backgroundColor = UIColor(netHex: 0x3B7CD1).CGColor
+        toolBarBorder.layer.cornerRadius = 2
+        self.view.addSubview(toolBarBorder)
     }
     
     func refresh(refreshControl: UIRefreshControl) {
@@ -248,12 +253,18 @@ import CoreData
             //dest.eventId = sender as! String
             
         }
+        else if (segue.identifier == "StudentHelpSession") {
+            let dest = segue.destinationViewController as! StudentHelpSessionViewController
+            //dest.currentStudent = sender as! Student
+            dest.ta = sender as! LabTA
+        }
     }
     
     /// Handler for when a student pushes the button to add
     /// himself to the Queue. Configures and displays alert
     /// view controller.
     @IBAction func addNamePushed(sender: UIButton) {
+        
         let alertController = UIAlertController(title: "Add yourself to the Queue", message: "Submit your info", preferredStyle: .Alert)
         
         let confirmAction = UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default, handler: ({
@@ -281,13 +292,11 @@ import CoreData
         alertController.addTextFieldWithConfigurationHandler({
             (textField) in
             textField.placeholder = "Describe Your Problem"
-            
         })
         
         alertController.addTextFieldWithConfigurationHandler({
             (textField) in
             textField.placeholder = "Course"
-            
         })
         
         alertController.addAction(confirmAction)
@@ -459,33 +468,45 @@ import CoreData
     
     func getName(netid: String) -> String {
         var name: String = ""
-        let path = NSBundle.mainBundle().pathForResource("initial_data-2016-1", ofType: "json")
-        let jsonData = NSData(contentsOfFile: path!)
-        do {
-            let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-            for item in jsonResult {
-                if item["fields"]!!["net_id"] as! String == netid {
-                    name = item["fields"]!!["full_name"] as! String
-                }
-            }
-        } catch {
-            print("f")
-        }
         
-        /*let url: NSURL = NSURL(string: "http://www.princeton.edu\(studentPic)")!
+        let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/api/v1/undergraduates/\(netid)")!
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
+        let username = "mh20"
+        let secret_key = "0a73a950af8ccaa340038643d5d09a25"
+        let temp = NSUUID().UUIDString
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC")
+        let timestring = dateFormatter.stringFromDate(NSDate())
+        let nonce = temp.stringByReplacingOccurrencesOfString("-", withString: "")
+        let digest = sha256(nonce + timestring + secret_key)
+        
+        let headers: [String:String] = [
+            "Authorization": "WSSE profile=\"UsernameToken\"",
+            "X-WSSE": "UsernameToken Username=\"\(username)\", PasswordDigest=\"\(digest!)\", Nonce=\"\(nonce)\", Created=\"\(timestring)\""
+        ]
+        request.allHTTPHeaderFields = headers
         request.HTTPMethod = "GET"
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-            
+        
+        let semaphore = dispatch_semaphore_create(0)
         let task = session.dataTaskWithRequest(request) {
             (
             let data, let response, let error) in
             if error == nil && data != nil {
-                self.studentPic.image = UIImage(data: data!)
+                do {
+                    let jsonObj = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! [String: AnyObject]
+                    name = jsonObj["full_name"] as! String
+                } catch {
+                    
+                }
             }
+            dispatch_semaphore_signal(semaphore)
         }
-        task.resume()*/
+        task.resume()
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         return name
     }
     @IBAction func logoutPressed(sender: UIButton) {

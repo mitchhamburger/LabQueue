@@ -40,6 +40,7 @@
 		F8DF3D271D35BF560070311C /* StudentHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF3D261D35BF560070311C /* StudentHelpSessionViewController.swift */; };
 		F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */; };
 		F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */; };
+		F8F1BB741D3869560082F6FB /* CustomIOS7AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F1BB731D3869560082F6FB /* CustomIOS7AlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		F8DF3D261D35BF560070311C /* StudentHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHelpSessionViewController.swift; sourceTree = "<group>"; };
 		F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAStudentInfoSingleLineCell.swift; sourceTree = "<group>"; };
 		F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAHelpSessionViewController.swift; sourceTree = "<group>"; };
+		F8F1BB6A1D3845970082F6FB /* LabQueue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LabQueue-Bridging-Header.h"; sourceTree = "<group>"; };
+		F8F1BB731D3869560082F6FB /* CustomIOS7AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomIOS7AlertView.swift; path = "../../../Downloads/iOS-Custom-AlertView-Swift-master/CustomIOS7AlertView/CustomIOS7AlertView/CustomIOS7AlertView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				F83222981D07B7610089304E /* AppDelegate.swift */,
+				F8F1BB731D3869560082F6FB /* CustomIOS7AlertView.swift */,
 				F87AC22A1D25F5D50010CF59 /* adler32.swift */,
 				F895FC621D217AA30031F47D /* Constants.swift */,
 				F871535D1D0F309C00F29040 /* TA Files */,
@@ -229,6 +233,7 @@
 				F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */,
 				F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */,
 				F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */,
+				F8F1BB6A1D3845970082F6FB /* LabQueue-Bridging-Header.h */,
 				F8722BF31D0886BF00449536 /* TAHomeViewController.swift */,
 				F85B3E8C1D15CCF40031A1E3 /* LabQueue.xcdatamodeld */,
 			);
@@ -445,6 +450,7 @@
 				F81E57111D11ABAD00C11123 /* CASViewController.swift in Sources */,
 				F89E174A1D30AC6500659548 /* TempTACell.swift in Sources */,
 				F89E174C1D30AD8F00659548 /* TempTAController.swift in Sources */,
+				F8F1BB741D3869560082F6FB /* CustomIOS7AlertView.swift in Sources */,
 				F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */,
 				F895FC631D217AA30031F47D /* Constants.swift in Sources */,
 				F87AC22B1D25F5D50010CF59 /* adler32.swift in Sources */,
@@ -618,6 +624,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mhamburger.LabQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LabQueue/LabQueue-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -634,6 +641,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mhamburger.LabQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LabQueue/LabQueue-Bridging-Header.h";
 			};
 			name = Release;
 		};

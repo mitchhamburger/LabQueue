@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import AlamofireImage
+import Alamofire
 
 ///  View Controller to display info about inidivudal
 ///  students that is available to LAb TA's.
@@ -36,10 +38,7 @@ import CoreData
         ta.netID = prefs.objectForKey("MostRecentTA") as? String
         self.studentInfoTable.dataSource = self
         self.studentInfoTable.delegate = self
-        let taInfo = self.getTAInfo(self.ta.netID!)
-        //studentPic.image = image
-        self.ta.name = taInfo["Name"] as? String
-        self.ta.classYear = taInfo["Class Year"] as? Int
+        getStudentPic(ta.netID!)
         //dispatch_async(dispatch_get_main_queue(), {
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.studentPic.layer.cornerRadius = self.studentPic.frame.size.width / 2
@@ -57,6 +56,11 @@ import CoreData
         self.title = "\(self.ta.name!) is helping you"
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         //})
+        
+        let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolBar.frame.height, width: self.view.frame.width, height: 5))
+        toolBarBorder.layer.backgroundColor = UIColor(netHex: 0x3B7CD1).CGColor
+        toolBarBorder.layer.cornerRadius = 2
+        self.view.addSubview(toolBarBorder)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,42 +93,33 @@ import CoreData
         return TAStudentInfoSingleLineCell()
     }
     
-    func getTAInfo(netid: String) -> [String: AnyObject]{
-        var studentPic = ""
-        var taInfo: [String: AnyObject] = [:]
-        let path = NSBundle.mainBundle().pathForResource("initial_data-2016-1", ofType: "json")
-        let jsonData = NSData(contentsOfFile: path!)
-        do {
-            let jsonResult: NSArray = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-            for item in jsonResult {
-                if item["fields"]!!["net_id"] as! String == netid {
-                    studentPic = item["fields"]!!["photo_link"] as! String
-                    //self.ta.classYear = (item["fields"]!!["class_year"] as! Int)
-                    //self.ta.name = item["fields"]!!["full_name"] as? String
-                    taInfo = ["Class Year": (item["fields"]!!["class_year"] as! Int), "Name": (item["fields"]!!["full_name"] as? String)!]
-                }
-            }
-        } catch {
-            print("f")
+    func getStudentPic(netid: String) {
+        
+        let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/images/\(netid)")!
+        
+        let username = "mh20"
+        let secret_key = "0a73a950af8ccaa340038643d5d09a25"
+        let temp = NSUUID().UUIDString
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC")
+        let timestring = dateFormatter.stringFromDate(NSDate())
+        let nonce = temp.stringByReplacingOccurrencesOfString("-", withString: "")
+        let digest = sha256(nonce + timestring + secret_key)
+        
+        let headers: [String:String] = [
+            "Authorization": "WSSE profile=\"UsernameToken\"",
+            "X-WSSE": "UsernameToken Username=\"\(username)\", PasswordDigest=\"\(digest!)\", Nonce=\"\(nonce)\", Created=\"\(timestring)\""
+        ]
+        
+        Alamofire.request(.GET, url, parameters: nil, encoding: ParameterEncoding.URL, headers: headers).responseImage { (result) -> Void in
+            self.studentPic.image = result.result.value
         }
-        
-        /*let url: NSURL = NSURL(string: "http://www.princeton.edu\(studentPic)")!
-        let session = NSURLSession.sharedSession()
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "GET"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        
-        let task = session.dataTaskWithRequest(request) {
-            (
-            let data, let response, let error) in
-            if error == nil && data != nil {
-                self.image = UIImage(data: data!)!
-            }
-        }
-        task.resume()*/
-        
-        return taInfo
     }
+    
+    
+    
     @IBAction func resolvedPushed(sender: UIButton) {
         self.navigationController?.popViewControllerAnimated(true)
     }
