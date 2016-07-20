@@ -124,8 +124,9 @@ import Cosmos
     }
     
     @IBAction func resolvedPushed(sender: UIButton) {
-        print(ratingView.rating)
+        Alamofire.request(.GET, "\(hostName)/LabQueue/v2/\(ta.netID!)/TAs/\(ratingView.rating)/addRating")
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
 }
 
