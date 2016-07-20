@@ -28,15 +28,20 @@ import CoreData
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
+        UISetup()
+    }
+    
+    func UISetup() {
         self.queueTable.rowHeight = 50
         toolBar.backgroundColor = UIColor(netHex:0x4183D7)
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex:0x4183D7)
+        self.navigationItem.setHidesBackButton(true, animated: false)
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         self.queueTable.tableFooterView = UIView()
-
+        
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        refreshControl.addTarget(self, action: #selector(StudentHomeViewController.refresh(_:)), forControlEvents: .ValueChanged)
         queueTable.addSubview(refreshControl)
         
         let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolBar.frame.height, width: self.view.frame.width, height: 5))
@@ -473,7 +478,7 @@ import CoreData
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         let username = "mh20"
-        let secret_key = "0a73a950af8ccaa340038643d5d09a25"
+        let secret_key = "464f7aa98c61699a2c5682dd518d54e9"
         let temp = NSUUID().UUIDString
         
         let dateFormatter = NSDateFormatter()
@@ -509,11 +514,4 @@ import CoreData
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         return name
     }
-    @IBAction func logoutPressed(sender: UIButton) {
-        let prefs = NSUserDefaults.standardUserDefaults()
-        prefs.removeObjectForKey("UserNetID")
-        print(self.navigationController?.viewControllers)
-        self.navigationController?.popToRootViewControllerAnimated(true)
-    }
-    
 }

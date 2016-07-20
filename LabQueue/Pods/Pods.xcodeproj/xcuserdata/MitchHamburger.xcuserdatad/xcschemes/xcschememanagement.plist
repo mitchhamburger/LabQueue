@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Cosmos.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMOAuth2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,6 +47,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>608B49B5DDACC601EE8044A1931993F9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79AEECCB68FCF764C0684D24B89B2755</key>
 		<dict>
 			<key>primary</key>
@@ -62,7 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F86D07ECD1EF4F92DE0C34156E9DE564</key>
+		<key>D8FEC8C2A33DC5D5524EB3D3176177CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

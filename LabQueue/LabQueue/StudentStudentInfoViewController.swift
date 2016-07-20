@@ -31,7 +31,10 @@ import Alamofire
         super.viewDidLoad()
         self.studentInfoTable.dataSource = self
         self.studentInfoTable.delegate = self
-        
+        UISetup()
+    }
+    
+    func UISetup() {
         getStudentPic(currentStudent.netID)
         studentPic.layer.cornerRadius = studentPic.frame.size.width / 2
         studentPic.clipsToBounds = true
@@ -55,7 +58,6 @@ import Alamofire
         toolBarBorder.layer.cornerRadius = 2
         self.view.addSubview(toolBarBorder)
     }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -91,7 +93,7 @@ import Alamofire
         let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/images/\(netid)")!
         
         let username = "mh20"
-        let secret_key = "0a73a950af8ccaa340038643d5d09a25"
+        let secret_key = "464f7aa98c61699a2c5682dd518d54e9"
         let temp = NSUUID().UUIDString
         
         let dateFormatter = NSDateFormatter()

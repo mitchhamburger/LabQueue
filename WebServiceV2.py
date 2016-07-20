@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, abort, make_response, request
 import datetime
 import time
-from apns import APNs, Frame, Payload
+from apns import APNs, apFrame, Payload
 import sys
 import logging
 import os

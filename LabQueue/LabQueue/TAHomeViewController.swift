@@ -32,28 +32,30 @@ import Alamofire
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentAdd), name: addStudentToQueue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TAHomeViewController.silentRemove), name: match, object: nil)
         requestCount = syncQueue()
-        toolBarLabel.text = "\(requestCount) Students in Queue"
+        
         self.queueTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.queueTable.dataSource = self
         self.queueTable.delegate = self
-        
+        UISetup()
+    }
+    
+    func UISetup() {
         self.queueTable.tableFooterView = UIView()
-
+        toolBarLabel.text = "\(requestCount) Students in Queue"
         toolBar.backgroundColor = UIColor(netHex:0x4183D7)
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex:0x4183D7)
+        self.navigationItem.setHidesBackButton(true, animated: false)
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-       
+        
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "refresh:", forControlEvents: .ValueChanged)
+        refreshControl.addTarget(self, action: #selector(TAHomeViewController.refresh(_:)), forControlEvents: .ValueChanged)
         queueTable.addSubview(refreshControl)
         
         let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolBar.frame.height, width: self.view.frame.width, height: 5))
         toolBarBorder.layer.backgroundColor = UIColor(netHex: 0x3B7CD1).CGColor
         toolBarBorder.layer.cornerRadius = 2
         self.view.addSubview(toolBarBorder)
-        
-        
     }
     
     func refresh(refreshControl: UIRefreshControl) {
@@ -216,7 +218,7 @@ import Alamofire
         }
         cell.studentName.text = "\(indexPath.row + 1). \(result[indexPath.row].valueForKey("name") as! String)"
         cell.studentID = result[indexPath.row].valueForKey("netid") as! String
-        cell.studentCourse.text = result[indexPath.row].valueForKey("course") as? String
+        cell.studentCourse.text = "\(result[indexPath.row].valueForKey("course") as! String)"
         cell.studentHelpMessage.text = result[indexPath.row].valueForKey("helpmessage") as? String
         cell.studentHelpMessage.lineBreakMode = .ByTruncatingTail
         //let cell = self.queueTable.dequeueReusableCellWithIdentifier("TAcustomcell")! as! TAQueueCustomCell
@@ -428,12 +430,5 @@ import Alamofire
         queueTable.reloadData()
         requestCount -= 1
         toolBarLabel.text = "\(requestCount) Students in Queue"
-    }
-    @IBAction func logoutPressed(sender: UIButton) {
-        let prefs = NSUserDefaults.standardUserDefaults()
-        prefs.removeObjectForKey("UserNetID")
-        //print(self.navigationController?.viewControllers)
-        self.navigationController?.popToRootViewControllerAnimated(true)
-        print(self.navigationController?.viewControllers)
     }
 }

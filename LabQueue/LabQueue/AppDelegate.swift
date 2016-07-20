@@ -229,7 +229,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url)
         let username = "mh20"
-        let secret_key = "0a73a950af8ccaa340038643d5d09a25"
+        let secret_key = "464f7aa98c61699a2c5682dd518d54e9"
         let temp = NSUUID().UUIDString
         
         let dateFormatter = NSDateFormatter()

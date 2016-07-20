@@ -39,7 +39,10 @@ import Alamofire
         super.viewDidLoad()
         self.studentInfoTable.dataSource = self
         self.studentInfoTable.delegate = self
-        
+        UISetup()
+    }
+    
+    func UISetup() {
         getStudentPic(currentStudent.netID)
         studentPic.layer.cornerRadius = studentPic.frame.size.width / 2
         studentPic.clipsToBounds = true
@@ -56,6 +59,7 @@ import Alamofire
         toolbar.backgroundColor = UIColor(netHex:0x4183D7)
         self.navigationController?.title = "More info about \(currentStudent.name)"
         self.title = "More info about \(currentStudent.name)"
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolbar.frame.height, width: self.view.frame.width, height: 5))
@@ -104,7 +108,7 @@ import Alamofire
         let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/images/\(netid)")!
         
         let username = "mh20"
-        let secret_key = "0a73a950af8ccaa340038643d5d09a25"
+        let secret_key = "464f7aa98c61699a2c5682dd518d54e9"
         let temp = NSUUID().UUIDString
         
         let dateFormatter = NSDateFormatter()

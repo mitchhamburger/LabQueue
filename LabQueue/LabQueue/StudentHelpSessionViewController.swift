@@ -38,6 +38,10 @@ import Alamofire
         ta.netID = prefs.objectForKey("MostRecentTA") as? String
         self.studentInfoTable.dataSource = self
         self.studentInfoTable.delegate = self
+        UISetup()
+    }
+    
+    func UISetup() {
         getStudentPic(ta.netID!)
         //dispatch_async(dispatch_get_main_queue(), {
         self.navigationItem.setHidesBackButton(true, animated: false)
@@ -61,6 +65,7 @@ import Alamofire
         toolBarBorder.layer.backgroundColor = UIColor(netHex: 0x3B7CD1).CGColor
         toolBarBorder.layer.cornerRadius = 2
         self.view.addSubview(toolBarBorder)
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -98,7 +103,7 @@ import Alamofire
         let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/images/\(netid)")!
         
         let username = "mh20"
-        let secret_key = "0a73a950af8ccaa340038643d5d09a25"
+        let secret_key = "464f7aa98c61699a2c5682dd518d54e9"
         let temp = NSUUID().UUIDString
         
         let dateFormatter = NSDateFormatter()
