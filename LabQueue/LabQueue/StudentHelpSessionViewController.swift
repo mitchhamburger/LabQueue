@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import AlamofireImage
 import Alamofire
+import Cosmos
+
 
 ///  View Controller to display info about inidivudal
 ///  students that is available to LAb TA's.
@@ -23,6 +25,7 @@ import Alamofire
 ///  5. help message
 @IBDesignable class StudentHelpSessionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var studentPic: UIImageView!
     @IBOutlet weak var picBorder: UIView!
@@ -43,7 +46,6 @@ import Alamofire
     
     func UISetup() {
         getStudentPic(ta.netID!)
-        //dispatch_async(dispatch_get_main_queue(), {
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.studentPic.layer.cornerRadius = self.studentPic.frame.size.width / 2
         self.studentPic.clipsToBounds = true
@@ -59,13 +61,11 @@ import Alamofire
         self.toolBar.backgroundColor = UIColor(netHex:0x4183D7)
         self.title = "\(self.ta.name!) is helping you"
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        //})
         
         let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolBar.frame.height, width: self.view.frame.width, height: 5))
         toolBarBorder.layer.backgroundColor = UIColor(netHex: 0x3B7CD1).CGColor
         toolBarBorder.layer.cornerRadius = 2
         self.view.addSubview(toolBarBorder)
-
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -123,9 +123,8 @@ import Alamofire
         }
     }
     
-    
-    
     @IBAction func resolvedPushed(sender: UIButton) {
+        print(ratingView.rating)
         self.navigationController?.popViewControllerAnimated(true)
     }
 }

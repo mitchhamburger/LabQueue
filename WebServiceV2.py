@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, abort, make_response, request
 import datetime
 import time
-from apns import APNs, apFrame, Payload
+from apns import APNs, Payload
 import sys
 import logging
 import os
@@ -16,13 +16,13 @@ NOTIFYTEN = 'NotifyTen'
 NOTIFYFIVE = 'NotifyFive'
 NOTIFYMATCH = 'NotifyMatch'
 
-options = {
-	SILENTREMOVE: handleSilentRemove,
-	SILENTENQUEUE: handleSilentEnqueue,
-	NOTIFYMATCH: handleNotifyMatch,
-	NOTIFYFIVE: handleNotifyFive,
-	NOTIFYTEN: handleNotifyTen
-}
+#options = {
+#	SILENTREMOVE: handleSilentRemove,
+#	SILENTENQUEUE: handleSilentEnqueue,
+#	NOTIFYMATCH: handleNotifyMatch,
+#	NOTIFYFIVE: handleNotifyFive,
+#	NOTIFYTEN: handleNotifyTen
+#}
 
 LabTAs = [
 	{
@@ -30,14 +30,25 @@ LabTAs = [
 		'Last Name': u"Hamburger",
 		'NetID': u"mh20",
 		'Class Year': 2018,
-		'Is Active': True
+		'Is Active': True,
+		'Ratings': [
+					3.0,
+					4.0
+					] 
 	},
 	{
 		'First Name': u"Sergio",
 		'Last Name': u"Cruz",
 		'NetID': u"slc2",
 		'Class Year': 2018,
-		'Is Active': True
+		'Is Active': True,
+		'Ratings': [
+					1.0,
+					2.0,
+					5.0,
+					4.0,
+					5.0
+					]
 	}
 ]
 
@@ -325,6 +336,23 @@ def verifySync(senderID):
 		return jsonify({"Response": "In Sync"}), 201
 	else:
 		return jsonify({"Response": "Out of Sync"}), 201
+
+@app.route('/LabQueue/v2/<senderID>/TAs/<rating>/addRating', methods = ['GET'])
+def addRating(senderID, rating):
+	entry = [entry for entry in LabTAs if entry['NetID'] == senderID]
+	entry[0]['Ratings'].append(float(rating))
+	return jsonify({'Ratings': entry[0]['Ratings']}), 201
+
+@app.route('/LabQueue/v2/<senderID>/TAs/getRating', methods = ['GET'])
+def getRating(senderID):
+	entry = [entry for entry in LabTAs if entry['NetID'] == senderID]
+	count = 0
+	total = 0.0
+	for rating in entry[0]['Ratings']:
+		total += rating
+		count += 1
+	total /= count
+	return jsonify({'Rating': total}), 201
 
 def handleSilentRemove(senderID, removeID, syncToken):
 	activeUsers = getAllActiveUsers()
