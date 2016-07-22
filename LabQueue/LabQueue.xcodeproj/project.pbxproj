@@ -37,6 +37,11 @@
 		F89E174A1D30AC6500659548 /* TempTACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E17491D30AC6500659548 /* TempTACell.swift */; };
 		F89E174C1D30AD8F00659548 /* TempTAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E174B1D30AD8F00659548 /* TempTAController.swift */; };
 		F89E174E1D31361800659548 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E174D1D31361800659548 /* TopAlignedLabel.swift */; };
+		F8BF16A61D405E6B0092E469 /* PostReportHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF16A51D405E6B0092E469 /* PostReportHomeViewController.swift */; };
+		F8BF16A81D405E910092E469 /* PostReportA1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF16A71D405E910092E469 /* PostReportA1ViewController.swift */; };
+		F8BF16AA1D405EB40092E469 /* PostReportA2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF16A91D405EB40092E469 /* PostReportA2ViewController.swift */; };
+		F8BF16AC1D405EC40092E469 /* PostReportB1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF16AB1D405EC40092E469 /* PostReportB1ViewController.swift */; };
+		F8BF16AE1D40FEC70092E469 /* CanceledReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF16AD1D40FEC70092E469 /* CanceledReportViewController.swift */; };
 		F8DF3D271D35BF560070311C /* StudentHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF3D261D35BF560070311C /* StudentHelpSessionViewController.swift */; };
 		F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */; };
 		F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */; };
@@ -100,6 +105,11 @@
 		F89E17491D30AC6500659548 /* TempTACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempTACell.swift; sourceTree = "<group>"; };
 		F89E174B1D30AD8F00659548 /* TempTAController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempTAController.swift; sourceTree = "<group>"; };
 		F89E174D1D31361800659548 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
+		F8BF16A51D405E6B0092E469 /* PostReportHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReportHomeViewController.swift; sourceTree = "<group>"; };
+		F8BF16A71D405E910092E469 /* PostReportA1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReportA1ViewController.swift; sourceTree = "<group>"; };
+		F8BF16A91D405EB40092E469 /* PostReportA2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReportA2ViewController.swift; sourceTree = "<group>"; };
+		F8BF16AB1D405EC40092E469 /* PostReportB1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReportB1ViewController.swift; sourceTree = "<group>"; };
+		F8BF16AD1D40FEC70092E469 /* CanceledReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanceledReportViewController.swift; sourceTree = "<group>"; };
 		F8DF3D261D35BF560070311C /* StudentHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHelpSessionViewController.swift; sourceTree = "<group>"; };
 		F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAStudentInfoSingleLineCell.swift; sourceTree = "<group>"; };
 		F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAHelpSessionViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +200,7 @@
 				F83222981D07B7610089304E /* AppDelegate.swift */,
 				F8F1BB731D3869560082F6FB /* CustomIOS7AlertView.swift */,
 				F87AC22A1D25F5D50010CF59 /* adler32.swift */,
+				F8F1BB6A1D3845970082F6FB /* LabQueue-Bridging-Header.h */,
 				F895FC621D217AA30031F47D /* Constants.swift */,
 				F871535D1D0F309C00F29040 /* TA Files */,
 				F832229A1D07B7610089304E /* ViewController.swift */,
@@ -236,8 +247,8 @@
 				F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */,
 				F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */,
 				F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */,
-				F8F1BB6A1D3845970082F6FB /* LabQueue-Bridging-Header.h */,
 				F8722BF31D0886BF00449536 /* TAHomeViewController.swift */,
+				F8BF16A41D405E230092E469 /* Post Report Files */,
 				F85B3E8C1D15CCF40031A1E3 /* LabQueue.xcdatamodeld */,
 			);
 			name = "TA Files";
@@ -254,6 +265,18 @@
 				F8722BF51D089C5E00449536 /* StudentHomeViewController.swift */,
 			);
 			name = "Student Files";
+			sourceTree = "<group>";
+		};
+		F8BF16A41D405E230092E469 /* Post Report Files */ = {
+			isa = PBXGroup;
+			children = (
+				F8BF16A71D405E910092E469 /* PostReportA1ViewController.swift */,
+				F8BF16AB1D405EC40092E469 /* PostReportB1ViewController.swift */,
+				F8BF16AD1D40FEC70092E469 /* CanceledReportViewController.swift */,
+				F8BF16A91D405EB40092E469 /* PostReportA2ViewController.swift */,
+				F8BF16A51D405E6B0092E469 /* PostReportHomeViewController.swift */,
+			);
+			name = "Post Report Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,14 +475,17 @@
 				F8000DA41D302163002FF5E4 /* TempStudentQueueCell.swift in Sources */,
 				F81E57111D11ABAD00C11123 /* CASViewController.swift in Sources */,
 				F89E174A1D30AC6500659548 /* TempTACell.swift in Sources */,
+				F8BF16AE1D40FEC70092E469 /* CanceledReportViewController.swift in Sources */,
 				F89E174C1D30AD8F00659548 /* TempTAController.swift in Sources */,
 				F8F1BB741D3869560082F6FB /* CustomIOS7AlertView.swift in Sources */,
 				F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */,
+				F8BF16AA1D405EB40092E469 /* PostReportA2ViewController.swift in Sources */,
 				F895FC631D217AA30031F47D /* Constants.swift in Sources */,
 				F87AC22B1D25F5D50010CF59 /* adler32.swift in Sources */,
 				F832229B1D07B7610089304E /* ViewController.swift in Sources */,
 				F82AC1FF1D0CD03900BDADD2 /* StudentQueueCustomCell.swift in Sources */,
 				F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */,
+				F8BF16A61D405E6B0092E469 /* PostReportHomeViewController.swift in Sources */,
 				F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */,
 				F8000DA11D301309002FF5E4 /* TempStudentController.swift in Sources */,
 				F8F1BB761D3B36260082F6FB /* CourseLabel.swift in Sources */,
@@ -467,11 +493,13 @@
 				F85B3E8E1D15CCF40031A1E3 /* LabQueue.xcdatamodeld in Sources */,
 				F82AC2011D0CDA3700BDADD2 /* TAQueueCustomCell.swift in Sources */,
 				F87153581D0F1C6700F29040 /* TAStudentInfoViewController.swift in Sources */,
+				F8BF16A81D405E910092E469 /* PostReportA1ViewController.swift in Sources */,
 				F88715CD1D36E36B00F8B9CC /* StudentNavigationController.swift in Sources */,
 				F82AC1F91D0C6FD000BDADD2 /* LabTA.swift in Sources */,
 				F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */,
 				F8722BF61D089C5E00449536 /* StudentHomeViewController.swift in Sources */,
 				F8722BF41D0886BF00449536 /* TAHomeViewController.swift in Sources */,
+				F8BF16AC1D405EC40092E469 /* PostReportB1ViewController.swift in Sources */,
 				F8DF3D271D35BF560070311C /* StudentHelpSessionViewController.swift in Sources */,
 				F86C606D1D32EB5D00178CC6 /* LumenButton.swift in Sources */,
 				F82AC1F71D0BAABA00BDADD2 /* Student.swift in Sources */,

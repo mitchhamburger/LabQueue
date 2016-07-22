@@ -32,9 +32,19 @@ LabTAs = [
 		'Class Year': 2018,
 		'Is Active': True,
 		'Ratings': [
-					3.0,
-					4.0
-					] 
+						{
+							'RequestID': 5,
+							'Rating': 5.0
+						},
+						{
+							'RequestID': 6,
+							'Rating': 5.0
+						},
+						{
+							'RequestID': 7,
+							'Rating': 5.0
+						},
+					]
 	},
 	{
 		'First Name': u"Sergio",
@@ -43,11 +53,18 @@ LabTAs = [
 		'Class Year': 2018,
 		'Is Active': True,
 		'Ratings': [
-					1.0,
-					2.0,
-					5.0,
-					4.0,
-					5.0
+						{
+							'RequestID': 0,
+							'Rating': 1.0
+						},
+						{
+							'RequestID': 1,
+							'Rating': 5.0
+						},
+						{
+							'RequestID': 4,
+							'Rating': 4.0
+						},
 					]
 	}
 ]
@@ -337,10 +354,14 @@ def verifySync(senderID):
 	else:
 		return jsonify({"Response": "Out of Sync"}), 201
 
-@app.route('/LabQueue/v2/<senderID>/TAs/<rating>/addRating', methods = ['GET'])
-def addRating(senderID, rating):
-	entry = [entry for entry in LabTAs if entry['NetID'] == senderID]
-	entry[0]['Ratings'].append(float(rating))
+@app.route('/LabQueue/v2/<requestID>/TAs/<TAid>/<rating>/addRating', methods = ['GET'])
+def addRating(requestID, TAid, rating):
+	entry = [entry for entry in LabTAs if entry['NetID'] == TAid]
+	newRating = {
+					'RequestID': int(requestID),
+					'Rating': float(rating)
+				}
+	entry[0]['Ratings'].append(newRating)
 	return jsonify({'Ratings': entry[0]['Ratings']}), 201
 
 @app.route('/LabQueue/v2/<senderID>/TAs/getRating', methods = ['GET'])
@@ -349,7 +370,7 @@ def getRating(senderID):
 	count = 0
 	total = 0.0
 	for rating in entry[0]['Ratings']:
-		total += rating
+		total += rating['Rating']
 		count += 1
 	total /= count
 	return jsonify({'Rating': total}), 201

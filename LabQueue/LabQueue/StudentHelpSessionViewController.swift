@@ -102,21 +102,7 @@ import Cosmos
         
         let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/images/\(netid)")!
         
-        let username = "mh20"
-        let secret_key = "464f7aa98c61699a2c5682dd518d54e9"
-        let temp = NSUUID().UUIDString
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-        dateFormatter.timeZone = NSTimeZone(name: "UTC")
-        let timestring = dateFormatter.stringFromDate(NSDate())
-        let nonce = temp.stringByReplacingOccurrencesOfString("-", withString: "")
-        let digest = sha256(nonce + timestring + secret_key)
-        
-        let headers: [String:String] = [
-            "Authorization": "WSSE profile=\"UsernameToken\"",
-            "X-WSSE": "UsernameToken Username=\"\(username)\", PasswordDigest=\"\(digest!)\", Nonce=\"\(nonce)\", Created=\"\(timestring)\""
-        ]
+        let headers = getWSSEHeaders()
         
         Alamofire.request(.GET, url, parameters: nil, encoding: ParameterEncoding.URL, headers: headers).responseImage { (result) -> Void in
             self.studentPic.image = result.result.value
@@ -124,7 +110,9 @@ import Cosmos
     }
     
     @IBAction func resolvedPushed(sender: UIButton) {
-        Alamofire.request(.GET, "\(hostName)/LabQueue/v2/\(ta.netID!)/TAs/\(ratingView.rating)/addRating")
+        if ratingView.rating != 0 {
+            Alamofire.request(.GET, "\(hostName)/LabQueue/v2/\(globalNetId)/TAs/\(ta.netID!)/\(ratingView.rating)/addRating")
+        }
         self.navigationController?.popViewControllerAnimated(true)
     }
     
