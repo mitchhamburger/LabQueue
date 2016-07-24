@@ -90,6 +90,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-LabQueue/GTMOAuth2.framework"
   install_framework "Pods-LabQueue/GTMSessionFetcher.framework"
   install_framework "Pods-LabQueue/GoogleAPIClient.framework"
+  install_framework "Pods-LabQueue/SCLAlertView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-LabQueue/Alamofire.framework"
@@ -98,4 +99,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-LabQueue/GTMOAuth2.framework"
   install_framework "Pods-LabQueue/GTMSessionFetcher.framework"
   install_framework "Pods-LabQueue/GoogleAPIClient.framework"
+  install_framework "Pods-LabQueue/SCLAlertView.framework"
 fi

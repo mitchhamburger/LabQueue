@@ -45,7 +45,6 @@
 		F8DF3D271D35BF560070311C /* StudentHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF3D261D35BF560070311C /* StudentHelpSessionViewController.swift */; };
 		F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */; };
 		F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */; };
-		F8F1BB741D3869560082F6FB /* CustomIOS7AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F1BB731D3869560082F6FB /* CustomIOS7AlertView.swift */; };
 		F8F1BB761D3B36260082F6FB /* CourseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F1BB751D3B36260082F6FB /* CourseLabel.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +113,6 @@
 		F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAStudentInfoSingleLineCell.swift; sourceTree = "<group>"; };
 		F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAHelpSessionViewController.swift; sourceTree = "<group>"; };
 		F8F1BB6A1D3845970082F6FB /* LabQueue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LabQueue-Bridging-Header.h"; sourceTree = "<group>"; };
-		F8F1BB731D3869560082F6FB /* CustomIOS7AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomIOS7AlertView.swift; path = "../../../Downloads/iOS-Custom-AlertView-Swift-master/CustomIOS7AlertView/CustomIOS7AlertView/CustomIOS7AlertView.swift"; sourceTree = "<group>"; };
 		F8F1BB751D3B36260082F6FB /* CourseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				F83222981D07B7610089304E /* AppDelegate.swift */,
-				F8F1BB731D3869560082F6FB /* CustomIOS7AlertView.swift */,
 				F87AC22A1D25F5D50010CF59 /* adler32.swift */,
 				F8F1BB6A1D3845970082F6FB /* LabQueue-Bridging-Header.h */,
 				F895FC621D217AA30031F47D /* Constants.swift */,
@@ -477,7 +474,6 @@
 				F89E174A1D30AC6500659548 /* TempTACell.swift in Sources */,
 				F8BF16AE1D40FEC70092E469 /* CanceledReportViewController.swift in Sources */,
 				F89E174C1D30AD8F00659548 /* TempTAController.swift in Sources */,
-				F8F1BB741D3869560082F6FB /* CustomIOS7AlertView.swift in Sources */,
 				F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */,
 				F8BF16AA1D405EB40092E469 /* PostReportA2ViewController.swift in Sources */,
 				F895FC631D217AA30031F47D /* Constants.swift in Sources */,

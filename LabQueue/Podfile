@@ -12,6 +12,8 @@ pod 'Firebase', '>= 2.5.1'
 pod 'Alamofire', '~> 3.4'
 pod 'AlamofireImage', '~> 2.0'
 pod 'Cosmos', '~> 1.2'
+pod 'SCLAlertView'
+
 
 end
 

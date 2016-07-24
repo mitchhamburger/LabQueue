@@ -49,6 +49,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.4)
   - GTMSessionFetcher/Full (1.1.4):
     - GTMSessionFetcher/Core (= 1.1.4)
+  - SCLAlertView (0.5.9)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - Google/SignIn
   - GoogleAPIClient/Gmail (~> 1.0.2)
   - GTMOAuth2 (~> 1.1.0)
+  - SCLAlertView
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
@@ -77,5 +79,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   GTMOAuth2: bdb12f3e0d2110bfe585f6151230b883beb4d042
   GTMSessionFetcher: 174bc61d5238f81f9ddb807b0b0170420f67de85
+  SCLAlertView: d7c6a48c7d340e60206d4ed0e8ebcbff3b9d2a44
 
 COCOAPODS: 0.39.0

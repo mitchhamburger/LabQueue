@@ -9,6 +9,8 @@
 
 import UIKit
 import CoreData
+import SCLAlertView
+
 /// Home View Controller for students. Displays Queue and allows students to add themselves to the Queue
 ///
 /// Attributes:
@@ -269,46 +271,73 @@ import CoreData
     /// himself to the Queue. Configures and displays alert
     /// view controller.
     @IBAction func addNamePushed(sender: UIButton) {
+                
+        // Example of using the view to add two text fields to the alert
+        // Create the subview
+        let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+            showCloseButton: false,
+            shouldAutoDismiss: false
+        )
         
-        let alertController = UIAlertController(title: "Add yourself to the Queue", message: "Submit your info", preferredStyle: .Alert)
-        
-        let confirmAction = UIAlertAction(title: "Submit", style: UIAlertActionStyle.Default, handler: ({
-            (_) in
-            let problem = alertController.textFields![0]
-            let course = alertController.textFields![1]
-            if self.checkDuplicate(globalNetId) == false {
-                return
-            }
-            if self.checkTA(globalNetId) == false {
-                return
-            }
-            
-            self.addToQueue(problem.text!, course: course.text!, netid: globalNetId)
-        }))
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-        
-       /* alertController.addTextFieldWithConfigurationHandler({
-            (textField) in
-            textField.placeholder = "Name"
-            
-        })*/
-        
-        alertController.addTextFieldWithConfigurationHandler({
-            (textField) in
-            textField.placeholder = "Describe Your Problem"
+        // Initialize SCLAlertView using custom Appearance
+        let alert = SCLAlertView(appearance: appearance)
+        let textField = alert.addTextView()
+        var course = ""
+        let firstbutton = alert.addButton("109", backgroundColor: UIColor(netHex: 0x2866BF), textColor: UIColor.whiteColor(), showDurationStatus: false, action: {
+            course = "109"
         })
         
-        alertController.addTextFieldWithConfigurationHandler({
-            (textField) in
-            textField.placeholder = "Course"
+        let secondButton = alert.addButton("126", backgroundColor: UIColor(netHex: 0x2866BF), textColor: UIColor.whiteColor(), showDurationStatus: false, action: {
+            course = "126"
+        })
+        let thirdButton = alert.addButton("217", backgroundColor: UIColor(netHex: 0x2866BF), textColor: UIColor.whiteColor(), showDurationStatus: false, action: {
+            course = "217"
         })
         
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        let fourthButton = alert.addButton("226", backgroundColor: UIColor(netHex: 0x2866BF), textColor: UIColor.whiteColor(), showDurationStatus: false, action: {
+            course = "226"
+        })
+        
+        firstbutton.addTarget(self, action: #selector(StudentHomeViewController.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
+        secondButton.addTarget(self, action: #selector(StudentHomeViewController.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
+        thirdButton.addTarget(self, action: #selector(StudentHomeViewController.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
+        fourthButton.addTarget(self, action: #selector(StudentHomeViewController.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
+        
+        alert.addButton("Submit", backgroundColor: UIColor(netHex: 0x006400), textColor: UIColor.whiteColor(), showDurationStatus: true, action: {
+            alert.hideView()
+            self.addToQueue(textField.text, course: course, netid: globalNetId)
+        })
+        
+        let rect = alert.getFrame()
+        let base = alert.getBase()
+        print(rect)
+        let subview = UIView(frame: CGRect(x: rect.maxX - 15, y: rect.minY + 35, width: 10, height: 10))
+        let butt = UIButton(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        butt.setTitle("×", forState: UIControlState.Normal)
+        butt.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+        subview.addSubview(butt)
+        butt.addTarget(self, action: #selector(StudentHomeViewController.canceled), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let responder = alert.showInfo("Submit your info", subTitle: "Select your course and write a descriptive help message!")
+        self.responder = responder
+        base.addSubview(subview)
     }
     
+    var responder: AnyObject? = nil
+    func buttonTapped(sender: AnyObject) {
+        let responder = self.responder as! SCLAlertViewResponder
+        let thisButton = sender as! SCLButton
+        responder.setTitle("Course: \(thisButton.titleLabel!.text!)")
+        responder.setSubTitle("")
+    }
+    
+    func canceled() {
+        let responder = self.responder as! SCLAlertViewResponder
+        responder.close()
+    }
     /*func checkName(name: String) -> Bool {
         if name == "" {
             let invalidController = UIAlertController(title: "Please fill in your name", message: "", preferredStyle: .Alert)

@@ -10,6 +10,7 @@
 import UIKit
 import CoreData
 import Alamofire
+import SCLAlertView
 
 /// Home View Controller for TA's. Displays TA's current student, a picture of that student, and the current student queue.
 ///
@@ -77,15 +78,8 @@ import Alamofire
         var test: Bool = true
         
         if token != notification.userInfo!["Sync Token"]! as! String {
+            SCLAlertView().showInfo("The Queue is out of sync", subTitle: "Pull down to refresh before continuing")
             test = false
-            let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: ({
-                (_) in
-                //syncQueue()
-                //self.queueTable.reloadData()
-            }))
-            alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
         }
         return test
     }
@@ -309,14 +303,7 @@ import Alamofire
         let test = checkSync()
         
         if test == false {
-            let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: ({
-                (_) in
-                //syncQueue()
-                //self.queueTable.reloadData()
-            }))
-            alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
+            SCLAlertView().showInfo("Out of sync", subTitle: "Pull down to refresh the Queue before continuing")
             return
         }
         
@@ -375,14 +362,7 @@ import Alamofire
         let test = checkSync()
         
         if test == false {
-            let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: ({
-                (_) in
-                //syncQueue()
-                //self.queueTable.reloadData()
-                }))
-            alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
+            SCLAlertView().showInfo("Out of sync", subTitle: "Pull down to refresh the Queue before continuing")
             return
         }
         
