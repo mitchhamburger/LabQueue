@@ -14,14 +14,15 @@ import SCLAlertView
 /// Home View Controller for students. Displays Queue and allows students to add themselves to the Queue
 ///
 /// Attributes:
-/// * currentQueue: List of students to populate queue
+/// * navBar, acceptButton, toolBar, queueTable: UI Elements
 @IBDesignable class StudentHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    //UI Elements
     @IBOutlet weak var acceptButton: LumenButton!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var queueTable: UITableView!
     var navBar:UINavigationBar=UINavigationBar()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StudentHomeViewController.silentRemove), name: removeStudentFromQueue, object: nil)
@@ -33,6 +34,8 @@ import SCLAlertView
         UISetup()
     }
     
+    
+    /// Set up the User Interface
     func UISetup() {
         self.queueTable.rowHeight = 50
         toolBar.backgroundColor = UIColor(netHex:0x4183D7)
@@ -52,43 +55,40 @@ import SCLAlertView
         self.view.addSubview(toolBarBorder)
     }
     
+    /// Called when user pulls down to refresh
     func refresh(refreshControl: UIRefreshControl) {
-        // Do your job, when done:
         syncQueue()
         self.queueTable.reloadData()
         refreshControl.endRefreshing()
     }
     
+    /// Remove observer for silent notifications
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: removeStudentFromQueue, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: addStudentToQueue, object: nil)
     }
     
+    /// Check if Queue is in sync before silent add/remove
     func checkSilentSync(notification: NSNotification) -> Bool {
         let token = getSyncToken()
         var test: Bool = true
         
         if token != notification.userInfo!["Sync Token"]! as! String {
             test = false
-            let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: ({
-                (_) in
-                //syncQueue()
-                //self.queueTable.reloadData()
-            }))
-            alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
+            SCLAlertView().showInfo("The Queue is out of sync", subTitle: "Pull down to refresh before continuing")
         }
         return test
     }
     
-    /// Handler for addStudentToQueue Notification
+    /// Handler for silent addStudentToQueue Notification
     func silentAdd(notification: NSNotification) {
+        //check if queue is in sync
         if checkSilentSync(notification) == false {
             return
         }
-
+        
+        //add request to core data
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentName = notification.userInfo!["studentinfo"]!["Name"] as! String
@@ -111,6 +111,7 @@ import SCLAlertView
             print("error witth \(thisStudent.netID)")
         }
         
+        //update UI
         queueTable.beginUpdates()
         self.queueTable.insertRowsAtIndexPaths([
             NSIndexPath(forRow: queueTable.numberOfRowsInSection(0), inSection: 0)
@@ -118,12 +119,14 @@ import SCLAlertView
         queueTable.endUpdates()
     }
     
-    /// Handler for removeStudentFromQueue Notification
+    /// Handler for silent removeStudentFromQueue Notification
     func silentRemove(notification: NSNotification) {
+        //check if Queue is in sync
         if checkSilentSync(notification) == false {
             return
         }
         
+        //Remove request from core data
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
@@ -156,11 +159,12 @@ import SCLAlertView
             print("error deleting \(notification.userInfo!["id"])")
         }
         
+        //Update UI
         queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: hit, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
         queueTable.reloadData()
     }
     
-    //UITableViewDataSource
+    /// Returns number of rows in Queue, ie: counts number of requests in core data
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -177,6 +181,7 @@ import SCLAlertView
         return count
     }
     
+    /// Configures the cell at indexPath
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -220,7 +225,7 @@ import SCLAlertView
         return cell
     }
     
-    //UITableViewDelegate
+    /// Show student info page when user selects a row in the table
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -251,6 +256,7 @@ import SCLAlertView
         self.performSegueWithIdentifier("ShowStudentInfo", sender: thisStudent)
     }
     
+    //Prepare destination view controllers before segues
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if (segue.identifier == "ShowStudentInfo") {
@@ -271,9 +277,8 @@ import SCLAlertView
     /// himself to the Queue. Configures and displays alert
     /// view controller.
     @IBAction func addNamePushed(sender: UIButton) {
-                
-        // Example of using the view to add two text fields to the alert
-        // Create the subview
+        
+        // Initialize SCLAlertView using custom Appearance
         let appearance = SCLAlertView.SCLAppearance(
             kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
             kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
@@ -282,7 +287,6 @@ import SCLAlertView
             shouldAutoDismiss: false
         )
         
-        // Initialize SCLAlertView using custom Appearance
         let alert = SCLAlertView(appearance: appearance)
         let textField = alert.addTextView()
         var course = ""
@@ -301,19 +305,26 @@ import SCLAlertView
             course = "226"
         })
         
-        firstbutton.addTarget(self, action: #selector(StudentHomeViewController.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
-        secondButton.addTarget(self, action: #selector(StudentHomeViewController.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
-        thirdButton.addTarget(self, action: #selector(StudentHomeViewController.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
-        fourthButton.addTarget(self, action: #selector(StudentHomeViewController.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
+        //add actions for alert buttons
+        firstbutton.addTarget(self, action: #selector(StudentHomeViewController.courseButtonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
+        secondButton.addTarget(self, action: #selector(StudentHomeViewController.courseButtonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
+        thirdButton.addTarget(self, action: #selector(StudentHomeViewController.courseButtonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
+        fourthButton.addTarget(self, action: #selector(StudentHomeViewController.courseButtonTapped(_:)), forControlEvents: UIControlEvents.TouchDown)
         
         alert.addButton("Submit", backgroundColor: UIColor(netHex: 0x006400), textColor: UIColor.whiteColor(), showDurationStatus: true, action: {
             alert.hideView()
-            self.addToQueue(textField.text, course: course, netid: globalNetId)
+            if self.checkTA(globalNetId) == false {
+                return
+            }
+            if self.checkDuplicate(globalNetId) == false {
+                return
+            }
+            self.addToQueue(textField.text, course: "COS \(course)", netid: globalNetId)
         })
         
+        //add close button (little x in the upper corner)
         let rect = alert.getFrame()
         let base = alert.getBase()
-        print(rect)
         let subview = UIView(frame: CGRect(x: rect.maxX - 15, y: rect.minY + 35, width: 10, height: 10))
         let butt = UIButton(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
         butt.setTitle("×", forState: UIControlState.Normal)
@@ -321,34 +332,29 @@ import SCLAlertView
         subview.addSubview(butt)
         butt.addTarget(self, action: #selector(StudentHomeViewController.canceled), forControlEvents: UIControlEvents.TouchUpInside)
         
-        let responder = alert.showInfo("Submit your info", subTitle: "Select your course and write a descriptive help message!")
+        let responder = alert.showEdit("Submit your info", subTitle: "Select your course and write a descriptive help message!", colorStyle: 0x2866BF)
         self.responder = responder
         base.addSubview(subview)
     }
     
+    //alert responder
     var responder: AnyObject? = nil
-    func buttonTapped(sender: AnyObject) {
+    
+    ///handler for when a course button is tapped in alert
+    func courseButtonTapped(sender: AnyObject) {
         let responder = self.responder as! SCLAlertViewResponder
         let thisButton = sender as! SCLButton
         responder.setTitle("Course: \(thisButton.titleLabel!.text!)")
         responder.setSubTitle("")
     }
     
+    ///handler for when cancel button is tapped in alert
     func canceled() {
         let responder = self.responder as! SCLAlertViewResponder
         responder.close()
     }
-    /*func checkName(name: String) -> Bool {
-        if name == "" {
-            let invalidController = UIAlertController(title: "Please fill in your name", message: "", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil)
-            invalidController.addAction(okAction)
-            self.presentViewController(invalidController, animated: true, completion: nil)
-            return false
-        }
-        return true
-    }*/
     
+    /// Check whether the student is already on the Queue
     func checkDuplicate(netid: String) -> Bool {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -361,10 +367,12 @@ import SCLAlertView
             let result = try managedContext?.executeFetchRequest(fetchRequest) as! [NSManagedObject]
             for entry in result {
                 if entry.valueForKey("netid") as! String == netid {
-                    let invalidController = UIAlertController(title: "You are already on the Queue", message: "", preferredStyle: .Alert)
-                    let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil)
-                    invalidController.addAction(okAction)
-                    self.presentViewController(invalidController, animated: true, completion: nil)
+                    let appearance = SCLAlertView.SCLAppearance(
+                        kTitleFont: UIFont(name: "HelveticaNeue", size: 16)!,
+                        showCircularIcon: true
+                    )
+                    let alert = SCLAlertView(appearance: appearance)
+                    alert.showInfo("You are already on the Queue", subTitle: "")
                     return false
                 }
             }
@@ -375,6 +383,7 @@ import SCLAlertView
         return true
     }
     
+    /// Check if the student is an active TA
     func checkTA(netid: String) -> Bool {
         let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(globalNetId)/TAs/ActiveTAs")!
         let session = NSURLSession.sharedSession()
@@ -393,10 +402,12 @@ import SCLAlertView
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
                     for entry in (json["TAs"]! as! NSArray) {
                         if entry["NetID"] as! String == netid {
-                            let invalidController = UIAlertController(title: "You are an active TA", message: "", preferredStyle: .Alert)
-                            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil)
-                            invalidController.addAction(okAction)
-                            self.presentViewController(invalidController, animated: true, completion: nil)
+                            let appearance = SCLAlertView.SCLAppearance(
+                                kTitleFont: UIFont(name: "HelveticaNeue", size: 16)!,
+                                showCircularIcon: true
+                            )
+                            let alert = SCLAlertView(appearance: appearance)
+                            alert.showInfo("You are an active TA", subTitle: "")
                             flag = false
                         }
                     }
@@ -421,14 +432,7 @@ import SCLAlertView
         let test = checkSync()
         
         if test == false {
-            let alertController = UIAlertController(title: "The Queue is out of Sync, please refresh before continuing", message: "", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: ({
-                (_) in
-                //syncQueue()
-                //self.queueTable.reloadData()
-            }))
-            alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
+            SCLAlertView().showInfo("The Queue is out of sync", subTitle: "Pull down to refresh before continuing")
             return
         }
         
@@ -494,12 +498,13 @@ import SCLAlertView
             print("error saving \(netid) into core data")
         }
         
-        /*update currentQueue and UI*/
+        /*update UI*/
         self.queueTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.queueTable.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: UITableViewRowAnimation.Right)
         self.queueTable.reloadData()
         
     }
     
+    /// get the full name of a student from their NetID through the TigerBook API
     func getName(netid: String) -> String {
         var name: String = ""
         

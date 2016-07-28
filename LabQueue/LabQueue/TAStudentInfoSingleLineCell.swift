@@ -8,18 +8,13 @@
 
 import UIKit
 
-/// Custom Cell Class for queue in TA interface.
+/// Custom Cell Class for queue in TA studentinfo interface.
 ///
 /// Attributes:
-/// * studentName: name of student
-/// * acceptButton: green checkmark to appear if student
-/// is first in line
-/// * rejectButton: red X to appear if student is first
-/// in line
+/// * sectionContent: content in a given cell
+/// * sectionHeader: header of a given cell
 class TAStudentInfoSingleLineCell: UITableViewCell {
     
-
-
     @IBOutlet weak var sectionContent: UILabel!
     
     @IBOutlet weak var sectionHeader: UILabel!

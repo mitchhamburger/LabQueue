@@ -15,7 +15,7 @@ class StudentNavigationController: UINavigationController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "StudentHelpSession" {
             let dest = segue.destinationViewController as! StudentHelpSessionViewController
-            dest.ta.netID = sender as? String
+            dest.ta.netID = (sender as? String)!
             dest.navigationItem.hidesBackButton = true
         }
     }

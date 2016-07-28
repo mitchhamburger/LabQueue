@@ -1,52 +1,39 @@
 //
-//  StudentHelpSessionViewController.swift
+//  TAProfileViewController.swift
 //  LabQueue
 //
-//  Created by Mitch Hamburger on 7/12/16.
+//  Created by Mitch Hamburger on 7/26/16.
 //  Copyright © 2016 Mitch Hamburger. All rights reserved.
 //
 
 import UIKit
-import CoreData
-import AlamofireImage
 import Alamofire
-import Cosmos
 
-
-///  View Controller to display info about inidivudal
-///  students that is available to LAb TA's.
-///
-///  Information available:
-///
-///  1. place in queue
-///  2. student name
-///  3. student email
-///  4. course that student is in
-///  5. help message
-@IBDesignable class StudentHelpSessionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TAProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var ratingView: CosmosView!
-    @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var studentPic: UIImageView!
     @IBOutlet weak var picBorder: UIView!
+    
+    @IBOutlet weak var studentPic: UIImageView!
+    
     @IBOutlet weak var studentInfoTable: UITableView!
     
-    var ta: LabTA = LabTA()
+    @IBOutlet weak var toolBar: UIToolbar!
     
-    var image: UIImage = UIImage()
+    var ta: LabTA = LabTA()
+    var totalStudents = 0
+    var favoriteCourse = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let prefs = NSUserDefaults.standardUserDefaults()
-        ta.netID = (prefs.objectForKey("MostRecentTA") as? String)!
         self.studentInfoTable.dataSource = self
         self.studentInfoTable.delegate = self
+        getTAStats(globalNetId)
         UISetup()
     }
     
     func UISetup() {
         getStudentPic(ta.netID)
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        //self.navigationItem.setHidesBackButton(true, animated: false)
         self.studentPic.layer.cornerRadius = self.studentPic.frame.size.width / 2
         self.studentPic.clipsToBounds = true
         self.studentPic.layer.borderWidth = 0.1
@@ -59,7 +46,7 @@ import Cosmos
         self.picBorder.layer.borderWidth = 1
         self.picBorder.layer.borderColor = UIColor(netHex: 0xe1e1e1).CGColor
         self.toolBar.backgroundColor = UIColor(netHex:0x4183D7)
-        self.title = "\(self.ta.name) is helping you"
+        self.title = "More info about \(self.ta.name)"
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolBar.frame.height, width: self.view.frame.width, height: 5))
@@ -69,33 +56,35 @@ import Cosmos
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("selected \(indexPath.row)")
+        print("hi")
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell") as! TAStudentInfoSingleLineCell
         
         switch indexPath.row {
-        case 0:
-            let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell")! as! TAStudentInfoSingleLineCell
-            cell.sectionHeader.text = "Name"
-            cell.sectionContent.text = ta.name
-            return cell
-        case 1:
-            let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell")! as! TAStudentInfoSingleLineCell
-            cell.sectionHeader.text = "NetID"
-            cell.sectionContent.text = ta.netID
-            return cell
-        case 2:
-            let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell")! as! TAStudentInfoSingleLineCell
-            cell.sectionHeader.text = "Class Year"
-            cell.sectionContent.text = String(ta.classYear)
-            return cell
-        default:
-            print("somehow it got here")
+            case 0:
+                cell.sectionHeader.text = "Name"
+                cell.sectionContent.text = ta.name
+            case 1:
+                cell.sectionHeader.text = "NetID"
+                cell.sectionContent.text = ta.netID
+            case 2:
+                cell.sectionHeader.text = "Total Students Helped"
+                cell.sectionContent.text = "\(self.totalStudents)"
+            case 3:
+                cell.sectionHeader.text = "Average Help Time"
+                cell.sectionContent.text = "10 Minutes, 11 Seconds"
+            case 4:
+                cell.sectionHeader.text = "Favorite Course"
+                cell.sectionContent.text = self.favoriteCourse
+            default:
+                print("somehow it got here")
         }
-        return TAStudentInfoSingleLineCell()
+        
+        return cell
     }
     
     func getStudentPic(netid: String) {
@@ -109,12 +98,14 @@ import Cosmos
         }
     }
     
-    @IBAction func resolvedPushed(sender: UIButton) {
-        if ratingView.rating != 0 {
-            Alamofire.request(.GET, "\(hostName)/LabQueue/v2/\(globalNetId)/TAs/\(ta.netID)/\(ratingView.rating)/addRating")
+    func getTAStats(netid: String) {
+        let url: NSURL = NSURL(string: "\(hostName)/LabQueue/v2/\(ta.netID)/TAs/getStats")!
+        Alamofire.request(.GET, url, parameters: nil, encoding: ParameterEncoding.URL).responseJSON {
+            (result) -> Void in
+            let json = result.result.value
+            self.favoriteCourse = json!["stats"]!!["Favorite Course"] as! String
+            self.totalStudents = json!["stats"]!!["Total Students"] as! Int
+            self.studentInfoTable.reloadData()
         }
-        self.navigationController?.popViewControllerAnimated(true)
     }
-    
 }
-

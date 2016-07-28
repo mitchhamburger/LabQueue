@@ -18,15 +18,15 @@ import UIKit
 /// * isActive: whether or not the Lab TA is currently active
 @IBDesignable class LabTA {
     
-    var name: String?
-    var netID: String?
-    var classYear: Int?
-    var isActive: Bool?
+    var name: String
+    var netID: String
+    var classYear: Int
+    var isActive: Bool
     
     init() {
-        name = nil
-        netID = nil
-        classYear = nil
-        isActive = nil
+        name = ""
+        netID = ""
+        classYear = 0
+        isActive = true
     }
 }

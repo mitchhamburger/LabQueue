@@ -200,10 +200,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let nav = self.window?.rootViewController as! UINavigationController
             nav.pushViewController(vc, animated: false)
             let ta = LabTA()
-            ta.netID = userInfo["id"] as? String
-            let info = getTAInfo(ta.netID!)
-            ta.name = info["Name"] as? String
-            ta.classYear = info["Class Year"] as? Int
+            ta.netID = (userInfo["id"] as? String)!
+            let info = getTAInfo(ta.netID)
+            ta.name = (info["Name"] as? String)!
+            ta.classYear = (info["Class Year"] as? Int)!
             vc.performSegueWithIdentifier("StudentHelpSession", sender: ta)
             completionHandler(.NoData)
         }
@@ -222,36 +222,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler(.NoData)
         }
     }
-    func getTAInfo(netid: String) -> [String: AnyObject]{
-        var taInfo: [String: AnyObject] = [:]
-        
-        let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/api/v1/undergraduates/\(netid)")!
-        let session = NSURLSession.sharedSession()
-        let request = NSMutableURLRequest(URL: url)
-        let headers = getWSSEHeaders()
-        request.allHTTPHeaderFields = headers
-        request.HTTPMethod = "GET"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        
-        let semaphore = dispatch_semaphore_create(0)
-        let task = session.dataTaskWithRequest(request) {
-            (
-            let data, let response, let error) in
-            if error == nil && data != nil {
-                do {
-                    let jsonObj = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! [String: AnyObject]
-                    taInfo = ["Class Year": jsonObj["class_year"] as! Int, "Name": jsonObj["full_name"] as! String]
-                } catch {
-                    
-                }
-            }
-            dispatch_semaphore_signal(semaphore)
-        }
-        task.resume()
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-        return taInfo
-    }
-
+    
     /// Register user's device token using HTTP POST
     ///
     /// Parameters:

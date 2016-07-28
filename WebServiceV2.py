@@ -7,6 +7,7 @@ import sys
 import logging
 import os
 import zlib
+import operator
 
 app = Flask(__name__)
 
@@ -23,6 +24,9 @@ NOTIFYMATCH = 'NotifyMatch'
 #	NOTIFYFIVE: handleNotifyFive,
 #	NOTIFYTEN: handleNotifyTen
 #}
+
+
+
 
 LabTAs = [
 	{
@@ -44,7 +48,10 @@ LabTAs = [
 							'RequestID': 7,
 							'Rating': 5.0
 						},
-					]
+					],
+		'Total Students': 5,
+		'Average Help Time': 10.5,
+		'Favorite Course': 'COS 126'
 	},
 	{
 		'First Name': u"Sergio",
@@ -65,7 +72,10 @@ LabTAs = [
 							'RequestID': 4,
 							'Rating': 4.0
 						},
-					]
+					],
+		'Total Students': 54,
+		'Average Help Time': 15.0,
+		'Favorite Course': 'COS 226'
 	}
 ]
 
@@ -80,7 +90,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'slc2',
 		'Course': u"COS 126"
 	},
 	{
@@ -93,7 +103,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'slc2',
 		'Course': u"COS 217"
 	},
 	{
@@ -106,7 +116,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'slc2',
 		'Course': u"COS 126"
 	},
 	{
@@ -119,7 +129,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'slc2',
 		'Course': u"COS 226"
 	},
 	{
@@ -132,7 +142,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'mh20',
 		'Course': u"COS 109"
 	},
 	{
@@ -145,7 +155,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'mh20',
 		'Course': u"COS 109"
 	},
 	{
@@ -158,7 +168,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'slc2',
 		'Course': u"COS 226"
 	},
 	{
@@ -171,7 +181,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'slc2',
 		'Course': u"COS 217"
 	},
 	{
@@ -184,7 +194,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'slc2',
 		'Course': u"COS 217"
 	},
 	{
@@ -197,7 +207,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'slc2',
 		'Course': u"COS 217"
 	},
 	{
@@ -210,7 +220,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'slc2',
 		'Course': u"COS 217"
 	},
 	{
@@ -223,7 +233,7 @@ HelpRequests = [
 		'In Queue': True,
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
-		'Attending TA': u"",
+		'Attending TA': u'mh20',
 		'Course': u"COS 226"
 	}
 ]
@@ -318,6 +328,11 @@ def markAsHelped(senderID, requestID):
 		handleNotifyTen(senderID, syncToken)
 		if alreadyCanceled == True:
 			handleSilentRemove(senderID, requestID, syncToken)
+
+		ta = [entry for entry in LabTAs if entry['NetID'] == senderID]
+		ta[0]['Total Students'] += 1
+		ta[0]['Favorite Course'] = getFavoriteCourse(ta[0]['NetID'])
+
 		return jsonify({bigentry[0]['NetID']: bigentry}), 201
 
 @app.route('/LabQueue/v2/<senderID>/Requests/<requestID>/Canceled', methods = ['GET'])
@@ -374,6 +389,14 @@ def getRating(senderID):
 		count += 1
 	total /= count
 	return jsonify({'Rating': total}), 201
+
+@app.route('/LabQueue/v2/<senderID>/getStats', methods = ['GET'])
+def getStats(senderID):
+	entry = [entry for entry in LabTAs if entry['NetID'] == senderID]
+	resetStats()
+	stats = []
+	stats = {'Total Students': entry[0]['Total Students'], 'Favorite Course': entry[0]['Favorite Course']}
+	return jsonify({'stats': stats})
 
 def handleSilentRemove(senderID, removeID, syncToken):
 	activeUsers = getAllActiveUsers()
@@ -467,6 +490,35 @@ def getSyncToken():
 	hashString += ','
 	hashString += str(count)
 	return hashString
+
+def resetStats():
+	for ta in LabTAs:
+		studentCount = 0
+		courseCounts = {
+					'COS 109': 0,
+					'COS 126': 0,
+					'COS 226': 0,
+					'COS 217': 0
+		}
+
+		for request in HelpRequests:
+			if request['Attending TA'] == ta['NetID']:
+				studentCount += 1
+				courseCounts[request['Course']] += 1
+		ta['Total Students'] = studentCount
+		ta['Favorite Course'] = max(courseCounts.iteritems(), key=operator.itemgetter(1))[0]
+
+def getFavoriteCourse(netid):
+	courseCounts = {
+					'COS 109': 0,
+					'COS 126': 0,
+					'COS 226': 0,
+					'COS 217': 0
+	}
+	for request in HelpRequests:
+		if request['Attending TA'] == netid:
+			courseCounts[request['Course']] += 1
+	return max(courseCounts.iteritems(), key=operator.itemgetter(1))[0]
 
 if __name__ == '__main__':
 	#print(zlib.adler32("mckinlaysbuttonrohanpaaddisonmezrattyjh45awojakzbedrosianamanolofflaxerwill85gc23chay,12"))

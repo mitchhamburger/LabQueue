@@ -17,13 +17,14 @@ import SCLAlertView
 /// Attributes:
 /// * students: List of students to populate queue
 /// * managedObjectContext: NSManagedObjectContext for NSData
-@IBDesignable class TAHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+@IBDesignable class TAHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    //UI Elements
     @IBOutlet weak var toolBarLabel: UILabel!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var queueTable: UITableView!
     
-    //let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    //count of requests in the Queue
     var requestCount: Int = 0
     
     override func viewDidLoad() {
@@ -41,6 +42,7 @@ import SCLAlertView
         UISetup()
     }
     
+    /// Set up the User Interface
     func UISetup() {
         self.queueTable.tableFooterView = UIView()
         toolBarLabel.text = "\(requestCount) Students in Queue"
@@ -59,6 +61,7 @@ import SCLAlertView
         self.view.addSubview(toolBarBorder)
     }
     
+    /// Called when user pulls down to refresh
     func refresh(refreshControl: UIRefreshControl) {
         // Do your job, when done:
         requestCount = syncQueue()
@@ -67,12 +70,14 @@ import SCLAlertView
         refreshControl.endRefreshing()
     }
     
+    /// Remove observers for silent notifications
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: removeStudentFromQueue, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: addStudentToQueue, object: nil)
     }
     
+    /// Check if Queue is in sync before silent add/remove
     func checkSilentSync(notification: NSNotification) -> Bool {
         let token = getSyncToken()
         var test: Bool = true
@@ -84,20 +89,23 @@ import SCLAlertView
         return test
     }
     
-    
+    /// Transition to student help session page if match notification is receieved
     func matchNotificationReceived(notification: NSNotification) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("studenthelpsessionviewcontroller") as! StudentHelpSessionViewController
-        vc.ta.netID = notification.userInfo!["hello"] as? String
+        vc.ta.netID = (notification.userInfo!["hello"] as? String)!
         self.presentViewController(vc, animated: true, completion: nil)
     }
     
-    /// Handler for addStudentToQueue Notification
+    /// Handler for silent addStudentToQueue Notification
     func silentAdd(notification: NSNotification) {
+        
+        //check if Queue is in sync
         if checkSilentSync(notification) == false {
             return
         }
         
+        //add request to Core Data
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentName = notification.userInfo!["studentinfo"]!["Name"] as! String
@@ -120,21 +128,24 @@ import SCLAlertView
             print("error witth \(thisStudent.netID)")
         }
         
+        //Update UI
         queueTable.beginUpdates()
         self.queueTable.insertRowsAtIndexPaths([
             NSIndexPath(forRow: queueTable.numberOfRowsInSection(0), inSection: 0)
             ], withRowAnimation: UITableViewRowAnimation.Right)
         queueTable.endUpdates()
-        
         requestCount += 1
         toolBarLabel.text = "\(requestCount) Students in Queue"
     }
     
     /// Handler for removeStudentFromQueue Notification
     func silentRemove(notification: NSNotification) {
+        //check if Queue is in sync
         if checkSilentSync(notification) == false {
             return
         }
+        
+        //remove request from Core Data
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let studentEntity = NSEntityDescription.entityForName("Student", inManagedObjectContext: managedContext!)
@@ -169,14 +180,15 @@ import SCLAlertView
             print("error deleting \(notification.userInfo!["id"])")
         }
         
+        
+        //Update UI
         queueTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: hit, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
         queueTable.reloadData()
-        
         requestCount -= 1
         toolBarLabel.text = "\(requestCount) Students in Queue"
     }
     
-    //UITableViewDataSource
+    /// Returns number of rows in Queue, ie: counts number of requests in core data
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -192,6 +204,8 @@ import SCLAlertView
         }
         return count
     }
+    
+    /// Configures the cell at indexPath
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -215,13 +229,11 @@ import SCLAlertView
         cell.studentCourse.text = "\(result[indexPath.row].valueForKey("course") as! String)"
         cell.studentHelpMessage.text = result[indexPath.row].valueForKey("helpmessage") as? String
         cell.studentHelpMessage.lineBreakMode = .ByTruncatingTail
-        //let cell = self.queueTable.dequeueReusableCellWithIdentifier("TAcustomcell")! as! TAQueueCustomCell
-        //cell.studentName.text = "\(indexPath.row + 1). " + self.currentQueue[indexPath.row].name
         
         return cell
     }
     
-    //UITableViewDelegate
+    /// Show student info page when user selects a row in the table
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -249,10 +261,10 @@ import SCLAlertView
         thisStudent.placeInQueue = indexPath.row + 1
         print("you tapped \(indexPath.row)")
         
-        //self.currentQueue[indexPath.row].placeInQueue = indexPath.row + 1
         self.performSegueWithIdentifier("ToSpecificStudent", sender: thisStudent)
     }
 
+    /// Configure edit actions when user swipes left on a row in the Queue
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let reject = UITableViewRowAction(style: .Normal, title: "Reject") { action, index in
             self.cancelConfirmed(indexPath)
@@ -272,15 +284,18 @@ import SCLAlertView
         return [accept, reject, details]
     }
     
+    //Allow edit actions on cells
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // the cells you would like the actions to appear needs to be editable
         return true
     }
     
+    //Allow edit actions on cells
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         // you need to implement this method too or you can't swipe to display the actions
     }
     
+    //Prepare destination view controllers before segues
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if (segue.identifier == "ToSpecificStudent") {
@@ -297,9 +312,19 @@ import SCLAlertView
             let dest = segue.destinationViewController as! TAHelpSessionViewController
             dest.currentStudent = sender as! Student
         }
+        
+        else if (segue.identifier == "ShowProfile") {
+            let dest = segue.destinationViewController as! TAProfileViewController
+            let info = getTAInfo(sender as! String)
+            dest.ta.netID = globalNetId
+            dest.ta.name = info["Name"] as! String
+            dest.ta.classYear = info["Class Year"] as! Int
+        }
     }
     
+    /// Called when a TA accepts a student
     func acceptConfirmed(index: NSIndexPath) {
+        //check if Queue is in sync
         let test = checkSync()
         
         if test == false {
@@ -340,25 +365,25 @@ import SCLAlertView
             print("error saving context after deleting \(currentStudent.netID)")
         }
         
-        //WILL PUT NSUSER TA NAME HERE
         TACurrentStudent = currentStudent
         let prefs = NSUserDefaults.standardUserDefaults()
         let encodedData = NSKeyedArchiver.archivedDataWithRootObject(currentStudent)
         prefs.setObject(encodedData, forKey: "TACurrentStudent")
-        //prefs.setValue(currentStudent, forKey: "TACurrentStudent")
-                
+        
+        /*BEGIN HTTP REQUEST*/
         Alamofire.request(.GET, "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Helped")
         /*END HTTP REQUEST*/
         
-        /*update currentQueue and UI*/
+        /*update UI*/
         queueTable.deleteRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Automatic)
         queueTable.reloadData()
         requestCount -= 1
         toolBarLabel.text = "\(requestCount) Students in Queue"
         self.performSegueWithIdentifier("ToHelpSession", sender: currentStudent)
     }
-    
+    /// Called when a TA rejects a request
     func cancelConfirmed(index: NSIndexPath) {
+        //check if the Queue is in sync
         let test = checkSync()
         
         if test == false {
@@ -405,10 +430,14 @@ import SCLAlertView
         
         //END HTTP REQUEST
         
-        /*update currentQueue and UI*/
+        /*update UI*/
         queueTable.deleteRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Automatic)
         queueTable.reloadData()
         requestCount -= 1
         toolBarLabel.text = "\(requestCount) Students in Queue"
+    }
+    @IBAction func profileTapped(sender: UIButton) {
+        self.performSegueWithIdentifier("ShowProfile", sender: globalNetId)
+        
     }
 }

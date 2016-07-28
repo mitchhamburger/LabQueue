@@ -42,6 +42,7 @@ import Alamofire
         UISetup()
     }
     
+    /// Set up User Interface
     func UISetup() {
         getStudentPic(currentStudent.netID)
         studentPic.layer.cornerRadius = studentPic.frame.size.width / 2
@@ -68,41 +69,55 @@ import Alamofire
         self.view.addSubview(toolBarBorder)
     }
     
+    // set number of cells in table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
+
+    // what happens when you select a cell?
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("selected \(indexPath.row)")
     }
+    
+    // configure each cell in the table
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         switch indexPath.row {
+        //student name cell
         case 0:
             let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell")! as! TAStudentInfoSingleLineCell
             cell.sectionHeader.text = "Name"
             cell.sectionContent.text = currentStudent.name
             return cell
+            
+        //student course cell
         case 1:
             let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell")! as! TAStudentInfoSingleLineCell
             cell.sectionHeader.text = "Course"
             cell.sectionContent.text = currentStudent.course
             return cell
+            
+        //student netid cell
         case 2:
             let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell")! as! TAStudentInfoSingleLineCell
             cell.sectionHeader.text = "NetID"
             cell.sectionContent.text = currentStudent.netID
             return cell
+            
+        //student help message cell
         case 3:
             let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell")! as! TAStudentInfoSingleLineCell
             cell.sectionHeader.text = "Help Message"
             cell.sectionContent.text = currentStudent.helpMessage
             return cell
+            
         default:
             print("somehow it got here")
         }
         return TAStudentInfoSingleLineCell()
     }
     
+    ///get student picture from netid using TigerBook API
     func getStudentPic(netid: String) {
         
         let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/images/\(netid)")!

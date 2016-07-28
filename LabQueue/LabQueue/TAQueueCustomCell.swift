@@ -12,17 +12,15 @@ import UIKit
 ///
 /// Attributes:
 /// * studentName: name of student
-/// * acceptButton: green checkmark to appear if student
-/// is first in line
-/// * rejectButton: red X to appear if student is first
-/// in line
+/// * studentCourse: course of student
+/// * studentHelpMessage: help message of student
 class TAQueueCustomCell: UITableViewCell {
     
     @IBOutlet weak var studentHelpMessage: TopAlignedLabel!
     @IBOutlet weak var studentCourse: CourseLabel!
     @IBOutlet weak var studentName: UILabel!
-    //@IBOutlet weak var studentEmail: UILabel!
     var studentID: String = ""
+    
     override func awakeFromNib() {
         studentCourse.layer.cornerRadius = 10
         studentCourse.backgroundColor = UIColor.lightGrayColor()

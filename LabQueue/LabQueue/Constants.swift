@@ -14,8 +14,14 @@ import Alamofire
 let removeStudentFromQueue = "com.mitchhamburger.removeStudentFromQueue"
 let addStudentToQueue = "com.mitchhamburger.addStudentToQueue"
 let match = "com.mitchhamburger.match"
+let firstRowSelect = "com.mitchhamburger.firstrowselect"
+let secondRowSelect = "com.mitchhamburger.secondrowselect"
+let thirdRowSelect = "com.mitchhamburger.thirdrowselect"
+
+
 let hostName = "https://tempwebservice-mh20.c9users.io"
 
+/// get a token representing core data's version of the queue, to be compared with the remote database's version
 func getSyncToken() -> String {
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedContext = appDelegate.managedObjectContext
@@ -43,6 +49,8 @@ func getSyncToken() -> String {
     return hashString
 }
 
+/// Check whether the requests in Core Data are in sync with the requests in the remote database
+/// returns true if yes, false if no
 func checkSync() -> Bool {
     /*Check Sync*/
     let token = getSyncToken()
@@ -84,6 +92,8 @@ func checkSync() -> Bool {
     return test
 }
 
+/// Sync the requests in Core Data to the remote data base through the API
+/// returns number of students in the active queue
 func syncQueue() -> Int{
     
     /*1. first delete everything from core data*/
@@ -167,6 +177,7 @@ func syncQueue() -> Int{
     return count
 }
 
+/// return sha256 hash of string
 func sha256(str: String) -> String? {
     guard
         let data = str.dataUsingEncoding(NSUTF8StringEncoding),
@@ -176,12 +187,14 @@ func sha256(str: String) -> String? {
     return rc
 }
 
+/// return sha256 hash of data
 func sha256(data: NSData) -> NSData? {
     guard let res = NSMutableData(length: Int(CC_SHA256_DIGEST_LENGTH)) else { return nil }
     CC_SHA256(data.bytes, CC_LONG(data.length), UnsafeMutablePointer(res.mutableBytes))
     return res
 }
 
+/// get appropriate WSSE headers
 func getWSSEHeaders() -> [String : String] {
     let username = "mh20"
     let secret_key = "464f7aa98c61699a2c5682dd518d54e9"
@@ -200,3 +213,36 @@ func getWSSEHeaders() -> [String : String] {
     ]
     return headers
 }
+
+func getTAInfo(netid: String) -> [String: AnyObject]{
+    var taInfo: [String: AnyObject] = [:]
+    
+    let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/api/v1/undergraduates/\(netid)")!
+    let session = NSURLSession.sharedSession()
+    let request = NSMutableURLRequest(URL: url)
+    let headers = getWSSEHeaders()
+    request.allHTTPHeaderFields = headers
+    request.HTTPMethod = "GET"
+    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+    
+    let semaphore = dispatch_semaphore_create(0)
+    let task = session.dataTaskWithRequest(request) {
+        (
+        let data, let response, let error) in
+        if error == nil && data != nil {
+            do {
+                let jsonObj = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! [String: AnyObject]
+                taInfo = ["Class Year": jsonObj["class_year"] as! Int, "Name": jsonObj["full_name"] as! String]
+            } catch {
+                
+            }
+        }
+        dispatch_semaphore_signal(semaphore)
+    }
+    task.resume()
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+    return taInfo
+}
+
+
+

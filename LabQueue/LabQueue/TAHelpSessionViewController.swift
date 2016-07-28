@@ -11,16 +11,15 @@ import CoreData
 import Alamofire
 import AlamofireImage
 
-///  View Controller to display info about inidivudal
-///  students that is available to LAb TA's.
+///  Help Session View Controller for when a TA accepts a student
 ///
 ///  Information available:
 ///
-///  1. place in queue
+///  1. student picture
 ///  2. student name
-///  3. student email
-///  4. course that student is in
-///  5. help message
+///  3. help request
+///  4. course
+///  5. netid
 @IBDesignable class TAHelpSessionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var picBorder: UIView!
@@ -28,6 +27,7 @@ import AlamofireImage
     @IBOutlet weak var studentInfoTable: UITableView!
     @IBOutlet weak var studentPic: UIImageView!
     
+    //the student that the TA is helping
     var currentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "", requestID: 0)
     
     override func viewDidLoad() {
@@ -37,6 +37,7 @@ import AlamofireImage
         UISetup()
     }
     
+    // set up User Interface
     func UISetup() {
         self.navigationItem.setHidesBackButton(true, animated: false)
         getStudentPic(currentStudent.netID)
@@ -62,41 +63,56 @@ import AlamofireImage
         self.view.addSubview(toolBarBorder)
     }
     
+    //number of cells
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
+    
+    //what happens when you select a cell?
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("selected \(indexPath.row)")
     }
+    
+    //configure each cell in the table
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         switch indexPath.row {
+        
+        //student name cell
         case 0:
             let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell")! as! TAStudentInfoSingleLineCell
             cell.sectionHeader.text = "Name"
             cell.sectionContent.text = currentStudent.name
             return cell
+            
+        //student course cell
         case 1:
             let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell")! as! TAStudentInfoSingleLineCell
             cell.sectionHeader.text = "Course"
             cell.sectionContent.text = currentStudent.course
             return cell
+            
+        //student netid cell
         case 2:
             let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell")! as! TAStudentInfoSingleLineCell
             cell.sectionHeader.text = "NetID"
             cell.sectionContent.text = currentStudent.netID
             return cell
+            
+        //student help message cell
         case 3:
             let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell")! as! TAStudentInfoSingleLineCell
             cell.sectionHeader.text = "Help Message"
             cell.sectionContent.text = currentStudent.helpMessage
             return cell
+            
         default:
             print("somehow it got here")
         }
         return TAStudentInfoSingleLineCell()
     }
     
+    /// get student's picture from NetID using TigerBook API
     func getStudentPic(netid: String) {
         
         let url: NSURL = NSURL(string: "https://tigerbook-sandbox.herokuapp.com/images/\(netid)")!
@@ -107,17 +123,18 @@ import AlamofireImage
         }
     }
     
+    /// handles when the TA selects "Canceled"
     @IBAction func canceledPushed(sender: UIButton) {
-        //HTTP REQUEST
         Alamofire.request(.GET, "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\(currentStudent.requestID)/Canceled")
-        //END HTTP REQUEST
         //self.navigationController?.popViewControllerAnimated(true)
         self.performSegueWithIdentifier("ToCanceledReport", sender: nil)
     }
     
+    /// handles when the TA selects "Resolved"
     @IBAction func resolvedPushed(sender: UIButton) {
         //self.navigationController?.popViewControllerAnimated(true)
-        self.performSegueWithIdentifier("ToPostReport", sender: nil)
+        //self.performSegueWithIdentifier("ToPostReport", sender: nil)
+        self.performSegueWithIdentifier("ToPostForm", sender: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
