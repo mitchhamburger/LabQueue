@@ -234,7 +234,7 @@ func getTAInfo(netid: String) -> [String: AnyObject]{
                 let jsonObj = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! [String: AnyObject]
                 taInfo = ["Class Year": jsonObj["class_year"] as! Int, "Name": jsonObj["full_name"] as! String]
             } catch {
-                
+                taInfo = ["Class Year": 0, "Name": ""]
             }
         }
         dispatch_semaphore_signal(semaphore)

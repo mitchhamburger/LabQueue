@@ -45,6 +45,11 @@
 		F8CC8F931D493D2400DC5AAC /* PostReportFirstRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8F921D493D2400DC5AAC /* PostReportFirstRowView.swift */; };
 		F8CC8F951D49431000DC5AAC /* PostReportSecondRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8F941D49431000DC5AAC /* PostReportSecondRowView.swift */; };
 		F8CC8F971D49517100DC5AAC /* PostReportThirdRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8F961D49517100DC5AAC /* PostReportThirdRowView.swift */; };
+		F8CC8F991D4A580300DC5AAC /* TAReferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8F981D4A580300DC5AAC /* TAReferenceViewController.swift */; };
+		F8CC8F9B1D4A599A00DC5AAC /* TAReferenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8F9A1D4A599A00DC5AAC /* TAReferenceCell.swift */; };
+		F8CC8F9D1D4C2CB700DC5AAC /* AssignmentReference.json in Resources */ = {isa = PBXBuildFile; fileRef = F8CC8F9C1D4C2CB700DC5AAC /* AssignmentReference.json */; };
+		F8CC8F9F1D4C3F2800DC5AAC /* TAReferenceAssignmentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8F9E1D4C3F2800DC5AAC /* TAReferenceAssignmentInfoCell.swift */; };
+		F8CC8FA11D4C3FF600DC5AAC /* TAReferenceAssignmentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8FA01D4C3FF600DC5AAC /* TAReferenceAssignmentInfoViewController.swift */; };
 		F8DF3D271D35BF560070311C /* StudentHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF3D261D35BF560070311C /* StudentHelpSessionViewController.swift */; };
 		F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */; };
 		F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */; };
@@ -115,6 +120,11 @@
 		F8CC8F921D493D2400DC5AAC /* PostReportFirstRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReportFirstRowView.swift; sourceTree = "<group>"; };
 		F8CC8F941D49431000DC5AAC /* PostReportSecondRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReportSecondRowView.swift; sourceTree = "<group>"; };
 		F8CC8F961D49517100DC5AAC /* PostReportThirdRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostReportThirdRowView.swift; sourceTree = "<group>"; };
+		F8CC8F981D4A580300DC5AAC /* TAReferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAReferenceViewController.swift; sourceTree = "<group>"; };
+		F8CC8F9A1D4A599A00DC5AAC /* TAReferenceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAReferenceCell.swift; sourceTree = "<group>"; };
+		F8CC8F9C1D4C2CB700DC5AAC /* AssignmentReference.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = AssignmentReference.json; path = ../../AssignmentReference.json; sourceTree = "<group>"; };
+		F8CC8F9E1D4C3F2800DC5AAC /* TAReferenceAssignmentInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAReferenceAssignmentInfoCell.swift; sourceTree = "<group>"; };
+		F8CC8FA01D4C3FF600DC5AAC /* TAReferenceAssignmentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAReferenceAssignmentInfoViewController.swift; sourceTree = "<group>"; };
 		F8DF3D261D35BF560070311C /* StudentHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHelpSessionViewController.swift; sourceTree = "<group>"; };
 		F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAStudentInfoSingleLineCell.swift; sourceTree = "<group>"; };
 		F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAHelpSessionViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +214,7 @@
 				F83222981D07B7610089304E /* AppDelegate.swift */,
 				F87AC22A1D25F5D50010CF59 /* adler32.swift */,
 				F8CC8F8C1D49303F00DC5AAC /* SSRadioButton.swift */,
+				F8CC8F9C1D4C2CB700DC5AAC /* AssignmentReference.json */,
 				F8CC8F8D1D49303F00DC5AAC /* SSRadioButtonsController.swift */,
 				F8F1BB6A1D3845970082F6FB /* LabQueue-Bridging-Header.h */,
 				F895FC621D217AA30031F47D /* Constants.swift */,
@@ -249,9 +260,13 @@
 			children = (
 				F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */,
 				F87153571D0F1C6700F29040 /* TAStudentInfoViewController.swift */,
+				F8CC8F9E1D4C3F2800DC5AAC /* TAReferenceAssignmentInfoCell.swift */,
 				F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */,
 				F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */,
+				F8CC8FA01D4C3FF600DC5AAC /* TAReferenceAssignmentInfoViewController.swift */,
 				F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */,
+				F8CC8F9A1D4A599A00DC5AAC /* TAReferenceCell.swift */,
+				F8CC8F981D4A580300DC5AAC /* TAReferenceViewController.swift */,
 				F8722BF31D0886BF00449536 /* TAHomeViewController.swift */,
 				F8CC8F8A1D482E4A00DC5AAC /* TAProfileViewController.swift */,
 				F8BF16A41D405E230092E469 /* Post Report Files */,
@@ -403,6 +418,7 @@
 			files = (
 				F83021A21D105D70003AF869 /* GTMOAuth2ViewTouch.xib in Resources */,
 				F83222A31D07B7610089304E /* LaunchScreen.storyboard in Resources */,
+				F8CC8F9D1D4C2CB700DC5AAC /* AssignmentReference.json in Resources */,
 				F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */,
 				F83222A01D07B7610089304E /* Assets.xcassets in Resources */,
 				F832229E1D07B7610089304E /* Main.storyboard in Resources */,
@@ -498,11 +514,13 @@
 				F8F1BB761D3B36260082F6FB /* CourseLabel.swift in Sources */,
 				F89E174E1D31361800659548 /* TopAlignedLabel.swift in Sources */,
 				F85B3E8E1D15CCF40031A1E3 /* LabQueue.xcdatamodeld in Sources */,
+				F8CC8F9B1D4A599A00DC5AAC /* TAReferenceCell.swift in Sources */,
 				F82AC2011D0CDA3700BDADD2 /* TAQueueCustomCell.swift in Sources */,
 				F87153581D0F1C6700F29040 /* TAStudentInfoViewController.swift in Sources */,
 				F8CC8F8F1D49303F00DC5AAC /* SSRadioButtonsController.swift in Sources */,
 				F88715CD1D36E36B00F8B9CC /* StudentNavigationController.swift in Sources */,
 				F82AC1F91D0C6FD000BDADD2 /* LabTA.swift in Sources */,
+				F8CC8F9F1D4C3F2800DC5AAC /* TAReferenceAssignmentInfoCell.swift in Sources */,
 				F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */,
 				F8722BF61D089C5E00449536 /* StudentHomeViewController.swift in Sources */,
 				F8722BF41D0886BF00449536 /* TAHomeViewController.swift in Sources */,
@@ -511,6 +529,8 @@
 				F8CC8F8B1D482E4A00DC5AAC /* TAProfileViewController.swift in Sources */,
 				F82AC1F71D0BAABA00BDADD2 /* Student.swift in Sources */,
 				F8CC8F911D49312100DC5AAC /* PostReportViewController.swift in Sources */,
+				F8CC8F991D4A580300DC5AAC /* TAReferenceViewController.swift in Sources */,
+				F8CC8FA11D4C3FF600DC5AAC /* TAReferenceAssignmentInfoViewController.swift in Sources */,
 				F83222991D07B7610089304E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

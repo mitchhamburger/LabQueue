@@ -45,8 +45,7 @@ import SCLAlertView
     /// Set up the User Interface
     func UISetup() {
         self.queueTable.tableFooterView = UIView()
-        toolBarLabel.text = "\(requestCount) Students in Queue"
-        toolBar.backgroundColor = UIColor(netHex:0x4183D7)
+        
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex:0x4183D7)
         self.navigationItem.setHidesBackButton(true, animated: false)
         UIApplication.sharedApplication().statusBarStyle = .LightContent
@@ -55,6 +54,8 @@ import SCLAlertView
         refreshControl.addTarget(self, action: #selector(TAHomeViewController.refresh(_:)), forControlEvents: .ValueChanged)
         queueTable.addSubview(refreshControl)
         
+        toolBarLabel.text = "\(requestCount) Students in Queue"
+        toolBar.backgroundColor = UIColor(netHex:0x4183D7)
         let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolBar.frame.height, width: self.view.frame.width, height: 5))
         toolBarBorder.layer.backgroundColor = UIColor(netHex: 0x3B7CD1).CGColor
         toolBarBorder.layer.cornerRadius = 2
@@ -319,6 +320,8 @@ import SCLAlertView
             dest.ta.netID = globalNetId
             dest.ta.name = info["Name"] as! String
             dest.ta.classYear = info["Class Year"] as! Int
+            let backItem = UIBarButtonItem()
+            backItem.title = "Something Else"
         }
     }
     
@@ -439,5 +442,8 @@ import SCLAlertView
     @IBAction func profileTapped(sender: UIButton) {
         self.performSegueWithIdentifier("ShowProfile", sender: globalNetId)
         
+    }
+    @IBAction func referenceTapped(sender: UIButton) {
+        self.performSegueWithIdentifier("ShowReference", sender: nil)
     }
 }
