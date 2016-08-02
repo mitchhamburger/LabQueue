@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F6AE616CE2263204A7FC1A70 /* Pods_LabQueue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C47893E53D3211DD9ACD9F /* Pods_LabQueue.framework */; };
-		F8000DA11D301309002FF5E4 /* TempStudentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8000DA01D301309002FF5E4 /* TempStudentController.swift */; };
-		F8000DA41D302163002FF5E4 /* TempStudentQueueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8000DA31D302163002FF5E4 /* TempStudentQueueCell.swift */; };
 		F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F806120D1D0A68C8008D3A8D /* mitch pic.jpg */; };
 		F81E57111D11ABAD00C11123 /* CASViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E57101D11ABAD00C11123 /* CASViewController.swift */; };
 		F82AC1F71D0BAABA00BDADD2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1F61D0BAABA00BDADD2 /* Student.swift */; };
@@ -34,8 +32,6 @@
 		F87AC22B1D25F5D50010CF59 /* adler32.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87AC22A1D25F5D50010CF59 /* adler32.swift */; };
 		F88715CD1D36E36B00F8B9CC /* StudentNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88715CC1D36E36B00F8B9CC /* StudentNavigationController.swift */; };
 		F895FC631D217AA30031F47D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895FC621D217AA30031F47D /* Constants.swift */; };
-		F89E174A1D30AC6500659548 /* TempTACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E17491D30AC6500659548 /* TempTACell.swift */; };
-		F89E174C1D30AD8F00659548 /* TempTAController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E174B1D30AD8F00659548 /* TempTAController.swift */; };
 		F89E174E1D31361800659548 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E174D1D31361800659548 /* TopAlignedLabel.swift */; };
 		F8BF16AE1D40FEC70092E469 /* CanceledReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF16AD1D40FEC70092E469 /* CanceledReportViewController.swift */; };
 		F8CC8F8B1D482E4A00DC5AAC /* TAProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8F8A1D482E4A00DC5AAC /* TAProfileViewController.swift */; };
@@ -77,8 +73,6 @@
 		00C47893E53D3211DD9ACD9F /* Pods_LabQueue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LabQueue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		425F023088791AE249FC0FCC /* Pods-LabQueue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabQueue.release.xcconfig"; path = "Pods/Target Support Files/Pods-LabQueue/Pods-LabQueue.release.xcconfig"; sourceTree = "<group>"; };
 		9F9CE877602DDB26145E0460 /* Pods-LabQueue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabQueue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LabQueue/Pods-LabQueue.debug.xcconfig"; sourceTree = "<group>"; };
-		F8000DA01D301309002FF5E4 /* TempStudentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempStudentController.swift; sourceTree = "<group>"; };
-		F8000DA31D302163002FF5E4 /* TempStudentQueueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempStudentQueueCell.swift; sourceTree = "<group>"; };
 		F806120D1D0A68C8008D3A8D /* mitch pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mitch pic.jpg"; sourceTree = "<group>"; };
 		F81E57101D11ABAD00C11123 /* CASViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CASViewController.swift; sourceTree = "<group>"; };
 		F82AC1F61D0BAABA00BDADD2 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -109,8 +103,6 @@
 		F87AC22A1D25F5D50010CF59 /* adler32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adler32.swift; sourceTree = "<group>"; };
 		F88715CC1D36E36B00F8B9CC /* StudentNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentNavigationController.swift; sourceTree = "<group>"; };
 		F895FC621D217AA30031F47D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		F89E17491D30AC6500659548 /* TempTACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempTACell.swift; sourceTree = "<group>"; };
-		F89E174B1D30AD8F00659548 /* TempTAController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempTAController.swift; sourceTree = "<group>"; };
 		F89E174D1D31361800659548 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
 		F8BF16AD1D40FEC70092E469 /* CanceledReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanceledReportViewController.swift; sourceTree = "<group>"; };
 		F8CC8F8A1D482E4A00DC5AAC /* TAProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAProfileViewController.swift; sourceTree = "<group>"; };
@@ -175,17 +167,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F8000DA21D30212B002FF5E4 /* Temporary Design Files */ = {
-			isa = PBXGroup;
-			children = (
-				F8000DA31D302163002FF5E4 /* TempStudentQueueCell.swift */,
-				F89E17491D30AC6500659548 /* TempTACell.swift */,
-				F89E174B1D30AD8F00659548 /* TempTAController.swift */,
-				F8000DA01D301309002FF5E4 /* TempStudentController.swift */,
-			);
-			name = "Temporary Design Files";
-			sourceTree = "<group>";
-		};
 		F832228C1D07B7610089304E = {
 			isa = PBXGroup;
 			children = (
@@ -213,26 +194,20 @@
 			children = (
 				F83222981D07B7610089304E /* AppDelegate.swift */,
 				F87AC22A1D25F5D50010CF59 /* adler32.swift */,
-				F8CC8F8C1D49303F00DC5AAC /* SSRadioButton.swift */,
-				F8CC8F9C1D4C2CB700DC5AAC /* AssignmentReference.json */,
-				F8CC8F8D1D49303F00DC5AAC /* SSRadioButtonsController.swift */,
-				F8F1BB6A1D3845970082F6FB /* LabQueue-Bridging-Header.h */,
 				F895FC621D217AA30031F47D /* Constants.swift */,
-				F871535D1D0F309C00F29040 /* TA Files */,
 				F832229A1D07B7610089304E /* ViewController.swift */,
-				F871535E1D0F30C400F29040 /* Student Files */,
-				F832229C1D07B7610089304E /* Main.storyboard */,
-				F86C606C1D32EB5D00178CC6 /* LumenButton.swift */,
-				F8F1BB751D3B36260082F6FB /* CourseLabel.swift */,
 				F81E57101D11ABAD00C11123 /* CASViewController.swift */,
-				F89E174D1D31361800659548 /* TopAlignedLabel.swift */,
+				F8CC8F9C1D4C2CB700DC5AAC /* AssignmentReference.json */,
+				F8F1BB6A1D3845970082F6FB /* LabQueue-Bridging-Header.h */,
 				F806120D1D0A68C8008D3A8D /* mitch pic.jpg */,
-				F8000DA21D30212B002FF5E4 /* Temporary Design Files */,
 				F83021A11D105D70003AF869 /* GTMOAuth2ViewTouch.xib */,
-				F83222C61D07BF8C0089304E /* StudentPictureView.swift */,
 				F832229F1D07B7610089304E /* Assets.xcassets */,
 				F83222A11D07B7610089304E /* LaunchScreen.storyboard */,
 				F83222A41D07B7610089304E /* Info.plist */,
+				F832229C1D07B7610089304E /* Main.storyboard */,
+				F871535D1D0F309C00F29040 /* TA Files */,
+				F871535E1D0F30C400F29040 /* Student Files */,
+				F8CC8FA41D5030AD00DC5AAC /* Design Files */,
 			);
 			path = LabQueue;
 			sourceTree = "<group>";
@@ -260,15 +235,12 @@
 			children = (
 				F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */,
 				F87153571D0F1C6700F29040 /* TAStudentInfoViewController.swift */,
-				F8CC8F9E1D4C3F2800DC5AAC /* TAReferenceAssignmentInfoCell.swift */,
 				F82AC2001D0CDA3700BDADD2 /* TAQueueCustomCell.swift */,
 				F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */,
-				F8CC8FA01D4C3FF600DC5AAC /* TAReferenceAssignmentInfoViewController.swift */,
 				F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */,
-				F8CC8F9A1D4A599A00DC5AAC /* TAReferenceCell.swift */,
-				F8CC8F981D4A580300DC5AAC /* TAReferenceViewController.swift */,
 				F8722BF31D0886BF00449536 /* TAHomeViewController.swift */,
 				F8CC8F8A1D482E4A00DC5AAC /* TAProfileViewController.swift */,
+				F8CC8FA21D50304400DC5AAC /* Reference Files */,
 				F8BF16A41D405E230092E469 /* Post Report Files */,
 				F85B3E8C1D15CCF40031A1E3 /* LabQueue.xcdatamodeld */,
 			);
@@ -298,6 +270,30 @@
 				F8BF16AD1D40FEC70092E469 /* CanceledReportViewController.swift */,
 			);
 			name = "Post Report Files";
+			sourceTree = "<group>";
+		};
+		F8CC8FA21D50304400DC5AAC /* Reference Files */ = {
+			isa = PBXGroup;
+			children = (
+				F8CC8F9A1D4A599A00DC5AAC /* TAReferenceCell.swift */,
+				F8CC8F9E1D4C3F2800DC5AAC /* TAReferenceAssignmentInfoCell.swift */,
+				F8CC8F981D4A580300DC5AAC /* TAReferenceViewController.swift */,
+				F8CC8FA01D4C3FF600DC5AAC /* TAReferenceAssignmentInfoViewController.swift */,
+			);
+			name = "Reference Files";
+			sourceTree = "<group>";
+		};
+		F8CC8FA41D5030AD00DC5AAC /* Design Files */ = {
+			isa = PBXGroup;
+			children = (
+				F8CC8F8C1D49303F00DC5AAC /* SSRadioButton.swift */,
+				F8CC8F8D1D49303F00DC5AAC /* SSRadioButtonsController.swift */,
+				F89E174D1D31361800659548 /* TopAlignedLabel.swift */,
+				F83222C61D07BF8C0089304E /* StudentPictureView.swift */,
+				F86C606C1D32EB5D00178CC6 /* LumenButton.swift */,
+				F8F1BB751D3B36260082F6FB /* CourseLabel.swift */,
+			);
+			name = "Design Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,12 +490,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8000DA41D302163002FF5E4 /* TempStudentQueueCell.swift in Sources */,
 				F81E57111D11ABAD00C11123 /* CASViewController.swift in Sources */,
 				F8CC8F951D49431000DC5AAC /* PostReportSecondRowView.swift in Sources */,
-				F89E174A1D30AC6500659548 /* TempTACell.swift in Sources */,
 				F8BF16AE1D40FEC70092E469 /* CanceledReportViewController.swift in Sources */,
-				F89E174C1D30AD8F00659548 /* TempTAController.swift in Sources */,
 				F8CC8F8E1D49303F00DC5AAC /* SSRadioButton.swift in Sources */,
 				F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */,
 				F895FC631D217AA30031F47D /* Constants.swift in Sources */,
@@ -510,7 +503,6 @@
 				F8CC8F931D493D2400DC5AAC /* PostReportFirstRowView.swift in Sources */,
 				F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */,
 				F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */,
-				F8000DA11D301309002FF5E4 /* TempStudentController.swift in Sources */,
 				F8F1BB761D3B36260082F6FB /* CourseLabel.swift in Sources */,
 				F89E174E1D31361800659548 /* TopAlignedLabel.swift in Sources */,
 				F85B3E8E1D15CCF40031A1E3 /* LabQueue.xcdatamodeld in Sources */,

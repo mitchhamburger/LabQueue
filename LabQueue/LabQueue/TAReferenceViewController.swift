@@ -96,7 +96,8 @@ class TAReferenceViewController: UIViewController, UITableViewDelegate, UITableV
         header.titleLabel.text = sections[section].name
         header.toggleButton.rotate(sections[section].collapsed! ? 0.0 : CGFloat(M_PI_2))
         header.toggleButton.addTarget(self, action: #selector(TAReferenceViewController.toggleCollapse), forControlEvents: .TouchUpInside)
-        
+        header.contentView.layer.borderWidth = 0.5
+        header.contentView.layer.borderColor = UIColor.whiteColor().CGColor
         return header.contentView
     }
     

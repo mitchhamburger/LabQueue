@@ -53,6 +53,11 @@ import Alamofire
         self.title = "More info about \(currentStudent.name)"
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
+        let barButton = UIBarButtonItem()
+        barButton.title = ""
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor();
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = barButton
+        
         let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolBar.frame.height, width: self.view.frame.width, height: 5))
         toolBarBorder.layer.backgroundColor = UIColor(netHex: 0x3B7CD1).CGColor
         toolBarBorder.layer.cornerRadius = 2

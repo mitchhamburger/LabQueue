@@ -1,0 +1,482 @@
+{
+    "courses": 
+    [{
+        "name": "COS 109",
+        "assignments": 
+        [{
+            "name": "Problem Set 1",
+            "info": []
+        },
+        { 
+            "name": "Problem Set 2",
+            "info": []
+        },
+        {
+            "name": "Problem Set 3",
+            "info": []
+        },
+        {
+            "name": "Problem Set 4",
+            "info": []
+        },
+        {
+            "name": "Problem Set 5",
+            "info": []
+        },
+        {
+            "name": "Problem Set 6",
+            "info": []
+        },
+        {
+            "name": "Problem Set 7",
+            "info": []
+        },
+        {
+            "name": "Problem Set 8",
+            "info": []
+        },
+        {
+            "name": "Problem Set 9",
+            "info": []
+        }]
+    },
+    {
+        "name": "COS 126",
+        "assignments":
+        [{
+            "name": "Hello, World",
+            "info": []
+        },
+        {
+            "name": "Loops and Conditionals",
+            "info": 
+            [{
+                "short": "Integer Division",
+                "long": "Watch for integer division when there should be doubles!!",
+                "extra": ""
+            },
+            {
+                "short": "Calls to Random",
+                "long": "There's only 1 call to random, not 4! Having 4 will cause distances to be too long.",
+                "extra": ""
+            },
+            {
+                "short": "Running Sum",
+                "long": "Make sure the running sum is not getting reset at the beginning of each experiment",
+                "extra": ""
+            },
+            {
+                "short": "Numbers are too large",
+                "long": "Make sure coordinates are getting reset to (0,0) at the beginning of each experiment. Also, make sure the student is calling random in the innermost loop",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "N-Body",
+            "info": 
+            [{
+                "short": "Planet Files",
+                "long": "Make sure planet image files are in the same directory as Nbody.java.",
+                "extra": ""
+            },
+            {
+                "short": "Gravity Backwards",
+                "long": "Check the case with a planet at (0, 0) and one at (1, 1). Make sure Fx and Fy point in the right directions.",
+                "extra": ""
+            },
+            {
+                "short": "Forces Before Accelerations/Velocities",
+                "long": "Calculate all the forces before calculating the accelerations, velocities, etc. Otherwise, their numbers will be slightly off. There should be two separate loops, one to calculate forces and another for acceleration, velocity, and position.",
+                "extra": ""
+            },
+            {
+                "short": "Reset forces after every iteration",
+                "long": "Make sure they reset the forces after every iteration. This is may be a solution for planets looping around the sun then shooting off into the bottom left corner of the screen.",
+                "extra": ""
+            },
+            {
+                "short": "Summing Component Forces",
+                "long": "Make sure they are summing the component forces in the inner force loop, not reassigning Fx and Fy each iteration.",
+                "extra": ""
+            },
+            {
+                "short": "Show(20)",
+                "long": "Make sure that the command to show(20) is outside of the loop that prints the N StdDraw.picture() commands. Otherwise the planets will consistently flicker and go slowly.",
+                "extra": ""
+            },
+            {
+                "short": "Gravitational Constant",
+                "long": "Make sure that the gravitational constant is G = 6.67e-11, and NOT G = 6.67 * 10e-11.  This error will cause slingshot-ey, eccentric motion around the sun.",
+                "extra": ""
+            },
+            {
+                "short": "T and deltaT",
+                "long": "Make sure the T and deltaT they pass from the command line are large enough to be able to see the planets move (The ones from the assignment page work well).",
+                "extra": ""
+            },
+            {
+                "short": "StdAudio",
+                "long": "If everything works fine with no call to StdAudio, but breaks when StdAudio is used, try moving the audio line to after they set the size of StdDraw. There's some weird relationship between StdAudio and StdDraw.",
+                "extra": ""
+            }
+            ]
+        },
+        {
+            "name": "Recursive Graphics",
+            "info": []
+        },
+        {
+            "name": "Edit-Distance",
+            "info": []
+        },
+        {
+            "name": "Hamming Codes in TOY",
+            "info": 
+            [{
+                "short": "Opcodes and Comments",
+                "long": "Make sure that all their opcodes match the comments beside them. Opcode-comment mismatches have resulted in somewhat mysterious bugs.",
+                "extra": ""
+            },
+            {
+                "short": "Accidentally Changing Constants",
+                "long": "Students sometimes manipulate a register they expect to be a constant, but then do not restore the \"constant\" value.",
+                "extra": ""
+            },
+            {
+                "short": "Correction Steps",
+                "long": "Students sometimes have the correction steps in a single block and do not jump after the non-last correction. Thus, when TOY performs a correction, it performs multiple corrections. If no corrections need to be made, be sure not to fall into a correction statement accidentally.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "LFSR",
+            "info": 
+            [{
+                "short": "Instance Variables",
+                "long": "Do NOT redeclare instance variables in the constructor!!",
+                "extra": ""
+            },
+            {
+                "short": "Color Constructor",
+                "long": "Make sure RBG are in the right order in the color constructor.",
+                "extra": ""
+            },
+            {
+                "short": "Converting Chars to 0's and 1's",
+                "long": "When they're reading in characters, make sure they're converting '0' and '1' to integer 0 and 1.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "Guitar Hero",
+            "info": 
+            [{
+                "short": "StdOut De-Bugging",
+                "long": "Do not print to StdOut to debug; this messes with playing audio.",
+                "extra": ""
+            },
+            {
+                "short": "Integer Division",
+                "long": "The MOST common bug is integer division in the constructor (i - 24)/12.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "Markov Model",
+            "info": 
+            [{
+                "short": "StdRandom.discrete(double[] arr)",
+                "long": "Students tend to have lots of trouble with StdRandom.discrete(double[] arr) which returns an integer index of the array picked \"randomly\" weighted by the distributions in the array.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "TSP",
+            "info": 
+            [{
+                "short": "Make sure conditional logic is correct",
+                "long": "Some people ended up creating an extra first node, which pointed back to the actual first node. They would happen on the very first iteration of a point insertion, when first is null. After first was set to point to itself, the code would continue, and eventually execute code that was only supposed to be executed when first is not initially null. Check to make sure that the conditional logic is structured correctly.",
+                "extra": ""
+            },
+            {
+                "short": "Printing the list out backwards on DropBox",
+                "long": "If the shortest path heuristic is failing because it's printing the list out backwards on the Dropbox test, they may have used <= instead of < to check for min distance. The points Dropbox uses to test are apparently chosen so as to nefariously detect this case.",
+                "extra": ""
+            },
+            {
+                "short": "Using private class without constructor",
+                "long": "Some people have had problems with using a private class. They expect constructors, getters, and setters and are unfamiliar with creating a new object with an empty constructor and then filling the fields directly.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "Atomic Nature of Matter",
+            "info": 
+            [{
+                "short": "Array vs Stack/Queue",
+                "long": "A lot of students have been initializing an array of size w*h/2 to store their blobs. While this is the maximum possible number of blobs, it's really inefficient and can also lead to errors with finding which index to add the next blob at. So far, everybody's realized that a stack/queue is a better solution after a little prodding.",
+                "extra": ""
+            },
+            {
+                "short": "DFS Algorithm",
+                "long": "Students sometimes show a lack of familiarity with the DFS algorithm. This may be a symptom of difficulty with recursion, but I've found that it's good to make sure they understand what they should be doing by asking a few pointed questions about how DFS works.",
+                "extra": ""
+            },
+            {
+                "short": "Formatting Strings",
+                "long": "For students who haven't seen C or other languages that use %-formatted strings, understanding how the String.format() method is called has been difficult."
+            }]
+        }]
+    },
+    {
+        "name": "COS 217",
+        "assignments":
+        [{
+            "name": "A \"De-Comment\" Program",
+            "info": []
+        },
+        {
+            "name": "A String Module and Client",
+            "info": 
+            [{
+                "short": "error message: missing delimiter in str.h",
+                "long": "#include <stddef.h>",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "A Symbol Table Module",
+            "info": 
+            [{
+                "short": "For loops with Linked List",
+                "long": "For loops over linked lists should look this: p = initial_whatever; p != NULL; p = p -> next",
+                "extra": ""
+            },
+            {
+                "short": "Weird memory corruption errors?",
+                "long": "Make sure when they malloc a new key, they do strlen + 1.",
+                "extra": ""
+            },
+            {
+                "short": "SegFault in malloc_consolidation()? ",
+                "long": "Make sure their array of Node * is the right length.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "Assembly Language Programming and Testing",
+            "info": 
+            [{
+                "short": "Mistakes with Prologue/Epilogue",
+                "long": "Mistakes with the prologue/epilogue can lead to inexplicable segfaults at anything related to shifting stack frames (calling functions, ret, pushl, etc).  Check for this first!",
+                "extra": ""
+            },
+            {
+                "short": "Memset in Part D",
+                "long": "Using memset will overwrite the eax, ecx, edx registers. These need to be saved the function call. (This can also happen with printf or any similar function for debugging.)",
+                "extra": ""
+            },
+            {
+                "short": "Calling BigInt_Larger on two integers",
+                "long": "Most people forgot to dereference oAddend1 and oAddend2. Check the Wiki for a correct example.",
+                "extra": ""
+            },
+            {
+                "short": "Dereferencing in assignment of oSum->iLength = iSumLength",
+                "long": "Some people forget to dereference oSum(%ebp). Check the Wiki for a correct example.",
+                "extra": ""
+            },
+            {
+                "short": "Don't use \"memset\" (or any function names) as a label!",
+                "long": "Just Don't Do It!!!",
+                "extra": ""
+            },
+            {
+                "short": "Check Comparisons",
+                "long": "If they're flipping things: check <= vs <. Some things are unsigned: use a/b, not g/l for those.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "A Buffer Overrun Attack",
+            "info": 
+            [{
+                "short": "Issues with Grader Executable",
+                "long": "grader.c must be compiled as such: gcc217 grader.c -o grader -O -static. Otherwise, might result in strange behavior.",
+                "extra": ""
+            },
+            {
+                "short": "Part A, Jump Instruction",
+                "long": "Just go with the standard \"jmp\" assembly instruction, which has an op-code of \"e9\". For reference, the movb op code is \"c6 05\"",
+                "extra": ""
+            },
+            {
+                "short": "How to find the opcode for \"mvb\" and \"jmp\" commands",
+                "long": "\"objdump -d [executable]\" translates the assembly code from the executable into machine language, line by line. It's explained in the \"Assemblers and Linkers\" lecture, in the Appendix.",
+                "extra": ""
+            },
+            {
+                "short": "Where is the Jump Offset Applied?",
+                "long": "The jump offset is applied on the address immediately following the instruction, not the address of the instruction itself.",
+                "extra": ""
+            },
+            {
+                "short": "Name buffer filled with random junk",
+                "long": "If the name buffer is right up to a point, and then filled with random junk, check whether the student's input has a 0x0a byte in it (like in the jmp offset). This is the hex for the the newline character, and the grader program will stop copying into the buffer when it sees this. To fix the problem, the student could add another null byte after their name, change the return address, and change the jmp offset.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "A Heap Manager Module",
+            "info": 
+            [{
+                "short": "Make sure they're compiling with -O3 -NDEBUG",
+                "long": "",
+                "extra": ""
+            },
+            {
+                "short": "Have them write helper functions (for add and remove)",
+                "long": "",
+                "extra": ""
+            },
+            {
+                "short": "When to call asserts",
+                "long": "Make sure asserts are not being called in the middle of malloc/free, when the heap should not be valid.",
+                "extra": ""
+            },
+            {
+                "short": "Start from the bin size of the chunk you'll need",
+                "long": "",
+                "extra": ""
+            },
+            {
+                "short": "Size of chunk is larger than the number of bins",
+                "long": "For part 2, often people miss out on the bug where the size of the chunk is larger than the number of bins. This needs to be checked in malloc() otherwise there'll be an error on large inputs.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "A Unix Shell",
+            "info": []
+        }]
+    },
+    {
+        "name": "COS 226",
+        "assignments":
+        [{
+            "name": "Percolation",
+            "info": 
+            [{
+                "short": "Code that does mapping",
+                "long": "Code that does mapping, from one coordinate system to another, should appear once in program - avoids bugs.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "Deques and Randomized Queues",
+            "info": []
+        },
+        {
+            "name": "Autocomplete Me",
+            "info": 
+            [{
+                "short": "String cannot be cast to Term",
+                "long": "Make sure they are passing prefix as a Term (not String) to firstIndexOf and lastIndexOf.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "8 Puzzle",
+            "info": 
+            [{
+                "short": "Bugs in Solver",
+                "long": "Any student who has a bug in Solver such as too slow should put print statements in their code and check that they are inserting only the Boards that they should be by comparing what they insert with what the checklist says. Note that each Board listed on the checklist has uppercase letters for Boards enqueued and lowercase letters for Boards not enqueued.",
+                "extra": ""
+            },
+            {
+                "short": "Most Common Problems",
+                "long": "It is possible that they are missing the check for prev != current.next or that they need to use the .equals() method that they implemented rather than == or !=.",
+                "extra": ""
+            },
+            {
+                "short": "Don't concat Strings",
+                "long": "Use the StringBuilder code given on the checklist instead.",
+                "extra": ""
+            },
+            {
+                "short": "Use toString() method from the checklist",
+                "long": "If people are failing a large amount of dropbox tests (and it seems like their methods are doing the right thing), make sure they're using the toString() method from the checklist -- the tests compare your printed output, so if the formatting isn't perfect you fail everything.",
+                "extra": ""
+            },
+            {
+                "short": "Larger boards take an inordinately amount of time",
+                "long": "Try running from terminal -- Dr.Java slows things down a lot. ",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "Kd-Trees",
+            "info": 
+            [{
+                "short": "RectHV methods",
+                "long": "Make sure they use RectHV methods and do not re-write their own.",
+                "extra": ""
+            },
+            {
+                "short": "Common Problems",
+                "long": "Not using the return value of nearest() properly or having a local variable in a recursive method that should be passed as parameter to the next level but isn't. Also make sure they use recursion.",
+                "extra": ""
+            },
+            {
+                "short": "contains()",
+                "long": "Make sure they are comparing two points correctly in contains(). Mistakes here will cause a lot of problems.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "WordNet",
+            "info": 
+            [{
+                "short": "This is a short description of the problem",
+                "long": "This is a longer description of the problem",
+                "extra": ""
+            },
+            {
+                "short": "This is a short description of the problem",
+                "long": "This is a longer description of the problem",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "Seam Carving",
+            "info": 
+            [{
+                "short": "Energies instance variable",
+                "long": "Potential problem: Creating an energies instance variable and not updating once the picture changes (e.g. after removing a seam).",
+                "extra": ""
+            },
+            {
+                "short": "Out of bounds error",
+                "long": "This is probably due to a mistake in the coordinate system.",
+                "extra": ""
+            }]
+        },
+        {
+            "name": "Burrows Wheeler",
+            "info": 
+            [{
+                "short": "Java 1.7 does not do substring() in constant space!",
+                "long": "Have students use <pre>java -version:1.6</pre> to use java 1.6 instead.",
+                "extra": ""
+            }]
+        }]
+    }]
+}
+
+
+
+
+
+
+
+

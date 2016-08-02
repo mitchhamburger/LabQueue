@@ -46,8 +46,13 @@ class TAProfileViewController: UIViewController, UITableViewDelegate, UITableVie
         self.picBorder.layer.borderWidth = 1
         self.picBorder.layer.borderColor = UIColor(netHex: 0xe1e1e1).CGColor
         self.toolBar.backgroundColor = UIColor(netHex:0x4183D7)
-        self.title = "More info about \(self.ta.name)"
+        self.title = "\(self.ta.name)"
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        let barButton = UIBarButtonItem()
+        barButton.title = ""
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor();
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = barButton
         
         let toolBarBorder = UIView(frame: CGRect(x: 0, y: self.view.frame.height - toolBar.frame.height, width: self.view.frame.width, height: 5))
         toolBarBorder.layer.backgroundColor = UIColor(netHex: 0x3B7CD1).CGColor
