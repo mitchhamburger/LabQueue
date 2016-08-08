@@ -458,6 +458,12 @@ def getStats(senderID):
 	stats = {'Total Students': entry[0]['Total Students'], 'Favorite Course': entry[0]['Favorite Course']}
 	return jsonify({'stats': stats})
 
+@app.route('/LabQueue/v2/<senderID>/Requests/<requestID>/addPostReport', methods = ['POST'])
+def addReport(senderID, requestID):
+	entry = [entry for entry in HelpRequests if entry['RequestID'] == int(requestID)]
+	entry[0]['Post Report'] = request.json['Post Report']
+	return jsonify({'Help Request': entry}), 201
+
 def handleSilentRemove(senderID, removeID, syncToken):
 	activeUsers = getAllActiveUsers()
 	CERT_FILE = 'LabQueuePush.pem'

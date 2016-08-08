@@ -115,7 +115,7 @@ import AlamofireImage
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowPostReport" {
             let dest = segue.destinationViewController as! TAPostReportViewController
-            dest.requestName = currentStudent.name
+            dest.student = currentStudent
         }
         super.prepareForSegue(segue, sender: sender)
     }

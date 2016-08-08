@@ -8,6 +8,8 @@
 
 import UIKit
 import SCLAlertView
+import Alamofire
+
 
 class TAPostReportViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,7 +17,7 @@ class TAPostReportViewController: UIViewController, UITableViewDelegate, UITable
     var json: [String: [[String: AnyObject]]] = [:]
     var controllers: [SSRadioButtonsController]?
     var createdCells: [Bool]?
-    var requestName: String?
+    var student: Student?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +40,7 @@ class TAPostReportViewController: UIViewController, UITableViewDelegate, UITable
         
         self.navigationItem.setHidesBackButton(true, animated: false)
         
-        self.title = "Post Report: \(requestName!)"
+        self.title = "Post Report: \(student!.name)"
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -85,19 +87,21 @@ class TAPostReportViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     @IBAction func submitPressed(sender: UIButton) {
-        var report: [String: String] = [:]
+        var report: [String: [String: String]] = [:]
+        report["Post Report"] = [:]
         for i in 0...surveyTable.numberOfRowsInSection(0) - 1 {
             let cell = surveyTable.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! TAPostReportQuestionCell
             //report["Question \(i + 1)"] = cell.radioController.selectedButton()?.titleLabel?.text!
-            report[json["questions"]![i]["q"] as! String] = cell.radioController.selectedButton()?.titleLabel?.text!
+            report["Post Report"]![json["questions"]![i]["q"] as! String] = cell.radioController.selectedButton()?.titleLabel?.text!
         }
         
-        if report.count != surveyTable.numberOfRowsInSection(0) {
+        if report["Post Report"]!.count != surveyTable.numberOfRowsInSection(0) {
             SCLAlertView().showInfo("Survey Incomplete", subTitle: "Please fill out all of the questions and press Submit")
         }
         else {
             let vc = self.navigationController?.viewControllers[1]
             self.navigationController?.popToViewController(vc!, animated: true)
+            Alamofire.request(.POST, "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\((student?.requestID)! as Int)/addPostReport", parameters: report, encoding: .JSON)
             print(report)
         }
     }
