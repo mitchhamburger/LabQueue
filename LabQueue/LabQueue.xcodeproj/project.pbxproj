@@ -10,6 +10,7 @@
 		F6AE616CE2263204A7FC1A70 /* Pods_LabQueue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C47893E53D3211DD9ACD9F /* Pods_LabQueue.framework */; };
 		F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F806120D1D0A68C8008D3A8D /* mitch pic.jpg */; };
 		F81E57111D11ABAD00C11123 /* CASViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E57101D11ABAD00C11123 /* CASViewController.swift */; };
+		F824DF1F1D56BD6A003D05DF /* PostReportQuestions.json in Resources */ = {isa = PBXBuildFile; fileRef = F824DF1E1D56BD6A003D05DF /* PostReportQuestions.json */; };
 		F82AC1F71D0BAABA00BDADD2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1F61D0BAABA00BDADD2 /* Student.swift */; };
 		F82AC1F91D0C6FD000BDADD2 /* LabTA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */; };
 		F82AC1FF1D0CD03900BDADD2 /* StudentQueueCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */; };
@@ -46,6 +47,11 @@
 		F8CC8F9D1D4C2CB700DC5AAC /* AssignmentReference.json in Resources */ = {isa = PBXBuildFile; fileRef = F8CC8F9C1D4C2CB700DC5AAC /* AssignmentReference.json */; };
 		F8CC8F9F1D4C3F2800DC5AAC /* TAReferenceAssignmentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8F9E1D4C3F2800DC5AAC /* TAReferenceAssignmentInfoCell.swift */; };
 		F8CC8FA11D4C3FF600DC5AAC /* TAReferenceAssignmentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8FA01D4C3FF600DC5AAC /* TAReferenceAssignmentInfoViewController.swift */; };
+		F8CC8FAE1D5035B700DC5AAC /* noun_3698_cc.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F8CC8FAD1D5035B700DC5AAC /* noun_3698_cc.pdf */; };
+		F8CC8FB01D503F2800DC5AAC /* _MG_7982.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F8CC8FAF1D503F2800DC5AAC /* _MG_7982.pdf */; };
+		F8CC8FB21D50492200DC5AAC /* profile.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F8CC8FB11D50492200DC5AAC /* profile.pdf */; };
+		F8CC8FB41D512AD800DC5AAC /* TAPostReportQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8FB31D512AD800DC5AAC /* TAPostReportQuestionCell.swift */; };
+		F8CC8FB61D51339000DC5AAC /* TAPostReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8FB51D51339000DC5AAC /* TAPostReportViewController.swift */; };
 		F8DF3D271D35BF560070311C /* StudentHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DF3D261D35BF560070311C /* StudentHelpSessionViewController.swift */; };
 		F8EC8AD81D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */; };
 		F8EC8AE01D34594800EA5793 /* TAHelpSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */; };
@@ -75,6 +81,7 @@
 		9F9CE877602DDB26145E0460 /* Pods-LabQueue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabQueue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LabQueue/Pods-LabQueue.debug.xcconfig"; sourceTree = "<group>"; };
 		F806120D1D0A68C8008D3A8D /* mitch pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mitch pic.jpg"; sourceTree = "<group>"; };
 		F81E57101D11ABAD00C11123 /* CASViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CASViewController.swift; sourceTree = "<group>"; };
+		F824DF1E1D56BD6A003D05DF /* PostReportQuestions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PostReportQuestions.json; path = ../../PostReportQuestions.json; sourceTree = "<group>"; };
 		F82AC1F61D0BAABA00BDADD2 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		F82AC1F81D0C6FD000BDADD2 /* LabTA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabTA.swift; sourceTree = "<group>"; };
 		F82AC1FE1D0CD03900BDADD2 /* StudentQueueCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentQueueCustomCell.swift; sourceTree = "<group>"; };
@@ -117,6 +124,11 @@
 		F8CC8F9C1D4C2CB700DC5AAC /* AssignmentReference.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = AssignmentReference.json; path = ../../AssignmentReference.json; sourceTree = "<group>"; };
 		F8CC8F9E1D4C3F2800DC5AAC /* TAReferenceAssignmentInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAReferenceAssignmentInfoCell.swift; sourceTree = "<group>"; };
 		F8CC8FA01D4C3FF600DC5AAC /* TAReferenceAssignmentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAReferenceAssignmentInfoViewController.swift; sourceTree = "<group>"; };
+		F8CC8FAD1D5035B700DC5AAC /* noun_3698_cc.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = noun_3698_cc.pdf; sourceTree = "<group>"; };
+		F8CC8FAF1D503F2800DC5AAC /* _MG_7982.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = _MG_7982.pdf; path = "../../../Library/Mobile Documents/com~apple~Preview/Documents/_MG_7982.pdf"; sourceTree = "<group>"; };
+		F8CC8FB11D50492200DC5AAC /* profile.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = profile.pdf; sourceTree = SOURCE_ROOT; };
+		F8CC8FB31D512AD800DC5AAC /* TAPostReportQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAPostReportQuestionCell.swift; sourceTree = "<group>"; };
+		F8CC8FB51D51339000DC5AAC /* TAPostReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAPostReportViewController.swift; sourceTree = "<group>"; };
 		F8DF3D261D35BF560070311C /* StudentHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHelpSessionViewController.swift; sourceTree = "<group>"; };
 		F8EC8AD71D340B2800EA5793 /* TAStudentInfoSingleLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAStudentInfoSingleLineCell.swift; sourceTree = "<group>"; };
 		F8EC8ADF1D34594800EA5793 /* TAHelpSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAHelpSessionViewController.swift; sourceTree = "<group>"; };
@@ -194,8 +206,14 @@
 			children = (
 				F83222981D07B7610089304E /* AppDelegate.swift */,
 				F87AC22A1D25F5D50010CF59 /* adler32.swift */,
+				F8CC8FB51D51339000DC5AAC /* TAPostReportViewController.swift */,
+				F8CC8FB31D512AD800DC5AAC /* TAPostReportQuestionCell.swift */,
 				F895FC621D217AA30031F47D /* Constants.swift */,
+				F824DF1E1D56BD6A003D05DF /* PostReportQuestions.json */,
 				F832229A1D07B7610089304E /* ViewController.swift */,
+				F8CC8FAF1D503F2800DC5AAC /* _MG_7982.pdf */,
+				F8CC8FAD1D5035B700DC5AAC /* noun_3698_cc.pdf */,
+				F8CC8FB11D50492200DC5AAC /* profile.pdf */,
 				F81E57101D11ABAD00C11123 /* CASViewController.swift */,
 				F8CC8F9C1D4C2CB700DC5AAC /* AssignmentReference.json */,
 				F8F1BB6A1D3845970082F6FB /* LabQueue-Bridging-Header.h */,
@@ -412,8 +430,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8CC8FB01D503F2800DC5AAC /* _MG_7982.pdf in Resources */,
 				F83021A21D105D70003AF869 /* GTMOAuth2ViewTouch.xib in Resources */,
 				F83222A31D07B7610089304E /* LaunchScreen.storyboard in Resources */,
+				F8CC8FAE1D5035B700DC5AAC /* noun_3698_cc.pdf in Resources */,
+				F8CC8FB21D50492200DC5AAC /* profile.pdf in Resources */,
+				F824DF1F1D56BD6A003D05DF /* PostReportQuestions.json in Resources */,
 				F8CC8F9D1D4C2CB700DC5AAC /* AssignmentReference.json in Resources */,
 				F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */,
 				F83222A01D07B7610089304E /* Assets.xcassets in Resources */,
@@ -500,6 +522,7 @@
 				F832229B1D07B7610089304E /* ViewController.swift in Sources */,
 				F82AC1FF1D0CD03900BDADD2 /* StudentQueueCustomCell.swift in Sources */,
 				F8CC8F971D49517100DC5AAC /* PostReportThirdRowView.swift in Sources */,
+				F8CC8FB61D51339000DC5AAC /* TAPostReportViewController.swift in Sources */,
 				F8CC8F931D493D2400DC5AAC /* PostReportFirstRowView.swift in Sources */,
 				F871535C1D0F29AA00F29040 /* StudentStudentInfoViewController.swift in Sources */,
 				F83222C71D07BF8C0089304E /* StudentPictureView.swift in Sources */,
@@ -520,6 +543,7 @@
 				F86C606D1D32EB5D00178CC6 /* LumenButton.swift in Sources */,
 				F8CC8F8B1D482E4A00DC5AAC /* TAProfileViewController.swift in Sources */,
 				F82AC1F71D0BAABA00BDADD2 /* Student.swift in Sources */,
+				F8CC8FB41D512AD800DC5AAC /* TAPostReportQuestionCell.swift in Sources */,
 				F8CC8F911D49312100DC5AAC /* PostReportViewController.swift in Sources */,
 				F8CC8F991D4A580300DC5AAC /* TAReferenceViewController.swift in Sources */,
 				F8CC8FA11D4C3FF600DC5AAC /* TAReferenceAssignmentInfoViewController.swift in Sources */,

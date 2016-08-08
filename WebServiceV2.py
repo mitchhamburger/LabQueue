@@ -91,7 +91,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'slc2',
-		'Course': u"COS 126"
+		'Course': u"COS 126",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	},
 	{
 		'RequestID': 1,
@@ -104,7 +109,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'slc2',
-		'Course': u"COS 217"
+		'Course': u"COS 217",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	},
 	{
 		'RequestID': 2,
@@ -117,7 +127,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'slc2',
-		'Course': u"COS 126"
+		'Course': u"COS 126",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	},
 	{
 		'RequestID': 3,
@@ -130,7 +145,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'slc2',
-		'Course': u"COS 226"
+		'Course': u"COS 226",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	},
 	{
 		'RequestID': 4,
@@ -143,7 +163,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'mh20',
-		'Course': u"COS 109"
+		'Course': u"COS 109",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	},
 	{
 		'RequestID': 5,
@@ -156,7 +181,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'mh20',
-		'Course': u"COS 109"
+		'Course': u"COS 109",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	},
 	{
 		'RequestID': 6,
@@ -169,7 +199,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'slc2',
-		'Course': u"COS 226"
+		'Course': u"COS 226",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	},
 	{
 		'RequestID': 7,
@@ -182,7 +217,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'slc2',
-		'Course': u"COS 217"
+		'Course': u"COS 217",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	},
 	{
 		'RequestID': 8,
@@ -195,7 +235,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'slc2',
-		'Course': u"COS 217"
+		'Course': u"COS 217",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	},
 	{
 		'RequestID': 9,
@@ -208,7 +253,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'slc2',
-		'Course': u"COS 217"
+		'Course': u"COS 217",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	},
 	{
 		'RequestID': 10,
@@ -221,7 +271,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'slc2',
-		'Course': u"COS 217"
+		'Course': u"COS 217",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	},
 	{
 		'RequestID': 11,
@@ -234,7 +289,12 @@ HelpRequests = [
 		'Request Time': datetime.datetime.now(),
 		'Helped Time': u"",
 		'Attending TA': u'mh20',
-		'Course': u"COS 226"
+		'Course': u"COS 226",
+		'Post Report': {
+							'Was the issue conceptual or related to code?': 'Code',
+							'What was the nature of the problem?': 'Algorithm',
+							'Did you feel like you were able to help?': 'Yes'
+						}
 	}
 ]
 
@@ -390,7 +450,7 @@ def getRating(senderID):
 	total /= count
 	return jsonify({'Rating': total}), 201
 
-@app.route('/LabQueue/v2/<senderID>/getStats', methods = ['GET'])
+@app.route('/LabQueue/v2/<senderID>/TAs/getStats', methods = ['GET'])
 def getStats(senderID):
 	entry = [entry for entry in LabTAs if entry['NetID'] == senderID]
 	resetStats()

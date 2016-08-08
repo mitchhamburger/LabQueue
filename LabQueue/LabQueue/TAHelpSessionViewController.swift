@@ -112,6 +112,14 @@ import AlamofireImage
         return TAStudentInfoSingleLineCell()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowPostReport" {
+            let dest = segue.destinationViewController as! TAPostReportViewController
+            dest.requestName = currentStudent.name
+        }
+        super.prepareForSegue(segue, sender: sender)
+    }
+    
     /// get student's picture from NetID using TigerBook API
     func getStudentPic(netid: String) {
         
@@ -132,9 +140,7 @@ import AlamofireImage
     
     /// handles when the TA selects "Resolved"
     @IBAction func resolvedPushed(sender: UIButton) {
-        //self.navigationController?.popViewControllerAnimated(true)
-        //self.performSegueWithIdentifier("ToPostReport", sender: nil)
-        self.performSegueWithIdentifier("ToPostForm", sender: nil)
+        self.performSegueWithIdentifier("ShowPostReport", sender: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

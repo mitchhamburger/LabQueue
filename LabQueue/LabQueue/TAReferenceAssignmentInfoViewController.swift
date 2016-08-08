@@ -21,7 +21,12 @@ class TAReferenceAssignmentInfoViewController: UIViewController, UITableViewDele
         infoTable.rowHeight = UITableViewAutomaticDimension
         infoTable.estimatedRowHeight = 140
         infoTable.tableFooterView = UIView()
-        print(assignmentInfo)
+        
+        
+        let barButton = UIBarButtonItem()
+        barButton.title = ""
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor();
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = barButton
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

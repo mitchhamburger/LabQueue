@@ -19,6 +19,7 @@ import SCLAlertView
 /// * managedObjectContext: NSManagedObjectContext for NSData
 @IBDesignable class TAHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var referenceButton: UIButton!
     //UI Elements
     @IBOutlet weak var toolBarLabel: UILabel!
     @IBOutlet weak var toolBar: UIToolbar!
@@ -60,6 +61,13 @@ import SCLAlertView
         toolBarBorder.layer.backgroundColor = UIColor(netHex: 0x3B7CD1).CGColor
         toolBarBorder.layer.cornerRadius = 2
         self.view.addSubview(toolBarBorder)
+        
+        //let img = drawPDF(NSURL(fileURLWithPath: "noun_3698_cc.pdf"))
+        //let img = UIImage(contentsOfFile: "")
+        //let img = drawPDF(NSURL(fileURLWithPath: "_MG_7982.pdf"))
+        
+        //referenceButton.setImage(img, forState: UIControlState.Normal)
+        
     }
     
     /// Called when user pulls down to refresh
@@ -446,4 +454,28 @@ import SCLAlertView
     @IBAction func referenceTapped(sender: UIButton) {
         self.performSegueWithIdentifier("ShowReference", sender: nil)
     }
+    
+    func drawPDF(url: NSURL) -> UIImage? {
+        guard let document = CGPDFDocumentCreateWithURL(url) else { return nil }
+        guard let page = CGPDFDocumentGetPage(document, 1) else { return nil }
+        
+        let pageRect = CGPDFPageGetBoxRect(page, .MediaBox)
+        
+        UIGraphicsBeginImageContextWithOptions(pageRect.size, true, 0)
+        let context = UIGraphicsGetCurrentContext()
+        
+        CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
+        CGContextFillRect(context,pageRect)
+        
+        CGContextTranslateCTM(context, 0.0, pageRect.size.height);
+        CGContextScaleCTM(context, 1.0, -1.0);
+        
+        CGContextDrawPDFPage(context, page);
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return img
+    }
+    
 }
