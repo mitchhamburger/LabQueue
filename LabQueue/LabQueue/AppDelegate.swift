@@ -12,6 +12,7 @@ var activeTAs: [LabTA] = []
 var TACurrentStudent: Student = Student(name: "", helpMessage: "", course: "", netid: "", requestID: 0)
 var StudentCurrentTA: LabTA = LabTA()
 var userDeviceToken: String = ""
+var homeIndex: Int = 0
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,17 +42,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 nav.pushViewController(vc, animated: false)
                 vc.performSegueWithIdentifier("StudentHelpSession", sender: notification["id"] as! String)*/
             }
-            else if (verify(globalNetId) == "TA") {
-                registerForPushNotifications(UIApplication.sharedApplication())
-                vc = storyboard.instantiateViewControllerWithIdentifier("tahomeviewcontroller") as! TAHomeViewController
-                let nav = self.window?.rootViewController as! UINavigationController
-                nav.pushViewController(vc, animated: true)
-            }
             else {
-                registerForPushNotifications(UIApplication.sharedApplication())
-                vc = storyboard.instantiateViewControllerWithIdentifier("studenthomeviewcontroller") as! StudentHomeViewController
-                let nav = self.window?.rootViewController as! UINavigationController
-                nav.pushViewController(vc, animated: true)
+                let test = verify(globalNetId)
+                if test == "TA" {
+                    registerForPushNotifications(UIApplication.sharedApplication())
+                    vc = storyboard.instantiateViewControllerWithIdentifier("tahomeviewcontroller") as! TAHomeViewController
+                    let nav = self.window?.rootViewController as! UINavigationController
+                    nav.pushViewController(vc, animated: true)
+                }
+                else if test == "Student" {
+                    registerForPushNotifications(UIApplication.sharedApplication())
+                    vc = storyboard.instantiateViewControllerWithIdentifier("studenthomeviewcontroller") as! StudentHomeViewController
+                    let nav = self.window?.rootViewController as! UINavigationController
+                    nav.pushViewController(vc, animated: true)
+                }
             }
             //self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             //self.window?.rootViewController = vc

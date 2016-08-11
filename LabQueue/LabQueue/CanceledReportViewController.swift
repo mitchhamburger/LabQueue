@@ -15,17 +15,17 @@ class CanceledReportViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
     @IBAction func ASelected(sender: UIButton) {
-        let vc = self.navigationController?.viewControllers[1]
+        let vc = self.navigationController?.viewControllers[homeIndex]
         self.navigationController?.popToViewController(vc!, animated: true)
     }
     
     @IBAction func BSelected(sender: UIButton) {
-        let vc = self.navigationController?.viewControllers[1]
+        let vc = self.navigationController?.viewControllers[homeIndex]
         self.navigationController?.popToViewController(vc!, animated: true)
     }
     
     @IBAction func CSelected(sender: UIButton) {
-        let vc = self.navigationController?.viewControllers[1]
+        let vc = self.navigationController?.viewControllers[homeIndex]
         self.navigationController?.popToViewController(vc!, animated: true)
     }
 }

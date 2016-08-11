@@ -28,7 +28,16 @@ class TAProfileViewController: UIViewController, UITableViewDelegate, UITableVie
         self.studentInfoTable.dataSource = self
         self.studentInfoTable.delegate = self
         getTAStats(globalNetId)
+        
+        while ta.name == "" {
+            let info = getTAInfo(globalNetId)
+            ta.name = info["Name"] as! String
+            ta.classYear = info["Class Year"] as! Int
+            studentInfoTable.reloadData()
+        }
+        
         UISetup()
+        
     }
     
     func UISetup() {
@@ -64,7 +73,6 @@ class TAProfileViewController: UIViewController, UITableViewDelegate, UITableVie
         return 5
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("hi")
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.studentInfoTable.dequeueReusableCellWithIdentifier("singlelinecell") as! TAStudentInfoSingleLineCell

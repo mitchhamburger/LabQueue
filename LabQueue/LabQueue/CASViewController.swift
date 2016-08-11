@@ -63,6 +63,10 @@ class CASViewController: UIViewController, UIWebViewDelegate {
                 self.performSegueWithIdentifier("TALoggedIn", sender: netId)
                 return true
             }
+            else {
+                self.performSegueWithIdentifier("ShowFailedLogin", sender: nil)
+                return true
+            }
             print(globalNetId)
           
         }
@@ -105,6 +109,6 @@ func verify(netid: String) -> String {
     }
     task.resume()
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-    
+    print(studentType)
     return studentType
 }

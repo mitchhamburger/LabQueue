@@ -56,11 +56,90 @@
                         <outlet property="myWebView" destination="HYw-0z-rky" id="Y4B-Au-fGU"/>
                         <segue destination="uMG-2k-yoa" kind="show" identifier="TALoggedIn" id="IJg-SW-F5q"/>
                         <segue destination="sJe-ET-3eT" kind="show" identifier="StudentLoggedIn" id="P8w-KJ-ll7"/>
+                        <segue destination="FgP-L5-Jhd" kind="show" identifier="ShowFailedLogin" id="xec-W6-Gbc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEu-Z9-x7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="719" y="-219"/>
+        </scene>
+        <!--Failed Login View Controller-->
+        <scene sceneID="J8C-K6-jAe">
+            <objects>
+                <viewController id="FgP-L5-Jhd" customClass="FailedLoginViewController" customModule="LabQueue" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y9G-mw-VQd"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Lh-OM-Ce4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BTo-Wx-Owy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NetID Verification Failed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogO-Mm-qoB">
+                                <rect key="frame" x="16" y="72" width="288" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your internet connection may be poor. Hit the refresh button to try again. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNa-pN-xaA" customClass="TopAlignedLabel" customModule="LabQueue" customModuleProvider="target">
+                                <rect key="frame" x="8" y="106.5" width="304" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h8q-ov-1nr" customClass="LumenButton" customModule="LabQueue" customModuleProvider="target">
+                                <rect key="frame" x="99" y="263" width="121" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="lpV-kc-jvW"/>
+                                    <constraint firstAttribute="height" constant="41" id="xaA-hi-VGn"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="REFRESH">
+                                            <attributes>
+                                                <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="18" name="HelveticaNeue-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
+                                        <color key="value" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="refreshTapped:" destination="FgP-L5-Jhd" eventType="touchUpInside" id="vbK-bE-sKI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pNa-pN-xaA" firstAttribute="top" secondItem="ogO-Mm-qoB" secondAttribute="bottom" constant="8" id="3yf-rw-sY4"/>
+                            <constraint firstItem="h8q-ov-1nr" firstAttribute="centerX" secondItem="BTo-Wx-Owy" secondAttribute="centerX" id="5vz-Z2-TP0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pNa-pN-xaA" secondAttribute="trailing" constant="-8" id="6mp-yB-CFg"/>
+                            <constraint firstItem="ogO-Mm-qoB" firstAttribute="top" secondItem="y9G-mw-VQd" secondAttribute="bottom" constant="8" id="GFi-Df-NWC"/>
+                            <constraint firstItem="pNa-pN-xaA" firstAttribute="centerX" secondItem="ogO-Mm-qoB" secondAttribute="centerX" id="L9b-6H-qK7"/>
+                            <constraint firstItem="ogO-Mm-qoB" firstAttribute="leading" secondItem="BTo-Wx-Owy" secondAttribute="leadingMargin" id="boS-FO-w9R"/>
+                            <constraint firstItem="h8q-ov-1nr" firstAttribute="centerX" secondItem="ogO-Mm-qoB" secondAttribute="centerX" id="gzA-ma-dgc"/>
+                            <constraint firstItem="pNa-pN-xaA" firstAttribute="leading" secondItem="BTo-Wx-Owy" secondAttribute="leadingMargin" constant="-8" id="sTF-SV-1bA"/>
+                            <constraint firstItem="h8q-ov-1nr" firstAttribute="centerY" secondItem="BTo-Wx-Owy" secondAttribute="centerY" id="w4Y-w5-odY"/>
+                            <constraint firstItem="ogO-Mm-qoB" firstAttribute="trailing" secondItem="BTo-Wx-Owy" secondAttribute="trailingMargin" id="xSC-hz-Bqf"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="uMG-2k-yoa" kind="show" identifier="ShowTA" id="IwK-PC-wLJ"/>
+                        <segue destination="sJe-ET-3eT" kind="show" identifier="ShowStudent" id="PwD-ry-45J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fcx-Ga-KoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="735" y="696"/>
         </scene>
         <!--Lab TA's Queue-->
         <scene sceneID="KZR-Xg-KZD">
@@ -529,7 +608,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wgp-VG-2gA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-431" y="585"/>
+            <point key="canvasLocation" x="-735" y="609"/>
         </scene>
         <!--Help Session View Controller-->
         <scene sceneID="cXN-ny-vzC">
@@ -1965,4 +2044,8 @@
         <image name="profile" width="430" height="355"/>
         <image name="reference" width="74" height="100"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="PwD-ry-45J"/>
+        <segue reference="IwK-PC-wLJ"/>
+    </inferredMetricsTieBreakers>
 </document>

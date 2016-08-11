@@ -25,6 +25,9 @@ import SCLAlertView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        homeIndex = ((self.navigationController?.viewControllers.count)! - 1)
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StudentHomeViewController.silentRemove), name: removeStudentFromQueue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StudentHomeViewController.silentAdd), name: addStudentToQueue, object: nil)
         syncQueue()

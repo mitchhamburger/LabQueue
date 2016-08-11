@@ -91,7 +91,6 @@ class TAPostReportViewController: UIViewController, UITableViewDelegate, UITable
         report["Post Report"] = [:]
         for i in 0...surveyTable.numberOfRowsInSection(0) - 1 {
             let cell = surveyTable.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! TAPostReportQuestionCell
-            //report["Question \(i + 1)"] = cell.radioController.selectedButton()?.titleLabel?.text!
             report["Post Report"]![json["questions"]![i]["q"] as! String] = cell.radioController.selectedButton()?.titleLabel?.text!
         }
         
@@ -99,10 +98,9 @@ class TAPostReportViewController: UIViewController, UITableViewDelegate, UITable
             SCLAlertView().showInfo("Survey Incomplete", subTitle: "Please fill out all of the questions and press Submit")
         }
         else {
-            let vc = self.navigationController?.viewControllers[1]
+            let vc = self.navigationController?.viewControllers[homeIndex]
             self.navigationController?.popToViewController(vc!, animated: true)
             Alamofire.request(.POST, "\(hostName)/LabQueue/v2/\(globalNetId)/Requests/\((student?.requestID)! as Int)/addPostReport", parameters: report, encoding: .JSON)
-            print(report)
         }
     }
 }
