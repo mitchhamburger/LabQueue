@@ -89,7 +89,7 @@ class TAProfileViewController: UIViewController, UITableViewDelegate, UITableVie
                 cell.sectionContent.text = "\(self.totalStudents)"
             case 3:
                 cell.sectionHeader.text = "Average Help Time"
-                cell.sectionContent.text = "10 Minutes, 11 Seconds"
+                cell.sectionContent.text = "XX"
             case 4:
                 cell.sectionHeader.text = "Favorite Course"
                 cell.sectionContent.text = self.favoriteCourse

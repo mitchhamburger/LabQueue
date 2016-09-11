@@ -27,7 +27,6 @@ class CASViewController: UIViewController, UIWebViewDelegate {
         myWebView.reload()
         
         //1. Load web site into my web view
-        
         let myURL = NSURL(string: "https://awojak.mycpanel2.princeton.edu/333")
         let myURLRequest:NSURLRequest = NSURLRequest(URL: myURL!)
         myWebView.loadRequest(myURLRequest)
