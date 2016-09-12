@@ -36,6 +36,7 @@
 		F895FC631D217AA30031F47D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895FC621D217AA30031F47D /* Constants.swift */; };
 		F89E174E1D31361800659548 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89E174D1D31361800659548 /* TopAlignedLabel.swift */; };
 		F8BF16AE1D40FEC70092E469 /* CanceledReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF16AD1D40FEC70092E469 /* CanceledReportViewController.swift */; };
+		F8C7565E1D871C73005D7E99 /* CanceledReportQuestions.json in Resources */ = {isa = PBXBuildFile; fileRef = F8C7565D1D871C73005D7E99 /* CanceledReportQuestions.json */; };
 		F8CC8F8B1D482E4A00DC5AAC /* TAProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8F8A1D482E4A00DC5AAC /* TAProfileViewController.swift */; };
 		F8CC8F8E1D49303F00DC5AAC /* SSRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8F8C1D49303F00DC5AAC /* SSRadioButton.swift */; };
 		F8CC8F8F1D49303F00DC5AAC /* SSRadioButtonsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CC8F8D1D49303F00DC5AAC /* SSRadioButtonsController.swift */; };
@@ -110,6 +111,7 @@
 		F895FC621D217AA30031F47D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F89E174D1D31361800659548 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
 		F8BF16AD1D40FEC70092E469 /* CanceledReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanceledReportViewController.swift; sourceTree = "<group>"; };
+		F8C7565D1D871C73005D7E99 /* CanceledReportQuestions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CanceledReportQuestions.json; path = ../../CanceledReportQuestions.json; sourceTree = "<group>"; };
 		F8CC8F8A1D482E4A00DC5AAC /* TAProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAProfileViewController.swift; sourceTree = "<group>"; };
 		F8CC8F8C1D49303F00DC5AAC /* SSRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSRadioButton.swift; path = "../../../Downloads/SSRadioButtonsController-master/SSRadioButtonController/SSRadioButton.swift"; sourceTree = "<group>"; };
 		F8CC8F8D1D49303F00DC5AAC /* SSRadioButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSRadioButtonsController.swift; path = "../../../Downloads/SSRadioButtonsController-master/SSRadioButtonController/SSRadioButtonsController.swift"; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				F895FC621D217AA30031F47D /* Constants.swift */,
 				F824DF1E1D56BD6A003D05DF /* PostReportQuestions.json */,
 				F832229A1D07B7610089304E /* ViewController.swift */,
+				F8C7565D1D871C73005D7E99 /* CanceledReportQuestions.json */,
 				F8CC8FAF1D503F2800DC5AAC /* _MG_7982.pdf */,
 				F8CC8FAD1D5035B700DC5AAC /* noun_3698_cc.pdf */,
 				F8CC8FB11D50492200DC5AAC /* profile.pdf */,
@@ -431,6 +434,7 @@
 				F806120E1D0A68C8008D3A8D /* mitch pic.jpg in Resources */,
 				F83222A01D07B7610089304E /* Assets.xcassets in Resources */,
 				F832229E1D07B7610089304E /* Main.storyboard in Resources */,
+				F8C7565E1D871C73005D7E99 /* CanceledReportQuestions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

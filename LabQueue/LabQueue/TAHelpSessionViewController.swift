@@ -117,6 +117,10 @@ import AlamofireImage
             let dest = segue.destinationViewController as! TAPostReportViewController
             dest.student = currentStudent
         }
+        else if segue.identifier == "ToCanceledReport" {
+            let dest = segue.destinationViewController as! CanceledReportViewController
+            dest.student = currentStudent
+        }
         super.prepareForSegue(segue, sender: sender)
     }
     
