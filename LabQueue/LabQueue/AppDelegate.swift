@@ -37,10 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Check if launched from notification
             // 1
             if let notification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [String: AnyObject] {
-                /*vc = storyboard.instantiateViewControllerWithIdentifier("studenthomeviewcontroller") as! StudentHomeViewController
-                let nav = self.window?.rootViewController as! UINavigationController
-                nav.pushViewController(vc, animated: false)
-                vc.performSegueWithIdentifier("StudentHelpSession", sender: notification["id"] as! String)*/
             }
             else {
                 let test = verify(globalNetId)
